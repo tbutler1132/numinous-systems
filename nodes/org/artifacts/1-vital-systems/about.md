@@ -37,7 +37,7 @@ Differences between versions reflect:
 - learning from feedback
 - changes in understanding over time
 
-Earlier versions are retained as part of the artifact’s memory.
+Earlier versions are retained as part of the artifact's memory.
 
 ## Status
 
@@ -51,3 +51,4 @@ It may change in response to:
 - failure to remain coherent or useful
 
 If the text ceases to clarify anything, it should be revised or retired.
+

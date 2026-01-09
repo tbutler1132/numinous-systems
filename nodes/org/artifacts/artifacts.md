@@ -43,4 +43,5 @@ They may be incomplete, provisional, or limited in scope.
 ## Change and Retention
 
 Artifacts may be revised as understanding changes.
-Earlie
+Earlier versions are retained as part of the artifact's memory.
+

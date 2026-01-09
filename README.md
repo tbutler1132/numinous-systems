@@ -7,9 +7,7 @@ It documents a way of working.
 
 ## Primary Artifact
 
-The main public artifact is an essay titled **Vital Systems**, located here:
-
-`nodes/org/artifacts/vital-systems/`
+The main public artifact is an essay titled **[[vital-systems-v1|Vital Systems]]**, located in `nodes/org/artifacts/1-vital-systems/`.
 
 That folder contains:
 

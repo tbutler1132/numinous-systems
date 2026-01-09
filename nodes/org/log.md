@@ -28,7 +28,7 @@ Nothing is required to leave the log.
 
 ---
 
-## 2026-01-09
+## 2026-01-08
 
 - Contemplating best way to begin external feedback loops
 - If the first artifact is published, how should it be amplified?
