@@ -20,6 +20,13 @@ Nothing is required to leave the log.
 
 ---
 
+## Actions
+
+- [ ] Revise vital-systems-v1
+- [ ] Place it somewhere small (HN, Are.na, or similar)
+
+---
+
 ## 2026-01-09
 
 - Contemplating best way to begin external feedback loops
