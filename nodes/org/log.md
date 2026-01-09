@@ -24,6 +24,7 @@ Nothing is required to leave the log.
 
 - [ ] Revise vital-systems-v1
 - [ ] Place it somewhere small (HN, Are.na, or similar)
+- [ ] Figure out hiring a creative director/brand person
 
 ---
 
@@ -34,5 +35,7 @@ Nothing is required to leave the log.
 - No obvious audience for this work; constraint noted
 - First draft of Vital Systems essay written; revised for sentence rhythm
 - Updated Writing Tone model: sentence length should vary for rhythm
+- Think that I should do some video logs to create a more personal effect
+  - Maybe do a couple practice ones first before publishing
 
 ---
