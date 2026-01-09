@@ -39,6 +39,7 @@ Nothing is required to leave the log.
   - Cons:
     - Can be immediately noticeable and disqualifying in some ways
   - Either way, it would require some sort of external "human" voice, whether that be purely verbal, or through music.
+- Think I should focus more on building brand under my name "Timothy Butler", just to tie it to a real person
 
 ---
 
