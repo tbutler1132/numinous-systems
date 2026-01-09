@@ -1,6 +1,7 @@
 # Axioms — Notes
 
 ## On the form
+
 - These are axioms, not arguments
 - Starting points, not conclusions
 - Devotional register—affirmation, not proposition
@@ -53,6 +54,7 @@
 ---
 
 ## The sacred without theology
+
 - These axioms invoke the sacred, the divine
 - But they don't require a specific theology
 - The sacred is treated as real without specifying its nature
@@ -61,18 +63,31 @@
 
 ## How these ground the project
 
-| Artifact | Axiom connection |
-|----------|------------------|
-| Vital Systems | Life as fundamental value (1); order and vitality as goals (2) |
-| Beauty as highest ideal | Beauty as highest expression (2); perceiving beauty as participation (5) |
-| AI art / genius myth | Creation as devotion, not self-expression (3) |
-| Capital-as-medium | Creating in devotion vs. extraction (3); living beautifully (4) |
-| Community | Sacred life includes sacred relation (1, 4) |
-| Hybrid subject | What makes humanness worth preserving: capacity for beauty, perception, creation (2, 5) |
+| Artifact                | Axiom connection                                                                        |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| Vital Systems           | Life as fundamental value (1); order and vitality as goals (2)                          |
+| Beauty as highest ideal | Beauty as highest expression (2); perceiving beauty as participation (5)                |
+| AI art / genius myth    | Creation as devotion, not self-expression (3)                                           |
+| Capital-as-medium       | Creating in devotion vs. extraction (3); living beautifully (4)                         |
+| Community               | Sacred life includes sacred relation (1, 4)                                             |
+| Hybrid subject          | What makes humanness worth preserving: capacity for beauty, perception, creation (2, 5) |
+
+---
+
+## On agency and determinism
+
+- The project speaks as if we act, because that's how action feels from inside
+- This is not a claim about libertarian free will
+- The forces that move us are vast—time, causation, everything prior to this moment
+- We don't stand outside and choose; we ARE the unfolding
+- But striving still happens, orientation still happens—these are real phenomena, even if determined
+- "Orchestrate capital toward beauty" = what this process looks like from within, not a free choice made from outside
+- Amor fati applies to agency itself: your participation is part of fate
+- Nietzsche held this same tension: everything is necessary AND become who you are
 
 ## Open questions
+
 - Are these five axioms complete? What might be missing?
 - How do these relate to each other? Is there a hierarchy or are they co-equal?
 - What practices follow from these axioms? How do you live them?
 - How would someone who rejected these axioms see the world? What would they affirm instead?
-

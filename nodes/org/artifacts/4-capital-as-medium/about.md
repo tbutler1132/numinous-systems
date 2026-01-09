@@ -11,8 +11,8 @@ The essay addresses what creative work actually looks like at industrial scaleâ€
 - How large-scale creative work is fundamentally capital orchestration (marshaling money, labor, technology, logistics)
 - Why the "genius" designation is a system position, not an intrinsic quality
 - The incoherence of opposing AI while embedded in industrial creative systems
-- What honest positions look like: orchestrate capital toward beauty, or actually live as an outsider
-- How clarity about the system enables better choices
+- What coherent action looks like: orchestrating capital toward beauty, or actually living as an outsider
+- How clarity about the system enables coherent action
 
 ## Connection to Broader Project
 

@@ -24,6 +24,16 @@ These are not:
 - Moral commands (they describe orientation, not obligation)
 - Complete (they may be added to or revised)
 
+## On Agency
+
+This project speaks as if we act—as if we choose, orient, create, direct. That is how action feels from inside.
+
+Whether we are "free" in some metaphysical sense is a separate question, and perhaps the wrong one. The forces that move us—time, causation, everything that led to this moment—are vast and largely beyond awareness, let alone control. We do not stand outside the unfolding and choose our path. We are the unfolding.
+
+And yet: striving happens. Orientation happens. The experience of deliberation is real, even if determined. When the project says "orchestrate capital toward beauty" or "navigate the viable range," it is not claiming libertarian free will. It is describing what these processes look like from within.
+
+To affirm being is not to claim you chose it freely. It is to say yes to what is happening—including your own participation in it. Amor fati applies here too: even your agency, such as it is, is part of fate.
+
 ## Connection to Broader Project
 
 Every artifact in this project implicitly depends on something like these axioms.

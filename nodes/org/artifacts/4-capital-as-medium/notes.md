@@ -48,10 +48,12 @@
 - He's inside the system, playing by its rules, believing its story
 - The critique is about coherence, not character
 
-## The coherence test
-- **Option A:** Orchestrate capital toward beauty honestly. Keep making good movies. Drop the hypocritical moralizing.
-- **Option B:** Actually live by the principles the "Fuck AI" stance implies. Real risk, experimental work, probably walking away from the deals. Actually being an outsider.
-- What's incoherent: holding the cushy system position AND moralizing as if you're outside it
+## What coherence looks like
+- **One form:** Orchestrate capital toward beauty honestly. Keep making good movies. Drop the hypocritical moralizing.
+- **Another form:** Actually live by the principles the "Fuck AI" stance implies. Real risk, experimental work, probably walking away from the deals. Actually being an outsider.
+- What incoherence looks like: holding the cushy system position AND moralizing as if you're outside it
+
+These aren't "options" you stand outside and choose between. They're descriptions of how people find themselves acting. The question isn't "which should you pick?" but "which are you actually doing?"
 
 ## What Option A actually requires
 - Just make beautiful things. Put beauty into the world. That's enough.

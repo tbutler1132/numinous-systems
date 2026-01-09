@@ -33,6 +33,17 @@
 - Art as collective practice, not individual achievement
 - Resonates with pre-modern and non-Western traditions
 
+## Genius vs experiencer
+- The genius myth is about CREATION—special creative capacity, unique authorship
+- But the project still depends on a subject who EXPERIENCES beauty
+- Is this a contradiction? No—different claims:
+  - Genius (myth): some people have special creative power that originates beauty
+  - Experiencer (real): all humans have perceptual capacity for beauty
+- The genius is demystified because creation is always collective, iterative, capital-orchestrated
+- The experiencer is not demystified because perception is universal—everyone can have the moment where time stops
+- Clearing the genius myth doesn't flatten experience; it opens access
+- Beauty is not made by special people; it is perceived by everyone
+
 ## Questions to explore
 - What did pre-Romantic cultures actually believe about artistic creation?
 - How do craft traditions handle authorship and originality?

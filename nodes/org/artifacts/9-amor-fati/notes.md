@@ -145,8 +145,19 @@
 - Not identical to either, but drawing from both
 - This version emphasizes the *corrosive* quality of regret specifically
 
+## Closing regret vs. taking lessons
+- Amor fati closes REGRET—the corrosive comparison to alternate timelines
+- It does not close LEARNING—the past is precisely what you learn from
+- The distinction:
+  - Regret: "If only X had happened instead..." (comparison to a ghost)
+  - Learning: "X happened, and from it I orient toward beauty now"
+- Learning uses the past; regret is used BY the past
+- The wound stays open when you keep asking "what if?" 
+- The lesson integrates when you ask "what now?"
+- Closing the comparison ≠ ignoring the past
+- It means: stop auditing a closed ledger, start navigating from where you are
+
 ## Open questions
 - What's the relationship between grief and regret? Grief seems necessary; regret seems destructive. Where's the line?
-- Can you take lessons from the past without reopening the wound?
 - Is there a practice beyond "notice and close"?
 - Does this apply to moral regret differently? (Harm you caused vs. loss you suffered)
