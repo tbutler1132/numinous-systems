@@ -29,3 +29,7 @@ Changes reflect use rather than planning.
 
 This repository may evolve.
 Nothing here is assumed to be final.
+
+## Contributing
+
+Participation is welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to engage.
