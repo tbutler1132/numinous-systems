@@ -1,3 +1,5 @@
+Do the smallest next thing that increases the Org’s viability or legibility without foreclosing future options.
+
 # Log
 
 This file is a chronological record of what actually happens.
@@ -22,7 +24,7 @@ Nothing is required to leave the log.
 
 ## Actions
 
-- [ ] Revise vital-systems-v1
+- [ ] Finish v1 of any artifact
 - [ ] Place it somewhere small (HN, Are.na, or similar)
 - [ ] Figure out hiring a creative director/brand person
 
