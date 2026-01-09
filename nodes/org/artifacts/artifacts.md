@@ -19,15 +19,15 @@ If something matters, it should eventually become an artifact.
 
 ## Structure
 
-Some artifacts may be simple, single files.
-Others may have internal structure.
+Each artifact is a folder containing:
 
-When an artifact represents a creative or conceptual work that evolves over time, it may be organized as a folder containing:
+- **about.md** — The conceptual container. Describes what this artifact IS: its purpose, what questions it addresses, how it connects to the broader project, and its current status. This file is stable and abstract. It should not contain specific arguments, examples, or worked-out content.
 
-- a README describing the intent of the artifact
-- one or more concrete expressions or versions
+- **notes.md** — Working material. Contains specific ideas, examples, arguments, drafts, and open questions. This is where the actual content develops. Notes can change freely as thinking evolves.
 
-This structure is optional and used only when it adds clarity.
+- **Expressions** (optional) — Specific versions or outputs of the artifact. An essay, a recording, a visual piece. These are concrete manifestations of the concept described in about.md.
+
+This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _output_ (expressions). The concept can remain stable while the content evolves and expressions multiply.
 
 ## What Artifacts Are Not
 
