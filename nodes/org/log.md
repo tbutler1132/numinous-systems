@@ -32,6 +32,19 @@ Nothing is required to leave the log.
 
 ## 2026-01-09
 
+- Thinking about software as a medium for legibility
+
+  - Software encodes things—takes fuzzy/tacit knowledge and makes it legible, explicit, enforceable
+  - This is why the project starts markdown-only: prose is exploration, remains fluid
+  - Code comes later, when something is ready to become law
+  - The progression: fuzzy → legible → encoded → enforced
+  - This isn't accidental bureaucratization—it's _intentional crystallization_
+  - You choose when to harden something into code based on when it should become law
+  - The encoding power of software can be directed toward beauty (not just efficiency/extraction)
+  - This might connect to or extend Vital Systems—or become its own artifact (Software as Law? Code as Medium?)
+  - The LLM moment makes this visible: suddenly everyone is thinking about what software _is_, what encoding _means_
+  - Open question: what's the relationship between legibility and beauty? Does encoding clarify or kill?
+
 - Deleted Vital Systems v1 essay. Not close to quality standard quite frankly.
 - Didn't remove writing tone model, but made its status "low". Reason is I am thinking it may be better to just write some pieces and have those for reference, rather than trying to force writing style. On the other hand it is sort of a "meta" part of the experiment so may not want to delete it completely
   - Pros:
