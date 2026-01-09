@@ -1,19 +1,19 @@
 # Vital Systems
 
-This repository records an ongoing experiment in treating creative and organizational work as a system that adapts through feedback over time.
+This repository documents a creative and philosophical project oriented toward a single purpose: **creating conditions for moments of beauty that redeem existence**.
 
 It is not a product, platform, or framework.
-It documents a way of working.
+It is a way of working and thinking, recorded as it develops.
 
-## Primary Artifact
+## Artifacts
 
-The main public artifact is an essay titled **[[vital-systems-v1|Vital Systems]]**, located in `nodes/org/artifacts/1-vital-systems/`.
+The core ideas are developed in `nodes/org/artifacts/`. Start with:
 
-That folder contains:
+- **Beauty as Redemption** — the telos (why any of this matters)
+- **Vital Systems** — the meta-framework (living systems inside mechanized environments)
+- **Axioms** — the starting points (what is affirmed without argument)
 
-- a README describing the purpose of the text
-- one or more versions of the essay
-- notes preserving context and intent
+See `nodes/org/artifacts/artifacts.md` for the full structure.
 
 ## How to Read This Repo
 

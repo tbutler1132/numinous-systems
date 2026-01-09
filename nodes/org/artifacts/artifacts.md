@@ -49,22 +49,28 @@ Earlier versions are retained as part of the artifact's memory.
 
 ## Current Artifacts
 
+### Telos
+
+| #   | Artifact                 | Purpose                                                                          |
+| --- | ------------------------ | -------------------------------------------------------------------------------- |
+| 2   | **Beauty as Redemption** | The purpose—moments of beauty redeem existence, transcend entropy, justify being |
+
 ### Foundational Layer
 
 | #   | Artifact           | Purpose                                                                       |
 | --- | ------------------ | ----------------------------------------------------------------------------- |
 | 7   | **Axioms**         | Philosophical starting points—what is affirmed without argument               |
+| 9   | **Amor Fati**      | Posture toward loss and finitude—why regret is the enemy                      |
 | 6   | **Hybrid Subject** | What "human" means under current conditions (part-biological, part-synthetic) |
 | 1   | **Vital Systems**  | Meta-framework: living systems inside mechanized environments                 |
 
-### Conceptual Layer
+### Enabling Layer
 
-| #   | Artifact                 | Purpose                                                                          |
-| --- | ------------------------ | -------------------------------------------------------------------------------- |
-| 2   | **Beauty as Ideal**      | The orienting value—beauty as highest expression, time freezing, solving entropy |
-| 5   | **Community**            | Biological requirement—what humans need to function                              |
-| 4   | **Capital-as-Medium**    | What large-scale creative work actually is—orchestrating capital toward beauty   |
-| 3   | **AI Art / Lone Genius** | Clearing a false framing—the genius myth and why it's breaking down              |
+| #   | Artifact                 | Purpose                                                                        |
+| --- | ------------------------ | ------------------------------------------------------------------------------ |
+| 5   | **Community**            | Biological requirement—what humans need to function                            |
+| 4   | **Capital-as-Medium**    | What large-scale creative work actually is—orchestrating capital toward beauty |
+| 3   | **AI Art / Lone Genius** | Clearing a false framing—the genius myth and why it's breaking down            |
 
 ### Expressive Layer
 
@@ -75,15 +81,31 @@ Earlier versions are retained as part of the artifact's memory.
 ### How They Connect
 
 ```
-Axioms (what we affirm)
-    ↓
-Hybrid Subject (what we are) ← → Vital Systems (how living systems work)
-    ↓
-Beauty (what we orient toward) ← → Community (what we need)
-    ↓
-Capital-as-Medium (how we create at scale) ← clears → Genius Myth (false framing)
-    ↓
-Aesthetic Spectrum (how it sounds and looks)
+                    ┌─────────────────────────────────────┐
+                    │  BEAUTY AS REDEMPTION (the telos)   │
+                    │  Moments that redeem existence      │
+                    └─────────────────────────────────────┘
+                                    ↑
+                        everything serves this
+                                    ↑
+    ┌───────────────────────────────┼───────────────────────────────┐
+    │                               │                               │
+Axioms                         Amor Fati                    Hybrid Subject
+(ground affirmation)     (clear regret for presence)    (preserve the experiencer)
+    │                               │                               │
+    └───────────────────────────────┼───────────────────────────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              │                     │                     │
+        Vital Systems          Community          Capital-as-Medium
+      (maintain viability)  (enable connection)   (create at scale)
+              │                     │                     │
+              └─────────────────────┼─────────────────────┘
+                                    │
+                           Aesthetic Spectrum
+                       (the sensory form it takes)
 ```
 
-The axioms ground everything. The hybrid subject and vital systems describe the condition. Beauty and community describe what matters. Capital-as-medium describes the practice. The aesthetic spectrum is the sensory output.
+**Everything serves one purpose: enabling moments that redeem existence.**
+
+The axioms ground affirmation. Amor fati clears regret so presence is possible. The hybrid subject defines what must be preserved for there to be someone who experiences beauty. Vital systems maintain viability. Community enables moments of connection. Capital-as-medium enables creation at scale. The genius myth is cleared to open collective paths. The aesthetic spectrum is how redemption sounds and looks.
