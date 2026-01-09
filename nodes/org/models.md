@@ -42,7 +42,7 @@ The tone assumes that forces larger than any single author or moment are already
 
 Prefer:
 
-- short sentences
+- varied sentence rhythm; short sentences for emphasis, longer sentences for flow
 - concrete terms
 - neutral framing
 - statements that describe conditions rather than intentions
