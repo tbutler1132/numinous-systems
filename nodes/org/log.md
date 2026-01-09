@@ -28,6 +28,22 @@ Nothing is required to leave the log.
 
 ---
 
+## 2026-01-09
+
+- Deleted Vital Systems v1 essay. Not close to quality standard quite frankly.
+- Didn't remove writing tone model, but made its status "low". Reason is I am thinking it may be better to just write some pieces and have those for reference, rather than trying to force writing style. On the other hand it is sort of a "meta" part of the experiment so may not want to delete it completely
+  - Pros:
+    - Embraces AI as a sort of "artistic" medium by pushing in: Instead of just asking to write, defining the tone, iterating on prompting, etc
+    - The repository + agents _is_ the medium
+    - Can apply the same level of effort just "higher up the stack"
+  - Cons:
+    - Can be immediately noticeable and disqualifying in some ways
+  - Either way, it would require some sort of external "human" voice, whether that be purely verbal, or through music.
+
+---
+
+---
+
 ## 2026-01-08
 
 - Contemplating best way to begin external feedback loops

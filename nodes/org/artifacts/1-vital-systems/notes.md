@@ -14,3 +14,11 @@
 - The essay is an experiment and may fail; failure is acceptable if learning occurs.
 - Versions of the essay are expressions of the same intent and should be retained as memory.
 - If the text stops producing clarity or resonance, it should be revised or retired.
+
+Outline:
+- How feedback loops define our general experience
+- Modern world is structurally not designed to respond to natural human desires
+- Leave us dissatisfied
+- Technology can give us a means to reclaim control of these feedback loops
+- Inserting indicators of negative feedback to stabilize and return to a certain human baseline
+- Re-evaluate the definition of human

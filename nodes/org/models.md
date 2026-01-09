@@ -18,7 +18,7 @@ This file represents the Org’s current understanding, not doctrine.
 
 ## Writing Tone
 
-### Status
+### Status: Low confidence
 
 This model records the current writing posture of the Org.
 It reflects learned constraints rather than aspirational style.
