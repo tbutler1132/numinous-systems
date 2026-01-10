@@ -30,6 +30,12 @@ Nothing is required to leave the log.
 
 ---
 
+## 2026-01-10
+
+---
+
+---
+
 ## 2026-01-09
 
 - Thinking about software as a medium for legibility
@@ -44,6 +50,10 @@ Nothing is required to leave the log.
   - This might connect to or extend Vital Systems—or become its own artifact (Software as Law? Code as Medium?)
   - The LLM moment makes this visible: suddenly everyone is thinking about what software _is_, what encoding _means_
   - Open question: what's the relationship between legibility and beauty? Does encoding clarify or kill?
+  - Refinement: the danger isn't encoding itself—it's encoding too fast, without thought
+  - LLMs accelerate code production; if you're not deliberate, you lock in at lightspeed
+  - The encoding power is neutral; the question is whether you're choosing the moment of crystallization or just letting it happen
+  - This is why "smallest next thing" matters: velocity with deliberation, not velocity alone
 
 - Deleted Vital Systems v1 essay. Not close to quality standard quite frankly.
 - Didn't remove writing tone model, but made its status "low". Reason is I am thinking it may be better to just write some pieces and have those for reference, rather than trying to force writing style. On the other hand it is sort of a "meta" part of the experiment so may not want to delete it completely
