@@ -32,6 +32,8 @@ Nothing is required to leave the log.
 
 ## 2026-01-10
 
+- Maybe combine lone genius and capital orchestration actually
+
 ---
 
 ---
