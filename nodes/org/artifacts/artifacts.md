@@ -74,9 +74,10 @@ Earlier versions are retained as part of the artifact's memory.
 
 ### Expressive Layer
 
-| #   | Artifact               | Purpose                                                             |
-| --- | ---------------------- | ------------------------------------------------------------------- |
-| 8   | **Aesthetic Spectrum** | Sensory expression—how the philosophy becomes music and visual form |
+| #   | Artifact               | Purpose                                                               |
+| --- | ---------------------- | --------------------------------------------------------------------- |
+| 8   | **Aesthetic Spectrum** | Sensory expression—how the philosophy becomes music and visual form   |
+| 10  | **Expressions**        | Tool enabling personalized engagement with artifacts without dilution |
 
 ### How They Connect
 
@@ -104,8 +105,11 @@ Axioms                         Amor Fati                    Hybrid Subject
                                     │
                            Aesthetic Spectrum
                        (the sensory form it takes)
+                                    │
+                              Expressions
+                    (how individuals engage with it)
 ```
 
 **Everything serves one purpose: enabling moments that redeem existence.**
 
-The axioms ground affirmation. Amor fati clears regret so presence is possible. The hybrid subject defines what must be preserved for there to be someone who experiences beauty. Vital systems maintain viability. Community enables moments of connection. Capital-as-medium enables creation at scale. The genius myth is cleared to open collective paths. The aesthetic spectrum is how redemption sounds and looks.
+The axioms ground affirmation. Amor fati clears regret so presence is possible. The hybrid subject defines what must be preserved for there to be someone who experiences beauty. Vital systems maintain viability. Community enables moments of connection. Capital-as-medium enables creation at scale. The genius myth is cleared to open collective paths. The aesthetic spectrum is how redemption sounds and looks. Expressions enables individuals to engage with these ideas in their own way, without fragmenting the center.

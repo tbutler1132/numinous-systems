@@ -31,12 +31,14 @@ Nothing is required to leave the log.
 ---
 
 ## Episodes
+
 - Test out writing process.
   - Hypotheses
 - Test out placing finished artifact in different places
-  - Hypotheses: 
+  - Hypotheses:
 - Test hiring professional for creative work
-___
+
+---
 
 ## 2026-01-10
 
@@ -45,6 +47,12 @@ ___
 - Weekly gathering is still quite valid. As a starting point.[episode]
   - Good way for me to practice + bootstrap the community
 - For example for "Figure out hiring creative director", could definitely formalize this a little more and make it an experiment. Same with everything else: Find writing cadenece, test feel of posting somewhere
+- Have concept + notes, allow people to synthesize into an essay based on their own preferences..
+  - Fine tune it
+- Some signifier like “Unaltered” version
+  - unenhanced
+  - biological
+  - organic
 
 ---
 
