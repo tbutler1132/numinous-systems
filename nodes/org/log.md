@@ -49,10 +49,23 @@ Nothing is required to leave the log.
 - For example for "Figure out hiring creative director", could definitely formalize this a little more and make it an experiment. Same with everything else: Find writing cadenece, test feel of posting somewhere
 - Have concept + notes, allow people to synthesize into an essay based on their own preferences..
   - Fine tune it
-- Some signifier like “Unaltered” version
+- Some signifier like "Unaltered" version
   - unenhanced
   - biological
   - organic
+- Expressions app spec fleshed out (artifact 10)
+  - No auth, bounded artifact set, ~2 generations per artifact max
+  - Display in UI with optional download
+  - ~$0.50-0.60 per fully-engaged user with high-tier model — worth it
+- **Next: Figure out artifact curation for Expressions**
+  - Don't need to restructure existing artifacts, but need to decide:
+    - Which artifacts go into the app (contained, complete set)
+    - What order/sequence creates a coherent narrative journey
+    - Maybe a "recommended path" vs. freeform exploration?
+  - The artifacts exist; the question is how to present them as a unified experience
+  - This is curatorial work, not restructuring
+  - I should store all generated expressions and maybe make a "Machinic" canonical version that integrates all of them
+  - Should I integrate more personal details into it?
 
 ---
 

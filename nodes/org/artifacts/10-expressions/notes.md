@@ -29,11 +29,29 @@
 - What they're drawn to (logic, narrative, examples, abstractions)
 
 ## Technical approach
-- Simple Next.js app living in this repo
+- Simple Next.js app living in `apps/expressions/`
 - Reads markdown files directly from nodes/org/artifacts/
 - No separate CMS — the repo IS the content source
 - API route calls LLM with artifact content + user prefs
-- User can iterate ("more grounded", "connect to my work in music")
+
+## V1 approach
+- No auth, no accounts, no friction
+- Zero storage — nothing saved server-side, privacy-preserving
+- Flow: land → pick artifact → answer 3-5 questions → generate expression → done
+- One generation per artifact, one regenerate allowed (2 max per artifact)
+- The expression is a mirror, not a slot machine — sit with what you get
+- Display in UI with optional markdown download
+- Possible later: localStorage for preferences so returning users don't re-answer
+- Accounts/persistence only if V1 validates the core experience
+
+## Bounded artifact set
+- Pick a contained, complete set of artifacts for V1 (e.g., 9 core artifacts)
+- Each user can generate 2 expressions max per artifact
+- Total cap: ~18-20 generations per user
+- Creates a sense of journey/completeness — "I've done them all"
+- Predictable cost ceiling: ~$0.50-0.60 per fully-engaged user (high-tier model)
+- Track via localStorage (not bulletproof, but good enough for V1)
+- 1,000 users × 20 generations = ~$500-600 — worth it for deep engagement
 
 ## The prompt structure
 - Artifact concept (from about.md) — stable, authoritative
