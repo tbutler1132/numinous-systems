@@ -1,6 +1,6 @@
 # Beauty as Redemption
 
-## Artifact Concept
+## Artifact Concept ear
 
 This folder contains the central claim of the project: **beauty redeems existence**.
 
