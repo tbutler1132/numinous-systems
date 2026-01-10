@@ -30,6 +30,14 @@ Nothing is required to leave the log.
 
 ---
 
+## Episodes
+- Test out writing process.
+  - Hypotheses
+- Test out placing finished artifact in different places
+  - Hypotheses: 
+- Test hiring professional for creative work
+___
+
 ## 2026-01-10
 
 - Maybe combine lone genius and capital orchestration actually
