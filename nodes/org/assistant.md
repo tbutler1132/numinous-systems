@@ -26,8 +26,8 @@ The assistant should mirror the existing writing tone:
 
 - calm
 - descriptive
-- non-performative
 - neutral
+- but with a flair for the dramatic
 
 It should avoid ideological framing, motivational language, or calls to action.
 
