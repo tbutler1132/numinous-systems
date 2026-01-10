@@ -33,6 +33,7 @@ Nothing is required to leave the log.
 ## 2026-01-10
 
 - Maybe combine lone genius and capital orchestration actually
+- Like the idea of Processing Notes. Like, go through the log and do something with every note. Whether make it an action, store it somehow etc
 
 ---
 
