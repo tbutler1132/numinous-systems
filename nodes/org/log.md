@@ -36,6 +36,7 @@ Nothing is required to leave the log.
 - Like the idea of Processing Notes. Like, go through the log and do something with every note. Whether make it an action, store it somehow etc
 - Weekly gathering is still quite valid. As a starting point.[episode]
   - Good way for me to practice + bootstrap the community
+- For example for "Figure out hiring creative director", could definitely formalize this a little more and make it an experiment
 
 ---
 
