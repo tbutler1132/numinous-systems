@@ -73,9 +73,11 @@ Nothing is required to leave the log.
     - Definitely need to refine the artifacts themselves
     - Maybe include the concept upfront
     - Allow people to view "organics" where they can see notes (notes themselves also need to be refined)
+      - Would be a toggle prob
     - Should probably ask their questions upfront instead of per artifact
     - One regeneration would be fine
     - Add cooler transitions, definitely visuals but maybe even audio
+- Maybe should do a weekly dedicated retro for improving system if at all
 
 ---
 
