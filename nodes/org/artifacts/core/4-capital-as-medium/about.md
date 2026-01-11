@@ -36,7 +36,7 @@ If beauty is the highest ideal, and large-scale creative work is fundamentally c
 Seeing the system clearly is the prerequisite for directing it well.
 
 - **Beauty Redeems**: Capital orchestration in service of redemptive moments
-- **What We Are**: We're already part-synthetic. Working with capital isn't corruption—it's working with part of what we are.
+- **The Living System**: We're already part-synthetic. Working with capital isn't corruption—it's working with part of what we are.
 - **The Genius Myth** (essay): Clears the false framing that obscures how creation actually works
 
 ## Status

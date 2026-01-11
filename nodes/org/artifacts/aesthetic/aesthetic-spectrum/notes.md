@@ -159,7 +159,7 @@ Not bait-and-switch—each point on the spectrum is genuine. The journey is part
 
 | Concept               | Aesthetic Expression                                                |
 | --------------------- | ------------------------------------------------------------------- |
-| **What We Are**       | Emotional distortion—biological feeling through synthetic mediation |
+| **The Living System** | Emotional distortion—biological feeling through synthetic mediation |
 | **Beauty Redeems**    | Still beauty, but exploring the full range                          |
 | **Capital as Medium** | The aesthetic itself is capital orchestrated toward strangeness     |
 | **Axioms**            | "Order and vitality"—but the order is alien                         |

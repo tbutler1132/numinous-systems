@@ -39,7 +39,7 @@ To affirm being is not to claim you chose it freely. It is to say yes to what is
 Every artifact in this project implicitly depends on something like these axioms.
 
 - **Beauty Redeems**: Beauty as what we're oriented toward
-- **What We Are**: What makes humanness worth preserving is its capacity for beauty, perception, creation
+- **The Living System**: What makes humanness worth preserving is its capacity for beauty, perception, creation
 - **Love of Fate**: "To live beautifully is to affirm being"—applied to loss
 - **Capital as Medium**: Creation as practice in devotion, not performance
 

@@ -34,7 +34,7 @@ This tool serves the central purpose: **enabling moments that redeem existence**
 - It preserves the canonical center while enabling personal relationship
 
 The tool embodies the project's own values:
-- **What We Are** — using technology to serve human flourishing, respecting the hybrid condition
+- **The Living System** — using technology to serve human flourishing, respecting the hybrid condition
 - **Capital as Medium** — directing technical capability toward beauty, not extraction
 - **Beauty Redeems** — enabling moments of resonance between ideas and individuals
 

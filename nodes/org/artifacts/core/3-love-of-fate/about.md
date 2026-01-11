@@ -22,7 +22,7 @@ This artifact makes explicit a posture that runs through the other essays:
 
 - **Axioms**: "To live beautifully is to affirm being." Love of fate is this axiom applied to loss.
 - **Beauty Redeems**: Beauty freezes time—the moment where everything is enough. Regret keeps time open as perpetual lack.
-- **What We Are**: The viable range requires acceptance of the hybrid condition. You navigate what is.
+- **The Living System**: The viable range requires acceptance of the hybrid condition. You navigate what is.
 - **Capital as Medium**: You cannot optimize your past. Navigate from where you are.
 
 ## Status

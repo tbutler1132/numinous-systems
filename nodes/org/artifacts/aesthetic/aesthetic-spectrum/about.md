@@ -19,7 +19,7 @@ The aesthetic enacts this condition. It wasn't theorized first—it emerged natu
 
 This aesthetic is the sensory expression of the philosophy:
 
-- **What We Are**: This is what hybrid experience *sounds like*—biological feeling filtered through synthetic mediation
+- **The Living System**: This is what hybrid experience *sounds like*—biological feeling filtered through synthetic mediation
 - **Beauty Redeems**: Still oriented toward beauty—just the full range of what beauty can be
 - **Axioms**: "Beauty is the highest expression of order and vitality"—here the order is strange and the vitality is filtered, but both are present
 

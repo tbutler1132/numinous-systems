@@ -56,12 +56,12 @@ The 5 foundational essays. Reading these, someone understands the philosophy.
 | #   | Artifact              | Purpose                                                          |
 | --- | --------------------- | ---------------------------------------------------------------- |
 | 1   | **Beauty Redeems**    | The telos—moments of beauty redeem existence                     |
-| 2   | **Axioms**            | Ground-level affirmations—what is affirmed without argument      |
-| 3   | **What We Are**       | The subject—hybrid beings, viable range, biological requirements |
-| 4   | **Love of Fate**      | The posture—clearing regret for presence                         |
-| 5   | **Capital as Medium** | The practice—orchestrating capital toward beauty                 |
+| 2   | **The Living System** | The systems foundation—hybrid beings, viable range, viability over optimization |
+| 3   | **Love of Fate**      | The posture—clearing regret for presence                         |
+| 4   | **Capital as Medium** | The practice—orchestrating capital toward beauty                 |
+| 5   | **Axioms**            | The distillation—what is affirmed without argument               |
 
-**Reading order: Purpose → Ground → Subject → Posture → Practice**
+**Reading order: Purpose → Subject → Posture → Practice → Distillation**
 
 ### Essays
 
@@ -109,13 +109,13 @@ Infrastructure for engagement.
                                     ↑
     ┌───────────────────────────────┼───────────────────────────────┐
     │                               │                               │
- Axioms                      Love of Fate                     What We Are
-(ground affirmation)    (clear regret for presence)    (preserve the experiencer)
+ The Living System           Love of Fate                  Capital as Medium
+(preserve the experiencer)   (clear regret for presence)   (orchestrate toward beauty)
     │                               │                               │
     └───────────────────────────────┼───────────────────────────────┘
                                     │
-                           Capital as Medium
-                      (orchestrate toward beauty)
+                                 Axioms
+                        (the distilled principles)
                                     │
                     ┌───────────────┴───────────────┐
                     │                               │
@@ -131,4 +131,4 @@ Infrastructure for engagement.
 
 **Everything serves one purpose: enabling moments that redeem existence.**
 
-The axioms ground affirmation. Love of fate clears regret so presence is possible. What We Are defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Capital as Medium enables creation at scale. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Tools enable individuals to engage in their own way.
+The Living System defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Love of fate clears regret so presence is possible. Capital as Medium enables creation at scale. The Axioms distill it all into ground-level affirmations. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Tools enable individuals to engage in their own way.

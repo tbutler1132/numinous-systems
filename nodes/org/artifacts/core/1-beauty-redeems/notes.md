@@ -116,7 +116,7 @@ This points toward the same truth as cathedrals: escape from the arrow of time.
 | Artifact               | How It Serves Redemption                                           |
 | ---------------------- | ------------------------------------------------------------------ |
 | **Axioms**             | Ground affirmation—you must affirm being to be present for beauty  |
-| **What We Are**        | Preserves humanness—exceed it and there's no subject to experience |
+| **The Living System**  | Preserves humanness—exceed it and there's no subject to experience |
 | **Love of Fate**       | Clears regret—regret fractures presence, blocks the moment         |
 | **Capital as Medium**  | The creative force at scale—must be engaged to create at scale     |
 | **The Genius Myth**    | Clears false framing—opens collective creation                     |

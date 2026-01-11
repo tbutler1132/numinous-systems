@@ -22,7 +22,7 @@ The answer: moments of beauty so complete that time stops. Not metaphorically—
 This is the telos—the "why" that everything else serves.
 
 - **Axioms**: grounds affirmation—you must affirm being to be present for beauty
-- **What We Are**: preserves humanness so there's someone to experience beauty
+- **The Living System**: preserves humanness so there's someone to experience beauty
 - **Love of Fate**: clears regret so presence isn't fractured
 - **Capital as Medium**: the creative force at scale that enables beauty at scale
 

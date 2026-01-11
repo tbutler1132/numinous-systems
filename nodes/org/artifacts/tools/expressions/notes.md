@@ -118,7 +118,7 @@ The structure of notes is a feature—more material for the LLM to work with. Di
 
 | Artifact | How Expressions Serves It |
 |----------|---------------------------|
-| **What We Are** | Technology serving human experience, respecting hybrid condition |
+| **The Living System** | Technology serving human experience, respecting hybrid condition |
 | **Capital as Medium** | Directing technical capability toward beauty, not extraction |
 | **Beauty Redeems** | Enabling moments of resonance between ideas and individuals |
 

@@ -35,7 +35,7 @@ Clearing the genius myth doesn't flatten experience—it opens access. Beauty is
 
 - **Capital as Medium**: The genius is a system position, not an intrinsic quality. This essay clears the false framing.
 - **Axioms**: "Creation is devotion"—not self-expression but offering
-- **What We Are**: The hybrid condition includes being part of collective creative systems, not isolated originating geniuses
+- **The Living System**: The hybrid condition includes being part of collective creative systems, not isolated originating geniuses
 
 ## Status
 

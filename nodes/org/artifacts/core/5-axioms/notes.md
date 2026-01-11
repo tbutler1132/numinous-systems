@@ -89,7 +89,7 @@ Nietzsche held this same tension: everything is necessary AND become who you are
 | Artifact              | Axiom Connection                                                                |
 | --------------------- | ------------------------------------------------------------------------------- |
 | **Beauty Redeems**    | Beauty as highest expression (2); perceiving beauty as participation (5)        |
-| **What We Are**       | Life as fundamental value (1); capacity for beauty, perception, creation (2, 5) |
+| **The Living System** | Life as fundamental value (1); capacity for beauty, perception, creation (2, 5) |
 | **Love of Fate**      | Living beautifully is affirming being (4)—applied to loss                       |
 | **Capital as Medium** | Creating in devotion vs. extraction (3); living beautifully (4)                 |
 | **The Genius Myth**   | Creation as devotion, not self-expression (3)                                   |

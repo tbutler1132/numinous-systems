@@ -37,7 +37,7 @@ This song is the sensory enactment of several core ideas:
 
 - **Aesthetic Spectrum**: This is a concrete instance of emotional distortion—biological feeling filtered through synthetic mediation, entering from elegance and moving toward strangeness
 - **Beauty Redeems**: The song itself aims to be a moment of beauty; the tragedy it describes is the failure to recognize such moments
-- **What We Are**: The production aesthetic embodies hybrid experience—human emotion processed through technological mediation
+- **The Living System**: The production aesthetic embodies hybrid experience—human emotion processed through technological mediation
 
 Strategic role: This is the **entry point** into the All Too Synthetic world. It accumulates social capital, establishes creative credibility, and makes the ecosystem feel real before the deeper mythos is revealed.
 

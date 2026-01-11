@@ -1,14 +1,19 @@
-# What We Are
+# The Living System
 
 ## Artifact Concept
 
-This folder contains the anthropological foundation of the project: **what "human" actually means under current conditions, and what's required to preserve it**.
+This folder contains the **systems foundation** of the project: what humans actually are under current conditions, viewed through a cybernetic lens.
 
-The core claim: modern humans are not pure biological beings who happen to use technology. We are hybrid entities—part biological, part synthetic. The synthetic layer (capital, technology, algorithms, designed environments) is constitutive of our subjectivity, not merely external tools we employ.
+The core framing: humans are **living systems operating inside mechanized environments**. We are hybrid entities—part biological, part synthetic. The synthetic layer (capital, technology, algorithms, designed environments) is constitutive of our subjectivity, not merely external tools we employ.
 
-This isn't critique—it's description. And it has practical implications for anyone trying to design alternatives.
+The orientation is toward **viability**, not optimization. Feedback over narrative. Restraint over scale. The viable system maintains itself; the optimized system exceeds itself.
 
 ## What This Artifact Addresses
+
+### The Cybernetic Frame
+- Humans as living systems requiring feedback, regulation, and viable range
+- Action → feedback → memory → adjustment as lived practice
+- Form and beauty as signals of internal coherence
 
 ### The Hybrid Condition
 - What "biological" and "synthetic" mean as categories
@@ -24,20 +29,13 @@ This isn't critique—it's description. And it has practical implications for an
 ### Community as Biological Architecture
 - Humans are wired for stable bonds, mutual dependence, shared context over time
 - This isn't sentimentality—it's what the hardware expects
-- Modern life systematically fails to provide this
 - Loneliness is a predictable output of the system, not individual failure
-
-### Viability Over Optimization
-- Living systems operating inside mechanized environments
-- Feedback over narrative; restraint over scale
-- Form and beauty as signals of internal coherence
-- The viable system maintains itself; the optimized system exceeds itself
 
 ## Connection to Broader Project
 
-This essay provides the anthropological foundation for everything else.
+This essay provides the systems foundation for everything else.
 
-- **Beauty Redeems**: Beauty is what the human experiences. Exceed humanness, and there's no subject left to experience it.
+- **Beauty Redeems**: Beauty is what the living system experiences. Exceed humanness, and there's no subject left to experience it.
 - **Axioms**: What makes humanness worth preserving is its capacity for beauty, perception, creation.
 - **Love of Fate**: The viable range requires acceptance of the hybrid condition. You navigate what is.
 - **Capital as Medium**: We're already part-synthetic. Working with capital isn't corruption—it's working with part of what we are.

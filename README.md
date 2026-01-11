@@ -7,10 +7,10 @@ It is a way of working and thinking, recorded as it develops.
 
 ## Artifacts
 
-The core ideas are developed in `nodes/org/artifacts/`. Start with:
+The core ideas are developed in `nodes/org/artifacts/core/`. Start with:
 
-- **Beauty as Redemption** — the telos (why any of this matters)
-- **Vital Systems** — the meta-framework (living systems inside mechanized environments)
+- **Beauty Redeems** — the telos (why any of this matters)
+- **The Living System** — the systems foundation (living systems inside mechanized environments)
 - **Axioms** — the starting points (what is affirmed without argument)
 
 See `nodes/org/artifacts/artifacts.md` for the full structure.
