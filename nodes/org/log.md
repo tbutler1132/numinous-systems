@@ -74,6 +74,7 @@ Nothing is required to leave the log.
     - Maybe include the concept upfront
     - Allow people to view "organics" where they can see notes (notes themselves also need to be refined)
       - Would be a toggle prob
+        - Maybe make the design become like earthy when toggled
     - Should probably ask their questions upfront instead of per artifact
     - One regeneration would be fine
     - Add cooler transitions, definitely visuals but maybe even audio

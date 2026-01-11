@@ -49,70 +49,86 @@ Earlier versions are retained as part of the artifact's memory.
 
 ## Current Artifacts
 
-### Telos
+### Core Philosophy
 
-| #   | Artifact                 | Purpose                                                                          |
-| --- | ------------------------ | -------------------------------------------------------------------------------- |
-| 2   | **Beauty as Redemption** | The purpose—moments of beauty redeem existence, transcend entropy, justify being |
+The 5 foundational essays. Reading these, someone understands the philosophy.
 
-### Foundational Layer
+| #   | Artifact              | Purpose                                                          |
+| --- | --------------------- | ---------------------------------------------------------------- |
+| 1   | **Beauty Redeems**    | The telos—moments of beauty redeem existence                     |
+| 2   | **Axioms**            | Ground-level affirmations—what is affirmed without argument      |
+| 3   | **What We Are**       | The subject—hybrid beings, viable range, biological requirements |
+| 4   | **Love of Fate**      | The posture—clearing regret for presence                         |
+| 5   | **Capital as Medium** | The practice—orchestrating capital toward beauty                 |
 
-| #   | Artifact           | Purpose                                                                       |
-| --- | ------------------ | ----------------------------------------------------------------------------- |
-| 7   | **Axioms**         | Philosophical starting points—what is affirmed without argument               |
-| 9   | **Amor Fati**      | Posture toward loss and finitude—why regret is the enemy                      |
-| 6   | **Hybrid Subject** | What "human" means under current conditions (part-biological, part-synthetic) |
-| 1   | **Vital Systems**  | Meta-framework: living systems inside mechanized environments                 |
+**Reading order: Purpose → Ground → Subject → Posture → Practice**
 
-### Enabling Layer
+### Essays
 
-| #   | Artifact                 | Purpose                                                                        |
-| --- | ------------------------ | ------------------------------------------------------------------------------ |
-| 5   | **Community**            | Biological requirement—what humans need to function                            |
-| 4   | **Capital-as-Medium**    | What large-scale creative work actually is—orchestrating capital toward beauty |
-| 3   | **AI Art / Lone Genius** | Clearing a false framing—the genius myth and why it's breaking down            |
+Supporting arguments that develop specific themes.
 
-### Expressive Layer
+| Artifact            | Purpose                                                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **The Genius Myth** | Clears a false framing—the genius as modern construct, the incoherence of invoking it from within industrial systems |
 
-| #   | Artifact                    | Purpose                                                                         |
-| --- | --------------------------- | ------------------------------------------------------------------------------- |
-| 8   | **Aesthetic Spectrum**      | Sensory expression—how the philosophy becomes music and visual form             |
-| 10  | **Expressions**             | Tool enabling personalized engagement with artifacts without dilution           |
-| 11  | **All the Things You Love** | First musical expression—trojan horse compressing alien aesthetic into elegance |
+### Aesthetic
 
-### How They Connect
+The sensory vocabulary—what the philosophy looks and sounds like.
+
+| Artifact               | Purpose                                                                           |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| **Aesthetic Spectrum** | The aesthetic language—emotional distortion, elegance to alien, visual signatures |
+
+### Songs
+
+Musical expressions of the philosophy.
+
+| Artifact                    | Purpose                                                                              |
+| --------------------------- | ------------------------------------------------------------------------------------ |
+| **All the Things You Love** | First musical expression—the trojan horse, compressing alien aesthetic into elegance |
+
+### Tools
+
+Infrastructure for engagement.
+
+| Artifact        | Purpose                                                               |
+| --------------- | --------------------------------------------------------------------- |
+| **Expressions** | Tool enabling personalized engagement with artifacts without dilution |
+
+---
+
+## How They Connect
 
 ```
                     ┌─────────────────────────────────────┐
-                    │  BEAUTY AS REDEMPTION (the telos)   │
-                    │  Moments that redeem existence      │
+                    │     BEAUTY REDEEMS (the telos)      │
+                    │   Moments that redeem existence     │
                     └─────────────────────────────────────┘
                                     ↑
                         everything serves this
                                     ↑
     ┌───────────────────────────────┼───────────────────────────────┐
     │                               │                               │
-Axioms                         Amor Fati                    Hybrid Subject
-(ground affirmation)     (clear regret for presence)    (preserve the experiencer)
+ Axioms                      Love of Fate                     What We Are
+(ground affirmation)    (clear regret for presence)    (preserve the experiencer)
     │                               │                               │
     └───────────────────────────────┼───────────────────────────────┘
                                     │
-              ┌─────────────────────┼─────────────────────┐
-              │                     │                     │
-        Vital Systems          Community          Capital-as-Medium
-      (maintain viability)  (enable connection)   (create at scale)
-              │                     │                     │
-              └─────────────────────┼─────────────────────┘
-                                    │
-                           Aesthetic Spectrum
-                       (the sensory form it takes)
+                           Capital as Medium
+                      (orchestrate toward beauty)
                                     │
                     ┌───────────────┴───────────────┐
                     │                               │
-              Expressions                  All the Things You Love
-      (how individuals engage)           (first musical expression)
+           Aesthetic Spectrum               The Genius Myth
+        (the sensory expression)         (clears false framing)
+                    │
+         ┌──────────┴──────────┐
+         │                     │
+  All the Things          Expressions
+    You Love          (personalized
+   (first song)         engagement)
 ```
 
 **Everything serves one purpose: enabling moments that redeem existence.**
 
-The axioms ground affirmation. Amor fati clears regret so presence is possible. The hybrid subject defines what must be preserved for there to be someone who experiences beauty. Vital systems maintain viability. Community enables moments of connection. Capital-as-medium enables creation at scale. The genius myth is cleared to open collective paths. The aesthetic spectrum is how redemption sounds and looks. Expressions enables individuals to engage with these ideas in their own way, without fragmenting the center. All the Things You Love is the first concrete musical expression—a trojan horse that compresses the alien aesthetic into elegance, drawing listeners in before revealing the deeper mythos.
+The axioms ground affirmation. Love of fate clears regret so presence is possible. What We Are defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Capital as Medium enables creation at scale. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Tools enable individuals to engage in their own way.
