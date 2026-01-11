@@ -66,6 +66,14 @@ Nothing is required to leave the log.
   - This is curatorial work, not restructuring
   - I should store all generated expressions and maybe make a "Machinic" canonical version that integrates all of them
   - Should I integrate more personal details into it?
+  - Working on a site...
+    - Prob don't need to get cute and can just use React
+    - Definitely need to refine the artifacts themselves
+    - Maybe include the concept upfront
+    - Allow people to view "organics" where they can see notes (notes themselves also need to be refined)
+    - Should probably ask their questions upfront instead of per artifact
+    - One regeneration would be fine
+    - Add cooler transitions, definitely visuals but maybe even audio
 
 ---
 
