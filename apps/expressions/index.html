@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expressions</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf9f7;
+      color: #2c2c2c;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    /* Artifact List */
+    .artifacts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .artifact {
+      padding: 1rem 1.25rem;
+      background: #fff;
+      border: 1px solid #e8e6e3;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    
+    .artifact:hover {
+      border-color: #ccc;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    .artifact-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .artifact-desc {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    /* Profile Form */
+    .question {
+      margin-bottom: 2rem;
+    }
+    
+    .question-text {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .option {
+      padding: 0.5rem 1rem;
+      background: #fff;
+      border: 1px solid #e8e6e3;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.15s;
+    }
+    
+    .option:hover {
+      border-color: #999;
+    }
+    
+    .option.selected {
+      background: #2c2c2c;
+      color: #fff;
+      border-color: #2c2c2c;
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #2c2c2c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    
+    .btn:hover { background: #444; }
+    .btn:disabled { background: #999; cursor: not-allowed; }
+    
+    .btn-secondary {
+      background: #fff;
+      color: #2c2c2c;
+      border: 1px solid #e8e6e3;
+    }
+    
+    .btn-secondary:hover { background: #f5f5f5; }
+    
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    /* Back link */
+    .back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .back:hover { color: #2c2c2c; }
+    
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #e8e6e3;
+      border-top-color: #2c2c2c;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Result */
+    .expression {
+      background: #fff;
+      border: 1px solid #e8e6e3;
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .expression h1, .expression h2, .expression h3 {
+      margin: 1.5rem 0 0.75rem;
+    }
+    
+    .expression h1:first-child, .expression h2:first-child {
+      margin-top: 0;
+    }
+    
+    .expression p {
+      margin-bottom: 1rem;
+    }
+    
+    .expression blockquote {
+      border-left: 3px solid #e8e6e3;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #666;
+    }
+    
+    .limit-notice {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 1rem;
+    }
+    
+    /* Screen visibility */
+    .screen { display: none; }
+    .screen.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Select Screen -->
+    <div id="select-screen" class="screen active">
+      <h1>Expressions</h1>
+      <p class="subtitle">Personalized philosophical artifacts. Choose one to begin.</p>
+      <div class="artifacts" id="artifact-list"></div>
+    </div>
+    
+    <!-- Profile Screen -->
+    <div id="profile-screen" class="screen">
+      <a href="#" class="back" onclick="showScreen('select'); return false;">← Back</a>
+      <h1 id="selected-artifact-title"></h1>
+      <p class="subtitle">Tell us a bit about how you engage with ideas.</p>
+      
+      <div class="question">
+        <div class="question-text">How do you prefer ideas presented?</div>
+        <div class="options" data-question="register">
+          <div class="option" data-value="direct">Direct</div>
+          <div class="option" data-value="poetic">Poetic</div>
+          <div class="option" data-value="analytical">Analytical</div>
+          <div class="option" data-value="conversational">Conversational</div>
+        </div>
+      </div>
+      
+      <div class="question">
+        <div class="question-text">Your relationship to the sacred?</div>
+        <div class="options" data-question="sacred">
+          <div class="option" data-value="theist">Theist</div>
+          <div class="option" data-value="secular">Secular but open</div>
+          <div class="option" data-value="materialist">Materialist</div>
+          <div class="option" data-value="exploring">Exploring</div>
+        </div>
+      </div>
+      
+      <div class="question">
+        <div class="question-text">What draws you in?</div>
+        <div class="options" data-question="mode">
+          <div class="option" data-value="logic">Logic</div>
+          <div class="option" data-value="stories">Stories</div>
+          <div class="option" data-value="abstractions">Abstractions</div>
+          <div class="option" data-value="practical">Practical application</div>
+        </div>
+      </div>
+      
+      <div class="question">
+        <div class="question-text">Which resonates most?</div>
+        <div class="options" data-question="influences">
+          <div class="option" data-value="ancient">Ancient philosophy</div>
+          <div class="option" data-value="science">Modern science</div>
+          <div class="option" data-value="art">Art & aesthetics</div>
+          <div class="option" data-value="contemplative">Contemplative traditions</div>
+        </div>
+      </div>
+      
+      <button class="btn" id="generate-btn" disabled onclick="generate()">Generate Expression</button>
+    </div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Generating your personalized expression...</p>
+      </div>
+    </div>
+    
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <a href="#" class="back" onclick="showScreen('select'); return false;">← Back to artifacts</a>
+      <h1 id="result-title"></h1>
+      <div class="expression" id="expression-content"></div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="download()">Download as Markdown</button>
+        <button class="btn" id="regenerate-btn" onclick="regenerate()">Regenerate</button>
+      </div>
+      <p class="limit-notice" id="limit-notice"></p>
+    </div>
+  </div>
+  
+  <script>
+    // Artifact data
+    const artifacts = [
+      { id: '1-vital-systems', title: 'Vital Systems', desc: 'Living systems inside mechanized environments' },
+      { id: '2-beauty-as-redemption', title: 'Beauty as Redemption', desc: 'Moments of beauty redeem existence' },
+      { id: '3-ai-art-lone-genius', title: 'AI Art / Lone Genius', desc: 'The genius myth and why it\'s breaking down' },
+      { id: '4-capital-as-medium', title: 'Capital-as-Medium', desc: 'Orchestrating capital toward beauty' },
+      { id: '5-community', title: 'Community', desc: 'What humans need to function' },
+      { id: '6-hybrid-subject', title: 'Hybrid Subject', desc: 'Part-biological, part-synthetic' },
+      { id: '7-axioms', title: 'Axioms', desc: 'What is affirmed without argument' },
+      { id: '8-aesthetic-spectrum', title: 'Aesthetic Spectrum', desc: 'How philosophy becomes music and visual form' },
+      { id: '9-amor-fati', title: 'Amor Fati', desc: 'Why regret is the enemy' }
+    ];
+    
+    // State
+    let selectedArtifact = null;
+    let profile = { register: null, sacred: null, mode: null, influences: null };
+    let currentExpression = '';
+    
+    // Render artifact list
+    const listEl = document.getElementById('artifact-list');
+    artifacts.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'artifact';
+      div.innerHTML = `<div class="artifact-title">${a.title}</div><div class="artifact-desc">${a.desc}</div>`;
+      div.onclick = () => selectArtifact(a);
+      listEl.appendChild(div);
+    });
+    
+    // Option selection
+    document.querySelectorAll('.options').forEach(group => {
+      const question = group.dataset.question;
+      group.querySelectorAll('.option').forEach(opt => {
+        opt.onclick = () => {
+          group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          profile[question] = opt.dataset.value;
+          checkProfileComplete();
+        };
+      });
+    });
+    
+    function selectArtifact(artifact) {
+      selectedArtifact = artifact;
+      document.getElementById('selected-artifact-title').textContent = artifact.title;
+      // Reset profile
+      profile = { register: null, sacred: null, mode: null, influences: null };
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      document.getElementById('generate-btn').disabled = true;
+      showScreen('profile');
+    }
+    
+    function checkProfileComplete() {
+      const complete = Object.values(profile).every(v => v !== null);
+      document.getElementById('generate-btn').disabled = !complete;
+    }
+    
+    function showScreen(name) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(name + '-screen').classList.add('active');
+    }
+    
+    function getGenerationCount(artifactId) {
+      return parseInt(localStorage.getItem(`expressions:${artifactId}`) || '0');
+    }
+    
+    function incrementGenerationCount(artifactId) {
+      const count = getGenerationCount(artifactId) + 1;
+      localStorage.setItem(`expressions:${artifactId}`, count.toString());
+      return count;
+    }
+    
+    async function generate() {
+      const count = getGenerationCount(selectedArtifact.id);
+      if (count >= 2) {
+        alert('You\'ve reached the maximum of 2 generations for this artifact. Sit with what you have.');
+        return;
+      }
+      
+      showScreen('loading');
+      
+      try {
+        const res = await fetch('/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ artifact: selectedArtifact.id, profile })
+        });
+        
+        if (!res.ok) throw new Error('Generation failed');
+        
+        const data = await res.json();
+        currentExpression = data.expression;
+        
+        const newCount = incrementGenerationCount(selectedArtifact.id);
+        
+        document.getElementById('result-title').textContent = selectedArtifact.title;
+        document.getElementById('expression-content').innerHTML = marked.parse(currentExpression);
+        
+        const remaining = 2 - newCount;
+        const limitEl = document.getElementById('limit-notice');
+        const regenBtn = document.getElementById('regenerate-btn');
+        
+        if (remaining > 0) {
+          limitEl.textContent = `${remaining} regeneration${remaining > 1 ? 's' : ''} remaining for this artifact.`;
+          regenBtn.disabled = false;
+        } else {
+          limitEl.textContent = 'No regenerations remaining. Sit with this expression.';
+          regenBtn.disabled = true;
+        }
+        
+        showScreen('result');
+      } catch (err) {
+        console.error(err);
+        alert('Failed to generate expression. Please try again.');
+        showScreen('profile');
+      }
+    }
+    
+    function regenerate() {
+      generate();
+    }
+    
+    function download() {
+      const filename = `${selectedArtifact.id}-expression.md`;
+      const blob = new Blob([currentExpression], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
