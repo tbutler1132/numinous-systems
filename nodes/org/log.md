@@ -24,10 +24,10 @@ Nothing is required to leave the log.
 
 ## Actions
 
-- [ ] Finish V1 of Expressions App quick on Sunday, then move on to hiring
 - [ ] Finish v1 of any artifact (should be vital systems?)
 - [ ] Place it somewhere small (HN, Are.na, or similar)
 - [ ] Figure out hiring a creative director/brand person
+- [ ] Buy domain Timothy Butler
 
 ---
 
