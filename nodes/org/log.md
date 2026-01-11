@@ -27,7 +27,7 @@ Nothing is required to leave the log.
 - [ ] Finish v1 of any artifact (should be vital systems?)
 - [ ] Place it somewhere small (HN, Are.na, or similar)
 - [ ] Figure out hiring a creative director/brand person
-- [ ] Buy domain Timothy Butler
+- [ ] Buy domain timothybutler.io
 
 ---
 
