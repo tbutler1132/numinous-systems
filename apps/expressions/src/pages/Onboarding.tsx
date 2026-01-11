@@ -70,9 +70,18 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
     <>
       <h1>Expressions</h1>
       <p className="subtitle">
-        These are my ideas, presented in a way that resonates with you. First,
-        tell me a bit about how you engage with concepts.
+        Explore philosophical ideas rewritten for your sensibility. Answer a few
+        questions so we can shape the language to how you think.
       </p>
+
+      <div className="progress-indicator">
+        {questions.map((q, i) => (
+          <span
+            key={i}
+            className={`progress-dot ${profile[q.key] ? 'filled' : ''}`}
+          />
+        ))}
+      </div>
 
       {questions.map((q) => (
         <div key={q.key} className="question">

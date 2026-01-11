@@ -196,12 +196,14 @@ export default function ArtifactDetail({
           onClick={() => handleTabSwitch('machinic')}
         >
           Machinic
+          <span className="tab-hint">AI-personalized</span>
         </button>
         <button
           className={`tab ${activeTab === 'organic' ? 'active' : ''}`}
           onClick={() => handleTabSwitch('organic')}
         >
           Organic
+          <span className="tab-hint">Raw notes</span>
         </button>
       </div>
 
@@ -210,6 +212,10 @@ export default function ArtifactDetail({
           {!hasGenerated && !generating && (
             <div className="generate-prompt">
               <p>Generate a machinic expression tailored to your sensibility.</p>
+              <p className="generation-limit-preview">
+                {remaining} generation{remaining !== 1 ? 's' : ''} available per
+                artifact
+              </p>
               <button
                 className="btn"
                 onClick={handleGenerate}
@@ -217,7 +223,7 @@ export default function ArtifactDetail({
               >
                 {generationCount >= 2
                   ? 'Maximum generations reached'
-                  : 'Generate Machinic Expression'}
+                  : 'Generate Expression'}
               </button>
             </div>
           )}
