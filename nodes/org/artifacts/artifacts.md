@@ -95,6 +95,14 @@ Infrastructure for engagement.
 | --------------- | --------------------------------------------------------------------- |
 | **Expressions** | Tool enabling personalized engagement with artifacts without dilution |
 
+### Reference
+
+Theoretical frameworks and legacy systems for consultation, not implementation.
+
+| Artifact                       | Purpose                                                                                        |
+| ------------------------------ | ---------------------------------------------------------------------------------------------- |
+| **Becoming Engine Doctrine**   | Cybernetic reference system — invariants, guardrails, and mature thinking to check against    |
+
 ---
 
 ## How They Connect
@@ -127,8 +135,16 @@ Infrastructure for engagement.
   All the Things          Expressions
     You Love          (personalized
    (first song)         engagement)
+
+                    · · · · · · · · · · · · · · · · ·
+                                    
+              Becoming Engine Doctrine (reference)
+                 (invariants + guardrails to
+                    check against, not follow)
 ```
 
 **Everything serves one purpose: enabling moments that redeem existence.**
 
 The Living System defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Love of fate clears regret so presence is possible. Capital as Medium enables creation at scale. The Axioms distill it all into ground-level affirmations. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Tools enable individuals to engage in their own way.
+
+The Becoming Engine Doctrine sits outside the main tree as a **reference** — a mature system to check against when asking "are we drifting into optimization?" or "are we creating permanent mobilization?" It provides invariants and guardrails, not requirements.
