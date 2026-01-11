@@ -850,6 +850,41 @@
       .tab-content.active {
         display: block;
       }
+
+      /* Expression reveal animations */
+      @keyframes revealLine {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+          filter: blur(2px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes containerGlow {
+        0% {
+          box-shadow: 0 0 0 rgba(14, 165, 233, 0);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(14, 165, 233, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 24px rgba(14, 165, 233, 0.1);
+        }
+      }
+
+      .reveal-line {
+        animation: revealLine 0.5s ease-out forwards;
+        opacity: 0;
+      }
+
+      .content-box.revealing {
+        animation: containerGlow 0.8s ease-out;
+      }
     </style>
   </head>
   <body>
@@ -1452,9 +1487,13 @@
           // Show expression result
           document.getElementById("generating-indicator").style.display =
             "none";
-          document.getElementById("expression-content").innerHTML =
-            marked.parse(currentExpression);
+          const expressionContainer =
+            document.getElementById("expression-content");
+          expressionContainer.innerHTML = marked.parse(currentExpression);
           document.getElementById("expression-result").style.display = "block";
+
+          // Animate the reveal
+          revealExpression(expressionContainer);
 
           // Update limit notice and regenerate button
           const remaining = 2 - newCount;
@@ -1483,6 +1522,17 @@
 
       function regenerate() {
         generate();
+      }
+
+      function revealExpression(containerEl) {
+        containerEl.classList.add("revealing");
+        const children = containerEl.querySelectorAll(
+          "p, h1, h2, h3, ul, ol, blockquote"
+        );
+        children.forEach((el, i) => {
+          el.classList.add("reveal-line");
+          el.style.animationDelay = `${i * 0.08}s`;
+        });
       }
 
       function download() {
