@@ -91,3 +91,4 @@ Raw notes. Process regularly.
   - Diet
   - Creative routine
 - Wardrobe
+- Need to move all domains to cloudfare

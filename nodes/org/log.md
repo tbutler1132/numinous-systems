@@ -12,7 +12,7 @@ Some entries may later move to [[feedback]], [[models]], [[episodes]], or [[arti
 ## Actions
 
 - [ ] Figure out hiring a creative director/brand person
-- [ ] Buy domain timothybutler.io
+- [x] Buy domain timothybutler.io
 - [ ] Finish v1 of any artifact (should be vital systems?)
   - Place it somewhere small (HN, Are.na, or similar)
 

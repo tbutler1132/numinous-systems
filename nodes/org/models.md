@@ -100,6 +100,31 @@ This model should be reconsidered if:
 - persuasion replaces clarity
 - symbolism overtakes usefulness
 
+## Domain Management
+
+### Status: Emerging
+
+This model describes how the Org acquires and maintains domains.
+
+### Protocol
+
+- Use a single registrar for all domains (currently: Cloudflare)
+- Enable auto-renew for any domain tied to identity or long-term projects
+- Consolidate scattered domains to the primary registrar when practical
+- Review domain list annually (January)
+
+### Tracking
+
+Active domains are tracked in [[entities/domains]].
+
+### Revision Signal
+
+Revise if:
+
+- the registrar becomes unreliable or expensive
+- domains are forgotten or expire unexpectedly
+- the list exceeds what can be casually tracked
+
 ## Information Triage
 
 ### Status
