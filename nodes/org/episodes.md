@@ -1,4 +1,10 @@
-## Episodes
+# Episodes
+
+Time-bounded experiments. Each episode tests a hypothesis—either to restore baseline when something drifts, or to explore something new.
+
+An episode has a clear question, a defined duration, and an outcome worth recording.
+
+---
 
 - Test expressions app: Is it acceptable after one day?
 - Test out writing process.
