@@ -6,6 +6,8 @@
   <title>Expressions</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+    
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -14,6 +16,7 @@
       color: #2c2c2c;
       line-height: 1.7;
       min-height: 100vh;
+      transition: all 0.4s ease;
     }
     
     .container {
@@ -27,12 +30,33 @@
       font-weight: 400;
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
+      transition: all 0.4s ease;
     }
     
     .subtitle {
       color: #666;
       font-size: 0.95rem;
       margin-bottom: 2.5rem;
+      transition: color 0.4s ease;
+    }
+    
+    /* Header with edit link */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+    
+    .edit-profile-link {
+      font-size: 0.85rem;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    
+    .edit-profile-link:hover {
+      color: #2c2c2c;
     }
     
     /* Artifact List */
@@ -48,7 +72,7 @@
       border: 1px solid #e8e6e3;
       border-radius: 6px;
       cursor: pointer;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: all 0.3s ease;
     }
     
     .artifact:hover {
@@ -60,11 +84,13 @@
       font-size: 1.1rem;
       font-weight: 500;
       margin-bottom: 0.25rem;
+      transition: color 0.4s ease;
     }
     
     .artifact-desc {
       font-size: 0.9rem;
       color: #666;
+      transition: color 0.4s ease;
     }
     
     /* Profile Form */
@@ -76,6 +102,7 @@
       font-size: 1rem;
       margin-bottom: 0.75rem;
       font-weight: 500;
+      transition: color 0.4s ease;
     }
     
     .options {
@@ -115,11 +142,11 @@
       font-size: 0.95rem;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.15s;
+      transition: all 0.3s ease;
     }
     
     .btn:hover { background: #444; }
-    .btn:disabled { background: #999; cursor: not-allowed; }
+    .btn:disabled { background: #999; cursor: not-allowed; box-shadow: none; }
     
     .btn-secondary {
       background: #fff;
@@ -133,6 +160,7 @@
       display: flex;
       gap: 0.75rem;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
     
     /* Back link */
@@ -142,6 +170,7 @@
       color: #666;
       text-decoration: none;
       font-size: 0.9rem;
+      transition: color 0.4s ease;
     }
     
     .back:hover { color: #2c2c2c; }
@@ -149,7 +178,15 @@
     /* Loading */
     .loading {
       text-align: center;
-      padding: 4rem 0;
+      padding: 3rem 0;
+    }
+    
+    .loading p {
+      transition: color 0.4s ease;
+    }
+    
+    .loading-inline {
+      padding: 2rem 0;
     }
     
     .spinner {
@@ -160,65 +197,541 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 1rem;
+      transition: border-color 0.4s ease;
+    }
+    
+    .spinner-small {
+      width: 20px;
+      height: 20px;
+      border-width: 2px;
+      margin-bottom: 0.5rem;
     }
     
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
     
-    /* Result */
-    .expression {
+    /* About section */
+    .about-section {
+      background: #fff;
+      border: 1px solid #e8e6e3;
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-section h1, .about-section h2, .about-section h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.1rem;
+      transition: all 0.4s ease;
+    }
+    
+    .about-section h1:first-child, .about-section h2:first-child {
+      margin-top: 0;
+    }
+    
+    .about-section p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+    
+    .about-section ul, .about-section ol {
+      margin: 0.75rem 0;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+    }
+    
+    .about-section li {
+      margin-bottom: 0.35rem;
+    }
+    
+    /* Context text */
+    .context-text {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+      font-style: italic;
+      transition: color 0.4s ease;
+    }
+    
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e8e6e3;
+      transition: border-color 0.4s ease;
+    }
+    
+    .tab {
+      padding: 0.75rem 1.25rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #888;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: -1px;
+    }
+    
+    .tab:hover {
+      color: #2c2c2c;
+    }
+    
+    .tab.active {
+      color: #2c2c2c;
+      border-bottom-color: #2c2c2c;
+    }
+    
+    /* Content boxes */
+    .content-box {
       background: #fff;
       border: 1px solid #e8e6e3;
       border-radius: 6px;
       padding: 2rem;
       margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
     
-    .expression h1, .expression h2, .expression h3 {
+    .content-box h1, .content-box h2, .content-box h3 {
       margin: 1.5rem 0 0.75rem;
+      transition: all 0.4s ease;
     }
     
-    .expression h1:first-child, .expression h2:first-child {
+    .content-box h1:first-child, .content-box h2:first-child {
       margin-top: 0;
     }
     
-    .expression p {
+    .content-box p {
       margin-bottom: 1rem;
     }
     
-    .expression blockquote {
+    .content-box blockquote {
       border-left: 3px solid #e8e6e3;
       padding-left: 1rem;
       margin: 1rem 0;
       color: #666;
+      transition: all 0.4s ease;
+    }
+    
+    .content-box ul, .content-box ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .content-box li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .content-box table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .content-box th, .content-box td {
+      border: 1px solid #e8e6e3;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      transition: all 0.4s ease;
+    }
+    
+    .content-box th {
+      background: #faf9f7;
+      font-weight: 500;
+      transition: background 0.4s ease;
+    }
+    
+    .content-box hr {
+      border: none;
+      border-top: 1px solid #e8e6e3;
+      margin: 2rem 0;
+      transition: border-color 0.4s ease;
+    }
+    
+    /* Generate prompt */
+    .generate-prompt {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: #fff;
+      border: 1px solid #e8e6e3;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+    }
+    
+    .generate-prompt p {
+      margin-bottom: 1.25rem;
+      color: #666;
+      transition: color 0.4s ease;
+    }
+    
+    /* Mode label */
+    .mode-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      font-style: italic;
+      transition: all 0.4s ease;
     }
     
     .limit-notice {
       font-size: 0.85rem;
       color: #999;
       margin-top: 1rem;
+      transition: color 0.4s ease;
+    }
+    
+    /* ======================= */
+    /* MACHINIC THEME (Digital/Synthetic) - Full Page */
+    /* ======================= */
+    
+    body.machinic {
+      background: #f0f4f8;
+      color: #1e293b;
+    }
+    
+    body.machinic h1 {
+      font-family: 'JetBrains Mono', monospace;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+    }
+    
+    body.machinic .subtitle {
+      color: #64748b;
+    }
+    
+    body.machinic .back {
+      color: #64748b;
+    }
+    
+    body.machinic .back:hover {
+      color: #0ea5e9;
+    }
+    
+    body.machinic .context-text {
+      color: #64748b;
+    }
+    
+    /* Machinic about section */
+    body.machinic .about-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-color: #94a3b8;
+      color: #1e293b;
+      box-shadow: 0 0 30px rgba(14, 165, 233, 0.06);
+    }
+    
+    body.machinic .about-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    body.machinic .about-section h1,
+    body.machinic .about-section h2,
+    body.machinic .about-section h3 {
+      font-family: 'JetBrains Mono', monospace;
+      color: #0f172a;
+    }
+    
+    /* Machinic content box */
+    body.machinic .content-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+      border-color: #94a3b8;
+      color: #1e293b;
+      box-shadow: 0 0 24px rgba(14, 165, 233, 0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+    
+    body.machinic .content-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+    
+    body.machinic .content-box h1, 
+    body.machinic .content-box h2, 
+    body.machinic .content-box h3 {
+      color: #0f172a;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+    
+    body.machinic .content-box blockquote {
+      border-left-color: #0ea5e9;
+      color: #64748b;
+      background: rgba(14, 165, 233, 0.05);
+      padding: 0.75rem 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    body.machinic .content-box th {
+      background: rgba(14, 165, 233, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #0f172a;
+    }
+    
+    body.machinic .content-box th, 
+    body.machinic .content-box td {
+      border-color: #94a3b8;
+    }
+    
+    body.machinic .content-box hr {
+      border-top-color: #94a3b8;
+    }
+    
+    /* Machinic tabs */
+    body.machinic .tabs {
+      border-bottom-color: #94a3b8;
+    }
+    
+    body.machinic .tab {
+      color: #64748b;
+    }
+    
+    body.machinic .tab:hover {
+      color: #0ea5e9;
+    }
+    
+    body.machinic .tab.active {
+      color: #0ea5e9;
+      border-bottom-color: #0ea5e9;
+    }
+    
+    /* Machinic generate prompt */
+    body.machinic .generate-prompt {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-color: #94a3b8;
+    }
+    
+    body.machinic .generate-prompt p {
+      color: #64748b;
+    }
+    
+    /* Machinic buttons */
+    body.machinic .btn {
+      background: #0ea5e9;
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
+    }
+    
+    body.machinic .btn:hover {
+      background: #0284c7;
+      box-shadow: 0 0 24px rgba(14, 165, 233, 0.5);
+    }
+    
+    body.machinic .btn-secondary {
+      background: rgba(255,255,255,0.9);
+      border-color: #94a3b8;
+      color: #1e293b;
+      box-shadow: none;
+    }
+    
+    body.machinic .btn-secondary:hover {
+      background: #fff;
+      border-color: #0ea5e9;
+    }
+    
+    body.machinic .mode-label {
+      color: #0ea5e9;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    body.machinic .spinner {
+      border-color: #94a3b8;
+      border-top-color: #0ea5e9;
+    }
+    
+    body.machinic .limit-notice {
+      color: #64748b;
+    }
+    
+    /* ======================= */
+    /* ORGANIC THEME (Natural/Human) - Full Page */
+    /* ======================= */
+    
+    body.organic {
+      background: #faf6f0;
+      color: #4a4235;
+    }
+    
+    body.organic h1 {
+      color: #3d3628;
+    }
+    
+    body.organic .subtitle {
+      color: #8b7355;
+    }
+    
+    body.organic .back {
+      color: #8b7355;
+    }
+    
+    body.organic .back:hover {
+      color: #4a4235;
+    }
+    
+    body.organic .context-text {
+      color: #8b7355;
+    }
+    
+    /* Organic about section */
+    body.organic .about-section {
+      background: #f5efe6;
+      border-color: #c9b99a;
+      color: #4a4235;
+    }
+    
+    body.organic .about-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    
+    body.organic .about-section h1,
+    body.organic .about-section h2,
+    body.organic .about-section h3 {
+      color: #3d3628;
+    }
+    
+    /* Organic content box */
+    body.organic .content-box {
+      background: #f5efe6;
+      border-color: #c9b99a;
+      color: #4a4235;
+    }
+    
+    body.organic .content-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    
+    body.organic .content-box h1, 
+    body.organic .content-box h2, 
+    body.organic .content-box h3 {
+      color: #3d3628;
+    }
+    
+    body.organic .content-box blockquote {
+      border-left-color: #c9b99a;
+      color: #6b5d4d;
+    }
+    
+    body.organic .content-box th {
+      background: #ebe4d8;
+    }
+    
+    body.organic .content-box th, 
+    body.organic .content-box td {
+      border-color: #c9b99a;
+    }
+    
+    body.organic .content-box hr {
+      border-top-color: #c9b99a;
+    }
+    
+    /* Organic tabs */
+    body.organic .tabs {
+      border-bottom-color: #c9b99a;
+    }
+    
+    body.organic .tab {
+      color: #a89880;
+    }
+    
+    body.organic .tab:hover {
+      color: #6b5d4d;
+    }
+    
+    body.organic .tab.active {
+      color: #8b7355;
+      border-bottom-color: #8b7355;
+    }
+    
+    /* Organic generate prompt */
+    body.organic .generate-prompt {
+      background: #f5efe6;
+      border-color: #c9b99a;
+    }
+    
+    body.organic .generate-prompt p {
+      color: #8b7355;
+    }
+    
+    /* Organic buttons */
+    body.organic .btn {
+      background: #8b7355;
+      box-shadow: none;
+    }
+    
+    body.organic .btn:hover {
+      background: #6b5d4d;
+    }
+    
+    body.organic .btn-secondary {
+      background: #faf6f0;
+      border-color: #c9b99a;
+      color: #4a4235;
+    }
+    
+    body.organic .btn-secondary:hover {
+      background: #f5efe6;
+    }
+    
+    body.organic .mode-label {
+      color: #8b7355;
+    }
+    
+    body.organic .spinner {
+      border-color: #c9b99a;
+      border-top-color: #8b7355;
+    }
+    
+    body.organic .limit-notice {
+      color: #a89880;
     }
     
     /* Screen visibility */
     .screen { display: none; }
     .screen.active { display: block; }
+    
+    /* Tab content visibility */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Select Screen -->
-    <div id="select-screen" class="screen active">
+    <!-- Onboarding Screen -->
+    <div id="onboarding-screen" class="screen">
       <h1>Expressions</h1>
-      <p class="subtitle">Personalized philosophical artifacts. Choose one to begin.</p>
-      <div class="artifacts" id="artifact-list"></div>
-    </div>
-    
-    <!-- Profile Screen -->
-    <div id="profile-screen" class="screen">
-      <a href="#" class="back" onclick="showScreen('select'); return false;">← Back</a>
-      <h1 id="selected-artifact-title"></h1>
-      <p class="subtitle">Tell us a bit about how you engage with ideas.</p>
+      <p class="subtitle">These are my ideas, presented in a way that resonates with you. First, tell me a bit about how you engage with concepts.</p>
       
       <div class="question">
         <div class="question-text">How do you prefer ideas presented?</div>
@@ -260,31 +773,77 @@
         </div>
       </div>
       
-      <button class="btn" id="generate-btn" disabled onclick="generate()">Generate Expression</button>
+      <button class="btn" id="save-profile-btn" disabled onclick="saveProfileAndContinue()">Continue</button>
     </div>
     
-    <!-- Loading Screen -->
+    <!-- Select Screen -->
+    <div id="select-screen" class="screen">
+      <div class="header-row">
+        <h1>Expressions</h1>
+        <a href="#" class="edit-profile-link" onclick="editProfile(); return false;">Edit profile</a>
+      </div>
+      <p class="subtitle">Each artifact is a core idea. Select one to explore it in a way shaped for you.</p>
+      <div class="artifacts" id="artifact-list"></div>
+    </div>
+    
+    <!-- Loading Screen (for initial artifact fetch) -->
     <div id="loading-screen" class="screen">
       <div class="loading">
         <div class="spinner"></div>
-        <p>Generating your personalized expression...</p>
+        <p>Loading artifact...</p>
       </div>
     </div>
     
-    <!-- Result Screen -->
-    <div id="result-screen" class="screen">
-      <a href="#" class="back" onclick="showScreen('select'); return false;">← Back to artifacts</a>
-      <h1 id="result-title"></h1>
-      <div class="expression" id="expression-content"></div>
-      <div class="btn-group">
-        <button class="btn btn-secondary" onclick="download()">Download as Markdown</button>
-        <button class="btn" id="regenerate-btn" onclick="regenerate()">Regenerate</button>
+    <!-- Detail Screen -->
+    <div id="detail-screen" class="screen">
+      <a href="#" class="back" onclick="backToArtifacts(); return false;">← Back to artifacts</a>
+      <h1 id="detail-title"></h1>
+      
+      <div class="about-section" id="about-content"></div>
+      
+      <p class="context-text">Toggle between the machinic—an AI-generated expression shaped for your sensibility—and the organic raw notes. The core truth remains; only the vessel changes.</p>
+      
+      <div class="tabs">
+        <button class="tab active" data-tab="machinic" onclick="switchTab('machinic')">Machinic</button>
+        <button class="tab" data-tab="organic" onclick="switchTab('organic')">Organic</button>
       </div>
-      <p class="limit-notice" id="limit-notice"></p>
+      
+      <div id="machinic-tab" class="tab-content active">
+        <!-- Before generation -->
+        <div id="generate-prompt" class="generate-prompt">
+          <p>Generate a machinic expression tailored to your sensibility.</p>
+          <button class="btn" id="generate-btn" onclick="generate()">Generate Machinic Expression</button>
+        </div>
+        
+        <!-- After generation -->
+        <div id="expression-result" style="display: none;">
+          <span class="mode-label">Machinic synthesis</span>
+          <div class="content-box" id="expression-content"></div>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="download()">Download as Markdown</button>
+            <button class="btn" id="regenerate-btn" onclick="regenerate()">Regenerate</button>
+          </div>
+          <p class="limit-notice" id="limit-notice"></p>
+        </div>
+        
+        <!-- Generating -->
+        <div id="generating-indicator" class="loading loading-inline" style="display: none;">
+          <div class="spinner spinner-small"></div>
+          <p>Synthesizing your expression...</p>
+        </div>
+      </div>
+      
+      <div id="organic-tab" class="tab-content">
+        <span class="mode-label">Raw working notes</span>
+        <div class="content-box" id="organics-content"></div>
+      </div>
     </div>
   </div>
   
   <script>
+    // GitHub raw URL base
+    const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/tbutler1132/vital-systems/main/nodes/org/artifacts/core';
+    
     // Artifact data - Core essays only
     const artifacts = [
       { id: '1-beauty-redeems', title: 'Beauty Redeems', desc: 'Moments of beauty redeem existence' },
@@ -298,48 +857,216 @@
     let selectedArtifact = null;
     let profile = { register: null, sacred: null, mode: null, influences: null };
     let currentExpression = '';
+    let currentAbout = '';
+    let currentNotes = '';
+    let currentTab = 'machinic';
+    let hasGenerated = false;
     
-    // Render artifact list
-    const listEl = document.getElementById('artifact-list');
-    artifacts.forEach(a => {
-      const div = document.createElement('div');
-      div.className = 'artifact';
-      div.innerHTML = `<div class="artifact-title">${a.title}</div><div class="artifact-desc">${a.desc}</div>`;
-      div.onclick = () => selectArtifact(a);
-      listEl.appendChild(div);
-    });
+    // Initialize on page load
+    function init() {
+      // Check for stored profile
+      const storedProfile = localStorage.getItem('expressions:profile');
+      if (storedProfile) {
+        profile = JSON.parse(storedProfile);
+        showScreen('select');
+      } else {
+        showScreen('onboarding');
+      }
+      
+      // Render artifact list
+      renderArtifactList();
+      
+      // Set up option selection for onboarding
+      setupOptionSelection();
+    }
     
-    // Option selection
-    document.querySelectorAll('.options').forEach(group => {
-      const question = group.dataset.question;
-      group.querySelectorAll('.option').forEach(opt => {
-        opt.onclick = () => {
-          group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-          profile[question] = opt.dataset.value;
-          checkProfileComplete();
-        };
+    function renderArtifactList() {
+      const listEl = document.getElementById('artifact-list');
+      listEl.innerHTML = '';
+      artifacts.forEach(a => {
+        const div = document.createElement('div');
+        div.className = 'artifact';
+        div.innerHTML = `<div class="artifact-title">${a.title}</div><div class="artifact-desc">${a.desc}</div>`;
+        div.onclick = () => selectArtifact(a);
+        listEl.appendChild(div);
       });
-    });
+    }
     
-    function selectArtifact(artifact) {
-      selectedArtifact = artifact;
-      document.getElementById('selected-artifact-title').textContent = artifact.title;
-      // Reset profile
-      profile = { register: null, sacred: null, mode: null, influences: null };
-      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-      document.getElementById('generate-btn').disabled = true;
-      showScreen('profile');
+    function setupOptionSelection() {
+      document.querySelectorAll('.options').forEach(group => {
+        const question = group.dataset.question;
+        group.querySelectorAll('.option').forEach(opt => {
+          opt.onclick = () => {
+            group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            profile[question] = opt.dataset.value;
+            checkProfileComplete();
+          };
+        });
+      });
     }
     
     function checkProfileComplete() {
       const complete = Object.values(profile).every(v => v !== null);
-      document.getElementById('generate-btn').disabled = !complete;
+      const btn = document.getElementById('save-profile-btn');
+      if (btn) btn.disabled = !complete;
+    }
+    
+    function saveProfileAndContinue() {
+      localStorage.setItem('expressions:profile', JSON.stringify(profile));
+      showScreen('select');
+    }
+    
+    function editProfile() {
+      // Reset UI to show current selections
+      profile = { register: null, sacred: null, mode: null, influences: null };
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      
+      // Restore from localStorage
+      const storedProfile = localStorage.getItem('expressions:profile');
+      if (storedProfile) {
+        profile = JSON.parse(storedProfile);
+        // Mark selected options
+        Object.entries(profile).forEach(([question, value]) => {
+          if (value) {
+            const opt = document.querySelector(`.options[data-question="${question}"] .option[data-value="${value}"]`);
+            if (opt) opt.classList.add('selected');
+          }
+        });
+      }
+      
+      checkProfileComplete();
+      showScreen('onboarding');
+    }
+    
+    async function selectArtifact(artifact) {
+      // Check for stored expression content
+      const storedExpr = localStorage.getItem(`expressions:${artifact.id}:content`);
+      
+      selectedArtifact = artifact;
+      
+      // Restore expression if it exists in localStorage
+      if (storedExpr) {
+        hasGenerated = true;
+        currentExpression = storedExpr;
+      } else {
+        hasGenerated = false;
+        currentExpression = '';
+      }
+      
+      // Show loading while fetching content
+      showScreen('loading');
+      
+      try {
+        // Fetch about and notes from GitHub
+        const [aboutRes, notesRes] = await Promise.all([
+          fetch(`${GITHUB_RAW_BASE}/${artifact.id}/about.md`),
+          fetch(`${GITHUB_RAW_BASE}/${artifact.id}/notes.md`)
+        ]);
+        
+        if (!aboutRes.ok || !notesRes.ok) {
+          throw new Error('Failed to fetch artifact content');
+        }
+        
+        currentAbout = await aboutRes.text();
+        currentNotes = await notesRes.text();
+        
+        // Update the detail screen
+        document.getElementById('detail-title').textContent = artifact.title;
+        document.getElementById('about-content').innerHTML = marked.parse(currentAbout);
+        document.getElementById('organics-content').innerHTML = marked.parse(currentNotes);
+        
+        // Reset to machinic tab
+        resetDetailScreen();
+        
+        // If we have a stored expression, show it instead of generate prompt
+        if (hasGenerated && currentExpression) {
+          document.getElementById('generate-prompt').style.display = 'none';
+          document.getElementById('expression-content').innerHTML = marked.parse(currentExpression);
+          document.getElementById('expression-result').style.display = 'block';
+          
+          // Update limit notice
+          const count = getGenerationCount(artifact.id);
+          const remaining = 2 - count;
+          const limitEl = document.getElementById('limit-notice');
+          const regenBtn = document.getElementById('regenerate-btn');
+          
+          if (remaining > 0) {
+            limitEl.textContent = `${remaining} regeneration${remaining > 1 ? 's' : ''} remaining for this artifact.`;
+            regenBtn.disabled = false;
+          } else {
+            limitEl.textContent = 'No regenerations remaining. Sit with this expression.';
+            regenBtn.disabled = true;
+          }
+          
+          // Apply machinic theme
+          document.body.classList.add('machinic');
+        }
+        
+        switchTab('machinic');
+        
+        // Check generation count and update UI
+        updateGenerateButton();
+        
+        showScreen('detail');
+      } catch (err) {
+        console.error(err);
+        alert('Failed to load artifact. Please try again.');
+        showScreen('select');
+      }
+    }
+    
+    function resetDetailScreen() {
+      document.getElementById('generate-prompt').style.display = 'block';
+      document.getElementById('expression-result').style.display = 'none';
+      document.getElementById('generating-indicator').style.display = 'none';
+      // Clear body theme classes
+      document.body.classList.remove('organic', 'machinic');
+    }
+    
+    function backToArtifacts() {
+      // Clear theme when going back
+      document.body.classList.remove('organic', 'machinic');
+      showScreen('select');
+    }
+    
+    function updateGenerateButton() {
+      const count = getGenerationCount(selectedArtifact.id);
+      const btn = document.getElementById('generate-btn');
+      
+      if (count >= 2) {
+        btn.disabled = true;
+        btn.textContent = 'Maximum generations reached';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Generate Machinic Expression';
+      }
     }
     
     function showScreen(name) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(name + '-screen').classList.add('active');
+    }
+    
+    function switchTab(tabName) {
+      currentTab = tabName;
+      
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+      
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(tabName + '-tab').classList.add('active');
+      
+      // Toggle theme classes on body for full page effect
+      document.body.classList.remove('organic', 'machinic');
+      
+      if (tabName === 'organic') {
+        document.body.classList.add('organic');
+      } else if (tabName === 'machinic' && hasGenerated) {
+        document.body.classList.add('machinic');
+      }
     }
     
     function getGenerationCount(artifactId) {
@@ -359,7 +1086,10 @@
         return;
       }
       
-      showScreen('loading');
+      // Show generating indicator
+      document.getElementById('generate-prompt').style.display = 'none';
+      document.getElementById('expression-result').style.display = 'none';
+      document.getElementById('generating-indicator').style.display = 'block';
       
       try {
         const res = await fetch('/api/generate', {
@@ -372,12 +1102,22 @@
         
         const data = await res.json();
         currentExpression = data.expression;
+        hasGenerated = true;
         
         const newCount = incrementGenerationCount(selectedArtifact.id);
         
-        document.getElementById('result-title').textContent = selectedArtifact.title;
-        document.getElementById('expression-content').innerHTML = marked.parse(currentExpression);
+        // Store the expression content in localStorage for persistence
+        localStorage.setItem(`expressions:${selectedArtifact.id}:content`, currentExpression);
         
+        // Apply machinic theme to body
+        document.body.classList.add('machinic');
+        
+        // Show expression result
+        document.getElementById('generating-indicator').style.display = 'none';
+        document.getElementById('expression-content').innerHTML = marked.parse(currentExpression);
+        document.getElementById('expression-result').style.display = 'block';
+        
+        // Update limit notice and regenerate button
         const remaining = 2 - newCount;
         const limitEl = document.getElementById('limit-notice');
         const regenBtn = document.getElementById('regenerate-btn');
@@ -389,12 +1129,12 @@
           limitEl.textContent = 'No regenerations remaining. Sit with this expression.';
           regenBtn.disabled = true;
         }
-        
-        showScreen('result');
       } catch (err) {
         console.error(err);
         alert('Failed to generate expression. Please try again.');
-        showScreen('profile');
+        // Reset to show generate button
+        document.getElementById('generating-indicator').style.display = 'none';
+        document.getElementById('generate-prompt').style.display = 'block';
       }
     }
     
@@ -412,6 +1152,9 @@
       a.click();
       URL.revokeObjectURL(url);
     }
+    
+    // Initialize the app
+    init();
   </script>
 </body>
 </html>
