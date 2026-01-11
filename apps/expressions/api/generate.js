@@ -94,8 +94,9 @@ export default async function handler(req) {
 
     const claudeData = await anthropicRes.json();
     const expression = claudeData.content[0].text;
+    const { input_tokens, output_tokens } = claudeData.usage;
 
-    return new Response(JSON.stringify({ expression, about, notes }), {
+    return new Response(JSON.stringify({ expression, about, notes, usage: { input_tokens, output_tokens } }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

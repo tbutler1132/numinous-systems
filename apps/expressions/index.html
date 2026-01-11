@@ -755,6 +755,94 @@
         display: block;
       }
 
+      /* Dev Usage Overlay */
+      .dev-usage-overlay {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        background: rgba(15, 23, 42, 0.92);
+        color: #e2e8f0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        z-index: 9999;
+        min-width: 200px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .dev-usage-overlay .overlay-title {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #94a3b8;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .dev-usage-overlay .overlay-title::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: pulse-dot 2s infinite;
+      }
+
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .dev-usage-overlay .usage-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.2rem 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .dev-usage-overlay .usage-row:last-child {
+        border-bottom: none;
+      }
+
+      .dev-usage-overlay .usage-label {
+        color: #94a3b8;
+      }
+
+      .dev-usage-overlay .usage-value {
+        color: #f8fafc;
+        font-weight: 500;
+      }
+
+      .dev-usage-overlay .usage-value.cost {
+        color: #fbbf24;
+      }
+
+      .dev-usage-overlay .section-divider {
+        height: 1px;
+        background: rgba(148, 163, 184, 0.2);
+        margin: 0.5rem 0;
+      }
+
+      .dev-usage-overlay .section-label {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #64748b;
+        margin-bottom: 0.25rem;
+        margin-top: 0.25rem;
+      }
+
       /* Tab content visibility */
       .tab-content {
         display: none;
@@ -851,6 +939,38 @@
         <div class="loading">
           <div class="spinner"></div>
           <p>Loading artifact...</p>
+        </div>
+      </div>
+
+      <!-- Dev Usage Overlay (only visible on localhost) -->
+      <div
+        id="dev-usage-overlay"
+        class="dev-usage-overlay"
+        style="display: none"
+      >
+        <div class="overlay-title">API Usage (Dev)</div>
+        <div class="section-label">Last Request</div>
+        <div class="usage-row">
+          <span class="usage-label">Input</span>
+          <span class="usage-value" id="usage-input">—</span>
+        </div>
+        <div class="usage-row">
+          <span class="usage-label">Output</span>
+          <span class="usage-value" id="usage-output">—</span>
+        </div>
+        <div class="usage-row">
+          <span class="usage-label">Cost</span>
+          <span class="usage-value cost" id="usage-cost">—</span>
+        </div>
+        <div class="section-divider"></div>
+        <div class="section-label">Session Total</div>
+        <div class="usage-row">
+          <span class="usage-label">Tokens</span>
+          <span class="usage-value" id="usage-session-tokens">0</span>
+        </div>
+        <div class="usage-row">
+          <span class="usage-label">Cost</span>
+          <span class="usage-value cost" id="usage-session-cost">$0.00</span>
         </div>
       </div>
 
@@ -972,6 +1092,70 @@
       let currentTab = "machinic";
       let hasGenerated = false;
 
+      // Dev usage tracking
+      const isDevMode =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
+      let sessionUsage = { input_tokens: 0, output_tokens: 0 };
+
+      // Claude Sonnet pricing (per 1M tokens)
+      const PRICING = {
+        input: 3.0, // $3 per 1M input tokens
+        output: 15.0, // $15 per 1M output tokens
+      };
+
+      function calculateCost(input_tokens, output_tokens) {
+        const inputCost = (input_tokens / 1_000_000) * PRICING.input;
+        const outputCost = (output_tokens / 1_000_000) * PRICING.output;
+        return inputCost + outputCost;
+      }
+
+      function formatCost(cost) {
+        if (cost < 0.01) {
+          return `$${cost.toFixed(4)}`;
+        }
+        return `$${cost.toFixed(2)}`;
+      }
+
+      function updateDevUsageOverlay(usage) {
+        if (!isDevMode) return;
+
+        const overlay = document.getElementById("dev-usage-overlay");
+        overlay.style.display = "block";
+
+        // Update last request
+        document.getElementById("usage-input").textContent =
+          usage.input_tokens.toLocaleString();
+        document.getElementById("usage-output").textContent =
+          usage.output_tokens.toLocaleString();
+        const requestCost = calculateCost(
+          usage.input_tokens,
+          usage.output_tokens
+        );
+        document.getElementById("usage-cost").textContent =
+          formatCost(requestCost);
+
+        // Update session totals
+        sessionUsage.input_tokens += usage.input_tokens;
+        sessionUsage.output_tokens += usage.output_tokens;
+        const totalTokens =
+          sessionUsage.input_tokens + sessionUsage.output_tokens;
+        document.getElementById("usage-session-tokens").textContent =
+          totalTokens.toLocaleString();
+        const sessionCost = calculateCost(
+          sessionUsage.input_tokens,
+          sessionUsage.output_tokens
+        );
+        document.getElementById("usage-session-cost").textContent =
+          formatCost(sessionCost);
+      }
+
+      function initDevOverlay() {
+        if (isDevMode) {
+          document.getElementById("dev-usage-overlay").style.display = "block";
+        }
+      }
+
       // Initialize on page load
       function init() {
         // Check for stored profile
@@ -988,6 +1172,9 @@
 
         // Set up option selection for onboarding
         setupOptionSelection();
+
+        // Initialize dev overlay if in dev mode
+        initDevOverlay();
       }
 
       function renderArtifactList() {
@@ -1245,6 +1432,11 @@
           const data = await res.json();
           currentExpression = data.expression;
           hasGenerated = true;
+
+          // Update dev usage overlay if usage data is present
+          if (data.usage) {
+            updateDevUsageOverlay(data.usage);
+          }
 
           const newCount = incrementGenerationCount(selectedArtifact.id);
 
