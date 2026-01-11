@@ -2,14 +2,21 @@
 
 Personalized philosophical artifacts powered by Claude.
 
+## Tech Stack
+
+- **Frontend**: React 18 + TypeScript + Vite
+- **Backend**: Vercel Edge Function
+- **Styling**: Vanilla CSS with theme switching
+- **Markdown**: react-markdown
+
 ## Local Development
 
-1. Install Vercel CLI if you haven't:
+1. Install dependencies:
    ```bash
-   npm i -g vercel
+   npm install
    ```
 
-2. Create a `.env` file in this directory:
+2. Create a `.env` file:
    ```bash
    ANTHROPIC_API_KEY=your_api_key_here
    ```
@@ -18,8 +25,13 @@ Personalized philosophical artifacts powered by Claude.
    ```bash
    vercel dev
    ```
+   
+   Or for frontend-only development:
+   ```bash
+   npm run dev
+   ```
 
-4. Open http://localhost:3000
+4. Open http://localhost:3000 (vercel dev) or http://localhost:5173 (npm run dev)
 
 ## Deployment
 
@@ -40,14 +52,34 @@ Personalized philosophical artifacts powered by Claude.
 
 ## Architecture
 
-- `index.html` — All frontend code (vanilla JS, ~280 lines)
-- `api/generate.js` — Vercel Edge Function that calls Claude
-- `vercel.json` — Route configuration
+```
+src/
+  main.tsx           # React entry point
+  App.tsx            # Main app with screen routing
+  index.css          # All styles (including themes)
+  types.ts           # Shared TypeScript types
+  data/
+    artifacts.ts     # Artifact definitions
+  context/
+    ProfileContext   # User profile state + localStorage
+    ThemeContext     # Theme switching (machinic/organic)
+  components/
+    Spinner          # Loading indicator
+    ContentBox       # Styled content container with reveal animation
+    DevUsageOverlay  # Dev-only API usage tracker
+  pages/
+    Onboarding       # Profile questionnaire
+    ArtifactSelect   # Artifact list
+    ArtifactDetail   # Main view with tabs & generation
+api/
+  generate.ts        # Vercel Edge Function for Claude API
+```
 
 ## How It Works
 
-1. User selects an artifact from the list
-2. User answers 4 profile questions
-3. API fetches artifact content from GitHub raw
-4. Claude generates a personalized ~600-word expression
-5. User can download as markdown or regenerate (max 2 per artifact)
+1. User answers 4 profile questions (onboarding)
+2. User selects an artifact to explore
+3. Artifact content is fetched from GitHub
+4. User can generate a personalized ~600-word expression via Claude
+5. User can toggle between machinic (AI) and organic (raw notes) views
+6. Expressions are cached in localStorage (max 2 generations per artifact)
