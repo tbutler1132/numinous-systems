@@ -127,7 +127,7 @@ Revise if:
 
 ## Information Triage
 
-### Status
+### Status: Emerging
 
 This model describes how material recorded in the system is informally differentiated over time.
 
