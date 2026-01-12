@@ -6,3 +6,4 @@
 - Def a problem with AI in general, is you just move too fast. It's hard to slow down and read through the about and notes honestly
 - I can get into theory of software in general
 - Maybe touch briefly upon ideas, or just don't lol
+- Mention how I went double meta though by grounding it
