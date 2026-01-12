@@ -1,0 +1,8 @@
+- Explain the thought process behind the project. My WEMI system idea is actually pretty cool (Ship of Theseus), and I am able to write notes. Was debating making time to write it, I don't love writing. I have done AI writing collaboration before (maybe can show prior manifesto but be clear I've moved on), which I am not opposed to at all. Writing notes + about and then just having AI do it I think is a little weak, but tempting
+- Either way, this did lead me to the idea of why not just have the user generate a personalized one
+  - Drawbacks: Of course I can't edit it at all
+  - Positives: Theoretically you could get the same idea across maybe more in their voice actually
+- Probably captures a good balance between just presenting AI slop, and giving some guided, particapoty, AI assistance
+- Def a problem with AI in general, is you just move too fast. It's hard to slow down and read through the about and notes honestly
+- I can get into theory of software in general
+- Maybe touch briefly upon ideas, or just don't lol
