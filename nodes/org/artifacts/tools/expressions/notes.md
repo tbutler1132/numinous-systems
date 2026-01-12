@@ -130,3 +130,31 @@ The structure of notes is a feature—more material for the LLM to work with. Di
 - Expression history—see how your understanding evolves
 - Guided paths through multiple artifacts
 - Community expressions (curated, not user-generated chaos)
+
+---
+
+## XII. Caching Strategy Decision
+
+### The Question
+With 4 questions × 4 options = 256 profile combinations, and 5 artifacts, could we pre-cache all 1,280 possible expressions and serve them instantly?
+
+### Why We Chose Client-Side Caching (2 per artifact)
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **Pre-cache all 1,280** | Zero runtime API cost, instant responses | Upfront generation cost, regenerate everything on prompt/content changes, loses intentional variety, scales poorly (1 new artifact = 256 generations) |
+| **Server-side memoization** | Popular combos get cached organically, no upfront cost | Added infrastructure, still some API calls |
+| **Client-side (current)** | Simple, private, allows variation, no server storage | Some redundant API calls across users |
+
+### Decision: Keep current approach
+
+The "max 2 generations per artifact" limit is a feature, not a bug:
+- **Cost control** per user
+- **Intentional variety**—users can regenerate if something doesn't land
+- **Privacy**—nothing stored server-side
+- **Simplicity**—no cache invalidation problems
+
+The expression is meant to be a mirror, not a lookup table. Some generative friction is appropriate.
+
+### Future consideration
+If usage patterns show heavy clustering around a few profile combinations, server-side memoization could be added later without changing the UX.

@@ -7,3 +7,22 @@
 - I can get into theory of software in general
 - Maybe touch briefly upon ideas, or just don't lol
 - Mention how I went double meta though by grounding it
+- Frame it in the context of just like working with AI, moving fast. It has all angles: AI coding, AI writing, etc.
+- Make sure to mention though how part of the point of the project is that is doesn't need to be my Voice, that's not really the point. It's just about communicating the ideas. This can connect to the broader project
+- The meta thing is that between starting with this organic essay, and the medium/presntation of the app itself, I actually do think the ideas can be more compelling despite never getting a real human, written treatment. I think the message of one organic touchpoint, and the rest of the presentation could work. It communicates a lot that otherwise might require very skilled and effort intensive writing
+  - This really introduces the concept of the organic touchpoint
+  - The key that holds everything together
+- Try to work all other core artifact concepts into this essay
+- "Taste" is an interesting concept as it relates to AI outputs. Problem is, and this may be my own bias, it tends to have an exlcusionary connotation. But through the lens of pure information compression, which also is beauty definition of beauty, it has a very real function
+- Maybe my concepts are a bit overdramatic, but there is a belief that goes to the depths of my soul. For example with beauty, I get caught up in this idea of death. And I imagine the outside of time. I have no reason to actually believe it is possible to transcend that, but I truly believe through raw force and understanding, what we are, capital, beauty it is possible to make such a moment emerge. You can cringe at that, not buy it, but I believe through these things it is possible
+  - Also "cringe" is such a weak emotion, link to github notes on this essay (prob won't be even close to finished)
+  - One of the most haunting thoughts is the finality of death. "I know you're alive God's not finished
+    - There is the immediate loss, but also long term
+    - I can link 24 Remix here. Talk about flipping the vibe of the song. Maybe mention the Ye stuff (This can go in 24 notes, I will merely mention the song in this essay)
+- Since I am getting into the link flow, I could briefly mention "All the Things You Love", since it is in fact an artifact. Just like this is my current best plan to produce something
+  - Might be out of scope for this essay but was thinking about entropy as it would relate to sharing ATTYL snippet or whatever. advantage of being in my position is there are so many possiblities. If you are established artist release to to be perfect because you can't put the cat back in the bag
+- Realistically I don't think there is anyone in the target audience who would be impressed or amused by this app
+- Slowing down and thinking about software comes back to the WEMI concept. You have to think long and hard about what it is
+- Cybernetic loop: Sense, Update, Act
+  - Why startups are boring; ultimately postured towards enshittification
+- Song becomes real when it attaches itself to a higher abstract concept
