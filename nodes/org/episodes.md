@@ -6,6 +6,11 @@ An episode has a clear question, a defined duration, and an outcome worth record
 
 ---
 
+- **Baseline restoration (Jan 12-18):** Can I restore habits after extended time out of rhythym?
+
+  - Hypothesis: One focused week of morning routine + environment reset is enough to re-establish rhythm
+  - Outcome: [to be filled]
+
 - Test expressions app: Is it acceptable after one day?
 - Test out writing process.
   - Hypotheses
