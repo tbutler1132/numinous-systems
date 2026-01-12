@@ -11,9 +11,14 @@ Some entries may later move to [[feedback]], [[models]], [[episodes]], or [[arti
 
 ## Actions
 
-- [ ] Figure out hiring a creative director/brand person
 - [x] Buy domain timothybutler.io
-- [ ] Finish v1 of any artifact (should be vital systems?)
+
+---
+
+## Deferred (not this week)
+
+- Figure out hiring a creative director/brand person
+- Finish v1 of any artifact
   - Place it somewhere small (HN, Are.na, or similar)
 
 ---
