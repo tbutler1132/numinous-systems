@@ -53,13 +53,13 @@ Earlier versions are retained as part of the artifact's memory.
 
 The 5 foundational essays. Reading these, someone understands the philosophy.
 
-| #   | Artifact              | Purpose                                                          |
-| --- | --------------------- | ---------------------------------------------------------------- |
-| 1   | **Beauty Redeems**    | The telos—moments of beauty redeem existence                     |
+| #   | Artifact              | Purpose                                                                         |
+| --- | --------------------- | ------------------------------------------------------------------------------- |
+| 1   | **Beauty Redeems**    | The telos—moments of beauty redeem existence                                    |
 | 2   | **The Living System** | The systems foundation—hybrid beings, viable range, viability over optimization |
-| 3   | **Love of Fate**      | The posture—clearing regret for presence                         |
-| 4   | **Capital as Medium** | The practice—orchestrating capital toward beauty                 |
-| 5   | **Axioms**            | The distillation—what is affirmed without argument               |
+| 3   | **Love of Fate**      | The posture—clearing regret for presence                                        |
+| 4   | **Capital as Medium** | The practice—orchestrating capital toward beauty                                |
+| 5   | **Axioms**            | The distillation—what is affirmed without argument                              |
 
 **Reading order: Purpose → Subject → Posture → Practice → Distillation**
 
@@ -67,10 +67,12 @@ The 5 foundational essays. Reading these, someone understands the philosophy.
 
 Supporting arguments that develop specific themes.
 
-| Artifact                      | Purpose                                                                                                              |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **The Genius Myth**           | Clears a false framing—the genius as modern construct, the incoherence of invoking it from within industrial systems |
-| **Continuity of Intention**   | Explores why todo systems and PKM tools keep being rebuilt—the fundamental human problem of maintaining coherence over time |
+| Artifact                    | Purpose                                                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **The Genius Myth**         | Clears a false framing—the genius as modern construct, the incoherence of invoking it from within industrial systems                   |
+| **Continuity of Intention** | Explores why todo systems and PKM tools keep being rebuilt—the fundamental human problem of maintaining coherence over time            |
+| **Expressions Reflection**  | Meta-reflection on the Expressions app—the organic touchpoint, speed vs. deliberation, and the escalation from LinkedIn to existential |
+| **The Weakness of Cringe**  | Analysis of "cringe" as outsourced evaluation—why it's weak compared to shame/guilt and how it prevents sincere creation               |
 
 ### Aesthetic
 
@@ -100,9 +102,9 @@ Infrastructure for engagement.
 
 Theoretical frameworks and legacy systems for consultation, not implementation.
 
-| Artifact                       | Purpose                                                                                        |
-| ------------------------------ | ---------------------------------------------------------------------------------------------- |
-| **Becoming Engine Doctrine**   | Cybernetic reference system — invariants, guardrails, and mature thinking to check against    |
+| Artifact                     | Purpose                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| **Becoming Engine Doctrine** | Cybernetic reference system — invariants, guardrails, and mature thinking to check against |
 
 ---
 
@@ -138,7 +140,7 @@ Theoretical frameworks and legacy systems for consultation, not implementation.
    (first song)         engagement)
 
                     · · · · · · · · · · · · · · · · ·
-                                    
+
               Becoming Engine Doctrine (reference)
                  (invariants + guardrails to
                     check against, not follow)
