@@ -31,6 +31,8 @@
 
 - I did find that AI almost actively makes me "lazy". In the sense that even if I have a desire to put effort into something, still that required effort compared to the ease of AI almost feel absurd. Like usually cutting corners means like saving a few minutes on a long project. That math changes when I high effort thing basically goes to 0.
 
+- Maybe make the AI generation of this a secret message, not an actual generation. Kind of ARG vibes (though I don't like ARG term, it's all good fun)
+
 ---
 
 ## OUTLINE: THE ESCALATION LADDER
@@ -353,7 +355,7 @@ _Main text escalates from LinkedIn → existential. Asides are already at the ex
 
 **Aside:**
 
-> _(Beauty. The only thing that ever mattered. Getting closer now.)_
+> _(Love. The only thing that ever mattered. Getting closer now. Keep saying beauty though)_
 
 ---
 
@@ -524,3 +526,31 @@ AI made it tempting to just generate something.
 2. Your React site parses `> *...*` blocks and applies `.aside` class
 3. For other platforms, copy-paste—block quote italics still convey two voices
 4. For Twitter, adapt separately (different medium, different rules)
+
+---
+
+Hello there, if anyone is reading these words I very much appreciate it. The goal of this piece I suppose is to share my simple experience of creating an AI app with AI. As the title implies, I did it and then really started to think about it. While this is just a small, uninspiring endeavor, I do believe this relates to my larger project. And I think this can be a microcosm of that project, so without further ado, allow me to get into it.
+
+I can't say that I love writing. Particular the last 10%. I can get my thoughts into the page, but refining it into a satisfactory whole is simply not the most enjoyable, to me. While starting my project (Vital Systems), that disposition left me with some of the core concepts, fairly comprehensive notes, but little desire to actually write any essays. With not a high priority on this work, AI did make it tempting to simply generate something form the conceptual overview and the notes. As we know, that should be enough to generate a coherent LLM output. Probably not something I would be particularly proud of, but something that felt at least better than nothing. My aversion to producing polished writing was at least partially solved, enough to maybe get some thoughts into the world. And one interesting affect of AI is how it changes the lazines calculus. There used to be no sense in cutting corners on a high effort project, because great effort was already sunk in. But when the required effort to produce something goes to almost zero, even small effort feels worthless {Note: Please explain this math better}.
+
+But that whole approach felt a little weak. If I was contemplating simply generating something with inadequate oversight, why not just let the user have some influence over the output? I think such an approach actually does capture a somewhat interesting approach towards AI. Not pure meaningless output, it starts from a human generated idea, but can smoothen out the communication in a way that can give the user an opportunity to better connect with the initial human symbol. Of course if there is some extreme aversion or disagreement with that foundation then there may be no common ground, which fine for this iteration. And this connects to a key idea of my larger project, the writing does not need to be "my voice", it is about communicating ideas, not individual expression. Collaboration, community, and open contribution are important. {Note: I feel like I should somehow mention targeted advertising. I would be remiss not to mention that sort of existing use case and I guess defuse it a bit? Something like "Now of course this sort of technique is pretty widely used in advertising, politics etc."}
+
+So even with user participation in that sense, you still need something "real". So this essay itself is actually a core mechanism in the application. This is written in my voice, and serves as the real human anchor. Without this grounding everything feels sort of weightless, but this touchpoint can kind of serve as a strong foundation upon which things can grow, and AI can be used to enhance and build coordination. This helps turn the medium into the message so to speak. An honest reflection on AI helps validate engaging with the ideas even if the particular expression is AI generated.
+
+But this sort of project ended up making think about what a "work" really is. This is something that I have encountered before in my adventures creating music. What makes a song a song? The melody? The audio waves? The bytes? Words on a page {Phrase this more interestingly}? To me, a song becomes real when it attaches to some sort of higher abstract concept. Even though in a practical sense, yes the song I am working is pretty much the files that come to life in the audio production software, it really become a song when there is a strong concept, and it feels like something abstract. In that sense you can swap parts over time until everything is completely different, like the Ship of Theseus, but the concept had solidifed {Could link to Higher or something. What is my most Ship of Theseus song??} The question isn't "what stays the same?" it's what "persists through change?" Every Work, or Artifact as I currently refer to them, should have this abstract essence. The thing that endures. Then it can made real in many different expressions, hence the name of the app.
+
+This doesn't only apply to songs and writing, it applies to software too. What is this app really? For this one, I certainly did not write one line of code. Or do much of anything. But I have found when using AI that it creates a tendency to almost move too fast. As I said earlier, you can just go. Of course you can quickly test hypotheses etc., but I think without much thought you get caught up in certain heuristics and have a tendency to ultimately serve one purpose. What happens if you confront what software ius actually for... {need to clean this paragraph up}
+
+This isn't just me, this applies to the whole system... red queen race...
+
+So what is the corrective? This is where taste come into play..
+
+What is beauty actually?
+
+If viability means persistence, what does it mean to persist?
+
+But when the system is a person, we have another word for it.
+
+The most haunting thought
+
+So what makes it worthwhile? Those are the ideas you will find in this app.
