@@ -18,6 +18,10 @@ Only signals that affect future behavior are recorded here.
 
 ---
 
+## 2026-01-13
+
+- Actions don't feel "official" enough. Which could be good but in this case it definitely just feels more like it makes them sort of "optional"
+
 ---
 
 ## 2026-01-10
