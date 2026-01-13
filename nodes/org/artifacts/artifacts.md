@@ -67,9 +67,10 @@ The 5 foundational essays. Reading these, someone understands the philosophy.
 
 Supporting arguments that develop specific themes.
 
-| Artifact            | Purpose                                                                                                              |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **The Genius Myth** | Clears a false framing—the genius as modern construct, the incoherence of invoking it from within industrial systems |
+| Artifact                      | Purpose                                                                                                              |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **The Genius Myth**           | Clears a false framing—the genius as modern construct, the incoherence of invoking it from within industrial systems |
+| **Continuity of Intention**   | Explores why todo systems and PKM tools keep being rebuilt—the fundamental human problem of maintaining coherence over time |
 
 ### Aesthetic
 
