@@ -35,4 +35,18 @@ Tracks registered domain names.
 
 ---
 
+### accounts
+
+Tracks service accounts and API accounts.
+
+| Field | Description |
+|-------|-------------|
+| Service | The service provider (e.g., Anthropic API, Vercel) |
+| Account | Account identifier or email (if relevant) |
+| Plan | Pricing tier or plan name |
+| Monthly Limit | Spending cap or usage limit |
+| Purpose | What the account is used for |
+
+---
+
 *Add new types here as they emerge.*
