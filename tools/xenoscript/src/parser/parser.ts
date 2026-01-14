@@ -73,8 +73,11 @@ export class Parser {
     const kindToken = this.expect("KEYWORD");
     const kind = kindToken.value as DeclarationStmt["kind"];
 
-    const nameToken = this.expect("IDENT");
-    const name = nameToken.value;
+    // Name is optional for relations and edges (anonymous declarations)
+    let name = "";
+    if (this.check("IDENT")) {
+      name = this.advance().value;
+    }
 
     const fields: Record<string, Value> = {};
 

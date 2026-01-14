@@ -5,7 +5,10 @@
   "tasks": {
     "dev": "deno run --allow-read --allow-write --allow-env mod.ts",
     "test": "deno test --allow-read --allow-write tests/",
-    "check": "deno check mod.ts"
+    "check": "deno check mod.ts",
+    "lint": "deno lint",
+    "lint:xeno": "deno run --allow-read mod.ts lint",
+    "fmt": "deno fmt"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.0"

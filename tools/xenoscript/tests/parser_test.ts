@@ -16,7 +16,7 @@ Deno.test("Lexer - tokenizes declaration", () => {
   assertEquals(tokens[1].value, "Foo");
   assertEquals(tokens[2].type, "LBRACE");
   assertEquals(tokens[3].type, "IDENT");
-  assertEquals(tokens[3].value, "focus");
+  assertEquals(tokens[3].value, "about");
   assertEquals(tokens[4].type, "COLON");
   assertEquals(tokens[5].type, "STRING");
   assertEquals(tokens[5].value, "test");

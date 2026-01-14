@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "XenoScript",
+  "scopeName": "source.xenoscript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#declarations" },
+    { "include": "#builtins" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#booleans" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.xenoscript",
+      "match": "#.*$"
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "meta.declaration.xenoscript",
+          "match": "\\b(node|edge|relation|constraint|signal)\\b\\s+([A-Za-z_][A-Za-z0-9_]*)?",
+          "captures": {
+            "1": { "name": "keyword.declaration.xenoscript" },
+            "2": { "name": "entity.name.type.xenoscript" }
+          }
+        },
+        {
+          "name": "keyword.declaration.xenoscript",
+          "match": "\\b(node|edge|relation|constraint|signal)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "keyword.control.xenoscript",
+          "match": "\\b(ls|save|load|run|exit|help|clear|history)\\b"
+        },
+        {
+          "name": "keyword.operator.query.xenoscript",
+          "match": "\\?(?=\\s*[A-Za-z_]|\\s*drift)"
+        },
+        {
+          "name": "keyword.other.drift.xenoscript",
+          "match": "\\bdrift\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.xenoscript",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.xenoscript",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.xenoscript",
+      "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+    },
+    "booleans": {
+      "name": "constant.language.xenoscript",
+      "match": "\\b(true|false|null)\\b"
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.xenoscript",
+          "match": "→|->|=>"
+        },
+        {
+          "name": "keyword.operator.assignment.xenoscript",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.accessor.xenoscript",
+          "match": "\\."
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.block.xenoscript",
+          "match": "[{}]"
+        },
+        {
+          "name": "punctuation.definition.array.xenoscript",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.definition.parameters.xenoscript",
+          "match": "[()]"
+        },
+        {
+          "name": "punctuation.separator.xenoscript",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.key-value.xenoscript",
+          "match": ":"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.property.xenoscript",
+          "match": "\\b(about|focus|status|horizon|tags|from|to|type|rule)\\b(?=\\s*:)"
+        },
+        {
+          "name": "variable.other.xenoscript",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}
