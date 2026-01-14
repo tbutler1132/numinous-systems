@@ -7,11 +7,11 @@ import { Lexer } from "../src/parser/lexer.ts";
 import { parse } from "../src/parser/parser.ts";
 
 Deno.test("Lexer - tokenizes declaration", () => {
-  const lexer = new Lexer(`convergence Foo { focus: "test" }`);
+  const lexer = new Lexer(`node Foo { about: "test" }`);
   const tokens = lexer.tokenize();
 
   assertEquals(tokens[0].type, "KEYWORD");
-  assertEquals(tokens[0].value, "convergence");
+  assertEquals(tokens[0].value, "node");
   assertEquals(tokens[1].type, "IDENT");
   assertEquals(tokens[1].value, "Foo");
   assertEquals(tokens[2].type, "LBRACE");
@@ -68,34 +68,34 @@ Deno.test("Lexer - tokenizes method call", () => {
 });
 
 Deno.test("Parser - parses declaration", () => {
-  const result = parse(`convergence Foo { focus: "test", horizon: 3 }`);
+  const result = parse(`node Foo { about: "test", status: "active" }`);
 
   assertEquals(result.success, true);
   assertExists(result.statement);
   assertEquals(result.statement.type, "declaration");
 
   if (result.statement.type === "declaration") {
-    assertEquals(result.statement.kind, "convergence");
+    assertEquals(result.statement.kind, "node");
     assertEquals(result.statement.name, "Foo");
-    assertEquals(result.statement.fields.focus, "test");
-    assertEquals(result.statement.fields.horizon, 3);
+    assertEquals(result.statement.fields.about, "test");
+    assertEquals(result.statement.fields.status, "active");
   }
 });
 
 Deno.test("Parser - parses multiline declaration", () => {
-  const result = parse(`convergence Foo {
-    focus: "test"
-    horizon: 3
-    context: ["a", "b"]
+  const result = parse(`node Foo {
+    about: "test"
+    status: "active"
+    tags: ["a", "b"]
   }`);
 
   assertEquals(result.success, true);
   assertExists(result.statement);
 
   if (result.statement.type === "declaration") {
-    assertEquals(result.statement.fields.focus, "test");
-    assertEquals(result.statement.fields.horizon, 3);
-    assertEquals(result.statement.fields.context, ["a", "b"]);
+    assertEquals(result.statement.fields.about, "test");
+    assertEquals(result.statement.fields.status, "active");
+    assertEquals(result.statement.fields.tags, ["a", "b"]);
   }
 });
 

@@ -1,40 +1,29 @@
-# project.xeno — A more complete example
+# project.xeno — A project structure example
 
-# Top-level convergence (orienting)
-convergence BuildXenoScript {
-  focus: "create a semantic programming language"
-  horizon: 4
-  context: [
-    "meaning-first development",
-    "drift detection",
-    "HolyC inspiration"
-  ]
+# Top-level node
+node BuildXenoScript {
+  about: "create a semantic programming language"
+  tags: ["meaning-first", "drift-detection", "provenance"]
 }
 
-# Sub-convergences (more concrete)
-convergence DesignLanguage {
-  focus: "define syntax and semantics"
-  horizon: 3
+# Sub-nodes
+node DesignLanguage {
+  about: "define syntax and semantics"
 }
 
-convergence BuildParser {
-  focus: "implement lexer and parser"
-  horizon: 2
+node BuildParser {
+  about: "implement lexer and parser"
 }
 
-convergence BuildREPL {
-  focus: "create interactive environment"
-  horizon: 2
+node BuildREPL {
+  about: "create interactive environment"
 }
 
-convergence AddProjectors {
-  focus: "implement task, graph, reflection views"
-  horizon: 2
+node AddProjectors {
+  about: "implement tree, list, questions views"
 }
 
-# Relations are created via spawn in the REPL
-# or you can define them explicitly:
-
+# Relations link nodes together
 relation {
   from: BuildXenoScript
   to: DesignLanguage

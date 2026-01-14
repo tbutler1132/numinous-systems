@@ -89,17 +89,13 @@ export class SemanticGraph {
     const parent = this.get(parentIdOrName);
     if (!parent) return null;
 
-    // Determine child properties based on parent
-    const parentHorizon = (parent.fields.horizon as number) ?? 3;
-    const childHorizon = Math.max(1, parentHorizon - 1);
+    // Child inherits parent's kind, or defaults to "node"
+    const childKind = parent.kind === "node" ? "node" : parent.kind;
 
     const child = this.create(
-      "convergence",
+      childKind,
       childName,
-      {
-        focus: childName,
-        horizon: childHorizon,
-      },
+      {},
       spawnProvenance(parent)
     );
 
@@ -218,9 +214,14 @@ export class SemanticGraph {
    * Generate a summary string for a node.
    */
   private summarizeNode(node: SemanticNode): string {
-    const horizon = node.fields.horizon ?? "?";
-    const focus = node.fields.focus ?? node.name;
-    return `${node.name} is a ${node.kind} at horizon ${horizon}.\nFocus: "${focus}"\nProvenance: ${node.provenance}\nChildren: ${node.children.length}`;
+    const about = node.fields.about ?? node.fields.focus ?? node.name;
+    const lines = [
+      `${node.name} is a ${node.kind}.`,
+      `About: "${about}"`,
+      `Provenance: ${node.provenance}`,
+      `Children: ${node.children.length}`,
+    ];
+    return lines.join("\n");
   }
 
   /**

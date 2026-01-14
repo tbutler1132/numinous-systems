@@ -4,9 +4,13 @@ A semantic programming language for meaning-first development.
 
 ## What It Is
 
-XenoScript is a language where **intent is the primitive**. You declare what things mean, the system builds a semantic graph, and you project that graph into different forms (tasks, outlines, reflections, code).
+XenoScript is a language where **meaning is the primitive**. You declare semantic nodes, the system builds a graph, and you can project that graph into different views.
 
-Unlike traditional programming languages that execute behavior, XenoScript lets you **inhabit** a space of meaning and navigate it.
+**What makes it different:**
+- **Provenance tracking** — knows if something was human-created or generated
+- **Semantic drift detection** — notices when changes affect meaning
+- **Projections** — same graph, multiple views (tree, list, questions)
+- **History as meaning** — tracks semantic changes, not just text edits
 
 ## Requirements
 
@@ -23,8 +27,11 @@ curl -fsSL https://deno.land/install.sh | sh
 # Run the REPL
 deno task dev
 
-# Or directly
-deno run --allow-read --allow-write --allow-env mod.ts
+# Load a file and start REPL
+deno task dev examples/hello.xeno
+
+# Run a file (no REPL)
+deno run --allow-read --allow-write --allow-env mod.ts run examples/hello.xeno
 ```
 
 ## Example Session
@@ -35,110 +42,171 @@ XenoScript v0.3.0-dev
 namespace: default
 provenance: organic
 
-> convergence Becoming { focus: "make meaning persist", horizon: 4 }
-◉ created: Becoming [organic, h4]
+> node Project { about: "build something cool" }
+◉ created: Project [organic]
 
-> Becoming.spawn("Write essay")
-○ created: Write_essay [synthetic, h3, ← Becoming]
+> Project.spawn("Design")
+○ created: Design [synthetic, ← Project]
 
-> Becoming → task
-[tasks] Becoming (horizon 4)
+> Project.spawn("Build")
+○ created: Build [synthetic, ← Project]
 
-  □ make meaning persist
-    └── □ Write_essay [h3]
+> Project → tree
+  ◉ Project
+    ├── ○ Design
+    └── ○ Build
 
-  1 actionable items
+> Project → list
+[list] Project
 
-> Becoming → graph
-  [Becoming] ◉ h4
-  └──spawned──▶ [Write_essay] ○ h3
+  □ Project
+    └── □ Design
+    └── □ Build
 
-> ?Becoming
-Becoming is a convergence at horizon 4.
-Focus: "make meaning persist"
+  3 items
+
+> ?Project
+Project is a node.
+Focus: "build something cool"
 Provenance: organic
-Children: 1
+Children: 2
 
 > ls
-◉ Becoming             [organic, h4, 1 children]
-○ Write_essay          [synthetic, h3]
+◉ Project              [organic, 2 children]
+○ Design               [synthetic]
+○ Build                [synthetic]
 
 > save
 saved to ~/.xeno/default.json
-  2 objects
-  1 relations
 ```
 
-## Core Concepts
+## Syntax
 
-### Convergence
+### Nodes
 
-An intentional unit — a goal, action, directive, or orientation.
+The universal primitive. Any fields you want.
 
 ```xeno
-convergence ProjectName {
-  focus: "what this is about"
-  horizon: 3
-  context: ["relevant", "context"]
+node ProjectName {
+  about: "what this is"
+  status: "in progress"
+  tags: ["a", "b", "c"]
 }
 ```
 
-### Horizon
+### Edges / Relations
 
-Abstraction level from 1 (immediate/actionable) to 5 (abstract/orienting).
-
-- **h1**: Immediate action, can be done now
-- **h2**: Near-term task
-- **h3**: Project or goal
-- **h4**: Strategic direction
-- **h5**: Orienting principle
-
-### Provenance
-
-Tracks origin of semantic objects:
-
-- **◉ organic**: Human-created, required effort
-- **○ synthetic**: Generated/spawned
-- **◐ hybrid**: Mixed authorship
-
-### Projections
-
-Transform semantic graphs into different views:
+Connect nodes together.
 
 ```xeno
-Node → task       # Actionable task list
-Node → graph      # Visual tree structure
-Node → reflection # Reflective questions
+relation {
+  from: ProjectName
+  to: SubProject
+  type: spawned
+}
 ```
 
-### Drift Detection
+### Constraints
 
-The system detects when changes affect intent:
+Define rules (for documentation/validation).
 
 ```xeno
-> Foo.focus = "ship fast"
+constraint MustHaveAnchor {
+  rule: "at least one organic node must exist"
+}
+```
 
-⚠ telic drift detected
-  old: "make meaning persist"
-  new: "ship fast"
+### Values
+
+```xeno
+"strings"
+123
+true / false
+null
+[arrays, of, values]
+{ nested: "objects" }
+ReferenceName    # bare name = reference to another node
+```
+
+## Provenance
+
+Every node tracks its origin:
+
+- **◉ organic** — human-created (you typed it)
+- **○ synthetic** — generated (spawned from another node)
+- **◐ hybrid** — mixed authorship
+
+```
+> node Foo { about: "I typed this" }
+◉ created: Foo [organic]
+
+> Foo.spawn("Bar")
+○ created: Bar [synthetic, ← Foo]
+```
+
+## Projections
+
+Transform the graph into different views:
+
+```xeno
+Node → tree       # Hierarchical tree view
+Node → list       # Flat list with children
+Node → questions  # Reflective questions about the node
 ```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `convergence Name { ... }` | Create a convergence |
-| `Name.spawn("child")` | Spawn a child convergence |
+| `node Name { fields }` | Create a node |
+| `Name.spawn("child")` | Spawn a child node |
 | `Name.field = value` | Update a field |
-| `Name → projector` | Project as task/graph/reflection |
+| `Name → tree` | Project as tree |
+| `Name → list` | Project as list |
+| `Name → questions` | Project as questions |
 | `?Name` | Query node info |
 | `?drift` | Check for drift |
 | `history Name` | Show node history |
 | `ls` | List all nodes |
+| `run file.xeno` | Load a .xeno file |
 | `save` | Save namespace |
-| `load namespace` | Load namespace |
 | `help` | Show help |
 | `exit` | Exit REPL |
+
+## Files
+
+Write `.xeno` files with declarations:
+
+```xeno
+# project.xeno
+
+node MyProject {
+  about: "the main thing"
+}
+
+node SubTask {
+  about: "part of the main thing"
+}
+
+relation {
+  from: MyProject
+  to: SubTask
+  type: spawned
+}
+```
+
+Load them:
+
+```bash
+deno task dev project.xeno
+```
+
+Or from the REPL:
+
+```
+> run project.xeno
+Loaded 2 objects from project.xeno
+```
 
 ## Running Tests
 
@@ -146,43 +214,13 @@ The system detects when changes affect intent:
 deno task test
 ```
 
-## Architecture
-
-```
-src/
-├── core/           # Semantic graph engine
-│   ├── graph.ts    # SemanticGraph class
-│   ├── node.ts     # Node types
-│   ├── history.ts  # History tracking
-│   └── provenance.ts
-├── parser/         # XenoScript parser
-│   ├── lexer.ts    # Tokenizer
-│   ├── parser.ts   # Recursive descent parser
-│   └── ast.ts      # AST types
-├── executor/       # Command execution
-│   ├── executor.ts # Main executor
-│   ├── commands.ts # Built-in commands
-│   └── drift.ts    # Drift detection
-├── projectors/     # Output projectors
-│   ├── projector.ts
-│   ├── task.ts
-│   ├── graph.ts
-│   └── reflection.ts
-├── repl/           # Interactive REPL
-│   ├── repl.ts
-│   ├── render.ts
-│   └── completion.ts
-└── persistence/    # Save/load
-    ├── store.ts
-    └── json.ts
-```
-
 ## Philosophy
 
 XenoScript is designed to:
 
-- **Preserve intent** across acceleration
-- **Make drift detectable** at the level of meaning
-- **Support multiple interpretations** of the same semantic core
+- **Keep meaning explicit** — nodes are semantic, not just data
+- **Track provenance** — know what's human vs generated
+- **Detect drift** — notice when intent changes
+- **Support multiple views** — same graph, different projections
 
-It's a language you can think in, not just type in.
+It's a language for thinking about what things mean, not just what they do.

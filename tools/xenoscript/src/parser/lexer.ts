@@ -33,7 +33,8 @@ export interface Token {
 }
 
 const KEYWORDS = new Set([
-  "convergence",
+  "node",
+  "edge",
   "relation",
   "constraint",
   "signal",

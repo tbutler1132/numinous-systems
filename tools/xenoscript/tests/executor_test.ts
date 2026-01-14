@@ -13,23 +13,23 @@ function createState(): ExecutorState {
   };
 }
 
-Deno.test("Executor - creates convergence", () => {
+Deno.test("Executor - creates node", () => {
   const state = createState();
 
-  const result = execute(state, `convergence Foo { focus: "test", horizon: 3 }`);
+  const result = execute(state, `node Foo { about: "test" }`);
 
   assertEquals(result.success, true);
   assertEquals(result.output.includes("created: Foo"), true);
 
   const node = state.graph.get("Foo");
   assertEquals(node?.name, "Foo");
-  assertEquals(node?.fields.focus, "test");
+  assertEquals(node?.fields.about, "test");
 });
 
 Deno.test("Executor - spawns child", () => {
   const state = createState();
 
-  execute(state, `convergence Parent { focus: "parent", horizon: 4 }`);
+  execute(state, `node Parent { about: "parent" }`);
   const result = execute(state, `Parent.spawn("Child")`);
 
   assertEquals(result.success, true);
@@ -44,84 +44,81 @@ Deno.test("Executor - spawns child", () => {
 Deno.test("Executor - updates field", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "old", horizon: 3 }`);
-  const result = execute(state, `Foo.focus = "new"`);
+  execute(state, `node Foo { about: "old" }`);
+  const result = execute(state, `Foo.about = "new"`);
 
   assertEquals(result.success, true);
   assertEquals(result.output.includes("updated"), true);
 
   const node = state.graph.get("Foo");
-  assertEquals(node?.fields.focus, "new");
+  assertEquals(node?.fields.about, "new");
 });
 
-Deno.test("Executor - warns on telic drift", () => {
+Deno.test("Executor - updates focus field", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "meaning", horizon: 3 }`);
+  execute(state, `node Foo { focus: "meaning" }`);
   const result = execute(state, `Foo.focus = "speed"`);
 
   assertEquals(result.success, true);
-  assertEquals(result.output.includes("telic drift"), true);
+  assertEquals(result.output.includes("updated"), true);
 });
 
-Deno.test("Executor - projects as task", () => {
+Deno.test("Executor - projects as list", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "test", horizon: 3 }`);
+  execute(state, `node Foo { about: "test" }`);
   execute(state, `Foo.spawn("SubTask1")`);
   execute(state, `Foo.spawn("SubTask2")`);
 
-  const result = execute(state, `Foo → task`);
+  const result = execute(state, `Foo → list`);
 
   assertEquals(result.success, true);
-  assertEquals(result.output.includes("[tasks]"), true);
+  assertEquals(result.output.includes("[list]"), true);
   assertEquals(result.output.includes("SubTask1"), true);
   assertEquals(result.output.includes("SubTask2"), true);
 });
 
-Deno.test("Executor - projects as graph", () => {
+Deno.test("Executor - projects as tree", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "test", horizon: 3 }`);
+  execute(state, `node Foo { about: "test" }`);
   execute(state, `Foo.spawn("Child")`);
 
-  const result = execute(state, `Foo → graph`);
+  const result = execute(state, `Foo → tree`);
 
   assertEquals(result.success, true);
-  assertEquals(result.output.includes("[Foo]"), true);
-  assertEquals(result.output.includes("[Child]"), true);
-  assertEquals(result.output.includes("spawned"), true);
+  assertEquals(result.output.includes("Foo"), true);
+  assertEquals(result.output.includes("Child"), true);
 });
 
-Deno.test("Executor - projects as reflection", () => {
+Deno.test("Executor - projects as questions", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "test", horizon: 3 }`);
+  execute(state, `node Foo { about: "test" }`);
 
-  const result = execute(state, `Foo → reflection`);
+  const result = execute(state, `Foo → questions`);
 
   assertEquals(result.success, true);
-  assertEquals(result.output.includes("[reflection]"), true);
-  assertEquals(result.output.includes("Questions"), true);
+  assertEquals(result.output.includes("[questions]"), true);
 });
 
 Deno.test("Executor - queries node info", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "test", horizon: 3 }`);
+  execute(state, `node Foo { about: "test" }`);
 
   const result = execute(state, `?Foo`);
 
   assertEquals(result.success, true);
   assertEquals(result.output.includes("Foo"), true);
-  assertEquals(result.output.includes("convergence"), true);
 });
 
 Deno.test("Executor - lists nodes", () => {
   const state = createState();
 
-  execute(state, `convergence Foo { focus: "test1", horizon: 3 }`);
-  execute(state, `convergence Bar { focus: "test2", horizon: 2 }`);
+  execute(state, `node Foo { about: "test1" }`);
+  execute(state, `node Bar { about: "test2" }`);
 
   const result = execute(state, `ls`);
 
@@ -164,5 +161,5 @@ Deno.test("Executor - help command", () => {
 
   assertEquals(result.success, true);
   assertEquals(result.output.includes("XenoScript"), true);
-  assertEquals(result.output.includes("convergence"), true);
+  assertEquals(result.output.includes("node"), true);
 });

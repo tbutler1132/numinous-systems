@@ -90,11 +90,10 @@ function executeDeclaration(
   );
 
   const symbol = provenanceSymbol(node.provenance);
-  const horizon = node.fields.horizon ?? "?";
 
   return {
     success: true,
-    output: `${symbol} created: ${node.name} [${node.provenance}, h${horizon}]`,
+    output: `${symbol} created: ${node.name} [${node.provenance}]`,
   };
 }
 
@@ -158,12 +157,15 @@ function executeProjection(
   }
 
   switch (stmt.projector) {
-    case "task":
-      return projectTask(state.graph, node.id);
+    case "tree":
     case "graph":
-      return projectGraph(state.graph, node.id);
+      return projectTree(state.graph, node.id);
+    case "list":
+    case "task":
+      return projectList(state.graph, node.id);
+    case "questions":
     case "reflection":
-      return projectReflection(state.graph, node.id);
+      return projectQuestions(state.graph, node.id);
     default:
       return { success: false, output: `Unknown projector: ${stmt.projector}` };
   }
@@ -181,9 +183,8 @@ function executeBuiltin(
       }
       const lines = nodes.map((n) => {
         const symbol = provenanceSymbol(n.provenance);
-        const horizon = n.fields.horizon ?? "?";
         const children = n.children.length > 0 ? `, ${n.children.length} children` : "";
-        return `${symbol} ${n.name.padEnd(20)} [${n.provenance}, h${horizon}${children}]`;
+        return `${symbol} ${n.name.padEnd(20)} [${n.provenance}${children}]`;
       });
       return { success: true, output: lines.join("\n") };
     }
@@ -222,97 +223,105 @@ function executeBuiltin(
   }
 }
 
-// Basic inline projectors (will be moved to projectors module)
+// Basic inline projectors
 
-function projectTask(graph: SemanticGraph, nodeId: string): ExecuteResult {
+function projectList(graph: SemanticGraph, nodeId: string): ExecuteResult {
   const node = graph.get(nodeId);
   if (!node) {
     return { success: false, output: "Node not found" };
   }
 
   const lines: string[] = [];
-  lines.push(`[tasks] ${node.name} (horizon ${node.fields.horizon ?? "?"})`);
+  lines.push(`[list] ${node.name}`);
   lines.push("");
 
-  if (node.children.length === 0) {
-    const horizon = (node.fields.horizon as number) ?? 3;
-    if (horizon > 2) {
-      lines.push("  - too abstract for direct action");
-      lines.push("  - suggest: spawn horizon " + (horizon - 1) + " refinements");
-    } else {
-      lines.push(`  □ ${node.fields.focus ?? node.name}`);
-    }
-  } else {
-    lines.push(`  □ ${node.fields.focus ?? node.name}`);
-    for (const childId of node.children) {
-      const child = graph.get(childId);
-      if (child) {
-        lines.push(`    ├── □ ${child.name} [h${child.fields.horizon ?? "?"}]`);
-      }
+  // Show this node
+  lines.push(`  □ ${node.name}`);
+  
+  // Show children as sub-items
+  for (const childId of node.children) {
+    const child = graph.get(childId);
+    if (child) {
+      lines.push(`    └── □ ${child.name}`);
     }
   }
 
+  const count = node.children.length + 1;
   lines.push("");
-  lines.push(`  ${node.children.length || 1} actionable item${node.children.length !== 1 ? "s" : ""}`);
+  lines.push(`  ${count} item${count !== 1 ? "s" : ""}`);
 
   return { success: true, output: lines.join("\n") };
 }
 
-function projectGraph(graph: SemanticGraph, nodeId: string): ExecuteResult {
+function projectTree(graph: SemanticGraph, nodeId: string): ExecuteResult {
   const node = graph.get(nodeId);
   if (!node) {
     return { success: false, output: "Node not found" };
   }
 
   const lines: string[] = [];
+  const symbol = node.provenance === "organic" ? "◉" : "○";
 
-  // Simple ASCII tree
-  const nodeLabel = `[${node.name}]`;
-  lines.push(`  ${nodeLabel}`);
+  // Render tree recursively
+  lines.push(`  ${symbol} ${node.name}`);
+  renderTreeChildren(graph, node, lines, "    ");
+
+  return { success: true, output: lines.join("\n") };
+}
+
+function renderTreeChildren(
+  graph: SemanticGraph,
+  parent: { children: string[] },
+  lines: string[],
+  indent: string
+): void {
+  for (let i = 0; i < parent.children.length; i++) {
+    const childId = parent.children[i];
+    const child = graph.get(childId);
+    if (!child) continue;
+
+    const isLast = i === parent.children.length - 1;
+    const connector = isLast ? "└── " : "├── ";
+    const symbol = child.provenance === "organic" ? "◉" : "○";
+
+    lines.push(`${indent}${connector}${symbol} ${child.name}`);
+
+    if (child.children.length > 0) {
+      const nextIndent = indent + (isLast ? "    " : "│   ");
+      renderTreeChildren(graph, child, lines, nextIndent);
+    }
+  }
+}
+
+function projectQuestions(graph: SemanticGraph, nodeId: string): ExecuteResult {
+  const node = graph.get(nodeId);
+  if (!node) {
+    return { success: false, output: "Node not found" };
+  }
+
+  const lines: string[] = [];
+  lines.push(`[questions] ${node.name}`);
+  lines.push("");
+
+  // Generate questions based on fields
+  const fields = Object.keys(node.fields);
+  
+  lines.push(`  1. What is the purpose of ${node.name}?`);
+  lines.push(`  2. What would success look like?`);
+  lines.push(`  3. What might prevent progress?`);
+
+  if (fields.length > 0) {
+    lines.push("");
+    lines.push("  Based on fields:");
+    fields.slice(0, 3).forEach((field, i) => {
+      const value = node.fields[field];
+      lines.push(`  ${i + 4}. Why is ${field} set to "${value}"?`);
+    });
+  }
 
   if (node.children.length > 0) {
-    const childLabels = node.children.map((childId) => {
-      const child = graph.get(childId);
-      return child ? `[${child.name}]` : `[unknown]`;
-    });
-
-    // Draw connections
-    for (let i = 0; i < childLabels.length; i++) {
-      const isLast = i === childLabels.length - 1;
-      const prefix = isLast ? "  └──spawned──▶ " : "  ├──spawned──▶ ";
-      lines.push(prefix + childLabels[i]);
-    }
-  }
-
-  return { success: true, output: lines.join("\n") };
-}
-
-function projectReflection(graph: SemanticGraph, nodeId: string): ExecuteResult {
-  const node = graph.get(nodeId);
-  if (!node) {
-    return { success: false, output: "Node not found" };
-  }
-
-  const lines: string[] = [];
-  lines.push(`[reflection] ${node.name}`);
-  lines.push("");
-  lines.push("  Questions to consider:");
-  lines.push("");
-
-  const focus = (node.fields.focus as string) ?? node.name;
-  const context = (node.fields.context as string[]) ?? [];
-
-  // Generate questions based on focus
-  lines.push(`  1. What would success look like for "${focus}"?`);
-  lines.push(`  2. What obstacles might prevent progress?`);
-  lines.push(`  3. What must be true for this to matter?`);
-
-  if (context.length > 0) {
     lines.push("");
-    lines.push("  Context-specific questions:");
-    context.slice(0, 2).forEach((ctx, i) => {
-      lines.push(`  ${i + 4}. How does "${ctx}" affect the approach?`);
-    });
+    lines.push(`  ${node.name} has ${node.children.length} children — is this the right breakdown?`);
   }
 
   return { success: true, output: lines.join("\n") };
@@ -322,12 +331,12 @@ const HELP_TEXT = `
 XenoScript v0.3
 
 Commands:
-  convergence Name { fields }   Create a convergence
-  Name.spawn("child")           Spawn a child convergence
+  node Name { fields }          Create a node
+  Name.spawn("child")           Spawn a child node
   Name.field = value            Update a field
-  Name → task                   Project as task list
-  Name → graph                  Project as graph
-  Name → reflection             Project as questions
+  Name → tree                   Project as tree view
+  Name → list                   Project as flat list
+  Name → questions              Project as questions
   ?Name                         Query node info
   ?drift                        Check for drift
   history Name                  Show node history

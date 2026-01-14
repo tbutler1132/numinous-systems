@@ -51,8 +51,8 @@ export class Parser {
       if (["ls", "save", "load", "run", "exit", "help", "clear"].includes(keyword)) {
         return this.parseBuiltin();
       }
-      // Declaration: convergence, relation, constraint, signal
-      if (["convergence", "relation", "constraint", "signal"].includes(keyword)) {
+      // Declaration: node, edge, relation, constraint, signal
+      if (["node", "edge", "relation", "constraint", "signal"].includes(keyword)) {
         return this.parseDeclaration();
       }
       // History command

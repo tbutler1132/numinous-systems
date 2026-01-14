@@ -14,7 +14,7 @@ export type Statement =
 
 export interface DeclarationStmt {
   type: "declaration";
-  kind: "convergence" | "relation" | "constraint" | "signal";
+  kind: "node" | "edge" | "relation" | "constraint" | "signal";
   name: string;
   fields: Record<string, Value>;
 }

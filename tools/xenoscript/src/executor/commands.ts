@@ -35,7 +35,7 @@ export function executeMethod(
       if (child) {
         return {
           success: true,
-          output: `○ created: ${child.name} [synthetic, h${child.fields.horizon ?? "?"}, ← ${node.name}]`,
+          output: `○ created: ${child.name} [synthetic, ← ${node.name}]`,
           node: child,
         };
       }

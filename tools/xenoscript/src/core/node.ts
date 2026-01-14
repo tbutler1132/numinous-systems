@@ -2,7 +2,7 @@
  * Core semantic node types for XenoScript.
  */
 
-export type NodeKind = "convergence" | "relation" | "constraint" | "signal";
+export type NodeKind = "node" | "edge" | "relation" | "constraint" | "signal";
 export type Provenance = "organic" | "synthetic" | "hybrid" | "unknown";
 
 export type Value =

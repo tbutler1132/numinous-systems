@@ -1,97 +1,61 @@
 # expressions.xeno — The Expressions project in XenoScript
 
 # This is the organic anchor — the core intent
-convergence Expressions {
-  focus: "communicate ideas through participation"
-  horizon: 5
-  context: [
-    "AI generation",
-    "reader engagement", 
-    "organic anchors",
-    "viable beauty"
-  ]
+node Expressions {
+  about: "communicate ideas through participation"
+  tags: ["AI generation", "reader engagement", "organic anchors", "viable beauty"]
 }
 
 # The app itself
-convergence ExpressionsApp {
-  focus: "personalized essay generation from artifacts"
-  horizon: 3
+node ExpressionsApp {
+  about: "personalized essay generation from artifacts"
 }
 
 # The reflection essay (this is the organic touchpoint)
-convergence ExpressionsReflection {
-  focus: "explain why this exists"
-  horizon: 3
-  context: [
-    "speed and temptation",
-    "participation without voice",
-    "the organic touchpoint",
-    "what is a work",
-    "software as persistence",
-    "drift",
-    "taste",
-    "beauty",
-    "viability",
-    "the abyss",
-    "what makes it worthwhile",
-    "the honest admission"
-  ]
+node ExpressionsReflection {
+  about: "explain why this exists"
 }
 
-# Essay sections as convergences
-convergence Level1_Speed {
-  focus: "speed changed the experience"
-  horizon: 2
-  context: [
-    "AI collapsed friction",
-    "production outpaced reflection",
-    "effort stopped filtering"
-  ]
+# Essay sections
+node Level1_Speed {
+  about: "speed changed the experience"
+  notes: "AI collapsed friction, production outpaced reflection"
 }
 
-convergence Level2_Participation {
-  focus: "if generation is inevitable, authorship is the variable"
-  horizon: 2
+node Level2_Participation {
+  about: "if generation is inevitable, authorship is the variable"
 }
 
-convergence Level3_Anchor {
-  focus: "one organic touchpoint gives permission for the rest"
-  horizon: 2
+node Level3_Anchor {
+  about: "one organic touchpoint gives permission for the rest"
 }
 
-convergence Level4_Software {
-  focus: "software is about persistence"
-  horizon: 2
+node Level4_Software {
+  about: "software is about persistence"
 }
 
-convergence Level5_Taste {
-  focus: "taste is compression under abundance"
-  horizon: 2
+node Level5_Taste {
+  about: "taste is compression under abundance"
 }
 
-convergence Level6_Beauty {
-  focus: "beauty is what makes persistence worth it"
-  horizon: 2
+node Level6_Beauty {
+  about: "beauty is what makes persistence worth it"
 }
 
-convergence Level7_Viability {
-  focus: "what does it mean for something to continue existing"
-  horizon: 2
+node Level7_Viability {
+  about: "what does it mean for something to continue existing"
 }
 
-convergence Level8_Abyss {
-  focus: "when a system stops persisting, it ends"
-  horizon: 2
+node Level8_Abyss {
+  about: "when a system stops persisting, it ends"
 }
 
-convergence Level9_Worthwhile {
-  focus: "what still holds given death"
-  horizon: 2
+node Level9_Worthwhile {
+  about: "what still holds given death"
 }
 
-convergence Level10_Admission {
-  focus: "belief without guarantees"
-  horizon: 2
+node Level10_Admission {
+  about: "belief without guarantees"
 }
 
 # Structure

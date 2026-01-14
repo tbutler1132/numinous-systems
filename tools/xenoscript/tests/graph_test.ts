@@ -9,19 +9,19 @@ import { provenanceSymbol } from "../src/core/provenance.ts";
 Deno.test("SemanticGraph - creates node", () => {
   const graph = new SemanticGraph();
 
-  const node = graph.create("convergence", "Foo", { focus: "test" });
+  const node = graph.create("node", "Foo", { about: "test" });
 
   assertExists(node);
-  assertEquals(node.kind, "convergence");
+  assertEquals(node.kind, "node");
   assertEquals(node.name, "Foo");
-  assertEquals(node.fields.focus, "test");
+  assertEquals(node.fields.about, "test");
   assertEquals(node.provenance, "organic");
 });
 
 Deno.test("SemanticGraph - gets node by name", () => {
   const graph = new SemanticGraph();
 
-  graph.create("convergence", "Foo", { focus: "test" });
+  graph.create("node", "Foo", { about: "test" });
 
   const node = graph.get("Foo");
   assertExists(node);
@@ -31,9 +31,8 @@ Deno.test("SemanticGraph - gets node by name", () => {
 Deno.test("SemanticGraph - spawns child", () => {
   const graph = new SemanticGraph();
 
-  const parent = graph.create("convergence", "Parent", {
-    focus: "parent focus",
-    horizon: 4,
+  const parent = graph.create("node", "Parent", {
+    about: "parent node",
   });
 
   const child = graph.spawn("Parent", "Child");
@@ -42,7 +41,6 @@ Deno.test("SemanticGraph - spawns child", () => {
   assertEquals(child.name, "Child");
   assertEquals(child.parent, parent.id);
   assertEquals(child.provenance, "synthetic");
-  assertEquals(child.fields.horizon, 3); // parent horizon - 1
 
   // Parent should have child in children array
   const updatedParent = graph.get("Parent");
@@ -54,46 +52,32 @@ Deno.test("SemanticGraph - spawns child", () => {
 Deno.test("SemanticGraph - updates field", () => {
   const graph = new SemanticGraph();
 
-  graph.create("convergence", "Foo", { focus: "old focus", horizon: 3 });
+  graph.create("node", "Foo", { about: "old value", status: "draft" });
 
-  const result = graph.update("Foo", "focus", "new focus");
+  const result = graph.update("Foo", "about", "new value");
 
-  assertEquals(result.hasDrift, true);
-  assertEquals(result.driftClass, "telic");
-  assertEquals(result.oldValue, "old focus");
-  assertEquals(result.newValue, "new focus");
+  assertEquals(result.oldValue, "old value");
+  assertEquals(result.newValue, "new value");
 
   const node = graph.get("Foo");
   assertExists(node);
-  assertEquals(node.fields.focus, "new focus");
-});
-
-Deno.test("SemanticGraph - detects telic drift", () => {
-  const graph = new SemanticGraph();
-
-  graph.create("convergence", "Foo", { focus: "meaning", horizon: 3 });
-
-  const result = graph.update("Foo", "focus", "speed");
-
-  assertEquals(result.hasDrift, true);
-  assertEquals(result.driftClass, "telic");
+  assertEquals(node.fields.about, "new value");
 });
 
 Deno.test("SemanticGraph - detects cosmetic change", () => {
   const graph = new SemanticGraph();
 
-  graph.create("convergence", "Foo", { focus: "test", note: "old note" });
+  graph.create("node", "Foo", { about: "test", note: "old note" });
 
   const result = graph.update("Foo", "note", "new note");
 
-  assertEquals(result.hasDrift, false);
   assertEquals(result.driftClass, "cosmetic");
 });
 
 Deno.test("SemanticGraph - queries node", () => {
   const graph = new SemanticGraph();
 
-  graph.create("convergence", "Foo", { focus: "test", horizon: 3 });
+  graph.create("node", "Foo", { about: "test" });
   graph.spawn("Foo", "Child1");
   graph.spawn("Foo", "Child2");
 
@@ -107,7 +91,7 @@ Deno.test("SemanticGraph - queries node", () => {
 Deno.test("SemanticGraph - serializes and deserializes", () => {
   const graph = new SemanticGraph("test-namespace");
 
-  graph.create("convergence", "Foo", { focus: "test", horizon: 3 });
+  graph.create("node", "Foo", { about: "test" });
   graph.spawn("Foo", "Child");
 
   // Serialize
@@ -122,7 +106,7 @@ Deno.test("SemanticGraph - serializes and deserializes", () => {
 
   const foo = restored.get("Foo");
   assertExists(foo);
-  assertEquals(foo.fields.focus, "test");
+  assertEquals(foo.fields.about, "test");
   assertEquals(foo.children.length, 1);
 });
 
