@@ -1,0 +1,8 @@
+# hello.xeno — A simple XenoScript example
+
+# Create a convergence (the core unit of intent)
+convergence Hello {
+  focus: "learn XenoScript"
+  horizon: 2
+  context: ["first program", "exploration"]
+}

@@ -1,0 +1,60 @@
+# project.xeno — A more complete example
+
+# Top-level convergence (orienting)
+convergence BuildXenoScript {
+  focus: "create a semantic programming language"
+  horizon: 4
+  context: [
+    "meaning-first development",
+    "drift detection",
+    "HolyC inspiration"
+  ]
+}
+
+# Sub-convergences (more concrete)
+convergence DesignLanguage {
+  focus: "define syntax and semantics"
+  horizon: 3
+}
+
+convergence BuildParser {
+  focus: "implement lexer and parser"
+  horizon: 2
+}
+
+convergence BuildREPL {
+  focus: "create interactive environment"
+  horizon: 2
+}
+
+convergence AddProjectors {
+  focus: "implement task, graph, reflection views"
+  horizon: 2
+}
+
+# Relations are created via spawn in the REPL
+# or you can define them explicitly:
+
+relation {
+  from: BuildXenoScript
+  to: DesignLanguage
+  type: spawned
+}
+
+relation {
+  from: BuildXenoScript
+  to: BuildParser
+  type: spawned
+}
+
+relation {
+  from: BuildXenoScript
+  to: BuildREPL
+  type: spawned
+}
+
+relation {
+  from: BuildXenoScript
+  to: AddProjectors
+  type: spawned
+}

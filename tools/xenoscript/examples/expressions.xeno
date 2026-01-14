@@ -1,0 +1,119 @@
+# expressions.xeno — The Expressions project in XenoScript
+
+# This is the organic anchor — the core intent
+convergence Expressions {
+  focus: "communicate ideas through participation"
+  horizon: 5
+  context: [
+    "AI generation",
+    "reader engagement", 
+    "organic anchors",
+    "viable beauty"
+  ]
+}
+
+# The app itself
+convergence ExpressionsApp {
+  focus: "personalized essay generation from artifacts"
+  horizon: 3
+}
+
+# The reflection essay (this is the organic touchpoint)
+convergence ExpressionsReflection {
+  focus: "explain why this exists"
+  horizon: 3
+  context: [
+    "speed and temptation",
+    "participation without voice",
+    "the organic touchpoint",
+    "what is a work",
+    "software as persistence",
+    "drift",
+    "taste",
+    "beauty",
+    "viability",
+    "the abyss",
+    "what makes it worthwhile",
+    "the honest admission"
+  ]
+}
+
+# Essay sections as convergences
+convergence Level1_Speed {
+  focus: "speed changed the experience"
+  horizon: 2
+  context: [
+    "AI collapsed friction",
+    "production outpaced reflection",
+    "effort stopped filtering"
+  ]
+}
+
+convergence Level2_Participation {
+  focus: "if generation is inevitable, authorship is the variable"
+  horizon: 2
+}
+
+convergence Level3_Anchor {
+  focus: "one organic touchpoint gives permission for the rest"
+  horizon: 2
+}
+
+convergence Level4_Software {
+  focus: "software is about persistence"
+  horizon: 2
+}
+
+convergence Level5_Taste {
+  focus: "taste is compression under abundance"
+  horizon: 2
+}
+
+convergence Level6_Beauty {
+  focus: "beauty is what makes persistence worth it"
+  horizon: 2
+}
+
+convergence Level7_Viability {
+  focus: "what does it mean for something to continue existing"
+  horizon: 2
+}
+
+convergence Level8_Abyss {
+  focus: "when a system stops persisting, it ends"
+  horizon: 2
+}
+
+convergence Level9_Worthwhile {
+  focus: "what still holds given death"
+  horizon: 2
+}
+
+convergence Level10_Admission {
+  focus: "belief without guarantees"
+  horizon: 2
+}
+
+# Structure
+relation { from: Expressions, to: ExpressionsApp, type: spawned }
+relation { from: Expressions, to: ExpressionsReflection, type: spawned }
+
+relation { from: ExpressionsReflection, to: Level1_Speed, type: spawned }
+relation { from: ExpressionsReflection, to: Level2_Participation, type: spawned }
+relation { from: ExpressionsReflection, to: Level3_Anchor, type: spawned }
+relation { from: ExpressionsReflection, to: Level4_Software, type: spawned }
+relation { from: ExpressionsReflection, to: Level5_Taste, type: spawned }
+relation { from: ExpressionsReflection, to: Level6_Beauty, type: spawned }
+relation { from: ExpressionsReflection, to: Level7_Viability, type: spawned }
+relation { from: ExpressionsReflection, to: Level8_Abyss, type: spawned }
+relation { from: ExpressionsReflection, to: Level9_Worthwhile, type: spawned }
+relation { from: ExpressionsReflection, to: Level10_Admission, type: spawned }
+
+# Constraints
+constraint NoPolishing {
+  rule: "do not optimize for smoothness"
+}
+
+constraint OneAnchor {
+  rule: "at least one organic artifact must exist"
+}
