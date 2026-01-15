@@ -1,4 +1,4 @@
-Do the smallest next thing that increases the Org's viability or legibility without foreclosing future options.
+Do the smallest next thing that measurably increases the system’s present viability or legibility, without committing it to an irreversible path
 
 # Log
 
