@@ -12,6 +12,7 @@ Some entries may later move to [[feedback]], [[models]], [[episodes]], or [[arti
 ## Actions
 
 - [x] Buy domain timothybutler.io
+- Ask HB about creative direction idea
 
 ---
 
