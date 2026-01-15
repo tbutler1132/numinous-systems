@@ -64,13 +64,14 @@ One table. Generic observations. Finance is just the first domain.
 
 ```sql
 CREATE TABLE observations (
-  id            TEXT PRIMARY KEY,     -- deterministic fingerprint
-  observed_at   TEXT NOT NULL,        -- ISO-8601 timestamp (when it happened)
-  domain        TEXT NOT NULL,        -- 'finance', 'health', 'time', etc.
-  source        TEXT NOT NULL,        -- 'chase_csv', 'oura_api', 'manual'
-  type          TEXT NOT NULL,        -- 'transaction', 'sleep_session', etc.
-  payload       TEXT NOT NULL,        -- JSON blob (domain-specific data)
-  ingested_at   TEXT NOT NULL         -- when this row was stored
+  id              TEXT PRIMARY KEY,       -- deterministic fingerprint
+  observed_at     TEXT NOT NULL,          -- ISO-8601 (canonical time axis)
+  domain          TEXT NOT NULL,          -- 'finance', 'health', 'time', etc.
+  source          TEXT NOT NULL,          -- 'chase_csv', 'oura_api', 'manual'
+  type            TEXT NOT NULL,          -- 'transaction', 'sleep_session', etc.
+  schema_version  INTEGER NOT NULL DEFAULT 1,  -- payload schema version
+  payload         TEXT NOT NULL CHECK (json_valid(payload)),  -- JSON blob
+  ingested_at     TEXT NOT NULL           -- when this row was stored
 );
 
 CREATE INDEX idx_observed_at ON observations(observed_at);
@@ -87,15 +88,27 @@ A finance transaction is stored as:
   "domain": "finance",
   "source": "chase_csv",
   "type": "transaction",
+  "schema_version": 1,
   "payload": {
     "amount_cents": -1250,
     "description_raw": "STARBUCKS STORE 12345",
     "description_norm": "STARBUCKS",
-    "account_label": "checking"
+    "account_label": "checking",
+    "posted_at": "2026-01-14",
+    "transaction_at": "2026-01-13",
+    "source_row_hash": "sha256..."
   },
   "ingested_at": "2026-01-15T10:30:00Z"
 }
 ```
+
+**Notes:**
+
+- `schema_version` allows payload schema to evolve
+- `CHECK (json_valid(payload))` enforces JSON at the database level
+- `observed_at` is the canonical time axis (prefer `posted_at` for finance)
+- `payload` preserves both `posted_at` and `transaction_at` so no information is lost
+- `source_row_hash` is a hash of the raw CSV row for collision detection
 
 This is your **observation protocol**. Finance is the first sensor. Health, time, mood can follow the same structure with zero schema changes.
 
@@ -116,14 +129,18 @@ This is your **observation protocol**. Finance is the first sensor. Health, time
 
 **Description:**
 
-- `description_raw` = unchanged from CSV
+- `description_raw` = unchanged from CSV (always keep this)
 - `description_norm` = derived:
   - Uppercase
   - Trim whitespace
   - Collapse repeated spaces
-  - Remove obvious suffixes like `*1234`
+  - Remove only **very specific patterns** you're confident are noise:
+    - Card suffixes like `*1234` or `#1234`
+    - Excessive spacing
+    - Maybe "POS" prefixes (depends on Chase format)
+  - **Do NOT remove numbers universally** — they might be store IDs that disambiguate
 
-Keep normalization conservative. Over-normalization creates false merges.
+Keep normalization conservative. Over-normalization creates false merges. When in doubt, keep more of the original.
 
 ---
 
@@ -131,7 +148,7 @@ Keep normalization conservative. Over-normalization creates false merges.
 
 Re-running ingest must not create duplicates.
 
-**Fingerprint inputs (for finance.transaction):**
+**Semantic fingerprint (id):**
 
 - `domain` ('finance')
 - `source` ('chase_csv')
@@ -141,17 +158,47 @@ Re-running ingest must not create duplicates.
 - `description_norm`
 - `account_label` (if provided)
 
-**Implementation:**
-
 ```
 finance|chase_csv|transaction|2026-01-14|-1250|STARBUCKS|checking
 ```
 
-Hash with SHA-256 → use as `id`
+Hash with SHA-256 → use as `id`. Primary key enforces dedupe.
 
-Primary key enforces dedupe. Conflicts are silently ignored.
+**Source row hash (collision detection):**
+
+The semantic fingerprint can collide (two Starbucks charges, same day, same amount). To detect this:
+
+- Also compute `source_row_hash` from raw fields (raw description, raw date, raw amount, check number if present)
+- Store in payload
+- On conflict: if `source_row_hash` differs, log a warning ("possible real duplicate suppressed")
+
+This doesn't block ingest, but creates an audit trail for edge cases.
 
 Each domain/type defines its own fingerprint inputs. The pattern is the same.
+
+---
+
+### Ingest Audit Log
+
+Track every ingest run for self-audit:
+
+```sql
+CREATE TABLE ingest_runs (
+  run_id        TEXT PRIMARY KEY,     -- UUID
+  started_at    TEXT NOT NULL,
+  finished_at   TEXT,
+  source_file   TEXT NOT NULL,
+  domain        TEXT NOT NULL,
+  rows_read     INTEGER,
+  rows_inserted INTEGER,
+  rows_skipped  INTEGER,
+  min_observed  TEXT,                 -- earliest observation in batch
+  max_observed  TEXT,                 -- latest observation in batch
+  status        TEXT NOT NULL         -- 'success', 'failed', 'partial'
+);
+```
+
+This isn't a dashboard — it's system self-audit. You'll thank yourself when something breaks or a CSV format changes.
 
 ---
 
@@ -168,6 +215,7 @@ nodes/personal/
 
 - `raw/` and `data/` MUST be .gitignore'd
 - Back up `observations.db` periodically
+- **Encrypt backups at rest** (even basic `age`/`gpg`) — transactions are sensitive
 
 ---
 
@@ -190,9 +238,16 @@ rows read: 47
 inserted: 42
 skipped (duplicates): 5
 date range: 2025-12-15 to 2026-01-14
+run logged: ingest_runs.run_id = abc123...
 ```
 
-No reports. No status. No dashboards. Just ingest.
+If collision detected (same id, different source_row_hash):
+
+```
+warning: possible duplicate suppressed at row 23 (same fingerprint, different raw data)
+```
+
+No reports. No status. No dashboards. Just ingest + audit.
 
 ---
 
