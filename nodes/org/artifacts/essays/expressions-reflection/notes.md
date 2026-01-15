@@ -2091,3 +2091,5 @@ If they feel respected, you did it right.
 - This is not the climax
 - It is the grounding
 - The essay ends by standing, not ascending
+
+Author's Note: So this will sound pretty crazy if you actually read this, but the below essay is heavily AI generated. I once saw somebody say "Why would I put effort into reading something you didn't put effort into writing", which I think is a fair point, but I think . Either way this is just temporary

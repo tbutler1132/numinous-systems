@@ -19,7 +19,9 @@ The purpose of this tool is not budgeting, not optimization, not decision-making
 3. Run `finance ingest`
 4. Done
 
-That's the ritual. The tool normalizes dates, amounts, and descriptions, then appends to an SQLite database. Re-running ingest is safe — duplicates are detected and skipped.
+That's the ritual. The tool normalizes dates, amounts, and descriptions, then appends to a generic **observations table**. Re-running ingest is safe — duplicates are detected and skipped.
+
+Finance is just the first sensor. The observations table is designed so health, time, mood, or any future sensor can use the same structure with zero schema changes.
 
 ## What This Is NOT
 
@@ -50,7 +52,12 @@ Even if you never build dashboards or automate decisions, you gain:
 - A longitudinal record
 - The ability to ask questions later
 - A stable testbed for cybernetic ideas
-- Infrastructure, not product
+- **An observation protocol** — a consistent structure that all future sensors can use
+
+> Normalization is not about making the data smart.
+> It's about making the data compatible with the future.
+
+This is infrastructure, not product.
 
 ## Connection to Broader Project
 

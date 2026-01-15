@@ -60,25 +60,44 @@ That's the habit you're actually installing.
 
 ### The Schema
 
-One table. Normalized transactions.
+One table. Generic observations. Finance is just the first domain.
 
 ```sql
-CREATE TABLE transactions (
-  id              TEXT PRIMARY KEY,   -- deterministic fingerprint
-  timestamp       TEXT NOT NULL,      -- ISO-8601 (posted_date or transaction_date)
-  amount_cents    INTEGER NOT NULL,   -- signed: negative = debit, positive = credit
-  description_raw TEXT NOT NULL,      -- original from CSV
-  description_norm TEXT NOT NULL,     -- normalized for matching
-  account_label   TEXT,               -- optional: "checking", "credit", etc.
-  source_file     TEXT,               -- which file this came from
-  ingested_at     TEXT NOT NULL       -- when this row was added
+CREATE TABLE observations (
+  id            TEXT PRIMARY KEY,     -- deterministic fingerprint
+  observed_at   TEXT NOT NULL,        -- ISO-8601 timestamp (when it happened)
+  domain        TEXT NOT NULL,        -- 'finance', 'health', 'time', etc.
+  source        TEXT NOT NULL,        -- 'chase_csv', 'oura_api', 'manual'
+  type          TEXT NOT NULL,        -- 'transaction', 'sleep_session', etc.
+  payload       TEXT NOT NULL,        -- JSON blob (domain-specific data)
+  ingested_at   TEXT NOT NULL         -- when this row was stored
 );
 
-CREATE INDEX idx_timestamp ON transactions(timestamp);
-CREATE INDEX idx_description_norm ON transactions(description_norm);
+CREATE INDEX idx_observed_at ON observations(observed_at);
+CREATE INDEX idx_domain ON observations(domain);
+CREATE INDEX idx_domain_type ON observations(domain, type);
 ```
 
-That's it. No projections, no separate observations table, no multi-domain abstractions. Just transactions.
+A finance transaction is stored as:
+
+```json
+{
+  "id": "sha256...",
+  "observed_at": "2026-01-14",
+  "domain": "finance",
+  "source": "chase_csv",
+  "type": "transaction",
+  "payload": {
+    "amount_cents": -1250,
+    "description_raw": "STARBUCKS STORE 12345",
+    "description_norm": "STARBUCKS",
+    "account_label": "checking"
+  },
+  "ingested_at": "2026-01-15T10:30:00Z"
+}
+```
+
+This is your **observation protocol**. Finance is the first sensor. Health, time, mood can follow the same structure with zero schema changes.
 
 ---
 
@@ -112,9 +131,12 @@ Keep normalization conservative. Over-normalization creates false merges.
 
 Re-running ingest must not create duplicates.
 
-**Fingerprint inputs:**
+**Fingerprint inputs (for finance.transaction):**
 
-- `transaction_date` (YYYY-MM-DD)
+- `domain` ('finance')
+- `source` ('chase_csv')
+- `type` ('transaction')
+- `observed_at` (YYYY-MM-DD)
 - `amount_cents`
 - `description_norm`
 - `account_label` (if provided)
@@ -122,12 +144,14 @@ Re-running ingest must not create duplicates.
 **Implementation:**
 
 ```
-chase|2026-01-14|-12345|STARBUCKS|checking
+finance|chase_csv|transaction|2026-01-14|-1250|STARBUCKS|checking
 ```
 
 Hash with SHA-256 → use as `id`
 
 Primary key enforces dedupe. Conflicts are silently ignored.
+
+Each domain/type defines its own fingerprint inputs. The pattern is the same.
 
 ---
 
@@ -139,11 +163,11 @@ nodes/personal/
     finance/
       chase/          # drop CSVs here
   data/
-    transactions.db   # SQLite database
+    observations.db   # SQLite database (all domains)
 ```
 
 - `raw/` and `data/` MUST be .gitignore'd
-- Back up `transactions.db` periodically
+- Back up `observations.db` periodically
 
 ---
 
@@ -185,7 +209,8 @@ No reports. No status. No dashboards. Just ingest.
 1. Drop a Chase CSV in `raw/finance/chase/`
 2. Run `finance ingest`
 3. Re-run ingest → no duplicates
-4. Data is in SQLite, queryable
+4. Data is in `observations` table with `domain='finance'`, `type='transaction'`
+5. Payload contains normalized transaction data
 
 That's v1.
 
@@ -198,9 +223,12 @@ Even if you never build dashboards, never automate decisions, never do budgeting
 - A longitudinal record
 - The ability to ask new questions later
 - A stable testbed for cybernetic ideas
-- A concrete place to integrate future sensors
+- **An observation protocol** that future sensors (health, time, mood) plug into with zero refactoring
 
 This is **infrastructure**, not product.
+
+> Normalization is not about making the data smart.
+> It's about making the data compatible with the future.
 
 ---
 
@@ -225,20 +253,18 @@ Do not build any of this until reality demands it.
 
 ---
 
-### Multi-Domain Observation Infrastructure
+### Projections (Query-Optimized Tables)
 
-When you need multiple sensors (health, calendar, code), the architecture could evolve to:
+When querying the observations table becomes slow (or you need domain-specific indexes), add projections:
 
 ```
-nodes/personal/
-  data/
-    observations.sqlite     # shared observation log
-      observations          # append-only, type-tagged
-      finance_transactions  # projection
-      health_sleep_sessions # projection
+observations.db
+  observations              # append-only, generic (already have this)
+  finance_transactions      # projection: flattened for fast queries
+  health_sleep_sessions     # projection: flattened for fast queries
 ```
 
-Each sensor writes typed observations. Each domain has its own projection.
+Projections are derived from observations. They're read-optimized, rebuilt on ingest. The observations table remains the source of truth.
 
 ---
 
