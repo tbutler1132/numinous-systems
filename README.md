@@ -1,6 +1,6 @@
 # Vital Systems
 
-This repository documents a creative and philosophical project oriented toward a single purpose: **creating conditions for moments of beauty that redeem existence**.
+This repository documents a creative and philosophical project oriented toward a single purpose: **creating conditions for moments of beauty**.
 
 It is not a product, platform, or framework.
 It is a way of working and thinking, recorded as it develops.
