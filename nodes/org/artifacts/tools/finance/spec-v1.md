@@ -45,7 +45,7 @@ A repeatable ritual + a data vessel.
 
 1. Download CSV from Chase
 2. Drop it in `nodes/personal/raw/finance/chase/`
-3. Run: `finance ingest nodes/personal/raw/finance/chase/`
+3. Run: `finance ingest nodes/personal/raw/finance/chase/` (defaults to `--node personal`)
 4. Done
 
 That's the habit you're actually installing.
@@ -217,9 +217,23 @@ nodes/personal/
 # Ingest CSVs
 finance ingest <path>
 
-# Optional flags
+# Flags
+--node <name>       # which node's observation store (default: "personal")
 --dry-run           # parse only, no writes
 --account-label     # tag with account name (e.g., "checking")
+```
+
+**Examples:**
+
+```bash
+# Personal finance (default node)
+finance ingest nodes/personal/raw/finance/chase/
+
+# Explicit node
+finance ingest --node personal nodes/personal/raw/finance/chase/
+
+# Org finance (if you ever have one)
+finance ingest --node org nodes/org/raw/finance/
 ```
 
 **Output:**
@@ -248,6 +262,64 @@ No reports. No status. No dashboards. Just ingest + audit.
 - Node.js + TypeScript
 - `better-sqlite3` (synchronous, simple)
 - `csv-parse` (handles CSV edge cases)
+
+---
+
+## Code Layout
+
+Shared infrastructure extracted from the start:
+
+```
+tools/
+  sensor/                     # shared observation infrastructure
+    package.json
+    tsconfig.json
+    src/
+      store.ts                # SQLite read/write (observations + ingest_runs)
+      schema.sql              # table definitions (domain-agnostic)
+      fingerprint.ts          # deterministic ID generation
+      types.ts                # Observation type definition
+      index.ts                # public exports
+
+  finance/                    # finance-specific sensor
+    package.json              # depends on ../sensor
+    tsconfig.json
+    src/
+      cli.ts                  # entry point: parses args, runs ingest
+      chase-csv.ts            # Chase CSV → observations
+    tests/
+      fixtures/
+        chase-sample.csv      # anonymized test data
+```
+
+**Data lives separately from code (per-node):**
+
+```
+nodes/
+  personal/                   # personal node
+    data/
+      observations.db         # personal observations (gitignored)
+    raw/
+      finance/
+        chase/                # CSV drops (gitignored)
+      health/                 # (future)
+
+  org/                        # org node (if needed)
+    data/
+      observations.db         # org observations (gitignored)
+    raw/
+      finance/
+      code/
+```
+
+Each node is a separate organism with its own memory. Same code, same schema, different databases.
+
+**Why pre-extract:**
+
+- The observations table, store logic, and fingerprinting are domain-agnostic
+- Avoids refactoring when adding health/time/mood sensors
+- Reinforces that finance is just the first sensor, not a special case
+- Costs ~10 minutes of folder setup now, saves refactoring later
 
 ---
 
