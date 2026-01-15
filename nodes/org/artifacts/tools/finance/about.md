@@ -39,6 +39,17 @@ This architecture enables:
 - Not a multi-user system
 - Not real-time sync
 
+## Modular Design
+
+The tool is built on explicit interfaces that make components swappable:
+
+- **Sensor** — any input adapter (ChaseCSV, Plaid, etc.) that produces Observations
+- **MemoryStore** — any storage backend (SQLite, Postgres, etc.) that persists Observations
+- **Projector** — any domain transformer that materializes Observations into query tables
+- **Reporter** — any query module that reads projections and produces output
+
+This means you can swap Chase for Plaid, SQLite for Postgres, or add entirely new domains (health, calendar) without changing the core architecture.
+
 ## Connection to Broader Project
 
 This tool serves the central purpose by **removing friction from self-knowledge**.

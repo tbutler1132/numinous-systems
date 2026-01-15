@@ -128,6 +128,232 @@ CSV files → parse/normalize → Observation(finance.transaction) → store obs
 
 ---
 
+### 3.1 Component Interfaces (Modularity Contracts)
+
+These interfaces define the boundaries between components. Any implementation that satisfies the interface can be swapped in without changing the rest of the system.
+
+#### Observation (Universal Data Contract)
+
+The core data type that all sensors produce and all storage/projectors consume:
+
+```typescript
+interface Observation {
+  id: string; // Deterministic fingerprint
+  type: string; // e.g., "finance.transaction", "health.sleep_session"
+  timestamp: string; // ISO-8601
+  source: string; // e.g., "chase_csv", "oura_api"
+  schema_version: number; // Payload schema version
+  payload: Record<string, unknown>; // Domain-specific data
+  ingested_at?: string; // Set by MemoryStore on insert
+}
+```
+
+#### Sensor (Input Adapter)
+
+Sensors parse external data into Observations. They never store or execute—only parse:
+
+```typescript
+interface Sensor<TInput> {
+  /** Unique identifier for this sensor type */
+  source: string; // e.g., "chase_csv"
+
+  /** The observation type this sensor produces */
+  observationType: string; // e.g., "finance.transaction"
+
+  /** Parse input into observations. Pure function, no side effects. */
+  parse(input: TInput, options?: SensorOptions): SensorResult;
+}
+
+interface SensorOptions {
+  accountLabel?: string; // Optional context for fingerprinting
+}
+
+interface SensorResult {
+  observations: Observation[];
+  errors: ParseError[];
+  metadata: {
+    rowsRead: number;
+    rowsParsed: number;
+    dateRange: { min: string; max: string } | null;
+  };
+}
+
+interface ParseError {
+  row?: number;
+  field?: string;
+  message: string;
+}
+```
+
+**Example implementations:**
+
+- `ChaseCSVSensor` — parses Chase CSV files
+- `PlaidSensor` — parses Plaid API responses (future)
+- `OuraSensor` — parses Oura sleep data (future)
+
+#### MemoryStore (Persistence)
+
+The storage backend. Handles append-only observation storage and provides query access:
+
+```typescript
+interface MemoryStore {
+  /** Append observations. Ignores duplicates (by id). Returns insert stats. */
+  appendObservations(observations: Observation[]): AppendResult;
+
+  /** Query observations by filter. */
+  queryObservations(filter: ObservationFilter): Observation[];
+
+  /** Get the most recent observation timestamp for a given type. */
+  getLastTimestamp(type: string): string | null;
+
+  /** Get observation counts by type. */
+  getCounts(): Record<string, number>;
+}
+
+interface AppendResult {
+  inserted: number;
+  skipped: number; // Duplicates
+}
+
+interface ObservationFilter {
+  type?: string;
+  source?: string;
+  since?: string; // ISO-8601
+  until?: string; // ISO-8601
+  limit?: number;
+}
+```
+
+**Example implementations:**
+
+- `SQLiteMemoryStore` — production storage
+- `InMemoryStore` — for testing
+
+#### Projector (Domain-Specific Materialization)
+
+Projectors transform observations into query-optimized domain tables:
+
+```typescript
+interface Projector {
+  /** The observation type this projector handles */
+  observationType: string; // e.g., "finance.transaction"
+
+  /** Project a batch of observations into the domain table. Idempotent. */
+  project(observations: Observation[], store: ProjectionStore): ProjectResult;
+}
+
+interface ProjectionStore {
+  /** Upsert rows into a projection table. */
+  upsert(table: string, rows: Record<string, unknown>[], key: string): void;
+
+  /** Query a projection table. */
+  query<T>(table: string, filter: Record<string, unknown>): T[];
+}
+
+interface ProjectResult {
+  upserted: number;
+  table: string;
+}
+```
+
+**Example implementations:**
+
+- `FinanceTransactionProjector` — projects to `finance_transactions` table
+- `HealthSleepProjector` — projects to `health_sleep_sessions` table (future)
+
+#### Reporter (Query & Output)
+
+Reporters query projections and produce formatted output:
+
+```typescript
+interface Reporter<TOptions, TOutput> {
+  /** Unique name for this report */
+  name: string;
+
+  /** Generate the report. */
+  run(store: ProjectionStore, options: TOptions): TOutput;
+}
+
+// Example: MonthlySpendReporter
+interface MonthlyReportOptions {
+  lastN?: number; // Last N months
+}
+
+interface MonthlyReportRow {
+  month: string; // YYYY-MM
+  spend: number; // cents
+  income: number; // cents
+  net: number; // cents
+  txnCount: number;
+}
+```
+
+**Example implementations:**
+
+- `MonthlySpendReporter`
+- `MerchantRollupReporter`
+
+#### StatusProvider (Health & Staleness)
+
+Computes system health metrics:
+
+```typescript
+interface StatusProvider {
+  /** Compute status for a given observation type (or all types). */
+  getStatus(store: MemoryStore, type?: string): StatusResult;
+}
+
+interface StatusResult {
+  status: "OK" | "WARN" | "STALE";
+  metrics: {
+    lastObservationDate: string | null;
+    daysSinceLastObservation: number | null;
+    totalObservations: number;
+    dateRange: { min: string; max: string } | null;
+    lastIngestAt: string | null;
+  };
+  byType?: Record<string, StatusResult>; // If querying all types
+}
+```
+
+---
+
+### 3.2 Composition: How Components Connect
+
+The CLI orchestrates these components:
+
+```typescript
+// Pseudocode for `finance ingest`
+async function ingest(path: string, nodeName: string) {
+  const store = new SQLiteMemoryStore(getNodeDataPath(nodeName));
+  const sensor = new ChaseCSVSensor();
+  const projector = new FinanceTransactionProjector();
+
+  // 1. Parse (Sensor)
+  const csvData = await readFile(path);
+  const result = sensor.parse(csvData, { accountLabel: options.accountLabel });
+
+  // 2. Store (MemoryStore)
+  const appendResult = store.appendObservations(result.observations);
+
+  // 3. Project (Projector)
+  const projectResult = projector.project(result.observations, store);
+
+  // 4. Report
+  console.log(
+    `Inserted: ${appendResult.inserted}, Skipped: ${appendResult.skipped}`
+  );
+}
+```
+
+This separation means:
+
+- Swap `ChaseCSVSensor` for `PlaidSensor` → same downstream flow
+- Swap `SQLiteMemoryStore` for `PostgresMemoryStore` → sensors and projectors don't change
+- Add `HealthSleepProjector` → reuse the same store and CLI patterns
+
+---
+
 ### 4. Data Contracts
 
 #### 4.1 Observation (Canonical Cross-Domain Event)
@@ -311,6 +537,23 @@ Later add migrations if needed; for now, drop/recreate is acceptable (with backu
 **Command name:** `finance` (v1)
 
 All commands require a `--node <name>` flag to specify which node's observation store to use. This reinforces that observations belong to a specific organism.
+
+**Node resolution:**
+
+```typescript
+function getNodeDataPath(nodeName: string): string {
+  // Resolves to: nodes/{nodeName}/data/observations.sqlite
+  return path.join(
+    process.cwd(),
+    "nodes",
+    nodeName,
+    "data",
+    "observations.sqlite"
+  );
+}
+```
+
+This keeps the CLI stateless—no configuration files, just pass the node name.
 
 Future consideration: As more sensors are added, the CLI could become `sensor ingest finance <path>` or remain domain-specific (`finance ingest`, `health ingest`). Either works—the data architecture supports both. v1 uses `finance` for simplicity.
 
@@ -578,45 +821,82 @@ Swap Chase CSV sensor with OAuth/aggregator later:
 
 ### Project Structure
 
-The code is organized to support future sensors while keeping finance self-contained for now:
+The code is organized around the interfaces defined in Section 3.1:
 
 ```
 tools/
-  sensor/                    # shared observation infrastructure
+  sensor/                         # shared observation infrastructure
     package.json
     tsconfig.json
     src/
+      interfaces/
+        observation.ts            # Observation interface
+        sensor.ts                 # Sensor interface
+        memory-store.ts           # MemoryStore interface
+        projector.ts              # Projector interface
+        reporter.ts               # Reporter interface
+        status.ts                 # StatusProvider interface
+        index.ts                  # re-exports all interfaces
       storage/
-        sqlite.ts            # shared SQLiteMemoryStore
-        schema.sql           # observations table + all projections
-      types.ts               # Observation type, shared interfaces
-      status.ts              # cross-domain staleness detection
+        sqlite-memory-store.ts    # SQLiteMemoryStore implements MemoryStore
+        in-memory-store.ts        # InMemoryStore for testing
+        schema.sql                # observations table schema
+      status/
+        default-status.ts         # DefaultStatusProvider implements StatusProvider
+      utils/
+        fingerprint.ts            # Deterministic ID generation
+        dates.ts                  # ISO-8601 helpers
 
-  finance/                   # finance-specific code
+  finance/                        # finance-specific implementations
+    package.json
     src/
-      cli.ts                 # entry point: `finance ingest`, `finance report`
+      cli.ts                      # CLI entry point
       sensors/
-        chase-csv.ts         # ChaseCSVAdapter
-      projections/
-        transactions.ts      # finance_transactions projection logic
-      reports/
-        monthly.ts
-        merchants.ts
+        chase-csv.ts              # ChaseCSVSensor implements Sensor
+      projectors/
+        transactions.ts           # FinanceTransactionProjector implements Projector
+      reporters/
+        monthly.ts                # MonthlySpendReporter implements Reporter
+        merchants.ts              # MerchantRollupReporter implements Reporter
+      schema.sql                  # finance_transactions projection schema
     tests/
+      sensors/
+        chase-csv.test.ts
+      projectors/
+        transactions.test.ts
       fixtures/
         chase-sample.csv
 ```
 
+#### Interface → Implementation Mapping
+
+| Interface        | Shared Implementation                | Finance Implementation                           |
+| ---------------- | ------------------------------------ | ------------------------------------------------ |
+| `Observation`    | (type definition)                    | —                                                |
+| `Sensor`         | —                                    | `ChaseCSVSensor`                                 |
+| `MemoryStore`    | `SQLiteMemoryStore`, `InMemoryStore` | —                                                |
+| `Projector`      | —                                    | `FinanceTransactionProjector`                    |
+| `Reporter`       | —                                    | `MonthlySpendReporter`, `MerchantRollupReporter` |
+| `StatusProvider` | `DefaultStatusProvider`              | —                                                |
+
+#### Adding a New Domain (e.g., Health)
+
+To add a health sensor:
+
+1. Create `tools/health/` following the same structure
+2. Implement `OuraSensor implements Sensor`
+3. Implement `HealthSleepProjector implements Projector`
+4. Implement any domain-specific reporters
+5. Reuse `SQLiteMemoryStore` and `DefaultStatusProvider` from `sensor/`
+
+The shared interfaces ensure all domains compose the same way.
+
 #### Why This Split
 
-- `tools/sensor/` contains the shared observation infrastructure (storage, types, cross-domain status)
-- `tools/finance/` contains finance-specific code (Chase adapter, reports)
-- Future domains (health, calendar) follow the same pattern: shared sensor infrastructure, domain-specific logic
-- The `finance` CLI uses `sensor` as a dependency
-
-#### Alternative: Monorepo Later
-
-If the split feels premature, you can start with everything in `tools/sensor/` and extract domain-specific code when a second sensor is added. The key is that the `observations` table schema is domain-agnostic from day one.
+- `tools/sensor/` contains interfaces + shared implementations
+- `tools/finance/` contains finance-specific implementations
+- Future domains follow the same pattern
+- All domains depend on `sensor/` for interfaces; they never depend on each other
 
 ### Dependencies (minimal v1)
 
