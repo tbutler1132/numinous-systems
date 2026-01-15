@@ -10,6 +10,51 @@ Chase CSV → Observations → Ledger → Reports
 
 ---
 
+### 0. Observation Infrastructure
+
+This tool is the first sensor in what may become a multi-domain observation system. The architecture is designed to support future sensors (health, calendar, code activity, etc.) without requiring changes to the core schema.
+
+#### Design Principle: Observations Belong to Nodes
+
+Each **node** in the system is a self-contained organism with its own observation layer. Nodes don't share internal state—they regulate independently. This follows the "Separation of Organisms" principle.
+
+```
+nodes/personal/                       nodes/org/
+  │                                     │
+  ├── data/                             ├── data/
+  │   └── observations.sqlite           │   └── observations.sqlite
+  │       │                             │       │
+  │       ├── observations (table)      │       ├── observations (table)
+  │       ├── finance_transactions      │       ├── code_commits
+  │       └── health_sleep_sessions     │       └── project_metrics
+  │                                     │
+  ├── raw/                              ├── raw/
+  │   └── finance/chase/                │   └── git/
+  │                                     │
+  ├── log.md                            ├── log.md
+  ├── feedback.md                       ├── feedback.md
+  └── models.md                         └── models.md
+    (regulatory layer)                    (regulatory layer)
+```
+
+Each node has:
+
+- **Its own observation layer** — sensors feed data into the node's `data/observations.sqlite`
+- **Its own regulatory layer** — log, feedback, models, episodes (markdown)
+- **Cross-domain queries within the node** — e.g., "spending on days I slept poorly" works because finance + health are in the same node
+
+The **tooling** is shared (same ChaseCSVAdapter code), but the **data** lives per-node.
+
+#### What This Means for v1
+
+- The SQLite database lives at `nodes/personal/data/observations.sqlite`
+- The `observations` table is domain-agnostic (finance, health, etc. coexist)
+- The `finance_transactions` projection is finance-specific
+- Future sensors add new observation types and projections to the same node
+- Different nodes (personal vs org) have separate databases
+
+---
+
 ### 1. Purpose
 
 #### Goal
@@ -37,14 +82,14 @@ Create a safe, local-first personal analytics pipeline that:
 
 ### 2. System Model (Cybernetic Framing)
 
-| Component | Role |
-|-----------|------|
-| Environment | Real-world financial activity |
-| Upstream transducer | Chase's ledger representation |
-| Sensor interface | CSV ingest adapter |
-| Memory | Local event log + projections |
-| Observer | Analytics queries (reports) |
-| Health monitoring | Data staleness (sensor liveness) |
+| Component           | Role                             |
+| ------------------- | -------------------------------- |
+| Environment         | Real-world financial activity    |
+| Upstream transducer | Chase's ledger representation    |
+| Sensor interface    | CSV ingest adapter               |
+| Memory              | Local event log + projections    |
+| Observer            | Analytics queries (reports)      |
+| Health monitoring   | Data staleness (sensor liveness) |
 
 ---
 
@@ -53,21 +98,25 @@ Create a safe, local-first personal analytics pipeline that:
 #### Components
 
 **Sensor (ChaseCSVAdapter)**
+
 - Input: Chase CSV file(s)
 - Output: list/stream of Observation objects
 
 **Memory (SQLiteMemoryStore)**
+
 - Append-only storage: observations
 - Projection: finance_transactions
 - Idempotent ingest via deterministic IDs/fingerprints
 
 **Observer (Reports)**
+
 - Reads projections (and optionally observations)
 - Produces:
   - Monthly totals
   - Merchant rollups
 
 **Ops/Health (Status)**
+
 - Reads projections
 - Computes staleness + coverage stats
 
@@ -83,36 +132,38 @@ CSV files → parse/normalize → Observation(finance.transaction) → store obs
 
 #### 4.1 Observation (Canonical Cross-Domain Event)
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | TEXT, primary key | Deterministic fingerprint for idempotency |
-| `type` | TEXT | e.g. "finance.transaction" |
-| `timestamp` | TEXT ISO-8601 | Prefer posted date; fallback transaction date |
-| `source` | TEXT | e.g. "chase_csv" |
-| `schema_version` | INTEGER | Default 1 |
-| `payload_json` | TEXT JSON | Domain-specific payload, minimally normalized |
-| `ingested_at` | TEXT ISO-8601 | When this observation was stored |
+| Field            | Type              | Description                                   |
+| ---------------- | ----------------- | --------------------------------------------- |
+| `id`             | TEXT, primary key | Deterministic fingerprint for idempotency     |
+| `type`           | TEXT              | e.g. "finance.transaction"                    |
+| `timestamp`      | TEXT ISO-8601     | Prefer posted date; fallback transaction date |
+| `source`         | TEXT              | e.g. "chase_csv"                              |
+| `schema_version` | INTEGER           | Default 1                                     |
+| `payload_json`   | TEXT JSON         | Domain-specific payload, minimally normalized |
+| `ingested_at`    | TEXT ISO-8601     | When this observation was stored              |
 
 #### Observation Type: `finance.transaction` Payload (v1)
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `transaction_date` | YYYY-MM-DD | Date of transaction |
-| `posted_date` | YYYY-MM-DD \| null | Date posted (if available) |
-| `amount` | number | Decimal dollars (human friendly) |
-| `currency` | string | Default "USD" |
-| `description_raw` | string | Original description from CSV |
-| `description_norm` | string | Normalized merchant-ish string |
-| `account_label` | string \| null | Optional account identifier |
-| `source_row` | object | Original row fields for audit/debug |
+| Field              | Type               | Description                         |
+| ------------------ | ------------------ | ----------------------------------- |
+| `transaction_date` | YYYY-MM-DD         | Date of transaction                 |
+| `posted_date`      | YYYY-MM-DD \| null | Date posted (if available)          |
+| `amount`           | number             | Decimal dollars (human friendly)    |
+| `currency`         | string             | Default "USD"                       |
+| `description_raw`  | string             | Original description from CSV       |
+| `description_norm` | string             | Normalized merchant-ish string      |
+| `account_label`    | string \| null     | Optional account identifier         |
+| `source_row`       | object             | Original row fields for audit/debug |
 
 #### Amount Policy
 
 Store `amount_cents` as integer in projection, and store both:
+
 - **payload**: `amount` as decimal dollars (human friendly)
 - **projection**: `amount_cents` integer for precision
 
 Sign convention:
+
 - Debit (money out) is **negative**
 - Credit (money in) is **positive**
 
@@ -120,21 +171,21 @@ Sign convention:
 
 **Table: `finance_transactions`**
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `txn_id` | TEXT, primary key | Same as Observation id for traceability |
-| `observation_id` | TEXT, unique, FK | References observations.id |
-| `transaction_date` | TEXT YYYY-MM-DD | |
-| `posted_date` | TEXT YYYY-MM-DD, nullable | |
-| `amount_cents` | INTEGER | Signed cents |
-| `currency` | TEXT | Default USD |
-| `description_raw` | TEXT | |
-| `description_norm` | TEXT | |
-| `merchant` | TEXT | Optional alias of description_norm |
-| `category` | TEXT, nullable | Manual categorization (future) |
-| `is_pending` | INTEGER 0/1 | Default 0 |
-| `superseded_by` | TEXT, nullable | For pending→posted merge |
-| `ingested_at` | TEXT datetime | |
+| Column             | Type                      | Description                             |
+| ------------------ | ------------------------- | --------------------------------------- |
+| `txn_id`           | TEXT, primary key         | Same as Observation id for traceability |
+| `observation_id`   | TEXT, unique, FK          | References observations.id              |
+| `transaction_date` | TEXT YYYY-MM-DD           |                                         |
+| `posted_date`      | TEXT YYYY-MM-DD, nullable |                                         |
+| `amount_cents`     | INTEGER                   | Signed cents                            |
+| `currency`         | TEXT                      | Default USD                             |
+| `description_raw`  | TEXT                      |                                         |
+| `description_norm` | TEXT                      |                                         |
+| `merchant`         | TEXT                      | Optional alias of description_norm      |
+| `category`         | TEXT, nullable            | Manual categorization (future)          |
+| `is_pending`       | INTEGER 0/1               | Default 0                               |
+| `superseded_by`    | TEXT, nullable            | For pending→posted merge                |
+| `ingested_at`      | TEXT datetime             |                                         |
 
 **Indexes**
 
@@ -153,24 +204,29 @@ Sign convention:
 Chase CSV formats vary slightly by account type and UI variant. v1 supports:
 
 At minimum, it must have:
+
 - date (transaction date or posted date)
 - description
 - amount (or separate debit/credit columns)
 
 **Strategy**: implement mapping layer with:
+
 - Known header variants (best effort)
 - Fail-fast with a helpful error listing discovered columns when unknown
 
 #### 5.2 Normalization Rules (v1)
 
 **Dates:**
+
 - Parse to ISO YYYY-MM-DD
 
 **Amount:**
+
 - Convert to signed numeric
 - Debit negative, credit positive
 
 **Description:**
+
 - `description_raw` unchanged from CSV
 - `description_norm` is derived:
   - Uppercase
@@ -194,11 +250,13 @@ At minimum, it must have:
 - `account_label` (if provided — prevents false deduplication across accounts)
 
 Optionally include:
+
 - `posted_date` if present
 
 **Implementation**
 
 Build a canonical string:
+
 ```
 chase_csv|finance.transaction|2026-01-14|-12345|STARBUCKS
 ```
@@ -219,6 +277,7 @@ If Chase export includes pending, you may see duplicates when posted appears lat
 v1 can ignore pending complexity and simply dedupe on fingerprint; but better:
 
 If both pending and posted exist and match on (amount, description_norm) within a short window:
+
 - Keep posted as canonical (`is_pending=0`)
 - Mark pending row as `is_pending=1` and `superseded_by=<posted_txn_id>`
 
@@ -249,21 +308,28 @@ Later add migrations if needed; for now, drop/recreate is acceptable (with backu
 
 ### 7. CLI: User Surface
 
-**Command name:** `finance`
+**Command name:** `finance` (v1)
 
-#### 7.1 `finance ingest <path>`
+All commands require a `--node <name>` flag to specify which node's observation store to use. This reinforces that observations belong to a specific organism.
+
+Future consideration: As more sensors are added, the CLI could become `sensor ingest finance <path>` or remain domain-specific (`finance ingest`, `health ingest`). Either works—the data architecture supports both. v1 uses `finance` for simplicity.
+
+#### 7.1 `finance ingest <path> --node <name>`
 
 Ingest one file or all CSVs in a folder.
 
 **Inputs**
+
 - `<path>` file or directory
 - Flags:
+  - `--node <name>` (required: which node's observation store to use)
   - `--dry-run` (no writes, just parse + show counts)
   - `--move-processed` (move ingested files to processed/)
   - `--account-label "<label>"` (tag imports)
 
 **Behavior**
-1. Discover files (if dir: all *.csv)
+
+1. Discover files (if dir: all \*.csv)
 2. For each file:
    - Parse rows
    - Normalize
@@ -273,6 +339,7 @@ Ingest one file or all CSVs in a folder.
 3. Print summary
 
 **Output (example)**
+
 ```
 files processed: N
 rows read: X
@@ -282,40 +349,45 @@ min/max transaction_date in batch
 last transaction_date overall
 ```
 
-#### 7.2 `finance report monthly [--last N]`
+#### 7.2 `finance report monthly --node <name> [--last N]`
 
 Outputs monthly spend/income/net.
 
 **Behavior**
+
 - Query finance_transactions
 - Group by month
 
 **Output columns**
+
 - month (YYYY-MM)
 - spend (sum of -debits)
 - income (sum of credits)
 - net (income - spend)
 - txn_count
 
-#### 7.3 `finance report merchants [--month YYYY-MM] [--last-days N] [--limit K]`
+#### 7.3 `finance report merchants --node <name> [--month YYYY-MM] [--last-days N] [--limit K]`
 
 Outputs merchant rollups.
 
 **Modes**
+
 - All time (default)
 - By month
 - By last N days
 
 **Output columns**
+
 - merchant/description_norm
 - spend (sum)
 - txn_count
 
-#### 7.4 `finance status`
+#### 7.4 `finance status --node <name>`
 
-Computes health + staleness.
+Computes health + staleness for the specified node.
 
 **Metrics**
+
 - `last_transaction_date`
 - `days_stale` = today - last_transaction_date
 - `total_txns`
@@ -323,11 +395,13 @@ Computes health + staleness.
 - `last_ingest_at`
 
 **Status thresholds (default)**
+
 - OK: days_stale ≤ 14
 - WARN: 15–30
 - STALE: > 30
 
 **Output**
+
 ```
 status: OK/WARN/STALE
 metrics table
@@ -340,16 +414,19 @@ metrics table
 This spec doesn't need a reminder system built into the app yet, but it must support it.
 
 **Cadence recommendation (default)**
+
 - Every 2 weeks
 - Wording: "Refresh finance data (Chase export → ingest)"
 
 **Definition of done**
+
 1. Export last 30 days CSV (overlap is fine)
-2. Drop into raw folder
-3. `finance ingest finance/raw/chase/`
-4. `finance status` shows OK
+2. Drop into raw folder (`nodes/personal/raw/finance/chase/`)
+3. `finance ingest --node personal nodes/personal/raw/finance/chase/`
+4. `finance status --node personal` shows OK
 
 **System-level reinforcement**
+
 - `finance status` is the primary feedback signal
 - Calendar/task reminder is a secondary prompt
 
@@ -357,18 +434,35 @@ This spec doesn't need a reminder system built into the app yet, but it must sup
 
 ### 9. File/Folder Conventions
 
-Default local layout:
+Default local layout (per-node):
 
 ```
-/finance
-  /raw/chase/           # user drops exports here
-  /processed/chase/     # optional, if move-processed enabled
-  /db/finance.sqlite
-  /reports/             # optional output dumps
+nodes/personal/
+  /data/
+    observations.sqlite      # this node's observation log + projections
+  /raw/
+    /finance/
+      /chase/                # user drops Chase exports here
+    /health/                 # future: health exports
+  /processed/
+    /finance/
+      /chase/                # optional, if move-processed enabled
+  /log.md
+  /feedback.md
+  /models.md
+  ...
 ```
 
-- `raw/` and `db/` MUST be .gitignore'd
-- If you use cloud backup/sync, consider encrypting `raw/` and `db/`
+- `nodes/*/data/` and `nodes/*/raw/` MUST be .gitignore'd (contains sensitive personal data)
+- If you use cloud backup/sync, consider encrypting these folders
+- Each node has its own database; back up per-node
+
+#### Why Per-Node
+
+- Each node is a separate organism with its own memory
+- Cross-domain queries work within a node (finance + health in personal node)
+- Nodes don't share internal state (personal and org are separate)
+- Tooling is shared; data is not
 
 ---
 
@@ -423,15 +517,18 @@ Default local layout:
 ### 13. Future Extensions (Explicitly Supported by v1 Contracts)
 
 Add new sensors by emitting new Observation types:
+
 - `health.sleep_session`
 - `social.calendar_event`
 - `code.commit`
 
 Add projections per domain:
+
 - `health_sleep_sessions`
 - `calendar_events`
 
 Swap Chase CSV sensor with OAuth/aggregator later:
+
 - Keep `finance.transaction` observation payload stable
 - Add `source="plaid"` or similar
 
@@ -439,21 +536,22 @@ Swap Chase CSV sensor with OAuth/aggregator later:
 
 ### 14. Milestones
 
-| Milestone | Scope |
-|-----------|-------|
-| M0: Skeleton | SQLite schema, CLI scaffold with commands (ingest/status/report) |
+| Milestone                    | Scope                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------ |
+| M0: Skeleton                 | SQLite schema, CLI scaffold with commands (ingest/status/report)               |
 | M1: Chase CSV ingest working | Parse one known Chase CSV format, deterministic fingerprint, idempotent ingest |
-| M2: Reports | Monthly report, merchant report |
-| M3: Status + staleness | Implement thresholds, print actionable message when stale |
-| M4: Hardening | Handle 1–2 Chase CSV header variants, tests + fixtures |
+| M2: Reports                  | Monthly report, merchant report                                                |
+| M3: Status + staleness       | Implement thresholds, print actionable message when stale                      |
+| M4: Hardening                | Handle 1–2 Chase CSV header variants, tests + fixtures                         |
 
 ---
 
 ### 15. Acceptance Criteria (v1)
 
-1. You can export a Chase CSV, drop it in `raw/chase/`, and run:
+1. You can export a Chase CSV, drop it in `nodes/personal/raw/finance/chase/`, and run:
+
    ```
-   finance ingest finance/raw/chase/
+   finance ingest --node personal nodes/personal/raw/finance/chase/
    ```
 
 2. Re-running ingest does not create duplicates.
@@ -480,26 +578,45 @@ Swap Chase CSV sensor with OAuth/aggregator later:
 
 ### Project Structure
 
+The code is organized to support future sensors while keeping finance self-contained for now:
+
 ```
 tools/
-  finance/
+  sensor/                    # shared observation infrastructure
     package.json
     tsconfig.json
     src/
-      cli.ts              # entry point
-      sensors/
-        chase-csv.ts      # ChaseCSVAdapter
       storage/
-        sqlite.ts         # SQLiteMemoryStore
-        schema.sql
+        sqlite.ts            # shared SQLiteMemoryStore
+        schema.sql           # observations table + all projections
+      types.ts               # Observation type, shared interfaces
+      status.ts              # cross-domain staleness detection
+
+  finance/                   # finance-specific code
+    src/
+      cli.ts                 # entry point: `finance ingest`, `finance report`
+      sensors/
+        chase-csv.ts         # ChaseCSVAdapter
+      projections/
+        transactions.ts      # finance_transactions projection logic
       reports/
         monthly.ts
         merchants.ts
-      status.ts
     tests/
       fixtures/
         chase-sample.csv
 ```
+
+#### Why This Split
+
+- `tools/sensor/` contains the shared observation infrastructure (storage, types, cross-domain status)
+- `tools/finance/` contains finance-specific code (Chase adapter, reports)
+- Future domains (health, calendar) follow the same pattern: shared sensor infrastructure, domain-specific logic
+- The `finance` CLI uses `sensor` as a dependency
+
+#### Alternative: Monorepo Later
+
+If the split feels premature, you can start with everything in `tools/sensor/` and extract domain-specific code when a second sensor is added. The key is that the `observations` table schema is domain-agnostic from day one.
 
 ### Dependencies (minimal v1)
 
@@ -519,10 +636,28 @@ tools/
 
 ### Backup Strategy
 
-The `db/finance.sqlite` file is the source of truth. Backup options:
+Each node's `data/observations.sqlite` file is the source of truth for that organism. Backup options:
 
-1. **Manual**: Copy `finance.sqlite` to a backup location periodically
+1. **Manual**: Copy `observations.sqlite` to a backup location periodically
 2. **Automated**: Script that copies on each ingest (before or after)
-3. **Cloud sync**: If using Dropbox/iCloud, ensure the db folder is included but consider encryption for sensitive data
+3. **Cloud sync**: If using Dropbox/iCloud, ensure the data folder is included but consider encryption for sensitive data
+
+Each node is backed up independently. For the personal node, one backup covers all its domains (finance, health, etc.).
 
 Document chosen approach in the tool's README.
+
+---
+
+## Becoming Engine Integration (Future)
+
+The observation infrastructure is designed to eventually integrate with each node's regulatory layer. Potential integration points:
+
+1. **Observations → Variable Proxy Signals**: The personal node's financial observations could feed a `financial_health` Variable in that node. Aggregation logic would compute status (InRange, AtRisk) from transaction patterns.
+
+2. **Staleness → Variable Status**: If finance data goes stale, it could affect a Variable's confidence score within that node.
+
+3. **Cross-domain regulation within a node**: Health + finance + calendar observations in the personal node could inform compound Variables about personal viability.
+
+4. **Signaling between nodes**: If a personal Variable (like financial health) crosses a threshold, it could emit a signal to the org node if relevant.
+
+This integration is not required for v1. The observation architecture supports it when the time is right. Each node remains a self-contained organism; integration happens through explicit signals, not shared state.

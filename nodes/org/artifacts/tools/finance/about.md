@@ -15,12 +15,22 @@ The purpose of this tool is to provide a minimal, private, trustworthy sensor fo
 ## How It Works
 
 1. Export transaction data from Chase (CSV)
-2. Drop the file into a raw folder
-3. Run `finance ingest` to parse, normalize, and store
-4. Query with `finance report` (monthly spend, merchant rollups)
-5. Check system health with `finance status` (staleness detection)
+2. Drop the file into `nodes/personal/raw/finance/chase/`
+3. Run `finance ingest --node personal` to parse, normalize, and store
+4. Query with `finance report --node personal` (monthly spend, merchant rollups)
+5. Check system health with `finance status --node personal` (staleness detection)
 
 The tool treats the human export process as part of the system loop — `finance status` is the feedback signal that prompts action when data goes stale.
+
+## Observation Infrastructure
+
+Observations belong to **nodes**. Each node is a self-contained organism with its own observation layer and regulatory layer. The personal node's observations live in `nodes/personal/data/observations.sqlite`.
+
+This architecture enables:
+- Cross-domain queries within a node (e.g., "spending on days I slept poorly" in the personal node)
+- Separation of organisms (personal and org nodes don't share internal state)
+- Shared tooling, per-node data
+- Future integration with each node's regulatory layer
 
 ## What This Is NOT
 
