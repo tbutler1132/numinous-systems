@@ -2,64 +2,62 @@
 
 ## Artifact Concept
 
-This folder contains **Finance** — a local-first personal analytics pipeline for financial data.
+This folder contains **Finance** — a memory organ for personal financial data.
 
-The purpose of this tool is to provide a minimal, private, trustworthy sensor for personal financial activity. It ingests bank exports, stores them as generic observations (future-proof for other sensor domains), and provides basic analytics and system health signals.
+The purpose of this tool is not budgeting, not optimization, not decision-making. It is simply to **remember**. A normalized, append-only record of financial transactions that can be queried later when questions arise.
 
 ## What This Artifact Addresses
 
-- How do I understand my financial activity without surrendering data to third parties?
-- How do I build personal infrastructure that I control and can trust?
-- How do I detect when my observation systems are stale or degraded?
+- How does this system observe itself over time?
+- How do I create a stable, trustworthy record without building more than I need?
+- How do I install a habit (the ritual) rather than a product?
 
 ## How It Works
 
-1. Export transaction data from Chase (CSV)
-2. Drop the file into `nodes/personal/raw/finance/chase/`
-3. Run `finance ingest --node personal` to parse, normalize, and store
-4. Query with `finance report --node personal` (monthly spend, merchant rollups)
-5. Check system health with `finance status --node personal` (staleness detection)
+1. Download CSV from Chase
+2. Drop it in `nodes/personal/raw/finance/chase/`
+3. Run `finance ingest`
+4. Done
 
-The tool treats the human export process as part of the system loop — `finance status` is the feedback signal that prompts action when data goes stale.
-
-## Observation Infrastructure
-
-Observations belong to **nodes**. Each node is a self-contained organism with its own observation layer and regulatory layer. The personal node's observations live in `nodes/personal/data/observations.sqlite`.
-
-This architecture enables:
-- Cross-domain queries within a node (e.g., "spending on days I slept poorly" in the personal node)
-- Separation of organisms (personal and org nodes don't share internal state)
-- Shared tooling, per-node data
-- Future integration with each node's regulatory layer
+That's the ritual. The tool normalizes dates, amounts, and descriptions, then appends to an SQLite database. Re-running ingest is safe — duplicates are detected and skipped.
 
 ## What This Is NOT
 
-- Not automated bank login or scraping
-- Not a budgeting app with categories and goals
-- Not a multi-user system
-- Not real-time sync
+This system MUST NOT:
 
-## Modular Design
+- Produce scores
+- Trigger alerts
+- Recommend actions
+- Enforce goals
+- Tell you what's good or bad
 
-The tool is built on explicit interfaces that make components swappable:
+Those are downstream concerns. If it does any of that, it's too early.
 
-- **Sensor** — any input adapter (ChaseCSV, Plaid, etc.) that produces Observations
-- **MemoryStore** — any storage backend (SQLite, Postgres, etc.) that persists Observations
-- **Projector** — any domain transformer that materializes Observations into query tables
-- **Reporter** — any query module that reads projections and produces output
+## Why This Matters
 
-This means you can swap Chase for Plaid, SQLite for Postgres, or add entirely new domains (health, calendar) without changing the core architecture.
+Cybernetic systems mature in order:
+
+1. Sensing
+2. Memory
+3. Pattern recognition
+4. Variable inference
+5. Regulation
+
+Most tools start at step 5. This tool is steps 1–2 only.
+
+Even if you never build dashboards or automate decisions, you gain:
+
+- A longitudinal record
+- The ability to ask questions later
+- A stable testbed for cybernetic ideas
+- Infrastructure, not product
 
 ## Connection to Broader Project
 
-This tool serves the central purpose by **removing friction from self-knowledge**.
+This tool embodies the doctrine: **build only what reality asks for**.
 
-- **The Living System** — treats personal data infrastructure as part of the hybrid condition; the human is in the loop
-- **Capital as Medium** — uses technical capability for personal insight, not extraction
-- **Cybernetic framing** — environment → sensor → memory → observer → health monitoring
-
-The observation/projection architecture is intentionally generic. Future sensors (health, calendar, code activity) can emit their own observation types and projections without changing the core schema.
+The future vision (multi-domain sensors, projections, regulatory integration) is documented but not built. The memory organ comes first. Meaning emerges from observation, not from premature structure.
 
 ## Status
 
-This artifact is in design. See `notes.md` for the full specification.
+This artifact is in design. v1 scope is minimal: ingest CSVs, normalize, append, dedupe. Nothing more.
