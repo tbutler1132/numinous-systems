@@ -1,12 +1,8 @@
 import { parse } from "csv-parse/sync";
 import { readFileSync } from "node:fs";
-import {
-  fingerprint,
-  financeTransactionFingerprint,
-  sourceRowHash,
-  type Observation,
-  type FinanceTransactionPayload,
-} from "@vital-systems/sensor";
+import { sourceRowHash, type Observation } from "@vital-systems/sensor";
+import { financeTransactionFingerprint } from "./fingerprint.js";
+import type { FinanceTransactionPayload } from "./types.js";
 
 /**
  * Chase CSV row structure (credit card or checking account export)

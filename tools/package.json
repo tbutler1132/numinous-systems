@@ -1,0 +1,13 @@
+{
+  "name": "@vital-systems/tools",
+  "private": true,
+  "workspaces": [
+    "sensor",
+    "finance"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "clean": "npm run clean --workspaces"
+  }
+}
