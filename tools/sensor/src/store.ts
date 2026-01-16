@@ -106,12 +106,19 @@ export class ObservationStore {
   /**
    * Insert observations with idempotent conflict handling.
    * Returns count of inserted vs skipped, plus any collision warnings.
+   *
+   * @param options.saveOnInsert - Whether to save to disk after insert (default: true).
+   *                                Set to false for real-time ingestion to batch saves.
    */
   insertObservations(
     observations: Observation[],
-    options?: { sourceRowHashes?: Map<string, string> }
+    options?: {
+      sourceRowHashes?: Map<string, string>;
+      saveOnInsert?: boolean;
+    }
   ): AppendResult {
     const sourceRowHashes = options?.sourceRowHashes ?? new Map();
+    const saveOnInsert = options?.saveOnInsert ?? true;
     let inserted = 0;
     let skipped = 0;
     const warnings: CollisionWarning[] = [];
@@ -167,8 +174,10 @@ export class ObservationStore {
       }
     }
 
-    // Save after batch insert
-    this.save();
+    // Save after batch insert (unless disabled for real-time ingestion)
+    if (saveOnInsert) {
+      this.save();
+    }
 
     return { inserted, skipped, warnings };
   }
@@ -235,10 +244,9 @@ export class ObservationStore {
    * Get an ingest run by ID
    */
   getIngestRun(runId: string): IngestRun | null {
-    const result = this.db.exec(
-      "SELECT * FROM ingest_runs WHERE run_id = ?",
-      [runId]
-    );
+    const result = this.db.exec("SELECT * FROM ingest_runs WHERE run_id = ?", [
+      runId,
+    ]);
 
     if (result.length === 0 || result[0].values.length === 0) {
       return null;
