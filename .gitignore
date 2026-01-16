@@ -4,3 +4,11 @@
 .env
 .vercel
 **/.DS_Store
+
+# Sensor data (raw CSVs and observation databases)
+nodes/*/raw/
+nodes/*/data/
+
+# Build outputs
+tools/*/dist/
+tools/*/node_modules/
