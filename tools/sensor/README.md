@@ -45,19 +45,16 @@ Observations have deterministic IDs computed from their semantic content. This e
 - **Collision detection** — same fingerprint + different source data = warning
 
 ```typescript
-import { fingerprint, financeTransactionFingerprint } from "@vital-systems/sensor";
+import { fingerprint, sourceRowHash } from "@vital-systems/sensor";
 
 // Generic fingerprint from any fields
-const id = fingerprint(["field1", "field2", 123]);
+const id = fingerprint(["domain", "source", "type", "field1", 123]);
 
-// Finance-specific fingerprint per spec
-const txId = financeTransactionFingerprint({
-  observed_at: "2026-01-14",
-  amount_cents: -1250,
-  description_norm: "STARBUCKS",
-  account_label: "checking",
-});
+// Source row hash for collision detection
+const rawHash = sourceRowHash(["raw", "csv", "fields"]);
 ```
+
+Each domain defines its own fingerprint function using the generic `fingerprint()`. See `@vital-systems/finance` for an example.
 
 ### ObservationStore
 
