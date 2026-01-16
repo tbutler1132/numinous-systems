@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "sensor",
-    "finance"
+    "finance",
+    "thought"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
