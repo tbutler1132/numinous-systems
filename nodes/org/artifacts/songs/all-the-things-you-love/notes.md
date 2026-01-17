@@ -1,9 +1,6 @@
 # All the Things You Love
 
-<audio controls>
-  <source src="https://pub-9c5527f78a0e4866a2a79b175f211482.r2.dev/All-The-Things-You-Love-10-11-24.wav" type="audio/wav">
-  Your browser does not support the audio element.
-</audio>
+🎧 [Listen](https://pub-9c5527f78a0e4866a2a79b175f211482.r2.dev/All-The-Things-You-Love-10-11-24.wav)
 
 ## I. Strategic Context
 
