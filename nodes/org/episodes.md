@@ -70,11 +70,11 @@ If no (consistently) → it isn't, move on.
 
 ### Actions
 
-**Baseline (must-do):**
+**Baseline:**
 - [ ] Coworking 2x this week
 - [ ] One initiation per day (any context)
 
-**Stretch (optional):**
+**Stretch:**
 - [ ] Attend one event or gathering
 - [ ] Start conversation with stranger
 - [ ] Reach out to one person for coffee/drinks
