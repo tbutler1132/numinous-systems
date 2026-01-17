@@ -81,6 +81,7 @@ The sensory vocabulary—what the philosophy looks and sounds like.
 | Artifact               | Purpose                                                                           |
 | ---------------------- | --------------------------------------------------------------------------------- |
 | **Aesthetic Spectrum** | The aesthetic language—emotional distortion, elegance to alien, visual signatures |
+| **Moodboard**          | Visual reference collection across the aesthetic spectrum                         |
 
 ### Songs
 
