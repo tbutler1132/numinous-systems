@@ -1,6 +1,6 @@
 # Artifacts
 
-This directory contains **artifacts** produced by the Org.
+This directory contains [artifacts](../../ontology.md#artifact) produced by the Org.
 
 An artifact is a durable output that remains after effort stops and can be referenced without requiring access to the process, context, or person that produced it.
 

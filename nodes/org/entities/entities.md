@@ -1,6 +1,6 @@
 # Entities
 
-This folder contains tracked objects owned or managed by the Org.
+This folder contains [entities](../../ontology.md#entity) owned or managed by the Org.
 
 Each file represents a type of entity. The filename is the type name.
 

@@ -38,6 +38,20 @@ Entities answer: *what exists?*
 
 ---
 
+## Artifact
+
+A durable output that persists independently of the process that created it.
+
+Artifacts leave traces in the world. They can be referenced, shared, or encountered without requiring access to the context or person that produced them.
+
+Unlike observations (which record what happened) or entities (which track what exists), artifacts are things that were made.
+
+Each node maintains its own artifacts with its own conventions (e.g., `org/artifacts/`, `personal/artifacts/`).
+
+Artifacts answer: *what was produced?*
+
+---
+
 ## Node
 
 A bounded context within the system.
