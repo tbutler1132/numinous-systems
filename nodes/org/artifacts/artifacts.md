@@ -101,6 +101,24 @@ User-facing applications that enable engagement with the philosophy.
 | --------------- | --------------------------------------------------------------------- |
 | **Expressions** | Personalized engagement with artifacts without dilution |
 
+### Sensors
+
+Domain-specific sensors that observe and remember without analyzing.
+
+| Artifact     | Purpose                                                                          |
+| ------------ | -------------------------------------------------------------------------------- |
+| **Finance**  | Memory organ for financial transactions—ingest CSVs, normalize, dedupe           |
+| **Thought**  | Bridge from fuzzy inbox capture to queryable observations—human-in-the-loop triage |
+| **Calendar** | Sync Google Calendar events into observation memory—time allocation record       |
+
+### Languages
+
+Programming languages and semantic tools.
+
+| Artifact       | Purpose                                                                  |
+| -------------- | ------------------------------------------------------------------------ |
+| **XenoScript** | Semantic programming language—declare meaning, project into forms        |
+
 ### Reference
 
 Theoretical frameworks and legacy systems for consultation, not implementation.
@@ -141,6 +159,13 @@ Theoretical frameworks and legacy systems for consultation, not implementation.
   All the Things          Expressions
     You Love          (personalized
    (first song)         engagement)
+                              │
+                    ┌─────────┴─────────┐
+                    │                   │
+               Sensors            XenoScript
+          (observe & remember)    (semantic
+           Finance, Thought,      programming)
+              Calendar
 
                     · · · · · · · · · · · · · · · · ·
 
@@ -151,6 +176,6 @@ Theoretical frameworks and legacy systems for consultation, not implementation.
 
 **Everything serves one purpose: enabling moments that redeem existence.**
 
-The Living System defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Love of fate clears regret so presence is possible. Capital as Medium enables creation at scale. The Axioms distill it all into ground-level affirmations. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Tools enable individuals to engage in their own way.
+The Living System defines what must be preserved for there to be someone who experiences beauty—the hybrid subject, the biological requirements, the viable range. Love of fate clears regret so presence is possible. Capital as Medium enables creation at scale. The Axioms distill it all into ground-level affirmations. The Genius Myth clears false framing. The Aesthetic Spectrum is how redemption sounds and looks. Songs are concrete expressions. Apps enable personalized engagement. Sensors observe and remember. XenoScript enables semantic programming.
 
 The Becoming Engine Doctrine sits outside the main tree as a **reference** — a mature system to check against when asking "are we drifting into optimization?" or "are we creating permanent mobilization?" It provides invariants and guardrails, not requirements.
