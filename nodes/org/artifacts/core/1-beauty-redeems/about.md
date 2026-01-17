@@ -1,3 +1,15 @@
+---
+title: Beauty Redeems
+status: published
+category: core
+order: 1
+relates_to:
+  - the-living-system
+  - love-of-fate
+  - capital-as-medium
+  - axioms
+---
+
 # Beauty Redeems
 
 ## Artifact Concept

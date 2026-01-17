@@ -1,3 +1,14 @@
+---
+title: Expressions
+status: published
+category: app
+relates_to:
+  - beauty-redeems
+  - the-living-system
+  - capital-as-medium
+implementation: apps/expressions/
+---
+
 # Expressions
 
 ## Artifact Concept
