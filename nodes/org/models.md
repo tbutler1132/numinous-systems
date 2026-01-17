@@ -291,3 +291,44 @@ Revise if:
 - the flow described no longer matches how material actually moves
 - distinctions feel forced rather than natural
 - the model prescribes rather than describes
+
+## Speculative Work
+
+### Status: Assumption | Category: Strategic
+
+**Created:** 2026-01  
+**Last revised:** 2026-01
+
+### Why
+
+Not all work carries the same commitment. Some actions are reversible and low-cost; others create obligations, lock in structure, or foreclose options. Without this distinction, the Org either waits too long (missing easy wins) or moves too fast (creating premature lock-in).
+
+### Description
+
+This model distinguishes between work that can be done speculatively and work that should wait for pressure from reality.
+
+**Low-commitment work** (safe to do early):
+- Data ingestion and normalized storage
+- Memory layer infrastructure
+- Observation capture
+- Reading, research, exploration
+
+These create optionality without obligation. You cannot ask questions about data you do not have. Worst case: it sits unused. Best case: it is there when needed.
+
+**High-commitment work** (wait for reality):
+- Systems, processes, UIs
+- Interpretations and recommendations
+- Workflows and automations
+- Public commitments
+
+These encode assumptions and create expectations. They should emerge from pressure, not speculation.
+
+The memory layer is infrastructure. Fill it early. Everything downstream should wait.
+
+### Revision Signal
+
+Revise if:
+
+- ingested data creates unexpected lock-in or obligations
+- waiting for pressure causes missed opportunities that were obvious in retrospect
+- the distinction stops mapping to actual decision-making
