@@ -2,8 +2,6 @@
 
 🎧 [Listen](https://pub-9c5527f78a0e4866a2a79b175f211482.r2.dev/All-The-Things-You-Love-10-11-24.wav)
 
-<p style="color:red">This is raw HTML inside Markdown</p>
-
 ## I. Strategic Context
 
 This song is the **entry point**—elegant, accessible, commercially viable.
