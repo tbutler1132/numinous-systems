@@ -29,6 +29,8 @@ Each artifact is a folder containing:
 
 This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _output_ (expressions). The concept can remain stable while the content evolves and expressions multiply.
 
+Some artifacts (particularly apps) have implementations that live outside the nodes structure (e.g., `apps/expressions/`). The artifact folder describes the concept; the implementation lives where the code belongs.
+
 ## What Artifacts Are Not
 
 Artifacts are not:

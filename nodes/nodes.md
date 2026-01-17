@@ -2,7 +2,7 @@
 
 (A system of cells interlinked within cells interlinked within one stem)
 
-A **Node** is a boundary within which feedback, memory, and regulation apply.
+A [Node](ontology.md#node) is a boundary within which feedback, memory, and regulation apply.
 
 Nodes can represent people, organizations, projects, processes, concepts, or any other entity that persists over time and benefits from learning from feedback.
 
