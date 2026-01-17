@@ -13,19 +13,9 @@ Humans may operate this Node, but the Node persists beyond any one operator.
 
 ## Files
 
-- [[baseline]]  
-  Describes what is normal for the Org when nothing special is happening.
-
-- [[log]]  
-  A chronological record of what actually happens.
-  This is the primary writing surface.
-
-- [[feedback]]  
-  Signals from reality that the Org should not ignore.
-  Feedback is recorded without interpretation.
-
 - [[models]]  
   Assumptions, patterns, and learned models that currently guide action.
+  Includes the operational baseline describing what is normal for the Org.
   All models are provisional and revisable.
 
 ## Operating principle
