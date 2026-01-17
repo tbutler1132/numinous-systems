@@ -22,18 +22,6 @@ export interface Observation {
 }
 
 /**
- * Input for creating an observation (before fingerprint/ingest time are set)
- */
-export interface ObservationInput {
-  observed_at: string;
-  domain: string;
-  source: string;
-  type: string;
-  schema_version: number;
-  payload: Record<string, unknown>;
-}
-
-/**
  * Ingest run audit record - tracks each ingest operation
  */
 export interface IngestRun {
@@ -57,8 +45,8 @@ export interface IngestRun {
   min_observed: string | null;
   /** Latest observation timestamp in batch */
   max_observed: string | null;
-  /** Run status: 'success', 'failed', 'partial' */
-  status: "success" | "failed" | "partial" | "running";
+  /** Run status */
+  status: IngestStatus;
 }
 
 /**
@@ -84,3 +72,8 @@ export interface CollisionWarning {
   /** Message describing the collision */
   message: string;
 }
+
+/**
+ * Ingest run status
+ */
+export type IngestStatus = "success" | "failed" | "partial" | "running";

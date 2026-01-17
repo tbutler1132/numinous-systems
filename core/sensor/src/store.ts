@@ -5,6 +5,7 @@ import { dirname } from "node:path";
 import type {
   Observation,
   IngestRun,
+  IngestStatus,
   AppendResult,
   CollisionWarning,
 } from "./types.js";
@@ -57,6 +58,20 @@ export class ObservationStore {
   private constructor(db: Database, dbPath: string) {
     this.db = db;
     this.dbPath = dbPath;
+  }
+
+  /**
+   * Map sql.js result columns and values to an object
+   */
+  private rowToObject(
+    columns: string[],
+    values: unknown[]
+  ): Record<string, unknown> {
+    const obj: Record<string, unknown> = {};
+    columns.forEach((col, i) => {
+      obj[col] = values[i];
+    });
+    return obj;
   }
 
   /**
@@ -210,7 +225,7 @@ export class ObservationStore {
       rowsSkipped: number;
       minObserved: string | null;
       maxObserved: string | null;
-      status: "success" | "failed" | "partial";
+      status: Exclude<IngestStatus, "running">;
     }
   ): void {
     const finishedAt = new Date().toISOString();
@@ -252,12 +267,7 @@ export class ObservationStore {
       return null;
     }
 
-    const columns = result[0].columns;
-    const values = result[0].values[0];
-    const row: Record<string, unknown> = {};
-    columns.forEach((col, i) => {
-      row[col] = values[i];
-    });
+    const row = this.rowToObject(result[0].columns, result[0].values[0]);
 
     return {
       run_id: row.run_id as string,
@@ -317,13 +327,9 @@ export class ObservationStore {
       return [];
     }
 
-    const columns = result[0].columns;
-    return result[0].values.map((values) => {
-      const row: Record<string, unknown> = {};
-      columns.forEach((col, i) => {
-        row[col] = values[i];
-      });
-
+    const { columns, values } = result[0];
+    return values.map((rowValues) => {
+      const row = this.rowToObject(columns, rowValues);
       return {
         id: row.id as string,
         observed_at: row.observed_at as string,
