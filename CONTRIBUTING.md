@@ -27,7 +27,7 @@ If you're unsure whether something would be welcome, open an issue first.
 The `nodes/personal/` directory is gitignored — that's my private working space. If you want to create your own personal node to work alongside the project:
 
 1. Create a `nodes/personal/` directory (it will be ignored by git)
-2. Add the same files as the org node: `baseline.md`, `log.md`, `feedback.md`, `models.md`
-3. Adapt them for your own use
+2. Add a `models.md` file for your working assumptions and operational baseline
+3. Adapt it for your own use
 
 This is optional. The project is readable without it.
