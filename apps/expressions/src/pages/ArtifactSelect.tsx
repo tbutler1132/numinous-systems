@@ -1,31 +1,30 @@
-import { artifacts } from '../data/artifacts'
-import { useProfile } from '../context/ProfileContext'
-import type { Artifact } from '../types'
+import { artifacts } from "../data/artifacts";
+import { useProfile } from "../context/ProfileContext";
+import type { Artifact } from "../types";
 
 function hasStoredExpression(artifactId: string): boolean {
-  return localStorage.getItem(`expressions:${artifactId}:content`) !== null
+  return localStorage.getItem(`expressions:${artifactId}:content`) !== null;
 }
 
 interface ArtifactSelectProps {
-  onSelectArtifact: (artifact: Artifact) => void
-  onEditProfile: () => void
+  onSelectArtifact: (artifact: Artifact) => void;
+  onEditProfile: () => void;
 }
 
 export default function ArtifactSelect({
   onSelectArtifact,
   onEditProfile,
 }: ArtifactSelectProps) {
-  const { profile } = useProfile()
+  const { profile } = useProfile();
+
+  const featuredArtifact = artifacts.find((a) => a.featured);
+  const standardArtifacts = artifacts.filter((a) => !a.featured);
 
   return (
     <>
       <div className="header-row">
         <h1>Expressions</h1>
       </div>
-      <p className="subtitle">
-        Each artifact is a core idea of this project. Select one to explore it
-        in a way shaped for you.
-      </p>
 
       <div className="profile-summary">
         {profile.register && (
@@ -40,8 +39,26 @@ export default function ArtifactSelect({
         </span>
       </div>
 
+      {featuredArtifact && (
+        <div
+          className="artifact artifact-featured"
+          onClick={() => onSelectArtifact(featuredArtifact)}
+        >
+          <span className="artifact-badge-featured">Start here</span>
+          <div className="artifact-title">{featuredArtifact.title}</div>
+          <div className="artifact-desc">{featuredArtifact.desc}</div>
+          {hasStoredExpression(featuredArtifact.id) && (
+            <span className="artifact-badge">Read</span>
+          )}
+        </div>
+      )}
+
+      <div className="artifacts-divider">
+        <span>Core Ideas</span>
+      </div>
+
       <div className="artifacts">
-        {artifacts.map((artifact) => (
+        {standardArtifacts.map((artifact) => (
           <div
             key={artifact.id}
             className="artifact"
@@ -56,5 +73,5 @@ export default function ArtifactSelect({
         ))}
       </div>
     </>
-  )
+  );
 }
