@@ -1,10 +1,10 @@
 {
-  "name": "@vital-systems/tools",
+  "name": "@vital-systems/root",
   "private": true,
   "workspaces": [
-    "sensor",
-    "finance",
-    "thought"
+    "core/sensor",
+    "sensors/finance",
+    "sensors/thought"
   ],
   "scripts": {
     "build": "npm run build --workspaces",

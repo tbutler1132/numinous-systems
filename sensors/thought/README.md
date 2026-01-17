@@ -11,7 +11,7 @@ The inbox is fuzzy. The observation store is encoded. This tool is the controlle
 ## Installation
 
 ```bash
-# From the tools/ directory
+# From workspace root
 npm install
 npm run build
 ```

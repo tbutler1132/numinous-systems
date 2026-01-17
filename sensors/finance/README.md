@@ -17,11 +17,9 @@ It observes. That's it. Analysis and regulation are downstream concerns.
 ## Installation
 
 ```bash
-# Build the sensor package first
-cd ../sensor && npm install && npm run build
-
-# Then build finance
-cd ../finance && npm install && npm run build
+# From workspace root
+npm install
+npm run build
 ```
 
 ## The Ritual

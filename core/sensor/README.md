@@ -206,4 +206,4 @@ npm test
 3. Compute source row hashes for collision detection
 4. Use `ObservationStore` to persist
 
-See `@vital-systems/finance` for a complete example.
+See `sensors/finance` for a complete example.
