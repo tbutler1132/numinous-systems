@@ -1,24 +1,55 @@
 # Models
 
-This file contains the working models that currently guide action.
+This file contains the working [models](../ontology.md#model) that currently guide the Org's action.
 
-Models describe what the Org is acting _as if_ is true.
-They may include assumptions, emerging patterns, constraints, or learned rules.
+Models describe what the Org is acting _as if_ is true. They are not claims about reality - they are useful compressions that shape behavior until feedback demands revision. This is a core cybernetic principle: systems regulate themselves through feedback, but need internal models to interpret that feedback and decide how to act.
+
+## Status Levels
+
+| Status | Meaning |
+|--------|---------|
+| assumption | Untested belief the Org is committed to acting on. Revised when reality disproves. |
+| emerging | Being validated through ongoing work. Some supporting evidence exists. |
+| learned | Confirmed by repeated feedback. High confidence, but still revisable. |
+
+## Model Categories
+
+| Category | Description | Revised When |
+|----------|-------------|--------------|
+| Operational | How the Org works (processes, protocols, tone) | Process fails or becomes friction |
+| Strategic | What the Org believes will work (hypotheses, bets about the world) | Reality disproves the hypothesis |
+
+Strategic models (especially at Assumption status) are distinct from Episodes. Episodes are bounded experiments with clear start/end - good for testing operational changes. Strategic models are ongoing bets you're committed to acting on, revised through sustained contact with reality rather than discrete tests.
+
+## Model Requirements
 
 Each model should indicate:
 
 - its status (assumption, emerging, learned)
+- its category (operational or strategic)
 - why it is being used
-- what might revise or falsify it
+- when it was created or last revised
+- what might revise or falsify it (revision signal)
 
 Models are provisional.
 They are revised or discarded when feedback demands it.
 
 This file represents the Org's current understanding, not doctrine.
 
+---
+
 ## Operational Baseline
 
-### Status: Exploratory
+### Status: Emerging | Category: Operational
+
+**Created:** 2025-01  
+**Last revised:** 2026-01
+
+### Why
+
+The Org needs a reference point for what "normal" looks like, so that deviations can be recognized and assessed deliberately rather than drifting into them.
+
+### Description
 
 This model describes the Org's current operational state, normal activities, constraints, and pace.
 
@@ -85,7 +116,16 @@ This model should be reconsidered if:
 
 ## Writing Tone
 
-### Status: Low confidence
+### Status: Assumption | Category: Operational
+
+**Created:** 2025-01  
+**Last revised:** 2026-01
+
+### Why
+
+Writing is the Org's primary output medium. Having an explicit posture prevents drift toward generic or performative styles, and provides a reference point when tone feels off.
+
+### Description
 
 This model records the current writing posture of the Org.
 It reflects learned constraints rather than aspirational style.
@@ -169,9 +209,14 @@ This model should be reconsidered if:
 
 ## Domain Management
 
-### Status: Emerging
+### Status: Learned | Category: Operational
 
-This model describes how the Org acquires and maintains domains.
+**Created:** 2025-06  
+**Last revised:** 2026-01
+
+### Why
+
+Domains are easy to acquire and easy to forget. Without a protocol, they scatter across registrars, expire unexpectedly, or accumulate without purpose.
 
 ### Protocol
 
@@ -194,12 +239,18 @@ Revise if:
 
 ## Information Triage
 
-### Status: Emerging
+### Status: Emerging | Category: Operational
 
-This model describes how material recorded in the system is informally differentiated over time.
+**Created:** 2025-11  
+**Last revised:** 2026-01
 
-It does not prescribe a workflow.
-It supports recognition.
+### Why
+
+Material accumulates. Without a model for how things naturally differentiate, everything stays in the log indefinitely or gets promoted arbitrarily. This model supports recognition of what material has become.
+
+### Relationship to Ontology
+
+This model describes an internal flow within the Org. The primitives in [[ontology]] (Observation, Entity, Artifact) are universal concepts that apply across nodes. This model is about how material moves through *this* node's processing, using terms specific to the Org's workflow (log, feedback, models, artifacts). The two frameworks are complementary, not competing.
 
 ### Orientation
 
@@ -232,3 +283,11 @@ Material tends to move as follows:
 
 Movement is optional.
 Nothing is required to leave the log.
+
+### Revision Signal
+
+Revise if:
+
+- the flow described no longer matches how material actually moves
+- distinctions feel forced rather than natural
+- the model prescribes rather than describes

@@ -64,4 +64,33 @@ Each node has its own entities, models, and observations.
 
 ---
 
+## Model
+
+A provisional belief that guides action.
+
+Models represent what a node is acting *as if* is true. They compress reality into something actionable. Models are not claims of truth - they are useful assumptions that shape behavior until feedback demands revision.
+
+This is a core cybernetic concept: systems regulate themselves through feedback, but they need internal models to interpret feedback and decide how to act.
+
+| Field | Description |
+|-------|-------------|
+| status | `assumption` (untested), `emerging` (being validated), `learned` (confirmed by feedback) |
+| why | The reason this model is being used |
+| revision_signal | What would cause this model to be reconsidered |
+| created | When the model was established |
+| updated | When the model was last revised |
+
+Models fall into two broad categories:
+
+- **Operational models** — how the node works (processes, protocols, tone)
+- **Strategic models** — what the node believes will work (hypotheses, bets)
+
+Operational models are revised when processes fail. Strategic models are revised when reality disproves them.
+
+Each node maintains its own models (e.g., `org/models.md`, `personal/models.md`).
+
+Models answer: *what does the system believe?*
+
+---
+
 *Add new primitives here as they emerge.*
