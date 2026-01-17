@@ -12,3 +12,4 @@ nodes/*/data/
 # Build outputs
 tools/*/dist/
 tools/*/node_modules/
+*/node_modules/

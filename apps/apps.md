@@ -1,6 +1,6 @@
 # Apps
 
-This directory contains deployable applications built on top of the Vital Systems artifacts.
+This directory contains deployable applications built on top of the Numinous Systems artifacts.
 
 Apps are distinct from artifacts — they are functional tools rather than philosophical outputs. Each app lives in its own subdirectory with everything needed to run and deploy it.
 

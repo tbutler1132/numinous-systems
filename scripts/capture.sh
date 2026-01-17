@@ -2,7 +2,7 @@
 # Quick capture for vital-systems inbox
 # Add to your .zshrc: source ~/Projects/vital-systems/scripts/capture.sh
 
-VITAL_SYSTEMS_ROOT="${VITAL_SYSTEMS_ROOT:-$HOME/Projects/vital-systems}"
+VITAL_SYSTEMS_ROOT="${VITAL_SYSTEMS_ROOT:-$HOME/Projects/numinous-systems}"
 
 inbox() {
   local inbox_file="$VITAL_SYSTEMS_ROOT/nodes/inbox.md"
