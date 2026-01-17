@@ -40,20 +40,22 @@ export default function ArtifactDetail({
   const [loading, setLoading] = useState(true)
   const [about, setAbout] = useState('')
   const [notes, setNotes] = useState('')
-  const [activeTab, setActiveTab] = useState<TabType>('machinic')
+  const [activeTab, setActiveTab] = useState<TabType>(artifact.defaultTab ?? 'machinic')
   const [expression, setExpression] = useState<string | null>(null)
   const [generating, setGenerating] = useState(false)
   const [hasGenerated, setHasGenerated] = useState(false)
   const [isRevealing, setIsRevealing] = useState(false)
   const [generationCount, setGenerationCount] = useState(0)
 
+  const category = artifact.category ?? 'core'
+
   // Fetch artifact content on mount
   useEffect(() => {
     const fetchContent = async () => {
       try {
         const [aboutRes, notesRes] = await Promise.all([
-          fetch(`${GITHUB_RAW_BASE}/${artifact.id}/about.md`),
-          fetch(`${GITHUB_RAW_BASE}/${artifact.id}/notes.md`),
+          fetch(`${GITHUB_RAW_BASE}/${category}/${artifact.id}/about.md`),
+          fetch(`${GITHUB_RAW_BASE}/${category}/${artifact.id}/notes.md`),
         ])
 
         if (!aboutRes.ok || !notesRes.ok) {
@@ -68,7 +70,15 @@ export default function ArtifactDetail({
         if (storedExpr) {
           setExpression(storedExpr)
           setHasGenerated(true)
-          setTheme('machinic')
+          // Only apply machinic theme if that's the default
+          if (!artifact.defaultTab || artifact.defaultTab === 'machinic') {
+            setTheme('machinic')
+          }
+        }
+
+        // Apply initial theme based on default tab
+        if (artifact.defaultTab === 'organic') {
+          setTheme('organic')
         }
 
         setGenerationCount(getGenerationCount(artifact.id))
@@ -84,7 +94,7 @@ export default function ArtifactDetail({
 
     // Cleanup theme on unmount
     return () => clearTheme()
-  }, [artifact.id, onBack, setTheme, clearTheme])
+  }, [artifact.id, artifact.defaultTab, category, onBack, setTheme, clearTheme])
 
   // Handle tab switching
   const handleTabSwitch = (tab: TabType) => {
@@ -113,7 +123,7 @@ export default function ArtifactDetail({
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ artifact: artifact.id, profile }),
+        body: JSON.stringify({ artifact: artifact.id, profile, category }),
       })
 
       if (!res.ok) throw new Error('Generation failed')
@@ -185,26 +195,47 @@ export default function ArtifactDetail({
       </div>
 
       <p className="context-text">
-        Toggle between the machinic—an AI-generated expression shaped for your
-        sensibility—and the organic raw notes. The core truth remains; only the
-        vessel changes.
+        {artifact.featured
+          ? 'Start with the organic—the human-written essay. Or switch to machinic for an AI-generated version shaped for your sensibility.'
+          : 'Toggle between the machinic—an AI-generated expression shaped for your sensibility—and the organic raw notes. The core truth remains; only the vessel changes.'}
       </p>
 
       <div className="tabs">
-        <button
-          className={`tab ${activeTab === 'machinic' ? 'active' : ''}`}
-          onClick={() => handleTabSwitch('machinic')}
-        >
-          Machinic
-          <span className="tab-hint">AI-personalized</span>
-        </button>
-        <button
-          className={`tab ${activeTab === 'organic' ? 'active' : ''}`}
-          onClick={() => handleTabSwitch('organic')}
-        >
-          Organic
-          <span className="tab-hint">Raw notes</span>
-        </button>
+        {artifact.featured ? (
+          <>
+            <button
+              className={`tab ${activeTab === 'organic' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('organic')}
+            >
+              Organic
+              <span className="tab-hint">Human-written</span>
+            </button>
+            <button
+              className={`tab ${activeTab === 'machinic' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('machinic')}
+            >
+              Machinic
+              <span className="tab-hint">AI-personalized</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className={`tab ${activeTab === 'machinic' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('machinic')}
+            >
+              Machinic
+              <span className="tab-hint">AI-personalized</span>
+            </button>
+            <button
+              className={`tab ${activeTab === 'organic' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('organic')}
+            >
+              Organic
+              <span className="tab-hint">Raw notes</span>
+            </button>
+          </>
+        )}
       </div>
 
       {activeTab === 'machinic' && (
@@ -262,10 +293,22 @@ export default function ArtifactDetail({
 
       {activeTab === 'organic' && (
         <>
-          <span className="mode-label">Raw working notes</span>
+          <span className="mode-label">
+            {artifact.featured ? 'The organic touchpoint' : 'Raw working notes'}
+          </span>
           <ContentBox>
             <ReactMarkdown>{notes}</ReactMarkdown>
           </ContentBox>
+          {artifact.featured && (
+            <div className="continue-cta">
+              <p className="continue-cta-text">
+                Now that you've read this reflection, explore the core ideas that emerged from it.
+              </p>
+              <button className="btn" onClick={handleBack}>
+                Continue to Core Ideas
+              </button>
+            </div>
+          )}
         </>
       )}
     </>

@@ -9,6 +9,9 @@ export interface Artifact {
   id: string
   title: string
   desc: string
+  featured?: boolean
+  defaultTab?: TabType
+  category?: string
 }
 
 export interface Usage {
