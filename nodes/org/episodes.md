@@ -16,8 +16,13 @@ This file is itself an experiment — testing whether the Episode concept is use
 - Make at least one genuine organic connection
 - Physical routines (morning workout, sleep schedule)
 
+### Actions
+- [ ] 
+- [ ] 
+- [ ] 
+
 ### Log
-_(actions, notes, observations during the week)_
+_(notes, observations during the week)_
 
 ---
 
