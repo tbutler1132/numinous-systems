@@ -93,6 +93,14 @@ Musical expressions of the philosophy.
 | --------------------------- | ------------------------------------------------------------------------------------ |
 | **All the Things You Love** | First musical expression—the trojan horse, compressing alien aesthetic into elegance |
 
+### Story
+
+Personal mythos — lived experience rendered as narrative, mythologized and fictionalized.
+
+| Artifact | Purpose |
+| -------- | ------- |
+| *(none yet)* | — |
+
 ### Apps
 
 User-facing applications that enable engagement with the philosophy.

@@ -15,7 +15,7 @@ title: "Beauty Redeems"
 status: published | draft | private
 
 # Categorization
-category: core | essay | aesthetic | song | app | reference
+category: core | essay | aesthetic | song | story | app | reference
 order: 1  # display order within category (optional)
 
 # Connections
@@ -67,6 +67,7 @@ Current categories (add as needed):
 | essay | Supporting arguments |
 | aesthetic | Sensory vocabulary |
 | song | Musical expressions |
+| story | Personal mythos and fictionalized narrative |
 | app | User-facing applications |
 | reference | Frameworks for consultation |
 
