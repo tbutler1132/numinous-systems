@@ -1,6 +1,6 @@
 # Nodes
 
-(Cells within cells interlinked)
+(A system of cells interlinked within cells interlinked within one stem)
 
 A **Node** is a boundary within which feedback, memory, and regulation apply.
 
