@@ -1,6 +1,6 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert";
-import { existsSync, unlinkSync, mkdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync } from "node:fs";
 import { ObservationStore, resolveDbPath } from "./store.js";
 import { fingerprint } from "./fingerprint.js";
 import type { Observation } from "./types.js";

@@ -35,7 +35,7 @@ export function createBackup(inboxPath: string): string {
  */
 function markLineAsProcessed(line: string, tag: ValidTag): string {
   // Remove any existing tag and ✓ marker
-  let cleaned = line.replace(/\s*\[\w+\]\s*✓?\s*$/, "");
+  const cleaned = line.replace(/\s*\[\w+\]\s*✓?\s*$/, "");
   // Add the new tag and ✓
   return `${cleaned} [${tag}] ✓`;
 }

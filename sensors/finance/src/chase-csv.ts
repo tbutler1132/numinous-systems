@@ -196,7 +196,7 @@ function parseAmountToCents(amountStr: string): number {
  * - Remove common POS prefixes
  */
 function normalizeDescription(desc: string): string {
-  let normalized = desc
+  const normalized = desc
     .toUpperCase()
     .trim()
     // Collapse multiple spaces

@@ -94,7 +94,7 @@ function ensureDataDirectory(dbPath: string): void {
 /**
  * Prompt for a single keypress.
  */
-function promptKey(rl: readline.Interface): Promise<string> {
+function promptKey(_rl: readline.Interface): Promise<string> {
   return new Promise((resolve) => {
     const stdin = process.stdin;
     const wasRaw = stdin.isRaw;
