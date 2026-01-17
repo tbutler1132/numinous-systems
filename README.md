@@ -1,4 +1,4 @@
-# Vital Systems
+# Numinous Systems
 
 This repository documents a creative and philosophical project oriented toward a single purpose: **creating conditions for moments of beauty**.
 

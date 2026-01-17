@@ -19,7 +19,7 @@ export default function Landing() {
             rel="noopener noreferrer"
             className="landing-link"
           >
-            <span className="link-title">Vital Systems</span>
+            <span className="link-title">Numinous Systems</span>
           </a>
         </nav>
       </div>
