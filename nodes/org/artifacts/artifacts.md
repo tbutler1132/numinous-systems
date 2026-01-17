@@ -90,13 +90,13 @@ Musical expressions of the philosophy.
 | --------------------------- | ------------------------------------------------------------------------------------ |
 | **All the Things You Love** | First musical expression—the trojan horse, compressing alien aesthetic into elegance |
 
-### Tools
+### Apps
 
-Infrastructure for engagement.
+User-facing applications that enable engagement with the philosophy.
 
 | Artifact        | Purpose                                                               |
 | --------------- | --------------------------------------------------------------------- |
-| **Expressions** | Tool enabling personalized engagement with artifacts without dilution |
+| **Expressions** | Personalized engagement with artifacts without dilution |
 
 ### Reference
 
