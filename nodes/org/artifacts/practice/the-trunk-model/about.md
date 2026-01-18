@@ -16,6 +16,7 @@ This is not a productivity framework. It's a way to keep creative work honest, c
 - The ownership question—why parallel exploration works but parallel decision-making does not
 - Creative merge conflicts—loss of clarity, competing directions, emotional flatness, aesthetic overload
 - The difference between flexibility and avoidance
+- The fractal nature of digital artifacts—how the model applies recursively from page to element to source
 
 ## The Core Insight
 
@@ -23,7 +24,7 @@ The goal is not control. The goal is to keep work moving forward.
 
 Most collaborative creative work fails not from disagreement but from ambiguity: What is the real version? Who decides? What stays, what goes? The Trunk Model makes these questions explicit rather than leaving them to fester.
 
-A version becomes real when it is chosen and carried forward. Perpetual exploration is not flexibility—it is avoidance.
+In the digital world, creative work is decomposable—a song is a page containing elements generated from sources. The Trunk Model applies at every level of this tree, ready to handle whatever depth of collaboration emerges.
 
 ## Connection to Broader Project
 
@@ -34,4 +35,4 @@ A version becomes real when it is chosen and carried forward. Perpetual explorat
 
 ## Status
 
-This artifact is conceptually complete. The notes contain the full framework as a reference document.
+This artifact is conceptually complete. The notes contain the full framework as a reference document, including the extension to fractal/recursive application across page, element, and source layers.

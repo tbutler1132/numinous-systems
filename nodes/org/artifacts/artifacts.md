@@ -75,7 +75,14 @@ Supporting arguments that develop specific themes.
 | **Continuity of Intention** | Explores why todo systems and PKM tools keep being rebuilt—the fundamental human problem of maintaining coherence over time            |
 | **Expressions Reflection**  | Meta-reflection on the Expressions app—the organic touchpoint, speed vs. deliberation, and the escalation from LinkedIn to existential |
 | **The Weakness of Cringe**  | Analysis of "cringe" as outsourced evaluation—why it's weak compared to shame/guilt and how it prevents sincere creation               |
-| **The Trunk Model**         | Practical framework for collaborative creative work—applying version control wisdom to keep work moving without losing coherence       |
+
+### Practice
+
+Operational frameworks meant to be used, not just understood.
+
+| Artifact              | Purpose                                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **The Trunk Model**   | Framework for collaborative creative work—applying version control wisdom to keep work moving without losing coherence |
 
 ### Aesthetic
 

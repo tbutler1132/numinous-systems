@@ -292,6 +292,40 @@ Revise if:
 - distinctions feel forced rather than natural
 - the model prescribes rather than describes
 
+## Collaborative Work
+
+### Status: Assumption | Category: Operational
+
+**Created:** 2026-01  
+**Last revised:** 2026-01
+
+### Why
+
+When multiple people work on the same creative output, ambiguity about ownership and integration kills momentum faster than disagreement does. Without explicit protocol, work stalls or fragments.
+
+### Description
+
+The Org follows [The Trunk Model](artifacts/practice/the-trunk-model/notes.md) for collaborative creative work.
+
+Core commitments:
+
+- There is always one canonical version (the trunk)
+- Branches are short-lived and purpose-driven
+- One person owns integration at any given time
+- Integration is selective, not additive
+- Forward motion over perfection
+
+### Revision Signal
+
+Revise if:
+
+- the framework creates friction in actual collaboration
+- integration ownership becomes contested or unclear
+- branches routinely live too long or accumulate without resolution
+- the model prescribes structure that reality does not demand
+
+---
+
 ## Speculative Work
 
 ### Status: Assumption | Category: Strategic

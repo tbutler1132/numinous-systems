@@ -17,3 +17,8 @@ nodes/*/data/
 # Build outputs and dependencies
 **/dist/
 **/node_modules/
+
+# Creative work binaries (stored locally, backed up separately)
+**/trunk/
+**/branches/
+**/archive/

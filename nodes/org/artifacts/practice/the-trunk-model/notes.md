@@ -141,3 +141,57 @@ It is avoidance.**
 
 **This is not a rigid workflow.
 It is a way to keep creative work honest, collaborative, and alive.**
+
+---
+
+## 9. The Fractal Nature of Digital Artifacts
+
+In the digital world, creative work is decomposable. A song is not a single object—it is a tree:
+
+- **Page**: The presentation layer (cover art, audio player, notes, lyrics)
+- **Elements**: The components embedded in the page (the audio file, the image)
+- **Sources**: The generative files that produce elements (Ableton project, Photoshop file)
+
+The Trunk Model applies recursively at every level.
+
+```
+page/
+  trunk/           ← canonical arrangement of elements
+  branches/        ← "what if we add a video element?"
+
+elements/
+  audio/
+    trunk/         ← canonical mix
+    branches/      ← "what if the bass is louder?"
+    source/
+      trunk/       ← canonical project file
+      branches/    ← "what if the tempo is slower?"
+  
+  cover/
+    trunk/         ← canonical image
+    branches/      ← "what if it's darker?"
+    source/
+      trunk/       ← canonical PSD/Figma file
+      branches/    ← "what if different typography?"
+```
+
+**Most of the time, you are only actively branching at one level.** When collaborating on a song, you might branch only at the source level (the Ableton project). The page and elements remain stable until you have something worth promoting.
+
+But the structure allows collaboration at any depth. Someone wants to branch just the cover art? Allowed. Someone wants to branch the whole page to add a video element? Also allowed. The model scales up and down.
+
+**This is aligned with the modern world.**
+
+Physical media was fixed—a record, a tape, a print. Collaboration happened before the object existed. Then it was done.
+
+Digital media is:
+
+- Decomposable (page → elements → sources)
+- Versionable (every layer can have history)
+- Forkable (anyone can branch at any level)
+- Never truly "done" (the trunk can always evolve)
+
+The Trunk Model makes this explicit rather than pretending the old model still applies.
+
+**In practice:**
+
+You do not explain this to collaborators. You say "we're working on a song." But underneath, the structure is there—ready to handle whatever depth of collaboration emerges.
