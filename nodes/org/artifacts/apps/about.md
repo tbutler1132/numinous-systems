@@ -27,6 +27,7 @@ Apps here share certain commitments:
 | App             | Function                                                   |
 | --------------- | ---------------------------------------------------------- |
 | **Expressions** | Personalized engagement with artifacts via organic prompts |
+| **Projection**  | Navigable interface for exploring the system's canon       |
 
 ## Connection to Other Categories
 
