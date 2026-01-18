@@ -1,6 +1,6 @@
 # Nodes
 
-(A system of cells interlinked within cells interlinked within one stem)
+(A system of cells interlinked within cells interlinked within one stem. Dreadfully distinct.)
 
 A [Node](ontology.md#node) is a boundary within which feedback, memory, and regulation apply.
 
