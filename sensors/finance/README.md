@@ -1,4 +1,4 @@
-# @vital-systems/finance
+# @numinous-systems/finance
 
 Finance sensor — converts Chase bank CSVs into normalized observations.
 

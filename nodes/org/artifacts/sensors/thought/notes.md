@@ -101,6 +101,6 @@ Tags are NOT part of the fingerprint. If the same content is processed again (ev
 
 ## Dependencies
 
-- `@vital-systems/sensor` — for ObservationStore, fingerprinting
+- `@numinous-systems/sensor` — for ObservationStore, fingerprinting
 - `readline` or `enquirer` — for interactive CLI
 - Standard Node fs for reading/writing inbox.md

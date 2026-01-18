@@ -1,4 +1,4 @@
-import { fingerprint } from "@vital-systems/sensor";
+import { fingerprint } from "@numinous-systems/sensor";
 
 /**
  * Generate a deterministic fingerprint for a thought entry.

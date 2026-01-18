@@ -1,5 +1,5 @@
 {
-  "name": "@vital-systems/sensor",
+  "name": "@numinous-systems/sensor",
   "version": "1.0.0",
   "description": "Domain-agnostic observation memory infrastructure",
   "type": "module",

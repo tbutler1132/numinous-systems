@@ -1,6 +1,6 @@
 import { parse } from "csv-parse/sync";
 import { readFileSync } from "node:fs";
-import { sourceRowHash, type Observation } from "@vital-systems/sensor";
+import { sourceRowHash, type Observation } from "@numinous-systems/sensor";
 import { financeTransactionFingerprint } from "./fingerprint.js";
 import type { FinanceTransactionPayload } from "./types.js";
 

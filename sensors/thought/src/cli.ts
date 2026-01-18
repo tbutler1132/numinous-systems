@@ -3,7 +3,7 @@
 import { existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import * as readline from "node:readline";
-import { ObservationStore, resolveDbPath } from "@vital-systems/sensor";
+import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 import { parseInbox, getDisplayText } from "./inbox-parser.js";
 import { updateInbox, type ItemToMark } from "./inbox-writer.js";
 import { thoughtFingerprint } from "./fingerprint.js";

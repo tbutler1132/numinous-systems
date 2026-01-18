@@ -2,7 +2,7 @@
 
 import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { join, resolve, basename } from "node:path";
-import { ObservationStore, resolveDbPath } from "@vital-systems/sensor";
+import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 import { parseChaseCSV, type ParseResult } from "./chase-csv.js";
 
 interface IngestOptions {

@@ -1,4 +1,4 @@
-# @vital-systems/thought
+# @numinous-systems/thought
 
 Process inbox items into observation memory with interactive tagging.
 
@@ -132,4 +132,4 @@ const thoughts = store.queryObservations({ domain: "thought" });
 
 ## Dependencies
 
-- `@vital-systems/sensor` — observation store, fingerprinting
+- `@numinous-systems/sensor` — observation store, fingerprinting

@@ -1,4 +1,4 @@
-# @vital-systems/sensor
+# @numinous-systems/sensor
 
 Domain-agnostic observation memory infrastructure. A foundation for building sensors that convert external data into normalized, append-only observations.
 
@@ -45,7 +45,7 @@ Observations have deterministic IDs computed from their semantic content. This e
 - **Collision detection** — same fingerprint + different source data = warning
 
 ```typescript
-import { fingerprint, sourceRowHash } from "@vital-systems/sensor";
+import { fingerprint, sourceRowHash } from "@numinous-systems/sensor";
 
 // Generic fingerprint from any fields
 const id = fingerprint(["domain", "source", "type", "field1", 123]);
@@ -54,14 +54,14 @@ const id = fingerprint(["domain", "source", "type", "field1", 123]);
 const rawHash = sourceRowHash(["raw", "csv", "fields"]);
 ```
 
-Each domain defines its own fingerprint function using the generic `fingerprint()`. See `@vital-systems/finance` for an example.
+Each domain defines its own fingerprint function using the generic `fingerprint()`. See `@numinous-systems/finance` for an example.
 
 ### ObservationStore
 
 SQLite-backed storage with automatic schema initialization:
 
 ```typescript
-import { ObservationStore, resolveDbPath } from "@vital-systems/sensor";
+import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 
 // Create/open a store
 const dbPath = resolveDbPath("/path/to/workspace", "personal");

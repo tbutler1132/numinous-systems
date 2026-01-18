@@ -293,7 +293,7 @@ Credentials/tokens stored outside repo for security. Never committed.
 
 - Node.js + TypeScript
 - `googleapis` (official Google API client, handles OAuth)
-- `@vital-systems/sensor` (shared observation infrastructure)
+- `@numinous-systems/sensor` (shared observation infrastructure)
 
 ---
 

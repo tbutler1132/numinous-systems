@@ -33,7 +33,7 @@ core/sensor/                # Shared infrastructure
   - resolveDbPath()         # Node path resolution
 ```
 
-Each sensor depends on `@vital-systems/sensor` for:
+Each sensor depends on `@numinous-systems/sensor` for:
 - The `Observation` type
 - Generic `fingerprint()` and `sourceRowHash()` functions
 - `ObservationStore` for persistence
@@ -50,7 +50,7 @@ sensors/<domain>/
     fingerprint.ts  # Domain fingerprint using generic fingerprint()
     <parser>.ts     # Parse raw format into observations
     cli.ts          # CLI interface
-  package.json      # Depends on @vital-systems/sensor
+  package.json      # Depends on @numinous-systems/sensor
   README.md         # Usage and examples
 ```
 
@@ -68,7 +68,7 @@ export interface MyDomainPayload extends Record<string, unknown> {
 
 ```typescript
 // fingerprint.ts
-import { fingerprint } from "@vital-systems/sensor";
+import { fingerprint } from "@numinous-systems/sensor";
 
 export function myDomainFingerprint(params: {...}): string {
   return fingerprint([
@@ -84,7 +84,7 @@ export function myDomainFingerprint(params: {...}): string {
 
 ```typescript
 // parser.ts
-import type { Observation } from "@vital-systems/sensor";
+import type { Observation } from "@numinous-systems/sensor";
 import { myDomainFingerprint } from "./fingerprint.js";
 
 export function parseMyFormat(input: string): Observation[] {
@@ -98,7 +98,7 @@ export function parseMyFormat(input: string): Observation[] {
 
 ```typescript
 // cli.ts
-import { ObservationStore, resolveDbPath } from "@vital-systems/sensor";
+import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 
 // Parse args, run parser, insert observations
 ```
@@ -106,7 +106,7 @@ import { ObservationStore, resolveDbPath } from "@vital-systems/sensor";
 ## Adding a New Sensor
 
 1. Create directory: `sensors/<domain>/`
-2. Set up `package.json` with `@vital-systems/sensor` dependency
+2. Set up `package.json` with `@numinous-systems/sensor` dependency
 3. Implement the sensor pattern (types → fingerprint → parser → CLI)
 4. Add README with usage instructions
 5. Document in this file
