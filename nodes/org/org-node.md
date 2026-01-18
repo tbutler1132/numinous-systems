@@ -9,7 +9,7 @@ The Org Node is a public, durable entity responsible for:
 - maintaining continuity over time
 
 It is not a proxy for any individual.
-Humans may operate this Node, but the Node persists beyond any one operator.
+Humans may operate this Node, but the Node persists beyond any one operator. What it produces may outlast anyone who remembers making it.
 
 ## Files
 

@@ -5,7 +5,7 @@ This directory contains [artifacts](../../ontology.md#artifact) produced by the 
 An artifact is a durable output that remains after effort stops and can be referenced without requiring access to the process, context, or person that produced it.
 
 Artifacts are not notes, drafts, or internal deliberation.
-They are the primary way this Org leaves traces in the world.
+They are the primary way this Org leaves traces in the world—what remains when the process that made them is gone.
 
 ## Purpose
 

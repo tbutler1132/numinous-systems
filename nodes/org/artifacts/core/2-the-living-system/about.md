@@ -23,7 +23,7 @@ The orientation is toward **viability**, not optimization. Feedback over narrati
 ### The Viable Range
 - Humanness has boundaries: a **floor** and a **ceiling**
 - **The floor** = biological requirements that can't be optimized away: community, embodiment, meaning, attention limits
-- **The ceiling** = the point where optimization kills the thing being optimized—exceed humanness and there's no subject left to experience beauty
+- **The ceiling** = the point where optimization kills the thing being optimized—exceed humanness and there's no subject left to experience beauty, no one to ask whether any of it was real
 - The task: navigate within this range
 
 ### Community as Biological Architecture

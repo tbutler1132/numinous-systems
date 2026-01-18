@@ -42,7 +42,7 @@ Entities answer: *what exists?*
 
 A durable output that persists independently of the process that created it.
 
-Artifacts leave traces in the world. They can be referenced, shared, or encountered without requiring access to the context or person that produced them.
+Artifacts leave traces in the world. They can be referenced, shared, or encountered without requiring access to the context or person that produced them. The artifact persists; the maker may not.
 
 Unlike observations (which record what happened) or entities (which track what exists), artifacts are things that were made.
 
