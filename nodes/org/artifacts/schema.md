@@ -26,8 +26,8 @@ relates_to: ["the-living-system", "axioms"]  # sibling connections
 created: 2025-03-15
 updated: 2026-01-10
 
-# For apps with implementations elsewhere
-implementation: apps/expressions/
+# For apps with implementations in the artifact
+implementation: impl/
 ---
 ```
 
@@ -45,7 +45,7 @@ implementation: apps/expressions/
 | relates_to | array | Slugs of related artifacts (for graph edges) |
 | created | date | When artifact was created |
 | updated | date | Last significant update |
-| implementation | path | For artifacts with code elsewhere |
+| implementation | path | For artifacts with code (typically `impl/`) |
 
 ---
 
@@ -95,7 +95,7 @@ updated: 2025-11-20
 This frontmatter can be consumed by:
 
 1. **Visualization site** — parse all `about.md` files, build navigation and graph from frontmatter
-2. **Expressions app** — instead of maintaining a hardcoded artifact list in `apps/expressions/src/data/artifacts.ts`, the app could fetch and parse frontmatter directly from the source markdown
+2. **Expressions app** — instead of maintaining a hardcoded artifact list in the app's `src/data/artifacts.ts`, the app could fetch and parse frontmatter directly from the source markdown
 
 This makes frontmatter the single source of truth for artifact metadata, avoiding duplication between nodes and apps.
 

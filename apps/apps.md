@@ -1,34 +1,28 @@
 # Apps
 
-This directory contains deployable applications built on top of the Numinous Systems artifacts.
+This directory is reserved for **system-level platforms** — generic tools that serve the entire repository, not any specific node.
 
-Apps are distinct from artifacts — they are functional tools rather than philosophical outputs. Each app lives in its own subdirectory with everything needed to run and deploy it.
+System-level apps are distinct from node-specific app artifacts. A system-level app might:
+
+- Provide a generic projection platform for any node's content
+- Offer shared infrastructure used across multiple nodes
+- Implement repository-wide tooling
 
 ## Current Apps
 
-### [expressions/](expressions/)
+*None yet.* This directory is reserved for future system-level platforms.
 
-A web app that generates personalized expressions of philosophical artifacts using Claude.
+## Node-Specific Apps
 
-- **Stack**: Vanilla JS + Vercel Edge Functions
-- **Purpose**: Validate whether personalized presentations of artifacts resonate with readers
-- **Status**: V1 — minimal implementation for validation
+Apps that belong to a specific node live within that node's artifacts. For example:
 
-See [expressions/README.md](expressions/README.md) for setup and deployment.
+- **Expressions** — lives at `nodes/org/artifacts/apps/expressions/` because it's an org-specific artifact that expresses the org's philosophy
 
 ## Philosophy
 
-Apps in this project follow a few principles:
+When adding apps to this directory:
 
-1. **Minimal viable scope** — Build the smallest thing that answers the core question
-2. **No premature abstraction** — Frameworks and infrastructure only when earned
-3. **Artifacts as source** — Apps consume artifact content, they don't duplicate it
-4. **Ship to learn** — Feedback from real usage beats speculation
-
-## Adding New Apps
-
-Create a new subdirectory with:
-
-- Its own README explaining purpose and setup
-- Self-contained deployment configuration
-- Clear connection to one or more artifacts
+1. **System-level only** — If it serves one node, it belongs in that node's artifacts
+2. **Minimal viable scope** — Build the smallest thing that answers the core question
+3. **No premature abstraction** — Frameworks and infrastructure only when earned
+4. **Artifacts as source** — Apps consume artifact content, they don't duplicate it

@@ -48,7 +48,7 @@ Personal expressions don't pollute the public namespace. The center holds.
 
 ## V. Technical Approach
 
-- Simple app living in `apps/expressions/`
+- Simple app living in `impl/` (within this artifact folder)
 - Reads markdown files directly from `nodes/org/artifacts/`
 - No separate CMS—the repo IS the content source
 - API route calls LLM with artifact content + user preferences

@@ -6,7 +6,7 @@ relates_to:
   - beauty-redeems
   - the-living-system
   - capital-as-medium
-implementation: apps/expressions/
+implementation: impl/
 ---
 
 # Expressions
@@ -54,4 +54,4 @@ The tool embodies the project's own values:
 
 This artifact is active and under development.
 
-Expressions of this artifact are specific implementation plans or specs. The application itself is infrastructure — it lives at a different level (in `apps/`) and serves the whole system.
+Expressions of this artifact are specific implementation plans or specs. The application implementation lives in `impl/` within this artifact folder.
