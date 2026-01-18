@@ -19,12 +19,16 @@ See `nodes/org/artifacts/artifacts.md` for the full structure.
 
 ## How to Read This Repo
 
-This repository is structured around a simple loop:
+This repository is the **canonical representation** of the project. Everything else — apps, rendered docs, tools — is a projection or process that derives from it.
+
+The repo is structured around a simple loop:
 
 - Logs record events and actions
 - Feedback captures relevant signals
 - Models describe current assumptions
 - Artifacts are durable outputs
+
+Apps like [Expressions](apps/expressions/) are operational projections — they render or transform the canon for specific purposes. Sensors ingest external data into observations. Neither creates truth; they propose or display it.
 
 Structure is added only when needed.
 Changes reflect use rather than planning.

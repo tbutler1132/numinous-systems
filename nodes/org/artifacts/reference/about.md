@@ -21,10 +21,11 @@ The distinction matters. Core says "this is what we believe." Reference says "wh
 
 ## Current Reference Materials
 
-| Reference                        | Function                                                     |
-| -------------------------------- | ------------------------------------------------------------ |
-| **Becoming Engine Doctrine**     | Cybernetic system — invariants, guardrails, mature thinking  |
-| **Constitution of Viable Beauty** | *(framework for sustainable aesthetic practice)*            |
+| Reference                          | Function                                                     |
+| ---------------------------------- | ------------------------------------------------------------ |
+| **Becoming Engine Doctrine**       | Cybernetic system — invariants, guardrails, mature thinking  |
+| **Canon, Projections, and Becoming** | Architectural philosophy — what the repo is, how truth relates to views |
+| **Constitution of Viable Beauty**  | *(framework for sustainable aesthetic practice)*             |
 
 ## When to Consult
 

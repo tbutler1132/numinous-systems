@@ -131,9 +131,10 @@ Programming languages and semantic tools.
 
 Theoretical frameworks and legacy systems for consultation, not implementation.
 
-| Artifact                     | Purpose                                                                                    |
-| ---------------------------- | ------------------------------------------------------------------------------------------ |
-| **Becoming Engine Doctrine** | Cybernetic reference system — invariants, guardrails, and mature thinking to check against |
+| Artifact                           | Purpose                                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| **Becoming Engine Doctrine**       | Cybernetic reference system — invariants, guardrails, and mature thinking to check against |
+| **Canon, Projections, and Becoming** | Architectural philosophy — what the repo is, how truth relates to views and transformation |
 
 ---
 
@@ -180,6 +181,10 @@ Theoretical frameworks and legacy systems for consultation, not implementation.
               Becoming Engine Doctrine (reference)
                  (invariants + guardrails to
                     check against, not follow)
+
+              Canon, Projections, and Becoming (reference)
+                 (what the repo is, how truth
+                    relates to views + change)
 ```
 
 **Everything serves one purpose: enabling moments that redeem existence.**
