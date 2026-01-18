@@ -37,7 +37,7 @@ Apps here share certain commitments:
 
 ## Implementation
 
-Apps have concept folders here but implementations in `apps/` at the project root. The artifact describes what and why; the code lives where code belongs.
+Org-specific apps live entirely within their artifact folders — concept (`about.md`, `notes.md`) and implementation (`impl/`) together. System-level apps that serve the entire repository belong in `apps/` at project root.
 
 ## Status
 
