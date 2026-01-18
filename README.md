@@ -28,7 +28,7 @@ The repo is structured around a simple loop:
 - Models describe current assumptions
 - Artifacts are durable outputs
 
-Apps like [Expressions](nodes/org/artifacts/apps/expressions/) are operational projections — they render or transform the canon for specific purposes. Sensors ingest external data into observations. Neither creates truth; they propose or display it.
+Some artifacts include implementations — [Expressions](nodes/org/artifacts/apps/expressions/) is an org artifact that provides a readable projection of other artifacts. Sensors ingest external data into observations. Neither creates truth; they propose or display it.
 
 Structure is added only when needed.
 Changes reflect use rather than planning.
