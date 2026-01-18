@@ -5,7 +5,7 @@ category: app
 relates_to:
   - expressions
   - projection
-implementation: impl/
+implementation: /apps/landing
 ---
 
 # Landing

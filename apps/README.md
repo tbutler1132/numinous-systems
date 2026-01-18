@@ -1,28 +1,25 @@
 # Apps
 
-This directory is reserved for **system-level platforms** — generic tools that serve the entire repository, not any specific node.
-
-System-level apps are distinct from node-specific app artifacts. A system-level app might:
-
-- Provide a generic projection platform for any node's content
-- Offer shared infrastructure used across multiple nodes
-- Implement repository-wide tooling
+Deployable applications live here. Each subdirectory is a standalone Vite/Vercel project.
 
 ## Current Apps
 
-*None yet.* This directory is reserved for future system-level platforms.
+- **landing/** — Personal brand hub and entry point ([artifact docs](../nodes/org/artifacts/apps/landing/about.md))
+- **expressions/** — Personalized philosophical artifacts powered by Claude ([artifact docs](../nodes/org/artifacts/apps/expressions/about.md))
 
-## Node-Specific Apps
+## Structure
 
-Apps that belong to a specific node live within that node's artifacts. For example:
+```
+apps/
+  landing/        # Vercel project root
+  expressions/    # Vercel project root
+```
 
-- **Expressions** — lives at `nodes/org/artifacts/apps/expressions/` because it's an org-specific artifact that expresses the org's philosophy
+Each app is a node-specific artifact. The narrative documentation lives at `nodes/org/artifacts/apps/{name}/about.md`, while the deployable code lives here.
 
 ## Philosophy
 
-When adding apps to this directory:
-
-1. **System-level only** — If it serves one node, it belongs in that node's artifacts
-2. **Minimal viable scope** — Build the smallest thing that answers the core question
-3. **No premature abstraction** — Frameworks and infrastructure only when earned
+1. **Narrative separate from deployment** — Artifact docs describe *what* and *why*; this directory holds the *how*
+2. **Simple CI/CD** — Standard `apps/*` layout plays well with Vercel and monorepo tooling
+3. **Minimal viable scope** — Build the smallest thing that answers the core question
 4. **Artifacts as source** — Apps consume artifact content, they don't duplicate it
