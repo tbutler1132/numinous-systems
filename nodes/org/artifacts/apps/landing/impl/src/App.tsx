@@ -7,12 +7,12 @@ export default function App() {
         </header>
 
         <nav className="landing-nav">
-          <a
+          {/* <a
             href="https://expressions.timothybutler.io"
             className="landing-link primary"
           >
             <span className="link-title">Expressions</span>
-          </a>
+          </a> */}
 
           <a
             href="https://github.com/tbutler1132/numinous-systems"
