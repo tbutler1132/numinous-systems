@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-
-export default function Landing() {
+export default function App() {
   return (
     <div className="landing">
       <div className="landing-content">
@@ -9,12 +7,15 @@ export default function Landing() {
         </header>
 
         <nav className="landing-nav">
-          <Link to="/expressions" className="landing-link primary">
+          <a
+            href="https://expressions.timothybutler.io"
+            className="landing-link primary"
+          >
             <span className="link-title">Expressions</span>
-          </Link>
+          </a>
 
           <a
-            href="https://github.com/tbutler1132/vital-systems"
+            href="https://github.com/tbutler1132/numinous-systems"
             target="_blank"
             rel="noopener noreferrer"
             className="landing-link"

@@ -26,6 +26,7 @@ Apps here share certain commitments:
 
 | App             | Function                                                   |
 | --------------- | ---------------------------------------------------------- |
+| **Landing**     | Personal brand hub and entry point                         |
 | **Expressions** | Personalized engagement with artifacts via organic prompts |
 | **Projection**  | Navigable interface for exploring the system's canon       |
 
@@ -41,4 +42,4 @@ Org-specific apps live entirely within their artifact folders — concept (`abou
 
 ## Status
 
-Expressions is live. Future apps will follow the same pattern of concept here, implementation elsewhere.
+Landing and Expressions are live. Projection is in concept phase.

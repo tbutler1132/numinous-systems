@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- nodes/org/artifacts/apps/expressions/",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" }
   ]
