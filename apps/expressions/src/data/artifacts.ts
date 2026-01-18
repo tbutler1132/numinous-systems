@@ -10,7 +10,7 @@ export const artifacts: Artifact[] = [
     desc: 'A reflection on speed, persistence, and what makes anything worth doing',
     featured: true,
     defaultTab: 'organic',
-    category: 'essays',
+    category: 'commentary',
   },
   {
     id: '1-beauty-redeems',

@@ -10,7 +10,7 @@ These are not the foundation. They are the scaffolding that reinforces it, the e
 
 - What false framings need to be cleared? (The Genius Myth, The Weakness of Cringe)
 - What practical problems does the philosophy illuminate? (Continuity of Intention)
-- What does building with these ideas teach? (Expressions Reflection)
+- What does building with these ideas teach?
 
 ## Relationship to Core
 
@@ -30,7 +30,6 @@ An essay might graduate to core if it proves foundational. More often, essays re
 | **The Genius Myth**         | Clears false framing about creativity and authorship    |
 | **The Weakness of Cringe**  | Analyzes outsourced evaluation and its costs            |
 | **Continuity of Intention** | Explores maintaining coherence over time                |
-| **Expressions Reflection**  | Meta-reflection on building the Expressions app         |
 
 ## Status
 
