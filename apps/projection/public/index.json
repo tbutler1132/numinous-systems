@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-01-19T04:55:42.331Z",
+  "sections": [
+    {
+      "name": "Core",
+      "path": "core"
+    },
+    {
+      "name": "Nodes",
+      "path": "nodes"
+    },
+    {
+      "name": "Apps",
+      "path": "apps"
+    },
+    {
+      "name": "Sensors",
+      "path": "sensors"
+    }
+  ],
+  "items": [
+    {
+      "id": "nodes",
+      "section": "Nodes",
+      "title": "Nodes",
+      "path": "nodes",
+      "surfacePath": "nodes/README.md",
+      "children": []
+    },
+    {
+      "id": "apps",
+      "section": "Apps",
+      "title": "Apps",
+      "path": "apps",
+      "surfacePath": "apps/README.md",
+      "children": [
+        "apps/expressions"
+      ]
+    },
+    {
+      "id": "apps/expressions",
+      "section": "Apps",
+      "title": "Expressions",
+      "path": "apps/expressions",
+      "surfacePath": "apps/expressions/README.md",
+      "children": []
+    },
+    {
+      "id": "sensors",
+      "section": "Sensors",
+      "title": "sensors/",
+      "path": "sensors",
+      "surfacePath": "sensors/README.md",
+      "children": [
+        "sensors/finance",
+        "sensors/thought"
+      ]
+    },
+    {
+      "id": "sensors/finance",
+      "section": "Sensors",
+      "title": "@numinous-systems/finance",
+      "path": "sensors/finance",
+      "surfacePath": "sensors/finance/README.md",
+      "children": []
+    },
+    {
+      "id": "sensors/thought",
+      "section": "Sensors",
+      "title": "@numinous-systems/thought",
+      "path": "sensors/thought",
+      "surfacePath": "sensors/thought/README.md",
+      "children": []
+    }
+  ]
+}
