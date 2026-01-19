@@ -18,7 +18,7 @@
 | All The Things You Love  | 123    |             |     | Live  | Yes   |
 | Higher                   |        |             |     |       | Yes   |
 | Epoch                    | 122.6  |             |     | Draft | Yes   |
-| Everything Was Forever   |        |             |     | Live  | No    |
+| Won't You Lie to Me      |        |             |     | Live  | No    |
 | Fall                     | 85     |             |     | Live  | Yes   |
 | Love Story Simulacra 1   |        |             |     |       | Yes   |
 | Love Story Simulacra 2   | 106    |             |     |       | Yes   |
