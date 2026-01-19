@@ -1,0 +1,26 @@
+{
+  "name": "projection",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "tsx scripts/generateIndex.ts && next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^14",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-markdown": "^9",
+    "gray-matter": "^4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5",
+    "tsx": "^4",
+    "glob": "^10",
+    "yaml": "^2"
+  }
+}

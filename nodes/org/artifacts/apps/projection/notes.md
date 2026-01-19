@@ -12,7 +12,7 @@ An app can cover content that spans the entire system while still belonging to a
 - What the app is **about** (subject matter) — can be anything
 - Who **authored** the app (ownership) — determines where it lives
 
-This app is *about* the system but *by* the org. That's why it lives in `nodes/org/artifacts/apps/`, not in the top-level `apps/` folder.
+This app is *about* the system but *by* the org. It lives in the top-level `apps/` folder.
 
 ---
 
