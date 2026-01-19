@@ -31,6 +31,8 @@ This structure separates the _concept_ (about.md) from the _content_ (notes.md) 
 
 For artifacts with heavy source material (stems, code, binaries), the source layer is governed by the Trunk Model and may live elsewhere. The page.md is a projection of that source, not a replacement for it.
 
+A Page is the encounter form of an Artifact: when an artifact is given a composed surface (page.md), it becomes a Page.
+
 ## What Artifacts Are Not
 
 Artifacts are not:
