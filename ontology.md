@@ -56,9 +56,11 @@ Artifacts answer: *what was produced?*
 
 A durable, referenceable artistic object that represents a coherent unit of meaning.
 
-A Page is not identical to its files, layout, or media assets—it is an abstract work that appears through them. Pages are encountered through rendered surfaces (text, audio, image, video, or interactive elements), may evolve over time, and retain identity across revisions and instantiations.
+A Page is not identical to its files, layout, or media assets—it is an abstract work that appears through them and points beyond any single rendering. Pages are encountered through rendered surfaces (text, audio, image, video, or interactive elements), may evolve over time, and retain identity across revisions and instantiations.
 
-Songs, essays, visual works, and applications are all genres of Pages. A Page exists to make meaning legible, preserve memory, and allow engagement without requiring access to the processes or people that produced it.
+Songs, essays, visual works, and applications are all genres of Pages. A Song and a Page live on the same ontological layer—both are abstract works whose digital instantiation consists of rendered media assembled on a surface. Calling a Song a genre of Page is not a reduction, but a recognition of shared structure.
+
+A Page exists to make meaning legible, preserve memory, and allow engagement without requiring access to the processes or people that produced it.
 
 Pages are compositional. A Page may embed other Pages, creating hierarchies of encounter (an album Page containing track Pages, a collection Page containing essay Pages). Each level is itself a coherent unit of meaning.
 
