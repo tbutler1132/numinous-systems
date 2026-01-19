@@ -1,6 +1,6 @@
 # Numinous Systems
 
-For the conceptual overview, see [ABOUT.md](ABOUT.md).
+For the conceptual overview, see [about.md](about.md).
 
 ## Structure
 
