@@ -32,6 +32,16 @@ This isn't deception. It's recognition that ideas which would be rejected as pro
 - **Core** provides the ideas songs express
 - **Story** may share thematic material rendered differently
 
+## Artifact Structure
+
+Each song folder follows this structure:
+
+| File | Purpose |
+|------|---------|
+| `about.md` | Artifact concept, what it addresses, connection to broader project, status |
+| `notes.md` | Working material, releases history, production notes |
+| `page.md` | Public-facing presentation (cover art, audio link, lyrics) |
+
 ## Status
 
 Songs range from concept to production. Each has its own status in its `about.md`.
