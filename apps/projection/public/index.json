@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T04:55:42.331Z",
+  "generatedAt": "2026-01-19T15:49:33.287Z",
   "sections": [
     {
       "name": "Core",
@@ -20,19 +20,78 @@
   ],
   "items": [
     {
+      "id": "core",
+      "section": "Core",
+      "title": "About Core",
+      "path": "core",
+      "surfacePath": "core/about.md",
+      "children": [
+        "core/sensor"
+      ]
+    },
+    {
+      "id": "core/sensor",
+      "section": "Core",
+      "title": "@numinous-systems/sensor",
+      "path": "core/sensor",
+      "surfacePath": "core/sensor/README.md",
+      "children": []
+    },
+    {
       "id": "nodes",
       "section": "Nodes",
-      "title": "Nodes",
+      "title": "About Nodes",
       "path": "nodes",
-      "surfacePath": "nodes/README.md",
+      "surfacePath": "nodes/about.md",
+      "children": [
+        "nodes/org",
+        "nodes/personal"
+      ]
+    },
+    {
+      "id": "nodes/org",
+      "section": "Nodes",
+      "title": "Org Node",
+      "path": "nodes/org",
+      "surfacePath": "nodes/org/about.md",
+      "children": [
+        "nodes/org/artifacts"
+      ]
+    },
+    {
+      "id": "nodes/org/artifacts",
+      "section": "Nodes",
+      "title": "Artifacts",
+      "path": "nodes/org/artifacts",
+      "surfacePath": "nodes/org/artifacts/about.md",
+      "children": [
+        "nodes/org/artifacts/aesthetic",
+        "nodes/org/artifacts/apps",
+        "nodes/org/artifacts/commentary",
+        "nodes/org/artifacts/core",
+        "nodes/org/artifacts/essays",
+        "nodes/org/artifacts/practice",
+        "nodes/org/artifacts/reference",
+        "nodes/org/artifacts/sensors",
+        "nodes/org/artifacts/songs",
+        "nodes/org/artifacts/story",
+        "nodes/org/artifacts/xenoscript"
+      ]
+    },
+    {
+      "id": "nodes/personal",
+      "section": "Nodes",
+      "title": "Personal Node",
+      "path": "nodes/personal",
+      "surfacePath": "nodes/personal/personal-node.md",
       "children": []
     },
     {
       "id": "apps",
       "section": "Apps",
-      "title": "Apps",
+      "title": "About Apps",
       "path": "apps",
-      "surfacePath": "apps/README.md",
+      "surfacePath": "apps/about.md",
       "children": [
         "apps/expressions"
       ]
@@ -48,9 +107,9 @@
     {
       "id": "sensors",
       "section": "Sensors",
-      "title": "sensors/",
+      "title": "About Sensors",
       "path": "sensors",
-      "surfacePath": "sensors/README.md",
+      "surfacePath": "sensors/about.md",
       "children": [
         "sensors/finance",
         "sensors/thought"

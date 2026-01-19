@@ -276,8 +276,7 @@ async function runProcess(options: ProcessOptions): Promise<void> {
 
       // Check for duplicate
       const id = thoughtFingerprint(item.content);
-      const existing = store.queryObservations({ domain: "thought", limit: 1 });
-      const isDuplicate = existing.some((obs) => obs.id === id);
+      const isDuplicate = store.hasObservation(id);
 
       const result = await promptForItem(rl, item, i, items.length, isDuplicate);
 

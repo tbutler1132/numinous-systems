@@ -285,6 +285,17 @@ export class ObservationStore {
   }
 
   /**
+   * Check if an observation with the given ID exists
+   */
+  hasObservation(id: string): boolean {
+    const result = this.db.exec(
+      "SELECT 1 FROM observations WHERE id = ? LIMIT 1",
+      [id]
+    );
+    return result.length > 0 && result[0].values.length > 0;
+  }
+
+  /**
    * Query observations with optional filters
    */
   queryObservations(filter?: {

@@ -31,7 +31,8 @@ export default async function GalleryPage({ params }: Props) {
     const raw = fs.readFileSync(surfaceFullPath, 'utf-8')
     const { content: body } = matter(raw)
     content = body
-  } catch {
+  } catch (err) {
+    console.error(`Failed to load content for ${itemId}:`, err)
     content = '*Unable to load content*'
   }
 
