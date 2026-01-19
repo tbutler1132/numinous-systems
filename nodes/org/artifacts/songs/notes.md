@@ -28,3 +28,6 @@
 | 24                       |        |             |     |       | No    |
 | IJC                      |        |             |     |       | No    |
 | Strong                   |        |             |     |       | No    |
+| Who I am                 |        |             |     |       | No    |
+| Coldness                 |        |             |     |       | No    |
+| Won't Let You Go         |        |             |     |       | No    |
