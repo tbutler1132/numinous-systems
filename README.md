@@ -16,7 +16,7 @@ The core ideas are developed in `nodes/org/artifacts/core/`. Start with:
 - **Capital as Medium** — the method (creation at scale is capital orchestration)
 - **Axioms** — the starting points (what is affirmed without argument)
 
-See `nodes/org/artifacts/artifacts.md` for the full structure.
+See `nodes/org/artifacts/about.md` for the full structure.
 
 ### Organization
 
