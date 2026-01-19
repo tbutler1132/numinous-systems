@@ -1,11 +1,12 @@
 # Numinous Systems
 
-This repository documents a creative and philosophical project oriented toward a single purpose: **creating conditions for moments of beauty**.
+For the conceptual overview, see [ABOUT.md](ABOUT.md).
 
-It is not a product, platform, or framework.
-It is a way of working and thinking, recorded as it develops.
+## Structure
 
-## Artifacts
+This repository is the **canonical representation** of the project. Everything else — apps, rendered docs, tools — is a projection or process that derives from it.
+
+### Core Artifacts
 
 The core ideas are developed in `nodes/org/artifacts/core/`. Start with:
 
@@ -17,9 +18,7 @@ The core ideas are developed in `nodes/org/artifacts/core/`. Start with:
 
 See `nodes/org/artifacts/artifacts.md` for the full structure.
 
-## How to Read This Repo
-
-This repository is the **canonical representation** of the project. Everything else — apps, rendered docs, tools — is a projection or process that derives from it.
+### Organization
 
 The repo is structured around a simple loop:
 
@@ -30,11 +29,7 @@ The repo is structured around a simple loop:
 
 Apps like [Expressions](nodes/org/artifacts/apps/expressions/) are operational projections — they render or transform the canon for specific purposes. Sensors ingest external data into observations. Neither creates truth; they propose or display it.
 
-Structure is added only when needed.
-Changes reflect use rather than planning.
-
-This repository may evolve.
-Nothing here is assumed to be final.
+Structure is added only when needed. Changes reflect use rather than planning.
 
 ## Contributing
 
