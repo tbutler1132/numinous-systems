@@ -1,0 +1,109 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/app/globals.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p { margin-bottom: 1rem; }
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: #666;
+}
+
+.section-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+
+.section-card:hover {
+  border-color: #0066cc;
+  text-decoration: none;
+}
+
+.section-card h2 {
+  margin: 0;
+}
+
+.exhibits {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.exhibit-list {
+  list-style: none;
+}
+
+.exhibit-list li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content {
+  margin-top: 1rem;
+}
+
+.markdown-content pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-content code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content ul, .markdown-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #e0e0e0;
+  padding-left: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
