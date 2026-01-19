@@ -52,6 +52,27 @@ Artifacts answer: *what was produced?*
 
 ---
 
+## Page
+
+A durable, referenceable artistic object that represents a coherent unit of meaning.
+
+A Page is not identical to its files, layout, or media assets—it is an abstract work that appears through them. Pages are encountered through rendered surfaces (text, audio, image, video, or interactive elements), may evolve over time, and retain identity across revisions and instantiations.
+
+Songs, essays, visual works, and applications are all genres of Pages. A Page exists to make meaning legible, preserve memory, and allow engagement without requiring access to the processes or people that produced it.
+
+Pages are compositional. A Page may embed other Pages, creating hierarchies of encounter (an album Page containing track Pages, a collection Page containing essay Pages). Each level is itself a coherent unit of meaning.
+
+The relationship between Artifact and Page:
+
+- **Artifact** is a retention concept — what the system preserves
+- **Page** is an encounter concept — how preserved things are met
+
+Every Page is an Artifact. Not every Artifact must be surfaced as a Page immediately, but anything meant to be encountered as a work becomes one.
+
+Pages answer: *how is the work encountered?*
+
+---
+
 ## Node
 
 A bounded context within the system.

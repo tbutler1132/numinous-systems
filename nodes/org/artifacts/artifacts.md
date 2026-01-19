@@ -25,11 +25,11 @@ Each artifact is a folder containing:
 
 - **notes.md** — Working material. Contains specific ideas, examples, arguments, drafts, and open questions. This is where the actual content develops. Notes can change freely as thinking evolves.
 
-- **Expressions** (optional) — Specific versions or outputs of the artifact. An essay, a recording, a visual piece. These are concrete manifestations of the concept described in about.md.
+- **page.md** — The encounter. A composed surface that makes the artifact legible as a [Page](../../ontology.md#page). This is what someone meets when they engage the work—it may embed images, link to audio, include text, or combine any media. The page.md is to the Page what an mp3+player is to a Song: the current instantiation of the abstract work. Not every artifact has a page.md immediately, but the trajectory is toward one—an artifact resolves to a Page when ready to be encountered.
 
-This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _output_ (expressions). The concept can remain stable while the content evolves and expressions multiply.
+This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _encounter_ (page.md). The concept can remain stable while the content evolves and the encounter is refined.
 
-Some artifacts (particularly apps) include implementations alongside their concept. For example, the Expressions app artifact contains an `impl/` folder with its code. The artifact folder holds both the concept (about.md, notes.md) and the implementation.
+For artifacts with heavy source material (stems, code, binaries), the source layer is governed by the Trunk Model and may live elsewhere. The page.md is a projection of that source, not a replacement for it.
 
 ## What Artifacts Are Not
 
