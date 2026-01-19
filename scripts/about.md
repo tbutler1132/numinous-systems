@@ -11,6 +11,8 @@ Some actions happen often enough that friction matters. Opening a file, typing a
 Shell utilities that integrate the system into daily workflow:
 
 - **capture.sh** — Quick inbox capture from anywhere. A thought arrives; it goes to the inbox in one gesture.
+- **assets-push.sh** — Push local binary assets (trunk/branches/archive) to R2. Run after making changes you want to share.
+- **assets-pull.sh** — Pull binary assets from R2 to local. Run after cloning or to sync latest from collaborators.
 
 ## The Principle
 
