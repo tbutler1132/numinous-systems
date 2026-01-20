@@ -1,3 +1,3 @@
-# Gold
+# Reason
 
 Working notes and history.

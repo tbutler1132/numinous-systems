@@ -1,3 +1,3 @@
-# Gold
+# Genesis
 
 Working notes and history.

@@ -1,3 +1,3 @@
-# Gold
+# Mania
 
 Working notes and history.

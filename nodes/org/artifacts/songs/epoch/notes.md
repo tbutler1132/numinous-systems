@@ -1,3 +1,3 @@
-# Gold
+# Epoch
 
 Working notes and history.
