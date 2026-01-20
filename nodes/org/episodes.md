@@ -12,90 +12,112 @@ This file is itself an experiment — testing whether the Episode concept is use
 
 ### Diagnosis
 
-The current bottleneck is not ideas, skill, or effort. It is:
+The bottleneck is not ideas, skill, or effort. It is:
 
 > **High cost of human contact, especially under ambiguity.**
 
-This sits at the primary feedback channel (other humans), which means it slows everything downstream: business, collaboration, dating, momentum, confidence, decision-making, sense of forward motion.
+This blocks the primary feedback channel (other humans), which slows everything downstream: business, collaboration, dating, momentum, decision-making.
 
-As long as this channel is expensive, the system compensates with internal simulation instead of action and feedback.
+The system compensates with internal simulation instead of action and feedback. "Maybe it'll resolve itself" is a symptom.
 
 ### Hypothesis
 
-Reducing social friction is the highest-leverage intervention right now. This is constraint removal, not self-improvement.
+Reducing social friction is the highest-leverage intervention. Constraint removal, not self-improvement.
 
-Working directly on business or projects routes through the same bottleneck — effort increases without throughput. Reducing friction:
+Working on projects routes through the same bottleneck — effort increases without throughput. Reducing friction:
 - shortens action → feedback loops
 - collapses uncertainty faster
 - makes business and collaboration executable
-- lowers emotional cost per action
 
 ### What I Am Training
 
-Not trying to: become outgoing, like parties, be charismatic, enjoy socializing, change personality.
+**Not:** become outgoing, like parties, be charismatic, enjoy socializing, change personality.
 
-Training:
-- cheap initiation
-- tolerance of ambiguity
-- fast recovery
-- low-cost follow-up
-- repeated exposure to neutral outcomes
+**Training:**
+- cheap initiation (low startup cost)
+- tolerance of ambiguity (act before certainty)
+- fast recovery (let go quickly)
+- low-cost follow-up (re-engage without drama)
 
-Low-noise, repeatable environments (cafés, gyms, coworking) beat high-stimulation events early on.
+Low-noise, repeatable environments (cafés, gyms, coworking) beat high-stimulation events.
+
+### Friction Inventory
+
+Where friction actually shows up (update as patterns emerge):
+
+| Context | Stakes | Friction pattern |
+|---------|--------|------------------|
+| Work — flagging issues | medium | "He'll probably handle it" / wait and hope |
+| Reaching out to acquaintances | medium | Delay until it feels "justified" |
+| Strangers online | low | Minimal — easy to do |
+| In-person strangers | medium | ? |
+| Asking for help / favors | high | ? |
+| Ambiguous social situations | high | ? |
 
 ### What I Am Measuring
 
-Cost, not performance. Three proxies tracked coarsely (daily or weekly):
+**Cost, not performance.** You can't fail an interaction — you just get data.
 
-| Proxy | What it means |
-|-------|---------------|
-| Initiation latency | How long from "I should do this" → doing it |
-| Recovery time | How long interactions occupy my mind after |
-| Follow-up resistance | How costly it feels to re-engage |
+| Metric | What it means | Scale |
+|--------|---------------|-------|
+| Initiation | Time from "I should" → doing it | immediate / same day / avoided |
+| Recovery | How long it occupies your mind after | minutes / hours / next day |
+| Follow-up | How costly re-engaging feels | easy / some resistance / avoided |
 
-Not tracking: outcomes, validation, success, how "well" things went.
+**Not tracking:** outcomes, validation, success, how "well" it went.
 
 ### Decision Rule
 
 > **Did social friction change what I chose to do this week?**
 
-If yes → still the bottleneck, continue.  
-If no (consistently) → it isn't, move on.
+If yes → still the bottleneck, continue.
+If no (consistently) → move on.
 
-### Focus Areas
-- Initiate at least one interaction per day
-- Physical presence in low-noise social spaces
-- Say yes to invitations that feel mildly uncomfortable but reversible
-- Act small and reversible when unsure
+### Avoidance Patterns to Watch
+
+- "They'll probably handle it" → waiting instead of reaching out
+- "I'll do it when I have something good to say" → waiting for perfect moment
+- "It's not a big deal" → minimizing to justify inaction
+- Checking if someone else will go first
+- Rehearsing what to say instead of saying it
 
 ### Actions
 
-**Baseline:**
+**Baseline (non-negotiable):**
 - [ ] Coworking 2x this week
-- [ ] One initiation per day (any context)
+- [ ] One initiation per day (any stakes level)
 
-**Stretch:**
+**Stretch (pick any):**
 - [ ] Attend one event or gathering
-- [ ] Start conversation with stranger
-- [ ] Reach out to one person for coffee/drinks
-- [ ] Reach out to 1-2 people for informational interview (creative director / brand space)
+- [ ] In-person conversation with stranger
+- [ ] Reach out to someone for coffee/drinks
+- [ ] Informational interview outreach (creative director / brand space)
+- [ ] Flag something at work within 5 minutes of noticing it
 
 ### Log
 
-| Date | Initiation | Recovery | Follow-up | Notes (1 sentence max) |
-|------|------------|----------|-----------|------------------------|
-| | immediate / same day / avoided | minutes / hours / next day | none / some / avoided | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Date | Stakes | Initiation | Recovery | Follow-up | Notes |
+|------|--------|------------|----------|-----------|-------|
+| Jan 20 | low | immediate | minutes | — | Twitter reply to stranger; made account non-anonymous |
+| Jan 20 | med | avoided | — | — | Work: noticed broken interface, hesitated to flag it |
+| | low/med/high | immediate / same day / avoided | min / hrs / day | easy / some / avoided | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
 
 ---
 
-### Outcome
-_(fill at end of timeframe)_
+### End of Week
 
-**What happened:**  
-**Friction still steering behavior?** yes / no  
-**Verdict:** continue | evolve | graduated  
-**Next:**
+**What happened:**
+
+**Patterns noticed:**
+
+**Friction still steering behavior?** yes / no
+
+**Verdict:** continue | evolve | graduated
+
+**Next episode:**
