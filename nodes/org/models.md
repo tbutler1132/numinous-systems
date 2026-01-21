@@ -324,6 +324,48 @@ Revise if:
 - branches routinely live too long or accumulate without resolution
 - the model prescribes structure that reality does not demand
 
+## Song Release Threshold
+
+### Status: Assumption | Category: Operational
+
+**Created:** 2026-01
+**Last revised:** 2026-01
+
+### Why
+
+Songs are ongoing processes, never truly finished. But releasing to DSPs creates a public snapshot that represents the Org's brand. Without a threshold, work gets released prematurely or inconsistently. This model defines when a version becomes eligible for release.
+
+### Description
+
+A song may be released when it meets both prerequisites and a final judgment.
+
+**Prerequisites** (necessary but not sufficient):
+
+- Multiple collaborators have contributed to the work
+- A finalized mix and master exists
+- The version represents a coherent artistic statement
+
+These conditions ensure the work has gone through a process that tends to produce quality. Satisfying them does not guarantee release. They make the work *eligible* for judgment.
+
+**Release decision** (sufficient):
+
+The integration owner (or designated authority) judges that the work is beautiful, professional, and represents the Org's quality standard.
+
+This judgment is subjective but not arbitrary. It recognizes something real about form and craft.
+
+### Relationship to Song Artifacts
+
+Songs in [[artifacts/songs]] exist as ongoing processes. Each song folder may contain multiple versions, notes, and iterations. This model governs only the decision to crystallize a version for public release. The song itself continues to evolve.
+
+### Revision Signal
+
+Revise if:
+
+- prerequisites block work that is clearly ready (gates too strict)
+- released work does not represent the brand well in retrospect (judgment miscalibrated)
+- the objective criteria fail to correlate with actual quality
+- the distinction between prerequisites and judgment collapses or becomes unclear
+
 ---
 
 ## Speculative Work
