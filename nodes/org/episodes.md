@@ -6,6 +6,17 @@ This file is itself an experiment — testing whether the Episode concept is use
 
 ---
 
+- Rest of Montreal trip, first week back
+- Reflections on AI experiments
+- Performance review at work
+- This week's Episode
+- Upcoming ideas
+    - Week long trips
+        - NYC
+        - ...
+    - Summer
+
+
 ## Episode 01: Constraint Removal — Social Friction
 
 **Timeframe:** Jan 20 – Jan 26, 2026
@@ -100,6 +111,7 @@ If no (consistently) → move on.
 |------|--------|------------|----------|-----------|-------|
 | Jan 20 | low | immediate | minutes | — | Twitter reply to stranger; made account non-anonymous |
 | Jan 20 | med | avoided | — | — | Work: noticed broken interface, hesitated to flag it |
+| Jan 20 | low | immediate | — | — | X reply re: bottleneck identification in second brain systems |
 | | low/med/high | immediate / same day / avoided | min / hrs / day | easy / some / avoided | |
 | | | | | | |
 | | | | | | |
