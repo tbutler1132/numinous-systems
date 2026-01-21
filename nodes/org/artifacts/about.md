@@ -27,7 +27,9 @@ Each artifact is a folder containing:
 
 - **page.md** — The encounter. A composed surface that makes the artifact legible as a [Page](../../ontology.md#page). This is what someone meets when they engage the work—it may embed images, link to audio, include text, or combine any media. The page.md is to the Page what an mp3+player is to a Song: the current instantiation of the abstract work. Not every artifact has a page.md immediately, but the trajectory is toward one—an artifact resolves to a Page when ready to be encountered.
 
-This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _encounter_ (page.md). The concept can remain stable while the content evolves and the encounter is refined.
+- **manifest.md** — The structure. For artifacts with source material governed by the [Trunk Model](practice/the-trunk-model/notes.md), this file records what exists in trunk and branches. Because source files may be gitignored, the manifest is the git-tracked record of structural state. Update it when files move between trunk and branches.
+
+This structure separates the _concept_ (about.md) from the _content_ (notes.md) from the _encounter_ (page.md) from the _structure_ (manifest.md). The concept can remain stable while the content evolves and the encounter is refined.
 
 For artifacts with heavy source material (stems, code, binaries), the source layer is governed by the Trunk Model and may live elsewhere. The page.md is a projection of that source, not a replacement for it.
 
