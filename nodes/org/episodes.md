@@ -6,17 +6,6 @@ This file is itself an experiment — testing whether the Episode concept is use
 
 ---
 
-- Rest of Montreal trip, first week back
-- Reflections on AI experiments
-- Performance review at work
-- This week's Episode
-- Upcoming ideas
-    - Week long trips
-        - NYC
-        - ...
-    - Summer
-
-
 ## Episode 01: Constraint Removal — Social Friction
 
 **Timeframe:** Jan 20 – Jan 26, 2026
