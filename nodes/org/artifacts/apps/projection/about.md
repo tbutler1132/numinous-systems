@@ -7,33 +7,48 @@ relates_to:
   - the-living-system
   - beauty-redeems
 created: 2026-01-18
-updated: 2026-01-18
+updated: 2026-01-21
 ---
 
 # Projection
 
 ## Artifact Concept
 
-This folder contains **Projection** — a navigable interface for exploring the system's canon.
+This folder contains **Projection** — the layered experience of the creative work.
 
-The app renders the repository as a readable, beautiful whole. It covers everything — artifacts, ontology, infrastructure, philosophy — but presents it through the org's interpretation, curation, and aesthetic.
+Projection is how someone encounters the art. Not an explanation of the system, but the work itself — songs at the center, rendered beautifully, with depth that can be explored.
 
 ## What This Artifact IS
 
-- The org's documentary about the system
-- A readable projection of the canon optimized for understanding
-- An authored view: the subject is vast, the authorship is bounded
-- A single coherent interface to content that spans nodes and infrastructure
+- The authored surface of the creative work
+- A layered experience: from pure art to context to process to source
+- Songs as primary objects, everything else as context around them
+- An atmospheric, navigable interface that makes you *feel* something
 
 ## What This Artifact Is NOT
 
 - The canon itself (the repo is canon; this is a view)
-- A generic platform (this is the org's take, not neutral tooling)
-- System-level infrastructure (this belongs to the org, even when covering system-level content)
+- A documentation browser or system explainer (that function lives in deeper layers)
+- A generic platform (this is the org's authored experience, not neutral tooling)
+
+## The Layered Model
+
+Projection has depth. Not everything is shown at once.
+
+| Layer | What It Shows | Aesthetic |
+|-------|---------------|-----------|
+| **Surface** | Finished songs, cover art, atmosphere | Maximum beauty, minimum explanation |
+| **Context** | Lyrics, notes, related philosophy | Still curated, more to explore |
+| **Process** | WIP versions, branches, decisions | The workshop visible |
+| **Source** | GitHub, raw repo | No curation, canonical truth |
+
+Each layer down reveals more but surrenders some of the authored experience. Someone can stay at the surface forever and just listen. Or they can descend and see how it's made.
+
+This solves a practical problem: you don't have to finish everything to ship. The work is always presentable at some depth.
 
 ## The Authorship Distinction
 
-The app covers system-level content (ontology, core primitives, infrastructure) but it is still an **org artifact** because:
+The app covers content that spans the entire system but it is still an **org artifact** because:
 
 - The org is doing the interpreting
 - The org's aesthetic shapes the presentation
@@ -48,16 +63,19 @@ This app embodies the principles articulated in **Canon, Projections, and Becomi
 
 - The repo is the authoritative map of the system
 - Projections are views of the canon optimized for different purposes
-- Readable projections explain; operational projections execute
-- This app is a readable projection — it explains the system to those who encounter it
+- This app is a projection optimized for *experiencing* the work, not just understanding it
+
+It also connects to **Beauty Redeems** — the surface layer is where beauty is most concentrated, the entry point most carefully crafted.
 
 ## Design Principles
 
+- **Songs at center** — everything else exists as context around the music
 - **Canon as source** — the app reads from the repo, never duplicates
 - **Authored perspective** — this is the org's interpretation, not raw file rendering
 - **Beauty as goal** — the experience should itself be beautiful
 - **Restraint** — show what matters, hide what doesn't
+- **Honest depth** — present from the layer that actually exists; don't pretend to be more finished than you are
 
 ## Status
 
-This artifact is in **concept phase**. The idea is locked in; implementation has not begun.
+This artifact is in **concept phase**. Implementation scaffolding exists; the real experience does not yet.
