@@ -8,6 +8,8 @@ relates_to:
   - love-of-fate
   - capital-as-medium
   - axioms
+created: 2026-01-09
+updated: 2026-01-17
 ---
 
 # Beauty Redeems

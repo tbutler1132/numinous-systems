@@ -1,3 +1,19 @@
+---
+title: Aesthetic
+status: draft
+category: aesthetic
+relates_to:
+  - elegance
+  - alien
+  - aesthetic-spectrum
+  - moodboard
+  - songs
+  - apps
+  - story
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Aesthetic
 
 ## Category Concept

@@ -6,7 +6,8 @@ relates_to:
   - canon-projections-and-becoming
   - the-living-system
   - beauty-redeems
-implementation: null
+created: 2026-01-18
+updated: 2026-01-18
 ---
 
 # Projection

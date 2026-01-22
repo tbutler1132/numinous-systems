@@ -6,6 +6,8 @@ relates_to:
   - beauty-redeems
   - the-living-system
   - capital-as-medium
+created: 2026-01-10
+updated: 2026-01-18
 implementation: /apps/expressions
 ---
 

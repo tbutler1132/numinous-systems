@@ -1,3 +1,16 @@
+---
+title: Becoming Engine Doctrine
+status: draft
+category: reference
+relates_to:
+  - becoming-engine-doctrine
+  - the-living-system
+  - capital-as-medium
+  - beauty-redeems
+created: 2026-01-11
+updated: 2026-01-11
+---
+
 # Becoming Engine Doctrine
 
 ## Artifact Concept

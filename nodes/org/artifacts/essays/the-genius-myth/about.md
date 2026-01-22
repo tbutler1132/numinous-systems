@@ -1,3 +1,15 @@
+---
+title: The Genius Myth
+status: draft
+category: essay
+relates_to:
+  - capital-as-medium
+  - axioms
+  - the-living-system
+created: 2026-01-11
+updated: 2026-01-11
+---
+
 # The Genius Myth
 
 ## Artifact Concept

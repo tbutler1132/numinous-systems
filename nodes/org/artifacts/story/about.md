@@ -1,3 +1,15 @@
+---
+title: Story
+status: draft
+category: story
+relates_to:
+  - beauty-redeems
+  - love-of-fate
+  - the-living-system
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Story
 
 ## Category Concept

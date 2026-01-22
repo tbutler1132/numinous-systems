@@ -1,3 +1,24 @@
+---
+title: Core
+status: draft
+category: core
+relates_to:
+  - beauty-redeems
+  - the-living-system
+  - love-of-fate
+  - capital-as-medium
+  - axioms
+  - essays
+  - aesthetic
+  - songs
+  - story
+  - apps
+  - sensors
+  - reference
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Core
 
 ## Category Concept

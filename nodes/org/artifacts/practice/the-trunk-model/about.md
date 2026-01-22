@@ -1,3 +1,16 @@
+---
+title: The Trunk Model
+status: draft
+category: reference
+relates_to:
+  - the-living-system
+  - beauty-redeems
+  - capital-as-medium
+  - continuity-of-intention
+created: 2026-01-18
+updated: 2026-01-18
+---
+
 # The Trunk Model
 
 ## Artifact Concept

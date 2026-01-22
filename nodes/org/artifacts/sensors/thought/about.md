@@ -1,3 +1,13 @@
+---
+title: Thought
+status: draft
+category: reference
+relates_to:
+  - thought
+created: 2026-01-15
+updated: 2026-01-17
+---
+
 # Thought
 
 ## Artifact Concept

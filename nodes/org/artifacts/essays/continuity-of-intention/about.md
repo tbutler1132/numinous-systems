@@ -1,3 +1,15 @@
+---
+title: Continuity of Intention
+status: draft
+category: essay
+relates_to:
+  - the-living-system
+  - beauty-redeems
+  - capital-as-medium
+created: 2026-01-13
+updated: 2026-01-13
+---
+
 # Continuity of Intention
 
 ## Artifact Concept

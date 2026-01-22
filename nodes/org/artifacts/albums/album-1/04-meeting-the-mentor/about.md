@@ -1,0 +1,33 @@
+---
+title: Meeting the Mentor
+status: draft
+relates_to:
+  - guidance
+  - preparation
+  - trust
+  - transmission
+---
+
+# Meeting the Mentor
+
+## Stage 4 of the Hero's Journey
+
+The hero encounters a **guide** — someone who has walked this path before, who offers wisdom, training, tools, or simply the encouragement to proceed.
+
+The mentor doesn't take the journey for the hero. They prepare the hero to take it themselves. Sometimes the mentor is a person; sometimes it's a book, a memory, an inner voice.
+
+## Musical Character
+
+Songs that fit this stage might embody:
+- **Guidance** — receiving wisdom or direction
+- **Preparation** — gathering strength for what's ahead
+- **Trust** — learning to rely on something beyond yourself
+- **Transmission** — knowledge passing between generations
+
+## Candidate Songs
+
+*To be determined through listening and mapping.*
+
+## Notes
+
+(Working observations about which songs might fit here)

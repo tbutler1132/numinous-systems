@@ -1,3 +1,14 @@
+---
+title: Reference
+status: draft
+category: reference
+relates_to:
+  - becoming-engine-doctrine
+  - constitution-of-viable-beauty
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Reference
 
 ## Category Concept

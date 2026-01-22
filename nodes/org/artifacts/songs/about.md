@@ -1,3 +1,17 @@
+---
+title: Songs
+status: draft
+category: song
+relates_to:
+  - all-the-things-you-love
+  - between-this-world-and-the-next
+  - aesthetic
+  - core
+  - story
+created: 2026-01-17
+updated: 2026-01-18
+---
+
 # Songs
 
 ## Category Concept

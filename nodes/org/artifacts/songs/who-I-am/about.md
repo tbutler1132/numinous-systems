@@ -1,3 +1,11 @@
+---
+title: Who I Am
+status: draft
+category: song
+created: 2026-01-19
+updated: 2026-01-20
+---
+
 # Who I Am
 
 ## Artifact Concept

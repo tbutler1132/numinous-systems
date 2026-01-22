@@ -1,3 +1,16 @@
+---
+title: Love of Fate
+status: draft
+category: core
+relates_to:
+  - axioms
+  - beauty-redeems
+  - the-living-system
+  - capital-as-medium
+created: 2026-01-09
+updated: 2026-01-11
+---
+
 # Love of Fate
 
 ## Artifact Concept

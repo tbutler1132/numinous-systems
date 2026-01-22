@@ -1,3 +1,19 @@
+---
+title: Expressions Reflection
+status: draft
+category: essay
+relates_to:
+  - main-text
+  - asides
+  - beauty-redeems
+  - the-living-system
+  - love-of-fate
+  - capital-as-medium
+  - axioms
+created: 2026-01-13
+updated: 2026-01-17
+---
+
 # Expressions Reflection
 
 ## Artifact Concept

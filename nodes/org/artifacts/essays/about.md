@@ -1,3 +1,19 @@
+---
+title: Essays
+status: draft
+category: essay
+relates_to:
+  - extend
+  - clear
+  - apply
+  - reflect
+  - the-genius-myth
+  - the-weakness-of-cringe
+  - continuity-of-intention
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Essays
 
 ## Category Concept

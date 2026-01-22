@@ -1,3 +1,17 @@
+---
+title: XenoScript
+status: draft
+category: reference
+relates_to:
+  - convergence
+  - projection
+  - provenance
+  - drift
+  - horizon
+created: 2026-01-13
+updated: 2026-01-17
+---
+
 # XenoScript
 
 A semantic programming language for meaning-first development.

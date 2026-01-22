@@ -1,3 +1,18 @@
+---
+title: The Living System
+status: draft
+category: core
+relates_to:
+  - the-floor
+  - the-ceiling
+  - beauty-redeems
+  - axioms
+  - love-of-fate
+  - capital-as-medium
+created: 2026-01-11
+updated: 2026-01-17
+---
+
 # The Living System
 
 ## Artifact Concept

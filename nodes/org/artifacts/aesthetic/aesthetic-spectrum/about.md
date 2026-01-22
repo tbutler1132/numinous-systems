@@ -1,3 +1,15 @@
+---
+title: Aesthetic Spectrum
+status: draft
+category: aesthetic
+relates_to:
+  - the-living-system
+  - beauty-redeems
+  - axioms
+created: 2026-01-09
+updated: 2026-01-11
+---
+
 # Aesthetic Spectrum
 
 ## Artifact Concept

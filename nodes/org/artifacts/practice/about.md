@@ -1,3 +1,11 @@
+---
+title: Practice
+status: draft
+category: reference
+created: 2026-01-18
+updated: 2026-01-18
+---
+
 # Practice
 
 Operational frameworks meant to be used, not just understood.

@@ -1,3 +1,21 @@
+---
+title: The Constitution of Viable Beauty
+status: draft
+category: reference
+relates_to:
+  - beauty-redeems
+  - the-living-system
+  - love-of-fate
+  - capital-as-medium
+  - axioms
+  - explicit-system-design-principles
+  - markets-as-bounded-information-processors
+  - capital-circulation-dynamics
+  - provisionality-as-principle
+created: 2026-01-12
+updated: 2026-01-12
+---
+
 # The Constitution of Viable Beauty
 
 ## Artifact Concept

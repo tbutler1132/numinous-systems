@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numinous Systems — Artifact Graph</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      overflow: hidden;
+    }
+    #graph { width: 100vw; height: 100vh; }
+    .node { cursor: pointer; }
+    .node circle { stroke: #fff; stroke-width: 1.5px; }
+    .node text {
+      font-size: 11px;
+      fill: #e0e0e0;
+      pointer-events: none;
+      text-shadow: 0 0 3px #0a0a0a, 0 0 6px #0a0a0a;
+    }
+    .link { stroke: #444; stroke-opacity: 0.6; }
+    .link.highlighted { stroke: #fff; stroke-opacity: 1; stroke-width: 2px; }
+    .node.dimmed circle { opacity: 0.2; }
+    .node.dimmed text { opacity: 0.2; }
+    .link.dimmed { stroke-opacity: 0.1; }
+
+    #legend {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    #legend h3 { margin-bottom: 12px; font-weight: 500; }
+    .legend-item { display: flex; align-items: center; margin: 6px 0; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+
+    #info {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      max-width: 300px;
+      display: none;
+    }
+    #info h4 { margin-bottom: 8px; }
+    #info .category { opacity: 0.6; margin-bottom: 8px; }
+    #info .connections { margin-top: 8px; }
+
+    #stats {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      text-align: right;
+    }
+    #stats .number { font-size: 24px; font-weight: 300; }
+  </style>
+</head>
+<body>
+  <div id="graph"></div>
+
+  <div id="legend">
+    <h3>Categories</h3>
+    
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #e63946"></div>
+      <span>core</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #f4a261"></div>
+      <span>essay</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #e9c46a"></div>
+      <span>aesthetic</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #2a9d8f"></div>
+      <span>song</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #9b5de5"></div>
+      <span>story</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #00b4d8"></div>
+      <span>app</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: #6c757d"></div>
+      <span>reference</span>
+    </div>
+  </div>
+
+  <div id="stats">
+    <div><span class="number">76</span> artifacts</div>
+    <div><span class="number">53</span> connections</div>
+  </div>
+
+  <div id="info">
+    <h4 id="info-title"></h4>
+    <div class="category" id="info-category"></div>
+    <div class="connections" id="info-connections"></div>
+  </div>
+
+  <script>
+    const data = {"nodes":[{"id":"aesthetic","title":"Aesthetic","category":"aesthetic","status":"draft"},{"id":"aesthetic-spectrum","title":"Aesthetic Spectrum","category":"aesthetic","status":"draft"},{"id":"moodboard","title":"Moodboard","category":"aesthetic","status":"draft"},{"id":"albums","title":"Albums","category":"story","status":"draft"},{"id":"01-ordinary-world","title":"Ordinary World","category":"uncategorized","status":"draft"},{"id":"02-call-to-adventure","title":"Call to Adventure","category":"uncategorized","status":"draft"},{"id":"03-refusal-of-the-call","title":"Refusal of the Call","category":"uncategorized","status":"draft"},{"id":"04-meeting-the-mentor","title":"Meeting the Mentor","category":"uncategorized","status":"draft"},{"id":"05-crossing-the-threshold","title":"Crossing the Threshold","category":"uncategorized","status":"draft"},{"id":"06-tests-allies-enemies","title":"Tests, Allies, Enemies","category":"uncategorized","status":"draft"},{"id":"07-approach-to-the-inmost-cave","title":"Approach to the Inmost Cave","category":"uncategorized","status":"draft"},{"id":"08-ordeal","title":"Ordeal","category":"uncategorized","status":"draft"},{"id":"09-reward","title":"Reward","category":"uncategorized","status":"draft"},{"id":"10-the-road-back","title":"The Road Back","category":"uncategorized","status":"draft"},{"id":"11-resurrection","title":"Resurrection","category":"uncategorized","status":"draft"},{"id":"12-return-with-the-elixir","title":"Return with the Elixir","category":"uncategorized","status":"draft"},{"id":"album-1","title":"Album 1","category":"story","status":"draft"},{"id":"apps","title":"Apps","category":"app","status":"draft"},{"id":"expressions","title":"Expressions","category":"app","status":"published"},{"id":"landing","title":"Landing","category":"app","status":"active"},{"id":"projection","title":"Projection","category":"app","status":"concept"},{"id":"commentary","title":"Commentary","category":"essay","status":"draft"},{"id":"expressions-reflection","title":"Expressions Reflection","category":"essay","status":"draft"},{"id":"1-beauty-redeems","title":"Beauty Redeems","category":"core","status":"published"},{"id":"2-the-living-system","title":"The Living System","category":"core","status":"draft"},{"id":"3-love-of-fate","title":"Love of Fate","category":"core","status":"draft"},{"id":"4-capital-as-medium","title":"Capital as Medium","category":"core","status":"draft"},{"id":"5-axioms","title":"Axioms","category":"core","status":"draft"},{"id":"core","title":"Core","category":"core","status":"draft"},{"id":"essays","title":"Essays","category":"essay","status":"draft"},{"id":"continuity-of-intention","title":"Continuity of Intention","category":"essay","status":"draft"},{"id":"the-genius-myth","title":"The Genius Myth","category":"essay","status":"draft"},{"id":"the-weakness-of-cringe","title":"The Weakness of Cringe","category":"essay","status":"draft"},{"id":"practice","title":"Practice","category":"reference","status":"draft"},{"id":"the-trunk-model","title":"The Trunk Model","category":"reference","status":"draft"},{"id":"reference","title":"Reference","category":"reference","status":"draft"},{"id":"becoming-engine-doctrine","title":"Becoming Engine Doctrine","category":"reference","status":"draft"},{"id":"canon-projections-and-becoming","title":"Canon, Projections, and Becoming","category":"reference","status":"draft"},{"id":"constitution-of-viable-beauty","title":"The Constitution of Viable Beauty","category":"reference","status":"draft"},{"id":"sensors","title":"Sensors","category":"reference","status":"draft"},{"id":"calendar","title":"Calendar","category":"reference","status":"draft"},{"id":"finance","title":"Finance","category":"reference","status":"draft"},{"id":"thought","title":"Thought","category":"reference","status":"draft"},{"id":"songs","title":"Songs","category":"song","status":"draft"},{"id":"all-the-things-you-love","title":"All the Things You Love","category":"song","status":"draft"},{"id":"anyone","title":"Anyone","category":"song","status":"draft"},{"id":"because-youre-you","title":"Because You're You","category":"song","status":"draft"},{"id":"between-this-world-and-the-next","title":"Between This World and the Next","category":"song","status":"draft"},{"id":"bury-the-sun","title":"Bury The Sun","category":"song","status":"draft"},{"id":"cocaine","title":"Cocaine","category":"song","status":"draft"},{"id":"coldness","title":"Coldness","category":"song","status":"draft"},{"id":"dream","title":"Dream","category":"song","status":"draft"},{"id":"envy","title":"Envy","category":"song","status":"draft"},{"id":"epoch","title":"Epoch","category":"song","status":"draft"},{"id":"fall","title":"Fall","category":"song","status":"draft"},{"id":"genesis","title":"Genesis","category":"song","status":"draft"},{"id":"gold","title":"Gold","category":"song","status":"draft"},{"id":"higher","title":"Higher","category":"song","status":"draft"},{"id":"jungle","title":"Jungle","category":"song","status":"draft"},{"id":"loving-you","title":"Loving You","category":"song","status":"draft"},{"id":"mania","title":"Mania","category":"song","status":"draft"},{"id":"need-someone","title":"Need Someone","category":"song","status":"draft"},{"id":"praise","title":"Praise","category":"song","status":"draft"},{"id":"reason","title":"Reason","category":"song","status":"draft"},{"id":"simulacra-1","title":"Simulacra 1","category":"song","status":"draft"},{"id":"simulacra-2","title":"Simulacra 2","category":"song","status":"draft"},{"id":"stars","title":"Stars","category":"song","status":"draft"},{"id":"stay-with-me","title":"Stay With Me","category":"song","status":"draft"},{"id":"through","title":"Through","category":"song","status":"draft"},{"id":"trouble","title":"Trouble","category":"song","status":"draft"},{"id":"where-it-went-wrong","title":"Where It Went Wrong","category":"song","status":"draft"},{"id":"who-I-am","title":"Who I Am","category":"song","status":"draft"},{"id":"wont-let-you-go","title":"Won't Let You Go","category":"song","status":"draft"},{"id":"wont-you-lie-to-me","title":"Won't You Lie To Me","category":"song","status":"draft"},{"id":"story","title":"Story","category":"story","status":"draft"},{"id":"xenoscript","title":"XenoScript","category":"reference","status":"draft"}],"links":[{"source":"aesthetic","target":"aesthetic-spectrum"},{"source":"aesthetic","target":"moodboard"},{"source":"aesthetic","target":"songs"},{"source":"aesthetic","target":"apps"},{"source":"aesthetic","target":"story"},{"source":"albums","target":"songs"},{"source":"albums","target":"aesthetic"},{"source":"album-1","target":"songs"},{"source":"album-1","target":"aesthetic"},{"source":"apps","target":"landing"},{"source":"apps","target":"expressions"},{"source":"apps","target":"projection"},{"source":"apps","target":"core"},{"source":"apps","target":"aesthetic"},{"source":"apps","target":"sensors"},{"source":"landing","target":"expressions"},{"source":"landing","target":"projection"},{"source":"projection","target":"canon-projections-and-becoming"},{"source":"4-capital-as-medium","target":"the-genius-myth"},{"source":"core","target":"essays"},{"source":"core","target":"aesthetic"},{"source":"core","target":"songs"},{"source":"core","target":"story"},{"source":"core","target":"apps"},{"source":"core","target":"sensors"},{"source":"core","target":"reference"},{"source":"essays","target":"the-genius-myth"},{"source":"essays","target":"the-weakness-of-cringe"},{"source":"essays","target":"continuity-of-intention"},{"source":"the-trunk-model","target":"continuity-of-intention"},{"source":"reference","target":"becoming-engine-doctrine"},{"source":"reference","target":"constitution-of-viable-beauty"},{"source":"becoming-engine-doctrine","target":"becoming-engine-doctrine"},{"source":"canon-projections-and-becoming","target":"xenoscript"},{"source":"canon-projections-and-becoming","target":"sensors"},{"source":"canon-projections-and-becoming","target":"expressions"},{"source":"sensors","target":"finance"},{"source":"sensors","target":"thought"},{"source":"sensors","target":"calendar"},{"source":"sensors","target":"core"},{"source":"sensors","target":"apps"},{"source":"sensors","target":"reference"},{"source":"calendar","target":"calendar"},{"source":"finance","target":"finance"},{"source":"thought","target":"thought"},{"source":"songs","target":"all-the-things-you-love"},{"source":"songs","target":"between-this-world-and-the-next"},{"source":"songs","target":"aesthetic"},{"source":"songs","target":"core"},{"source":"songs","target":"story"},{"source":"all-the-things-you-love","target":"all-the-things-you-love"},{"source":"all-the-things-you-love","target":"aesthetic-spectrum"},{"source":"xenoscript","target":"projection"}]};
+    const colors = {"core":"#e63946","essay":"#f4a261","aesthetic":"#e9c46a","song":"#2a9d8f","story":"#9b5de5","app":"#00b4d8","reference":"#6c757d","uncategorized":"#adb5bd"};
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const svg = d3.select("#graph")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    // Add zoom behavior
+    const g = svg.append("g");
+    svg.call(d3.zoom()
+      .scaleExtent([0.2, 4])
+      .on("zoom", (event) => g.attr("transform", event.transform)));
+
+    const simulation = d3.forceSimulation(data.nodes)
+      .force("link", d3.forceLink(data.links).id(d => d.id).distance(80))
+      .force("charge", d3.forceManyBody().strength(-200))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(30));
+
+    const link = g.append("g")
+      .selectAll("line")
+      .data(data.links)
+      .join("line")
+      .attr("class", "link");
+
+    const node = g.append("g")
+      .selectAll("g")
+      .data(data.nodes)
+      .join("g")
+      .attr("class", "node")
+      .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+    // Size nodes by connection count
+    const connectionCount = {};
+    data.links.forEach(l => {
+      connectionCount[l.source.id || l.source] = (connectionCount[l.source.id || l.source] || 0) + 1;
+      connectionCount[l.target.id || l.target] = (connectionCount[l.target.id || l.target] || 0) + 1;
+    });
+
+    node.append("circle")
+      .attr("r", d => 6 + (connectionCount[d.id] || 0) * 1.5)
+      .attr("fill", d => colors[d.category] || colors.uncategorized);
+
+    node.append("text")
+      .attr("dx", d => 10 + (connectionCount[d.id] || 0) * 1.5)
+      .attr("dy", 4)
+      .text(d => d.title);
+
+    // Hover interactions
+    node.on("mouseenter", function(event, d) {
+      const connected = new Set([d.id]);
+      data.links.forEach(l => {
+        if (l.source.id === d.id) connected.add(l.target.id);
+        if (l.target.id === d.id) connected.add(l.source.id);
+      });
+
+      node.classed("dimmed", n => !connected.has(n.id));
+      link.classed("dimmed", l => l.source.id !== d.id && l.target.id !== d.id);
+      link.classed("highlighted", l => l.source.id === d.id || l.target.id === d.id);
+
+      // Show info panel
+      const info = document.getElementById("info");
+      document.getElementById("info-title").textContent = d.title;
+      document.getElementById("info-category").textContent = d.category;
+
+      const connections = [];
+      data.links.forEach(l => {
+        if (l.source.id === d.id) connections.push("→ " + l.target.title);
+        if (l.target.id === d.id) connections.push("← " + l.source.title);
+      });
+      document.getElementById("info-connections").textContent =
+        connections.length ? connections.join("\n") : "No connections";
+      info.style.display = "block";
+    });
+
+    node.on("mouseleave", function() {
+      node.classed("dimmed", false);
+      link.classed("dimmed", false);
+      link.classed("highlighted", false);
+      document.getElementById("info").style.display = "none";
+    });
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+      node.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+
+    function dragstarted(event) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
+    }
+
+    function dragged(event) {
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
+    }
+
+    function dragended(event) {
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
+    }
+  </script>
+</body>
+</html>

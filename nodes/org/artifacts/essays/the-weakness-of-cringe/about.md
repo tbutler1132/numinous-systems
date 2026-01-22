@@ -1,3 +1,18 @@
+---
+title: The Weakness of Cringe
+status: draft
+category: essay
+relates_to:
+  - shame-and-guilt
+  - cringe
+  - beauty-redeems
+  - love-of-fate
+  - the-living-system
+  - capital-as-medium
+created: 2026-01-13
+updated: 2026-01-13
+---
+
 # The Weakness of Cringe
 
 ## Artifact Concept

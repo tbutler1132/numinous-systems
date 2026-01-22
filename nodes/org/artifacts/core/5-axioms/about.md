@@ -1,3 +1,16 @@
+---
+title: Axioms
+status: draft
+category: core
+relates_to:
+  - beauty-redeems
+  - the-living-system
+  - love-of-fate
+  - capital-as-medium
+created: 2026-01-09
+updated: 2026-01-11
+---
+
 # Axioms
 
 ## Artifact Concept

@@ -1,3 +1,15 @@
+---
+title: Canon, Projections, and Becoming
+status: draft
+category: reference
+relates_to:
+  - xenoscript
+  - sensors
+  - expressions
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Canon, Projections, and Becoming
 
 ## Artifact Concept

@@ -1,3 +1,13 @@
+---
+title: Calendar
+status: draft
+category: reference
+relates_to:
+  - calendar
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Calendar
 
 ## Artifact Concept

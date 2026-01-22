@@ -5,6 +5,8 @@ category: app
 relates_to:
   - expressions
   - projection
+created: 2026-01-18
+updated: 2026-01-18
 implementation: /apps/landing
 ---
 

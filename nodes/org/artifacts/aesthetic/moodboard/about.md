@@ -1,3 +1,11 @@
+---
+title: Moodboard
+status: draft
+category: aesthetic
+created: 2026-01-16
+updated: 2026-01-16
+---
+
 # Moodboard
 
 ## Artifact Concept

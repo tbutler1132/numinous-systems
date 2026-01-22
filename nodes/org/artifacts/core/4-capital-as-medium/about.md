@@ -1,3 +1,15 @@
+---
+title: Capital as Medium
+status: draft
+category: core
+relates_to:
+  - beauty-redeems
+  - the-living-system
+  - the-genius-myth
+created: 2026-01-11
+updated: 2026-01-11
+---
+
 # Capital as Medium
 
 ## Artifact Concept

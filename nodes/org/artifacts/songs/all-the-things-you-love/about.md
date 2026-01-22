@@ -1,3 +1,18 @@
+---
+title: All the Things You Love
+status: draft
+category: song
+relates_to:
+  - aesthetic-spectrum
+  - beauty-redeems
+  - the-living-system
+  - 01-ordinary-world
+  - 03-refusal-of-the-call
+  - 08-ordeal
+created: 2026-01-10
+updated: 2026-01-11
+---
+
 # All the Things You Love
 
 ## Artifact Concept
@@ -17,19 +32,18 @@ This song functions as a **trojan horse**: an accessible, elegant entry point th
 
 The song operates on dual semantic layers:
 
-**Surface Layer (what the listener consciously experiences)**
-- Emotion, luxury, seduction
-- Modern minimal elegance
-- Adult credibility, restraint, confidence
-- "All the things you love" as material possessions
+**First Half — Surface Critique**
+- "All the things you love are hollow" — the hook
+- Materialism, superficiality, the emptiness of distraction
+- Energetic, intense ("pretty crazy")
 
-**Inner Layer (what shapes the experience underneath)**
-- The shift from material things to actual things — people, presence, what passed you by
-- Greek tragedy arc: the recognition comes too late
-- Lovecraftian undertones bleeding through the elegance
-- The alien aesthetic revealing itself through beauty
+**Second Half — Dark Turn**
+- The distractions didn't just fail to satisfy — they stole your soul
+- Life passed you by while you weren't paying attention
+- The things you would truly care about have withered
+- Haunting realization, Greek tragedy arc — recognition comes too late
 
-The first half presents the surface reading. The second half inverts it — the "things you love" become the real things, the ones that mattered, the ones that passed by while you were distracted.
+The song operates as a **cautionary tale** — showing what happens when you never answer the call, when you stay trapped in the Ordinary World too long.
 
 ## Connection to Broader Project
 

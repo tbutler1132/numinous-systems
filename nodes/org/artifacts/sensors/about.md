@@ -1,3 +1,22 @@
+---
+title: Sensors
+status: draft
+category: reference
+relates_to:
+  - observation-over-analysis
+  - normalization
+  - deduplication
+  - fingerprinting
+  - finance
+  - thought
+  - calendar
+  - core
+  - apps
+  - reference
+created: 2026-01-17
+updated: 2026-01-17
+---
+
 # Sensors
 
 ## Category Concept

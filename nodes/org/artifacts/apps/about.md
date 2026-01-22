@@ -1,3 +1,22 @@
+---
+title: Apps
+status: draft
+category: app
+relates_to:
+  - personalization-without-dilution
+  - organic-touchpoints
+  - beauty-as-goal
+  - restraint
+  - landing
+  - expressions
+  - projection
+  - core
+  - aesthetic
+  - sensors
+created: 2026-01-17
+updated: 2026-01-18
+---
+
 # Apps
 
 ## Category Concept
