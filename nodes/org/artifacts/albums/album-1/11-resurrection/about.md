@@ -1,6 +1,7 @@
 ---
 title: Resurrection
 status: draft
+story_fragment: 11-resurrection
 relates_to:
   - climax
   - proof

@@ -1,6 +1,7 @@
 ---
 title: Refusal of the Call
 status: draft
+story_fragment: 03-refusal-of-the-call
 relates_to:
   - fear
   - denial

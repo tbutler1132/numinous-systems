@@ -1,6 +1,7 @@
 ---
 title: Reward
 status: draft
+story_fragment: 09-reward
 relates_to:
   - triumph
   - claiming

@@ -1,6 +1,7 @@
 ---
 title: The Road Back
 status: draft
+story_fragment: 10-the-road-back
 relates_to:
   - urgency
   - pursuit

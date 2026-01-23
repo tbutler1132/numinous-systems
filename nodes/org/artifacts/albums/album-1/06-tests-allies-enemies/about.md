@@ -1,6 +1,7 @@
 ---
 title: Tests, Allies, Enemies
 status: draft
+story_fragment: 06-tests-allies-enemies
 relates_to:
   - struggle
   - alliance

@@ -1,6 +1,7 @@
 ---
 title: Ordeal
 status: draft
+story_fragment: 08-ordeal
 relates_to:
   - crisis
   - confrontation

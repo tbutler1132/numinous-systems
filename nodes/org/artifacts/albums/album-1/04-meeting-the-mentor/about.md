@@ -1,6 +1,7 @@
 ---
 title: Meeting the Mentor
 status: draft
+story_fragment: 04-meeting-the-mentor
 relates_to:
   - guidance
   - preparation

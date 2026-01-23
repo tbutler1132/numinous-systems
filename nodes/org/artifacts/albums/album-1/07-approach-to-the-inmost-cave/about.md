@@ -1,6 +1,7 @@
 ---
 title: Approach to the Inmost Cave
 status: draft
+story_fragment: 07-approach-to-the-inmost-cave
 relates_to:
   - anticipation
   - tension

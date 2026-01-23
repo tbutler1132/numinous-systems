@@ -1,6 +1,7 @@
 ---
 title: Crossing the Threshold
 status: draft
+story_fragment: 05-crossing-the-threshold
 relates_to:
   - commitment
   - departure

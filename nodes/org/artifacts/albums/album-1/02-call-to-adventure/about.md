@@ -1,6 +1,7 @@
 ---
 title: Call to Adventure
 status: draft
+story_fragment: 02-call-to-adventure
 relates_to:
   - disruption
   - urgency

@@ -1,6 +1,7 @@
 ---
 title: Ordinary World
 status: draft
+story_fragment: 01-ordinary-world
 relates_to:
   - restlessness
   - routine
