@@ -34,6 +34,8 @@
 - Maybe make the AI generation of this a secret message, not an actual generation. Kind of ARG vibes (though I don't like ARG term, it's all good fun)
 - Make the desing of the app more subtle actually
 
+- The asides should be Comment entities. Only way it makes sense
+
 ---
 
 TITLE: "I built an app with AI. Then I started thinking."
@@ -222,22 +224,18 @@ _The essay starts LinkedIn-cheesy and gradually climbs until I'm suddenly talkin
 **"So what makes it worthwhile?"**
 
 - **Beauty Redeems**: Moments where time stops. Absorption, presence, stillness.
-
   - A cathedral. Holding your child. Creation so complete the self dissolves.
   - For that duration, you're outside the arrow. This is the only "beating entropy" possible.
   - A life with enough such moments was worth living despite death.
 
 - **The Living System**: But who experiences beauty?
-
   - We're hybrid—biological + synthetic. Floor and ceiling. Navigate the viable range.
 
 - **Love of Fate**: What blocks presence?
-
   - Regret. "If only..." You can't be present while fractured by comparison.
   - Acceptance isn't resignation—it's prerequisite.
 
 - **Capital as Medium**: How do you create at scale?
-
   - We're already part-synthetic. Orchestrate capital toward beauty, not extraction.
 
 - **Axioms**: What holds it together?
