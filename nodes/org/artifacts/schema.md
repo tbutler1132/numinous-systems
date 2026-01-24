@@ -21,6 +21,7 @@ order: 1  # display order within category (optional)
 # Connections
 parent: null  # artifact this extends or serves
 relates_to: ["the-living-system", "axioms"]  # sibling connections
+story_fragment: "04-meeting-the-mentor"  # narrative counterpart (for album stages)
 
 # Metadata
 created: 2025-03-15
@@ -43,6 +44,7 @@ implementation: impl/
 | order | number | Sort order within category (1 = first) |
 | parent | string | Slug of parent artifact (for hierarchy) |
 | relates_to | array | Slugs of related artifacts (for graph edges) |
+| story_fragment | string | Slug of corresponding story fragment (for album stages) |
 | created | date | When artifact was created |
 | updated | date | Last significant update |
 | implementation | path | For artifacts with code (typically `impl/`) |
@@ -105,5 +107,6 @@ This makes frontmatter the single source of truth for artifact metadata, avoidin
 
 - Slugs use kebab-case derived from folder names
 - The `relates_to` field creates edges in the visualization graph
+- The `story_fragment` field links album stages to their narrative counterparts in `story/stages/`
 - Not all artifacts need all fields — start minimal, add as needed
 - This schema is descriptive, not enforced
