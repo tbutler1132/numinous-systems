@@ -27,13 +27,13 @@ Commands:
   process    Interactively process inbox items
 
 Options:
-  --node <name>      Node name (default: "personal")
+  --node <name>      Node name (default: "private")
   --inbox <path>     Path to inbox.md (default: nodes/inbox.md)
   --dry-run          Parse only, no writes
 
 Examples:
   thought process
-  thought process --node personal
+  thought process --node private
   thought process --dry-run
   thought process --inbox nodes/work/inbox.md
 `);
@@ -44,7 +44,7 @@ function parseArgs(args: string[]): {
   options: ProcessOptions;
 } {
   const options: ProcessOptions = {
-    node: "personal",
+    node: "private",
     dryRun: false,
     inboxPath: "",
   };

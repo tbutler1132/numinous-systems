@@ -22,14 +22,14 @@ Commands:
   ingest <path>    Ingest CSV files from path (file or directory)
 
 Options:
-  --node <name>         Node name (default: "personal")
+  --node <name>         Node name (default: "private")
   --dry-run             Parse only, no writes
   --account-label <l>   Account label (default: "checking")
 
 Examples:
-  finance ingest nodes/personal/raw/finance/chase/
-  finance ingest --node personal --account-label savings statement.csv
-  finance ingest --dry-run nodes/personal/raw/finance/chase/
+  finance ingest nodes/org/private/raw/finance/chase-credit/
+  finance ingest --node private --account-label savings statement.csv
+  finance ingest --dry-run nodes/org/private/raw/finance/chase-credit/
 `);
 }
 
@@ -39,7 +39,7 @@ function parseArgs(args: string[]): {
   options: IngestOptions;
 } {
   const options: IngestOptions = {
-    node: "personal",
+    node: "private",
     dryRun: false,
     accountLabel: "checking",
   };

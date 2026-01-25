@@ -463,7 +463,11 @@ export class ObservationStore {
 
 /**
  * Resolve the database path for a given node
+ * "private" maps to nodes/org/private/ (personal content within org)
  */
 export function resolveDbPath(workspaceRoot: string, nodeName: string): string {
+  if (nodeName === "private") {
+    return `${workspaceRoot}/nodes/org/private/data/observations.db`;
+  }
   return `${workspaceRoot}/nodes/${nodeName}/data/observations.db`;
 }

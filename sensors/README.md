@@ -115,7 +115,7 @@ import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 
 ```bash
 # Finance: ingest Chase CSV
-npx finance ingest nodes/personal/raw/finance/chase/
+npx finance ingest nodes/org/private/raw/finance/chase-credit/
 
 # Thought: process inbox interactively
 npx thought process
@@ -127,11 +127,11 @@ npx thought process
 Raw Data              Sensor                    Observation Store
 ─────────────────────────────────────────────────────────────────
 
-Chase CSV    →   sensors/finance   →   nodes/personal/data/observations.db
+Chase CSV    →   sensors/finance   →   nodes/org/private/data/observations.db
                        │
                        └─ Parses, normalizes, fingerprints
 
-inbox.md     →   sensors/thought   →   nodes/personal/data/observations.db
+inbox.md     →   sensors/thought   →   nodes/org/private/data/observations.db
                        │
                        └─ Interactive tagging, fingerprints
 
@@ -152,5 +152,5 @@ cd sensors/thought && npm test
 ## Related
 
 - `core/sensor/` — shared observation infrastructure
-- `nodes/personal/data/observations.db` — where observations are stored
+- `nodes/org/private/data/observations.db` — where observations are stored
 - `nodes/inbox.md` — input for thought sensor

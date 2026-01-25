@@ -25,8 +25,8 @@ npm run build
 ## The Ritual
 
 1. Download CSV from Chase (Activity → Download)
-2. Drop it in `nodes/personal/raw/finance/chase/`
-3. Run: `npx finance ingest nodes/personal/raw/finance/chase/`
+2. Drop it in `nodes/org/private/raw/finance/chase-credit/`
+3. Run: `npx finance ingest nodes/org/private/raw/finance/chase-credit/`
 4. Done
 
 That's the habit you're installing.
@@ -39,26 +39,26 @@ finance ingest <path> [options]
 
 ### Options
 
-| Flag                      | Default    | Description                        |
-| ------------------------- | ---------- | ---------------------------------- |
-| `--node <name>`           | `personal` | Which node's observation store     |
-| `--dry-run`               | false      | Parse only, no writes              |
-| `--account-label <label>` | `checking` | Tag transactions with account name |
+| Flag                      | Default   | Description                        |
+| ------------------------- | --------- | ---------------------------------- |
+| `--node <name>`           | `private` | Which node's observation store     |
+| `--dry-run`               | false     | Parse only, no writes              |
+| `--account-label <label>` | `checking`| Tag transactions with account name |
 
 ### Examples
 
 ```bash
 # Ingest from default location
-npx finance ingest nodes/personal/raw/finance/chase/
+npx finance ingest nodes/org/private/raw/finance/chase-credit/
 
 # Explicit node: Will store data in that node
-npx finance ingest --node personal nodes/personal/raw/finance/chase/
+npx finance ingest --node private nodes/org/private/raw/finance/chase-credit/
 
 # Different account
 npx finance ingest --account-label savings statement.csv
 
 # Preview without writing
-npx finance ingest --dry-run nodes/personal/raw/finance/chase/
+npx finance ingest --dry-run nodes/org/private/raw/finance/chase-credit/
 ```
 
 ### Output
@@ -146,12 +146,12 @@ Both raw and normalized descriptions are preserved. No information is lost.
 ## File Layout
 
 ```
-nodes/personal/
+nodes/org/private/
   data/
     observations.db     # SQLite database (gitignored)
   raw/
     finance/
-      chase/            # Drop CSVs here (gitignored)
+      chase-credit/     # Drop CSVs here (gitignored)
 ```
 
 **Important:** Back up `observations.db` periodically. Encrypt backups at rest.
@@ -204,7 +204,7 @@ The ritual is the point.
 The database is standard SQLite. Query directly:
 
 ```bash
-sqlite3 nodes/personal/data/observations.db
+sqlite3 nodes/org/private/data/observations.db
 ```
 
 ```sql

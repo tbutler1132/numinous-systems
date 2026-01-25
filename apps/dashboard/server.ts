@@ -595,7 +595,7 @@ function renderHTML(
 
 const server = createServer(async (req, res) => {
   const url = new URL(req.url ?? "/", `http://localhost:${PORT}`);
-  const node = url.searchParams.get("node") ?? "personal";
+  const node = url.searchParams.get("node") ?? "private";
 
   try {
     let ingestResult: { success: boolean; message: string; details?: object } | undefined;
@@ -618,6 +618,6 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Dashboard running at http://localhost:${PORT}`);
-  console.log(`  ?node=personal (default)`);
+  console.log(`  ?node=private (default)`);
   console.log(`  ?node=org`);
 });

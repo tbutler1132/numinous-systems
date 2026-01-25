@@ -299,8 +299,13 @@ describe("ObservationStore", () => {
 });
 
 describe("resolveDbPath", () => {
-  it("should resolve path for a node", () => {
-    const path = resolveDbPath("/workspace", "personal");
-    assert.strictEqual(path, "/workspace/nodes/personal/data/observations.db");
+  it("should resolve path for a regular node", () => {
+    const path = resolveDbPath("/workspace", "org");
+    assert.strictEqual(path, "/workspace/nodes/org/data/observations.db");
+  });
+
+  it("should resolve private to nodes/org/private/", () => {
+    const path = resolveDbPath("/workspace", "private");
+    assert.strictEqual(path, "/workspace/nodes/org/private/data/observations.db");
   });
 });

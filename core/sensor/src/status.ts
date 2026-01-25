@@ -46,7 +46,7 @@ async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const node = args.includes("--node")
     ? args[args.indexOf("--node") + 1]
-    : "personal";
+    : "private";
 
   const workspaceRoot = findWorkspaceRoot();
   const dbPath = resolveDbPath(workspaceRoot, node);
