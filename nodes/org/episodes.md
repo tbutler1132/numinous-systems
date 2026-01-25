@@ -191,4 +191,72 @@ If no → blocked somewhere, diagnose what.
 
 **Verdict:** continue | evolve | graduated
 
+**Next episode:** Episode 03: Social Friction (NYC) — Controlled Environment Test
+
+---
+
+## Episode 03: Social Friction (NYC) — Controlled Environment Test
+
+**Timeframe:** Feb 3 – Feb 9, 2026
+
+### Diagnosis
+
+Same as Episode 01: social friction may be steering life choices — avoiding initiation, choosing comfort over contact. Episode 01 couldn't isolate this because environmental friction dominated. NYC provides controlled conditions: hotel (clear traveler identity), 1 week (bounded), proximity to network (social options available).
+
+### Hypothesis
+
+With environmental friction removed, social friction becomes testable. If I still avoid initiation in NYC, the bottleneck is confirmed. If I move easily, then environment was the real variable.
+
+### What I Am Measuring
+
+**Not:** how much I enjoy NYC, whether the hotel is nice, general vibes.
+
+**Tracking:**
+- Did I initiate contact/plans, or wait to be invited?
+- When friction arose, did I push through or default to solo?
+- Does the "traveler" identity actually make initiation easier?
+
+### Actions
+
+**Baseline:**
+- [ ] Coworking 1x
+- [ ] One initiation per day
+- [ ] Send the informational interview request
+
+**Stretch:**
+- [ ] Initiate something higher-stakes (reconnect with old contact, pitch an idea, go somewhere unfamiliar)
+
+### The Avoidance Patterns (from Episode 01)
+
+Watch for these:
+- Waiting for the "perfect moment"
+- Assuming they're too busy
+- Telling yourself "they'll probably handle it"
+- Treating your own presence as optional
+
+### Decision Rule
+
+> Did social friction change what I chose to do this week?
+
+If yes → still the bottleneck, needs continued work.
+If no → environment was the variable; recalibrate.
+
+### Log
+
+| Date | Situation | Stakes | Outcome | Recovery |
+|------|-----------|--------|---------|----------|
+| | | | | |
+
+---
+
+### End of Week
+
+**What happened:**
+
+**Patterns noticed:**
+
+**Friction still steering behavior?** yes / no
+
+**Verdict:** continue | evolve | graduated
+
 **Next episode:**

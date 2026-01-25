@@ -8,3 +8,4 @@ Weekly reflections. What's worth integrating?
 
 - Sensors need some sort of dashboard to be worthwhile. CLI is disatisfying. Should include when it was last updated, etc.
 - Personal/Org node is a bit confusing in this format
+- Maybe want to ritualized Episodes a bit more
