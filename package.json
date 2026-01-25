@@ -5,7 +5,8 @@
   "workspaces": [
     "core/sensor",
     "sensors/finance",
-    "sensors/thought"
+    "sensors/thought",
+    "apps/dashboard"
   ],
   "scripts": {
     "build": "npm run build --workspaces",

@@ -10,6 +10,7 @@ relates_to:
   - landing
   - expressions
   - projection
+  - dashboard
   - core
   - aesthetic
   - sensors
@@ -48,6 +49,7 @@ Apps here share certain commitments:
 | **Landing**     | Personal brand hub and entry point                         |
 | **Expressions** | Personalized engagement with artifacts via organic prompts |
 | **Projection**  | Navigable interface for exploring the system's canon       |
+| **Dashboard**   | Operational status and ingest interface for sensors        |
 
 ## Connection to Other Categories
 

@@ -372,6 +372,93 @@ export class ObservationStore {
     }
     return counts;
   }
+
+  /**
+   * Get status summary for dashboard display
+   */
+  getStatus(): {
+    domains: Array<{
+      domain: string;
+      count: number;
+      minObserved: string | null;
+      maxObserved: string | null;
+      lastIngest: {
+        finishedAt: string;
+        status: string;
+        rowsInserted: number;
+      } | null;
+    }>;
+  } {
+    // Get counts and date ranges per domain
+    const domainStats = this.db.exec(`
+      SELECT
+        domain,
+        COUNT(*) as count,
+        MIN(observed_at) as min_observed,
+        MAX(observed_at) as max_observed
+      FROM observations
+      GROUP BY domain
+    `);
+
+    // Get latest successful ingest per domain
+    const latestIngests = this.db.exec(`
+      SELECT
+        domain,
+        finished_at,
+        status,
+        rows_inserted
+      FROM ingest_runs
+      WHERE (domain, finished_at) IN (
+        SELECT domain, MAX(finished_at)
+        FROM ingest_runs
+        WHERE status = 'success'
+        GROUP BY domain
+      )
+    `);
+
+    // Build lookup for latest ingests
+    const ingestByDomain = new Map<
+      string,
+      { finishedAt: string; status: string; rowsInserted: number }
+    >();
+    if (latestIngests.length > 0) {
+      for (const row of latestIngests[0].values) {
+        ingestByDomain.set(row[0] as string, {
+          finishedAt: row[1] as string,
+          status: row[2] as string,
+          rowsInserted: row[3] as number,
+        });
+      }
+    }
+
+    // Combine into result
+    const domains: Array<{
+      domain: string;
+      count: number;
+      minObserved: string | null;
+      maxObserved: string | null;
+      lastIngest: {
+        finishedAt: string;
+        status: string;
+        rowsInserted: number;
+      } | null;
+    }> = [];
+
+    if (domainStats.length > 0) {
+      for (const row of domainStats[0].values) {
+        const domain = row[0] as string;
+        domains.push({
+          domain,
+          count: row[1] as number,
+          minObserved: row[2] as string | null,
+          maxObserved: row[3] as string | null,
+          lastIngest: ingestByDomain.get(domain) ?? null,
+        });
+      }
+    }
+
+    return { domains };
+  }
 }
 
 /**
