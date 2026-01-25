@@ -114,10 +114,80 @@ If no (consistently) → move on.
 ### End of Week
 
 **What happened:**
+- Baseline not hit (0/2 coworking, initiations only on day 1)
+- Environment dominated: parents' house + winter created low-activation context where inertia won
+- Booked 1-week NYC hotel stay (week after next) to test same hypothesis in different environment
+- Discovered I couldn't isolate social friction because environmental friction was layered on top
 
 **Patterns noticed:**
+- Decay curve at parents' house: post-travel momentum has a ~2 week half-life, unstructured time (holidays) accelerates decay
+- Montreal data point: was more active there — but confounded by hotel format, 1-week duration, and novelty
+- Hotel format provides identity clarity ("traveler") vs. AirBnB/lease ambiguity ("not belonging")
+- Response to friction was structural (book trip) rather than incremental (daily actions) — worth watching
 
-**Friction still steering behavior?** yes / no
+**Friction still steering behavior?** Yes — but couldn't cleanly test social friction; environmental friction dominated the week.
+
+**Verdict:** evolve
+
+**Next episode:** Episode 02: Projection — Authored Views of the Canon
+
+**Hypothesis continues:** Episode 03 (NYC) — same social friction frame, controlled environment (hotel, 1 week, proximity to network)
+
+---
+
+## Episode 02: Projection — Authored Views of the Canon
+
+**Timeframe:** Jan 27 – Feb 2, 2026
+
+### Diagnosis
+
+The raw file system is the canon, but it's not presentable. The work exists but can't be encountered by others in a compelling way. This blocks collaboration, sharing, and momentum — the artifacts stay latent.
+
+### Hypothesis
+
+Building authored views of the canon (Projection) will test whether the work can become convincing and presentable. The question isn't "is the system complete?" — it's "can the system be *encountered*?"
+
+### What I Am Measuring
+
+**Not:** polish, perfection, completeness.
+
+**Tracking:**
+- Can I get a rough version working?
+- Does it feel like *encountering the work*, or just navigating files?
+- What's missing that blocks it from being shareable?
+
+### Actions
+
+**Precondition:**
+- [ ] Finish organizing songs in `nodes/org/artifacts/songs/`
+
+**Baseline:**
+- [ ] Navigation within Projection
+- [ ] Hero's Journey projection (rough/working version)
+
+**Stretch:**
+- [ ] Canon Explorer — collaborator-facing view closer to the raw canon
+
+### Decision Rule
+
+> Did I learn something about whether these views can be convincing?
+
+If yes → data gathered, move on or iterate.
+If no → blocked somewhere, diagnose what.
+
+### Log
+
+| Date | What happened | Notes |
+|------|---------------|-------|
+| | | |
+
+---
+
+### End of Week
+
+**What happened:**
+
+**Patterns noticed:**
 
 **Verdict:** continue | evolve | graduated
 
