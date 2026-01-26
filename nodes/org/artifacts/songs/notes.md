@@ -1,33 +1,33 @@
-| Name                     | BPM    | Description | Key | State | Stems |
-|--------------------------|--------|-------------|-----|-------|-------|
-| Envy √                   | 109    |             |     | Draft | Yes   |
-| Stay With Me √           |        |             |     | Live  | Yes   |
-| Genesis √                | 128.47 |             |     | Live  | Yes   |
-| Need Someone √           | 104    |             |     | Live  | Yes   |
-| Figure out √             | 127.3  |             |     | Live  | Yes   |
-| Reason √                 | 85.8   |             |     | Live  | Yes   |
-| Anyone √                 | 77     |             |     | Live  | Yes   |
-| Mania √                  |        |             |     |       | Yes   |
-| Praise √                 | 118    |             |     | Live  | Yes   |
-| Stars √                  |        |             |     | Draft | Yes   |
-| You  √                   | 142    |             |     | Draft | Yes   |
-| Bury The Sun √           | 104    |             |     | Live  | Yes   |
-| Through √                | 93     |             |     |       | Yes   |
-| Dream √                  | 90     |             |     |       | Yes   |
-| Jungle √                 |        |             |     |       | Yes   |
-| All The Things You Love √| 123    |             |     | Live  | Yes   |
-| Higher √                 |        |             |     |       | Yes   |
-| Epoch √                  | 122.6  |             |     | Draft | Yes   |
-| Won't You Lie to Me √    |        |             |     | Live  | No    |
-| Fall √                   | 85     |             |     | Live  | Yes   |
-| Simulacra 1 √            |        |             |     |       | Yes   |
-| Simulacra 2 √            | 106    |             |     |       | Yes   |
-| Trouble Simulacra √      | 138    |             |     |       | Yes   |
-| Gold √                   |        |             |     |       | No    |
-| Woah                     |        |             |     |       | Yes   |
-| 24 √                     |        |             |     |       | No    |
-| IJC √                    |        |             |     |       | No    |
-| Strong                   |        |             |     |       | No    |
-| Who I am √               |        |             |     |       | No    |
-| Coldness √               | 127.3  |             |     |       | No    |
-| Won't Let You Go √       |        |             |     |       | No    |
+| Name                    | BPM    | Description | Key | State | Source | Stems | Master |
+|-------------------------|--------|-------------|-----|-------|--------|-------|--------|
+| Envy                    | 109    |             |     | Draft | Yes    | No    | No     |
+| Stay With Me            |        |             |     | Live  | Yes    | No    | No     |
+| Genesis                 | 128.47 |             |     | Live  | Yes    | No    | No     |
+| Need Someone            | 104    |             |     | Live  | Yes    | No    | No     |
+| Figure out              | 127.3  |             |     | Live  | Yes    | No    | No     |
+| Reason                  | 85.8   |             |     | Live  | Yes    | No    | No     |
+| Anyone                  | 77     |             |     | Live  | Yes    | No    | No     |
+| Mania                   |        |             |     |       | Yes    | No    | No     |
+| Praise                  | 118    |             |     | Live  | Yes    | No    | No     |
+| Stars                   |        |             |     | Draft | Yes    | No    | No     |
+| You                     | 142    |             |     | Draft | Yes    | No    | No     |
+| Bury The Sun            | 104    |             |     | Live  | Yes    | No    | No     |
+| Through                 | 93     |             |     |       | Yes    | No    | No     |
+| Dream                   | 90     |             |     |       | Yes    | No    | No     |
+| Jungle                  |        |             |     |       | Yes    | No    | No     |
+| All The Things You Love | 123    |             |     | Live  | Yes    | No    | No     |
+| Higher                  |        |             |     |       | Yes    | No    | No     |
+| Epoch                   | 122.6  |             |     | Draft | Yes    | No    | No     |
+| Won't You Lie to Me     |        |             |     | Live  | Yes    | No    | No     |
+| Fall                    | 85     |             |     | Live  | Yes    | No    | No     |
+| Simulacra 1             |        |             |     |       | Yes    | No    | No     |
+| Simulacra 2             | 106    |             |     |       | Yes    | No    | No     |
+| Trouble Simulacra       | 138    |             |     |       | Yes    | No    | No     |
+| Gold                    |        |             |     |       | Yes    | No    | No     |
+| Woah                    |        |             |     |       | No     | No    | No     |
+| 24                      |        |             |     |       | Yes    | No    | No     |
+| IJC                     |        |             |     |       | Yes    | No    | No     |
+| Strong                  |        |             |     |       | No     | No    | No     |
+| Who I am                |        |             |     |       | Yes    | No    | No     |
+| Coldness                | 127.3  |             |     |       | Yes    | No    | No     |
+| Won't Let You Go        |        |             |     |       | Yes    | No    | No     |
