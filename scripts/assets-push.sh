@@ -19,33 +19,56 @@ set -e
 # Configuration
 R2_REMOTE="r2"
 R2_BUCKET="numinous-assets"
-LOCAL_BASE="nodes/org/artifacts"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+LOCAL_BASE="$REPO_ROOT/nodes/org/artifacts"
 
 # What to sync
 TARGET="${1:-}"
 
+FILTER_FLAGS=(
+  --filter "- .DS_Store"
+  --filter "+ */trunk/**"
+  --filter "+ */branches/**"
+  --filter "+ */archive/**"
+  --filter "+ */*/trunk/**"
+  --filter "+ */*/branches/**"
+  --filter "+ */*/archive/**"
+  --filter "- *"
+)
+
 if [ -z "$TARGET" ]; then
-  # Sync all artifacts with trunk/branches/archive folders
+  SRC="$LOCAL_BASE/"
+  DST="$R2_REMOTE:$R2_BUCKET/artifacts/"
   echo "Pushing all artifact assets to R2..."
-  rclone sync "$LOCAL_BASE/" "$R2_REMOTE:$R2_BUCKET/artifacts/" \
-    --include "*/trunk/**" \
-    --include "*/branches/**" \
-    --include "*/archive/**" \
-    --include "*/*/trunk/**" \
-    --include "*/*/branches/**" \
-    --include "*/*/archive/**" \
-    --progress
 else
-  # Sync specific artifact path (handles both direct and nested structures)
+  SRC="$LOCAL_BASE/$TARGET/"
+  DST="$R2_REMOTE:$R2_BUCKET/artifacts/$TARGET/"
+  FILTER_FLAGS=(
+    --filter "- .DS_Store"
+    --filter "+ trunk/**"
+    --filter "+ branches/**"
+    --filter "+ archive/**"
+    --filter "+ */trunk/**"
+    --filter "+ */branches/**"
+    --filter "+ */archive/**"
+    --filter "- *"
+  )
   echo "Pushing $TARGET assets to R2..."
-  rclone sync "$LOCAL_BASE/$TARGET/" "$R2_REMOTE:$R2_BUCKET/artifacts/$TARGET/" \
-    --include "trunk/**" \
-    --include "branches/**" \
-    --include "archive/**" \
-    --include "*/trunk/**" \
-    --include "*/branches/**" \
-    --include "*/archive/**" \
-    --progress
 fi
+
+# Dry-run preview
+echo ""
+echo "=== Dry run preview ==="
+rclone sync "$SRC" "$DST" "${FILTER_FLAGS[@]}" --dry-run 2>&1
+echo "=== End preview ==="
+echo ""
+
+read -p "Proceed with push? [y/N] " confirm
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+  echo "Aborted."
+  exit 0
+fi
+
+rclone sync "$SRC" "$DST" "${FILTER_FLAGS[@]}" --progress
 
 echo "Done."

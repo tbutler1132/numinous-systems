@@ -25,3 +25,6 @@ Intro -> Hook -> Verse -> Hook -> Bridge -> Outro
 v1:
 That's what they all say/
 Waiting for a day/
+
+Won't you lie to me?
+Make me blind to see
