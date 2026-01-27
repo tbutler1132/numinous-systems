@@ -232,3 +232,105 @@ This concept evolved from an earlier framing where Projection was "the org's doc
 That function still exists but has moved to the deeper layers (Process, Source). The surface is now about experiencing the art, not explaining the system.
 
 The core insight (authorship distinction) and design principles (canon as source, authored perspective, beauty as goal) remain unchanged. What changed is *what sits at the top* — art, not documentation.
+
+---
+
+## XVI. Evolution: Surfaces Replace Layers
+
+The layered model (Sections VI–VIII) was the original framing. It has been superseded by a **surfaces model**.
+
+**Why the change:**
+
+The layer metaphor implies hierarchy — Surface is "above" Source, finished is "better than" in-progress. But if the Process layer is where the actual life of the project is, calling it a "deeper layer" underneath a Surface that doesn't yet exist is misleading.
+
+Multiple surfaces — different projections of the same canon — is more consistent with the projection concept itself. A projection isn't a layer. It's a view. Multiple projections of one canon is already the design principle in `canon-projections-and-becoming`.
+
+**What surfaces means:**
+
+Each surface is a way of encountering the canon. A listener encounters it as music. A reader encounters it as philosophy. A collaborator encounters it as a workshop. None of these is "deeper" than the others — they're different angles on the same underlying work.
+
+**What's preserved from the layer model:**
+
+- The content distinctions still hold (finished work, context, process, source)
+- The idea that different depths of engagement exist
+- The principle that you don't need everything finished to ship — each surface presents what's real
+- Descent can still exist *within* a surface (a music surface can go from finished track → lyrics → production notes → stems) rather than between surfaces
+
+**What's lost:**
+
+The Dante/Inferno descent metaphor as a UX concept. The feeling of passing through thresholds. This was compelling but forced a linear progression that doesn't match how people actually want to engage. A musician might not care about the philosophy surface but wants the production surface. Surfaces allow access that matches the person, not a predetermined path.
+
+---
+
+## XVII. The Map
+
+Navigation is a **map**, not a funnel or a tier list.
+
+The map implies space rather than hierarchy. You're somewhere, and you can see other places exist. Some doors are open and some aren't. This is fundamentally different from a tier list where everything above you is grayed out with a price tag.
+
+The entry point is a landing page — the finished work surface. From there, you can navigate to other surfaces. The map shows the whole space. Gated areas are visible but clearly places you haven't accessed yet, not things being dangled in front of you.
+
+---
+
+## XVIII. Three Surfaces Now
+
+**Surface 1: Finished Work**
+The landing page. Where polished, completed work lives. The single goes here when it's done. Until then, it's the front door that routes you elsewhere. Maximum beauty, minimum explanation.
+
+**Surface 2: Workshop**
+WIPs, songs in progress, notes, context. This is what the current Projection app scaffold is already close to doing — rendering the repo's markdown and song artifacts in a navigable way. Honest about being unfinished. "You're in the workshop, not the gallery." This is also where the trunk model becomes visible.
+
+**Surface 3: Collaboration**
+Doesn't need to be built as software yet. It's a documented process — the trunk model is the framework. A collaborator gets repo access, works within trunk/branch, the org owns integration. The "surface" here is the repo plus the trunk model document plus direct communication.
+
+These are the current surfaces. More emerge as the work grows.
+
+---
+
+## XIX. External Platforms as Surfaces
+
+Spotify, YouTube, GitHub — these are also surfaces. They're projections of the canon optimized for their respective contexts. The org doesn't control the presentation on external surfaces, but they're still views of the same underlying work.
+
+**External surfaces** are for reach. **Owned surfaces** are for depth and relationship. Both are valid, and this distinction strengthens the case for a custom platform long-term — owned surfaces are projections you control.
+
+---
+
+## XX. Gating Principles
+
+Some surfaces (or areas within surfaces) require access. The design must avoid feeling like a freemium app constantly upselling.
+
+**Core principles:**
+
+1. **Show that gated areas exist, but don't advertise them.** On a map, you can see a building you can't enter. That creates curiosity, not resentment. Don't remind users on every interaction that they're on the free tier.
+
+2. **Gate at the boundary, not inside the experience.** If you have access to the workshop surface, everything in it is available. No individual items behind additional gates within a surface. Access is per-surface or per-area, not per-item.
+
+3. **Make the "why" of the gate obvious without being preachy.** "This is the production space — contributors and supporters have access" is honest and clear. The gate should feel like a natural property of the space, not a monetization strategy.
+
+4. **The contribution path should be as visible as the payment path.** If the only option on a locked area is "pay $10/month," that's Patreon. If "pay or contribute" have equal weight, the space signals community with an economy, not a product with a paywall.
+
+**Access model:**
+
+| Surface | Access | Rationale |
+|---------|--------|-----------|
+| Finished work | Open | This is how people find you |
+| Philosophy/essays | Open or low gate | Ideas spread; gatekeeping them is counterproductive |
+| Production (stems, sessions, WIP) | Paid or contribution | Genuinely valuable to practitioners |
+| Workshop (active process) | Contribution | You're in the room; you should be adding value |
+| Canon (full repo, fork rights) | Relationship | This is the node-creation threshold |
+
+Payment and contribution are both valid forms of access. The platform should treat them with equal weight.
+
+---
+
+## XXI. Updated Open Questions
+
+Previous open questions (Section XIV) are partially resolved:
+
+- ~~What's the right V1 scope?~~ → Start with workshop surface (Surface 2). The finished work surface is a landing page until completed work exists.
+- ~~What's the "something crazy" descent mechanism?~~ → Replaced by map navigation between surfaces. Descent can exist within a surface.
+- How do songs get marked as "finished" (eligible for the finished work surface)?
+- Static generation or dynamic? (Probably static for V1)
+- How does the story weave through — is it its own surface?
+- How does gating work technically? Auth, payments, contribution tracking?
+- What's the minimum viable version of the map UX?

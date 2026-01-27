@@ -8,6 +8,7 @@ relates_to:
   - love-of-fate
   - capital-as-medium
   - axioms
+  - the-network
   - essays
   - aesthetic
   - songs
@@ -23,9 +24,9 @@ updated: 2026-01-17
 
 ## Category Concept
 
-This folder contains the **five foundational essays** — the philosophical bedrock of the project.
+This folder contains the **six foundational essays** — the philosophical bedrock of the project.
 
-Reading these five pieces, someone understands the worldview. Everything else in the artifacts tree either develops, expresses, or applies what is established here.
+Reading these six pieces, someone understands the worldview. Everything else in the artifacts tree either develops, expresses, or applies what is established here.
 
 ## What This Category Addresses
 
@@ -34,8 +35,9 @@ Reading these five pieces, someone understands the worldview. Everything else in
 - What posture enables presence to beauty? (Love of Fate)
 - How does one act toward beauty at scale? (Capital as Medium)
 - What is affirmed without argument? (Axioms)
+- How does beauty organize beyond the individual? (The Network)
 
-## The Five Essays
+## The Six Essays
 
 | #   | Essay                 | Function                                            |
 | --- | --------------------- | --------------------------------------------------- |
@@ -44,12 +46,13 @@ Reading these five pieces, someone understands the worldview. Everything else in
 | 3   | **Love of Fate**      | The posture — clearing regret for presence          |
 | 4   | **Capital as Medium** | The practice — orchestrating capital toward beauty  |
 | 5   | **Axioms**            | The distillation — ground-level affirmations        |
+| 6   | **The Network**       | The structure — connected autonomy toward beauty    |
 
 ## Reading Order
 
-**Purpose → Subject → Posture → Practice → Distillation**
+**Purpose → Subject → Posture → Practice → Distillation → Structure**
 
-Start with why beauty matters, understand what kind of being experiences it, clear the obstacles to presence, learn to act at scale, then see the principles distilled.
+Start with why beauty matters, understand what kind of being experiences it, clear the obstacles to presence, learn to act at scale, see the principles distilled, then understand how it scales beyond the individual.
 
 ## Connection to Other Categories
 
@@ -65,4 +68,4 @@ Every other category serves this one:
 
 ## Status
 
-All five essays exist in conceptual form. Expression and refinement are ongoing.
+All six essays exist in conceptual form. Expression and refinement are ongoing.
