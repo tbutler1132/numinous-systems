@@ -1,4 +1,1 @@
-![Cover art](https://pub-9c5527f78a0e4866a2a79b175f211482.r2.dev/covers/24_Cover_Art_4_11_23.jpg)
-
-
-[Listen](https://pub-9c5527f78a0e4866a2a79b175f211482.r2.dev/24_Mix_v2_4_12_23.wav)
+[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/between-this-world-and-the-next/trunk/audio/mix/between-this-world-and-the-next-mix-trunk-1-26-26.wav)
