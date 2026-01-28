@@ -1,41 +1,16 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import Link from 'next/link'
-
-interface ParsedLink {
-  label: string
-  url: string
-}
-
-interface Reference {
-  label: string
-  slug: string
-  frontmatter: Record<string, unknown>
-  page: string
-  links: ParsedLink[]
-}
-
-interface Artifact {
-  slug: string
-  frontmatter: Record<string, unknown>
-  content: string
-  references: Reference[]
-}
-
-function getData(): Artifact[] {
-  const raw = readFileSync(join(process.cwd(), 'public/data/heros-journey.json'), 'utf-8')
-  return JSON.parse(raw)
-}
+import { notFound } from 'next/navigation'
+import { getHerosJourney } from '@/lib/data'
 
 export function generateStaticParams() {
-  return getData().map((stage) => ({ stage: stage.slug }))
+  return getHerosJourney().map((stage) => ({ stage: stage.slug }))
 }
 
 export default function StagePage({ params }: { params: { stage: string } }) {
-  const stages = getData()
+  const stages = getHerosJourney()
   const stageIndex = stages.findIndex((s) => s.slug === params.stage)
   const stage = stages[stageIndex]
-  if (!stage) return null
+  if (!stage) notFound()
 
   const fragment = stage.references.find(
     (r) => r.frontmatter.category === 'story-fragment'

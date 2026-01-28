@@ -1,34 +1,8 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import Link from 'next/link'
-
-interface ParsedLink {
-  label: string
-  url: string
-}
-
-interface Reference {
-  label: string
-  slug: string
-  frontmatter: Record<string, unknown>
-  page: string
-  links: ParsedLink[]
-}
-
-interface Artifact {
-  slug: string
-  frontmatter: Record<string, unknown>
-  content: string
-  references: Reference[]
-}
-
-function getData(): Artifact[] {
-  const raw = readFileSync(join(process.cwd(), 'public/data/heros-journey.json'), 'utf-8')
-  return JSON.parse(raw)
-}
+import { getHerosJourney } from '@/lib/data'
 
 export default function HerosJourney() {
-  const stages = getData()
+  const stages = getHerosJourney()
 
   return (
     <div className="heros-journey">

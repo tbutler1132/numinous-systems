@@ -54,6 +54,10 @@ Key ideas:
 
 XenoScript is experimental. Syntax may change.
 
+## Verification
+
+After any non-trivial change, run `npm run check` from the repo root. This lints, builds, and tests all workspaces. It runs in ~13 seconds — always run it, don't skip.
+
 ## Conventions
 
 - Each major directory has an `about.md` explaining its purpose
