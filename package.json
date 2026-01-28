@@ -6,11 +6,12 @@
     "core/sensor",
     "sensors/finance",
     "sensors/thought",
-    "apps/dashboard"
+    "apps/dashboard",
+    "apps/projection"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
+    "test": "./scripts/test-all.sh",
     "clean": "npm run clean --workspaces",
     "lint": "eslint core sensors",
     "check": "npm run lint && npm run build && npm run test",
