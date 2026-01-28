@@ -89,6 +89,46 @@ export function resolveReference(link: ParsedLink, fromDir: string): ResolvedRef
   return null
 }
 
+export function parseMarkdownTable(md: string): Record<string, string>[] {
+  const lines = md.split('\n')
+  let headerLine: string | undefined
+  let separatorSkipped = false
+  const rows: Record<string, string>[] = []
+  let headers: string[] = []
+
+  for (const line of lines) {
+    const trimmed = line.trim()
+    if (!trimmed.includes('|')) continue
+
+    if (!headerLine) {
+      headerLine = trimmed
+      headers = trimmed
+        .split('|')
+        .map((h) => h.trim().toLowerCase())
+        .filter(Boolean)
+      continue
+    }
+
+    if (!separatorSkipped) {
+      separatorSkipped = true
+      continue
+    }
+
+    const cells = trimmed
+      .split('|')
+      .map((c) => c.trim())
+      .filter((_, i, arr) => i > 0 && i < arr.length) // drop leading/trailing empty splits
+
+    const row: Record<string, string> = {}
+    headers.forEach((h, i) => {
+      row[h] = cells[i] ?? ''
+    })
+    rows.push(row)
+  }
+
+  return rows
+}
+
 export function collectArtifacts(sourceDir: string): Artifact[] {
   const entries = readdirSync(sourceDir)
     .filter((e) => statSync(join(sourceDir, e)).isDirectory())

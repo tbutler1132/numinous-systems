@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Atrium",
+    "type": "internal",
+    "path": "/",
+    "status": "active"
+  },
+  {
+    "name": "Hero's Journey",
+    "type": "internal",
+    "path": "/heros-journey/",
+    "status": "active"
+  },
+  {
+    "name": "X",
+    "type": "external",
+    "path": "https://x.com/alltoosynthetic",
+    "status": "active"
+  }
+]

@@ -3,20 +3,9 @@
 import { useState, useRef, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import type { Surface } from '@/lib/data'
 
-type Surface = {
-  name: string
-  path: string
-  external?: boolean
-}
-
-const surfaces: Surface[] = [
-  { name: 'Home', path: '/' },
-  { name: "Hero's Journey", path: '/heros-journey/' },
-  { name: 'X', path: 'https://x.com/alltoosynthetic', external: true },
-]
-
-export default function SpatialNav() {
+export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const crosshairH = useRef<HTMLDivElement>(null)

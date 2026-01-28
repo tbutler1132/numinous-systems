@@ -1,7 +1,8 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert'
 import { resolve, join } from 'path'
-import { parseMarkdownLinks, readArtifact, readPage, resolveReference, collectArtifacts } from './lib'
+import { readFileSync } from 'fs'
+import { parseMarkdownLinks, parseMarkdownTable, readArtifact, readPage, resolveReference, collectArtifacts } from './lib'
 
 const ROOT = resolve(__dirname, '..', '..', '..')
 const STAGES_DIR = join(ROOT, 'nodes/org/artifacts/stages')
@@ -33,6 +34,66 @@ describe('parseMarkdownLinks', () => {
   it('returns empty array for text without links', () => {
     assert.deepStrictEqual(parseMarkdownLinks('just some text'), [])
     assert.deepStrictEqual(parseMarkdownLinks(''), [])
+  })
+})
+
+describe('parseMarkdownTable', () => {
+  it('parses a standard entity table', () => {
+    const md = `# Domains
+
+Some description.
+
+---
+
+| Name | Type | Path |
+|------|------|------|
+| Home | internal | / |
+| About | internal | /about |
+
+---
+`
+    const rows = parseMarkdownTable(md)
+    assert.strictEqual(rows.length, 2)
+    assert.deepStrictEqual(rows[0], { name: 'Home', type: 'internal', path: '/' })
+    assert.deepStrictEqual(rows[1], { name: 'About', type: 'internal', path: '/about' })
+  })
+
+  it('returns empty array for markdown without a table', () => {
+    const md = `# Just a heading
+
+Some paragraph text.
+`
+    const rows = parseMarkdownTable(md)
+    assert.deepStrictEqual(rows, [])
+  })
+
+  it('lowercases header names', () => {
+    const md = `| Domain | Registrar |
+|--------|-----------|
+| example.com | Cloudflare |`
+    const rows = parseMarkdownTable(md)
+    assert.ok('domain' in rows[0])
+    assert.ok('registrar' in rows[0])
+  })
+
+  it('trims whitespace from values', () => {
+    const md = `| Name | Value |
+|------|-------|
+|  padded  |  spaces  |`
+    const rows = parseMarkdownTable(md)
+    assert.strictEqual(rows[0].name, 'padded')
+    assert.strictEqual(rows[0].value, 'spaces')
+  })
+
+  it('reads the real surfaces.md file', () => {
+    const surfacesPath = join(ROOT, 'nodes/org/entities/surfaces.md')
+    const content = readFileSync(surfacesPath, 'utf-8')
+    const rows = parseMarkdownTable(content)
+    assert.ok(rows.length >= 3, 'should have at least 3 surfaces')
+    assert.strictEqual(rows[0].name, 'Atrium')
+    assert.strictEqual(rows[0].type, 'internal')
+    assert.strictEqual(rows[0].path, '/')
+    assert.strictEqual(rows[0].status, 'active')
   })
 })
 
