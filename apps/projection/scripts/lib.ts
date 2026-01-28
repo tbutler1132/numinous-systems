@@ -12,6 +12,12 @@ export interface ParsedLink {
   url: string
 }
 
+export interface WikiLink {
+  id: string
+  section?: string
+  displayText?: string
+}
+
 export interface ResolvedReference {
   label: string
   slug: string
@@ -47,6 +53,20 @@ export function parseMarkdownLinks(md: string): ParsedLink[] {
   let match
   while ((match = re.exec(md)) !== null) {
     links.push({ label: match[1], url: match[2] })
+  }
+  return links
+}
+
+export function parseWikiLinks(md: string): WikiLink[] {
+  const links: WikiLink[] = []
+  const re = /\[\[([^\]|#]+)(?:#([^\]|]+))?(?:\|([^\]]+))?\]\]/g
+  let match
+  while ((match = re.exec(md)) !== null) {
+    links.push({
+      id: match[1],
+      section: match[2] || undefined,
+      displayText: match[3] || undefined,
+    })
   }
   return links
 }
