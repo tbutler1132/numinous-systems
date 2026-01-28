@@ -1,15 +1,52 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import type { Surface } from '@/lib/data'
 
+type MenuPage = 'map'
+
 export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
   const [open, setOpen] = useState(false)
+  const [activePage, setActivePage] = useState<MenuPage>('map')
   const pathname = usePathname()
   const crosshairH = useRef<HTMLDivElement>(null)
   const crosshairV = useRef<HTMLDivElement>(null)
+  const arrowRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const arrow = arrowRef.current
+    if (!arrow) return
+
+    // Desktop: track cursor position across viewport
+    const onMouseMove = (e: MouseEvent) => {
+      arrow.style.left = `${(e.clientX / window.innerWidth) * 100}%`
+      arrow.style.top = `${(e.clientY / window.innerHeight) * 100}%`
+    }
+
+    // Mobile: track scroll progress down the page
+    const onScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (scrollHeight <= 0) return
+      const yPct = (window.scrollY / scrollHeight) * 100
+      arrow.style.top = `${yPct}%`
+      arrow.style.left = '50%'
+    }
+
+    const hasPointer = window.matchMedia('(pointer: fine)').matches
+    if (hasPointer) {
+      window.addEventListener('mousemove', onMouseMove)
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true })
+      onScroll()
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
   const current = surfaces.find(
     (s) => !s.external && (s.path === pathname || (s.path !== '/' && pathname.startsWith(s.path)))
@@ -24,17 +61,51 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
     }
   }, [])
 
+  const setCrosshairVisible = useCallback((visible: boolean) => {
+    const opacity = visible ? '1' : '0'
+    if (crosshairH.current) crosshairH.current.style.opacity = opacity
+    if (crosshairV.current) crosshairV.current.style.opacity = opacity
+  }, [])
+
   const localSurfaces = surfaces.filter(s => !s.external)
   const externalSurfaces = surfaces.filter(s => s.external)
+
+  const menuPages: { id: MenuPage; label: string }[] = [
+    { id: 'map', label: 'Map' },
+  ]
 
   return (
     <>
       <button
-        className="spatial-nav-trigger"
-        onClick={() => setOpen(true)}
+        className={`spatial-nav-trigger${open ? ' map-open' : ''}`}
+        onClick={() => { setActivePage('map'); setOpen(true) }}
         aria-label="Open navigation"
       >
-        {current.name}
+        <span className="minimap">
+          {localSurfaces.map((surface, i) => {
+            const t = localSurfaces.length <= 1 ? 0.5 : i / (localSurfaces.length - 1)
+            return (
+              <span
+                key={surface.path}
+                className="minimap-dot"
+                style={{
+                  left: `${18 + t * 64}%`,
+                  top: `${22 + t * 56}%`,
+                }}
+              />
+            )
+          })}
+          <span ref={arrowRef} className="minimap-arrow" />
+        </span>
+        <span className="minimap-location">{current.name}</span>
+      </button>
+
+      <button
+        className={`menu-trigger${open ? ' map-open' : ''}`}
+        onClick={() => setOpen(true)}
+        aria-label="Open menu"
+      >
+        Menu
       </button>
 
       {open && (
@@ -45,48 +116,79 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
         >
           <div ref={crosshairH} className="spatial-nav-crosshair-h" />
           <div ref={crosshairV} className="spatial-nav-crosshair-v" />
+
+          <div className="game-menu" onClick={(e) => e.stopPropagation()}>
+            <nav
+              className="game-menu-sidebar"
+              onMouseEnter={() => setCrosshairVisible(false)}
+              onMouseLeave={() => setCrosshairVisible(true)}
+            >
+              {menuPages.map((page) => (
+                <button
+                  key={page.id}
+                  className={`game-menu-tab${activePage === page.id ? ' active' : ''}`}
+                  onClick={() => setActivePage(page.id)}
+                >
+                  {page.label}
+                </button>
+              ))}
+            </nav>
+
+            <div className="game-menu-content">
+              {activePage === 'map' && (
+                <div className="spatial-nav-map">
+                  {localSurfaces.map((surface, i) => {
+                    const isActive = surface.path === current.path
+                    const positions = [
+                      { left: '10%', top: '14%' },
+                      { left: '26%', top: '36%' },
+                      { left: '14%', top: '55%' },
+                    ]
+                    const pos = positions[i] ?? { left: `${10 + i * 12}%`, top: `${14 + i * 18}%` }
+
+                    return (
+                      <Link
+                        key={surface.path}
+                        href={surface.path}
+                        className={`spatial-nav-surface${isActive ? ' active' : ''}`}
+                        style={pos}
+                        onClick={() => setOpen(false)}
+                      >
+                        <span className={`spatial-nav-marker${isActive ? ' active' : ''}`} />
+                        <span className="spatial-nav-label">{surface.name}</span>
+                      </Link>
+                    )
+                  })}
+
+                  {externalSurfaces.length > 0 && (
+                    <div className="map-exit-zone">
+                      <span className="map-exit-label">External</span>
+                      {externalSurfaces.map((surface) => (
+                        <a
+                          key={surface.path}
+                          href={surface.path}
+                          className="map-exit-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setOpen(false)}
+                        >
+                          {surface.name} <span className="spatial-nav-arrow">↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
           <button
             className="spatial-nav-close"
             onClick={() => setOpen(false)}
-            aria-label="Close navigation"
+            aria-label="Close menu"
           >
             &times;
           </button>
-          <nav className="spatial-nav-map" onClick={(e) => e.stopPropagation()}>
-            <div className="spatial-nav-header">Map</div>
-            {localSurfaces.map((surface) => {
-              const isActive = surface.path === current.path
-              const className = `spatial-nav-surface${isActive ? ' active' : ''}`
-
-              return (
-                <Link
-                  key={surface.path}
-                  href={surface.path}
-                  className={className}
-                  onClick={() => setOpen(false)}
-                >
-                  <span className={`spatial-nav-marker${isActive ? ' active' : ''}`} />
-                  <span className="spatial-nav-label">{surface.name}</span>
-                </Link>
-              )
-            })}
-            <div className="spatial-nav-edge">
-              {externalSurfaces.map((surface) => (
-                <a
-                  key={surface.path}
-                  href={surface.path}
-                  className="spatial-nav-surface external"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="spatial-nav-marker" />
-                  <span className="spatial-nav-label">{surface.name}</span>
-                  <span className="spatial-nav-arrow">↗</span>
-                </a>
-              ))}
-            </div>
-          </nav>
         </div>
       )}
     </>

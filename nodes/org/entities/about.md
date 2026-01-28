@@ -49,4 +49,17 @@ Tracks service accounts and API accounts.
 
 ---
 
+### surfaces
+
+Navigation surfaces available in the projection app.
+
+| Field | Description |
+|-------|-------------|
+| Name | Display name of the surface |
+| Type | internal (same-site route) or external (outbound link) |
+| Path | URL path or full URL |
+| Status | active or draft |
+
+---
+
 *Add new types here as they emerge.*
