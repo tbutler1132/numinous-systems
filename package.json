@@ -14,7 +14,8 @@
     "test": "./scripts/test-all.sh",
     "clean": "npm run clean --workspaces",
     "lint": "eslint core sensors",
-    "check": "npm run lint && npm run build && npm run test",
+    "validate-links": "tsx scripts/validate-links.ts",
+    "check": "npm run lint && npm run build && npm run test && npm run validate-links",
     "assets:push": "./scripts/assets-push.sh",
     "assets:pull": "./scripts/assets-pull.sh",
     "setup": "npm install && ./scripts/assets-pull.sh"

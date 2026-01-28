@@ -110,7 +110,7 @@ Models fall into two broad categories:
 
 Operational models are revised when processes fail. Strategic models are revised when reality disproves them.
 
-Each node maintains its own models (e.g., `org/models.md`, `personal/models.md`).
+Each node maintains its own models (e.g., `org/process/models.md`, `personal/process/models.md`).
 
 Models answer: *what does the system believe?*
 

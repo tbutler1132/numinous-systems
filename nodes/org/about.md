@@ -13,12 +13,12 @@ Humans may operate this Node, but the Node persists beyond any one operator. Wha
 
 ## Files
 
-- [[models]]  
+- [[process/models]]
   Assumptions, patterns, and learned models that currently guide action.
   Includes the operational baseline describing what is normal for the Org.
   All models are provisional and revisable.
 
-- [[episodes]]  
+- [[process/episodes]]
   Timeboxed containers for action. Each episode is a hypothesis about orientation.
   Experimental — testing whether this concept is useful.
 

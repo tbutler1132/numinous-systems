@@ -305,7 +305,7 @@ When multiple people work on the same creative output, ambiguity about ownership
 
 ### Description
 
-The Org follows [The Trunk Model](artifacts/practice/the-trunk-model/notes.md) for collaborative creative work.
+The Org follows [The Trunk Model](../artifacts/practice/the-trunk-model/notes.md) for collaborative creative work.
 
 Core commitments:
 
@@ -355,7 +355,7 @@ This judgment is subjective but not arbitrary. It recognizes something real abou
 
 ### Relationship to Song Artifacts
 
-Songs in [[artifacts/songs]] exist as ongoing processes. Each song folder may contain multiple versions, notes, and iterations. This model governs only the decision to crystallize a version for public release. The song itself continues to evolve.
+Songs in [[songs]] exist as ongoing processes. Each song folder may contain multiple versions, notes, and iterations. This model governs only the decision to crystallize a version for public release. The song itself continues to evolve.
 
 ### Revision Signal
 

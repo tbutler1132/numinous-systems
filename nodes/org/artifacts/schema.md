@@ -18,6 +18,9 @@ status: published | draft | private
 category: core | essay | aesthetic | song | story | app | reference
 order: 1  # display order within category (optional)
 
+# Identity (optional)
+id: "core/beauty-redeems"  # stable ID for wiki-links; overrides path-derived ID
+
 # Connections
 parent: null  # artifact this extends or serves
 relates_to: ["the-living-system", "axioms"]  # sibling connections
@@ -42,6 +45,7 @@ implementation: impl/
 | status | enum | `published` (public), `draft` (WIP), `private` (internal only) |
 | category | enum | Grouping for navigation |
 | order | number | Sort order within category (1 = first) |
+| id | string | Stable ID for wiki-links; overrides the path-derived ID |
 | parent | string | Slug of parent artifact (for hierarchy) |
 | relates_to | array | Slugs of related artifacts (for graph edges) |
 | story_fragment | string | Slug of corresponding story fragment (for album stages) |
@@ -100,6 +104,24 @@ This frontmatter can be consumed by:
 2. **Expressions app** — instead of maintaining a hardcoded artifact list in the app's `src/data/artifacts.ts`, the app could fetch and parse frontmatter directly from the source markdown
 
 This makes frontmatter the single source of truth for artifact metadata, avoiding duplication between nodes and apps.
+
+---
+
+## ID System
+
+Wiki-links use IDs to reference files without relying on relative paths.
+
+**Default ID derivation:**
+- Artifacts: `{category}/{slug}` (e.g., `core/beauty-redeems` for `artifacts/core/beauty-redeems/about.md`)
+- Non-artifacts in nodes/org: path from `nodes/org/` (e.g., `process/models` for `nodes/org/process/models.md`)
+- Root files: filename without `.md` (e.g., `ontology` for `ontology.md`)
+
+**When to use the `id:` field:**
+- When moving a file but keeping existing links stable
+- When the derived ID would be awkward or confusing
+- For category-level index files that need a simpler ID
+
+Example: If `core/1-beauty-redeems` moves to `essays/beauty-redeems`, add `id: "core/1-beauty-redeems"` to preserve existing links.
 
 ---
 
