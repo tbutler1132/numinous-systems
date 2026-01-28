@@ -12,35 +12,10 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import type { DomainStatus, RecentObservation, DashboardStatus } from '@/services/dashboard'
 
-/** Statistics for a single observation domain */
-interface DomainStatus {
-  domain: string
-  count: number
-  minObserved: string | null
-  maxObserved: string | null
-  lastIngest: {
-    finishedAt: string
-    status: string
-    rowsInserted: number
-  } | null
-}
-
-/** A recent observation formatted for display */
-interface RecentObservation {
-  id: string
-  observed_at: string
-  domain: string
-  type: string
-  summary: string
-}
-
-/** Complete dashboard data from the status API */
-interface DashboardData {
-  exists: boolean
-  domains: DomainStatus[]
-  recent: RecentObservation[]
-}
+/** Dashboard data structure matching DashboardStatus from the API */
+type DashboardData = Pick<DashboardStatus, 'exists' | 'domains' | 'recent'>
 
 /** Props for DashboardClient */
 interface Props {

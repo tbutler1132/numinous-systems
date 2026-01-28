@@ -17,11 +17,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import surfacesData from './public/data/surfaces.json'
-
-/** Cookie name for authentication token */
-const AUTH_COOKIE_NAME = 'auth_token'
-/** Whether we're in development mode */
-const isDev = process.env.NODE_ENV === 'development'
+import { AUTH_COOKIE_NAME, shouldBypassAuth } from './src/lib/auth'
 
 /**
  * Private surface paths extracted from surfaces.json.
@@ -71,8 +67,7 @@ function getLoginPath(pathname: string): string {
  * @returns True if authenticated
  */
 function isAuthenticated(request: NextRequest): boolean {
-  // In dev mode, bypass auth unless ?locked is in the URL
-  if (isDev && !request.nextUrl.searchParams.has('locked')) {
+  if (shouldBypassAuth(request.nextUrl.searchParams)) {
     return true
   }
 

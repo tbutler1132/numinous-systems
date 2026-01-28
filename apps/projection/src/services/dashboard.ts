@@ -88,6 +88,17 @@ export interface IngestResult {
 // ============================================================================
 
 /**
+ * Truncates a string to a maximum length, adding ellipsis if truncated.
+ *
+ * @param str - String to truncate
+ * @param maxLen - Maximum length before truncation
+ * @returns Original string if short enough, or truncated with '...'
+ */
+function truncate(str: string, maxLen: number): string {
+  return str.length > maxLen ? str.substring(0, maxLen) + '...' : str
+}
+
+/**
  * Extracts a human-readable summary from an observation's payload.
  *
  * Domain-specific formatting:
@@ -108,21 +119,20 @@ function extractSummary(domain: string, payload: Record<string, unknown>): strin
         amount < 0
           ? `-$${(Math.abs(amount) / 100).toFixed(2)}`
           : `$${(amount / 100).toFixed(2)}`
-      const shortDesc = desc.length > 30 ? desc.substring(0, 30) + '...' : desc
-      return `${amountStr} ${shortDesc}`
+      return `${amountStr} ${truncate(desc, 30)}`
     }
   }
   if (domain === 'thought') {
     const content = payload.content as string | undefined
     if (content) {
-      return content.length > 50 ? content.substring(0, 50) + '...' : content
+      return truncate(content, 50)
     }
   }
   const keys = Object.keys(payload)
   if (keys.length > 0) {
     const firstVal = payload[keys[0]]
     if (typeof firstVal === 'string') {
-      return firstVal.length > 50 ? firstVal.substring(0, 50) + '...' : firstVal
+      return truncate(firstVal, 50)
     }
   }
   return '—'

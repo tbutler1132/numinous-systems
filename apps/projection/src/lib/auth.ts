@@ -15,7 +15,24 @@ import { cookies } from 'next/headers'
 import { timingSafeEqual } from 'crypto'
 
 /** Cookie name used to store the authentication token */
-const AUTH_COOKIE_NAME = 'auth_token'
+export const AUTH_COOKIE_NAME = 'auth_token'
+
+/** Whether we're in development mode */
+export const isDev = process.env.NODE_ENV === 'development'
+
+/**
+ * Checks if dev mode auth bypass should apply.
+ *
+ * In development, auth is bypassed unless ?locked param is present.
+ * This allows easy local testing while still being able to test
+ * the real auth flow by adding ?locked to the URL.
+ *
+ * @param searchParams - URL search params to check for ?locked
+ * @returns True if dev bypass applies (dev mode and no ?locked param)
+ */
+export function shouldBypassAuth(searchParams: URLSearchParams): boolean {
+  return isDev && !searchParams.has('locked')
+}
 
 /**
  * Validates a token against the DASHBOARD_TOKEN environment variable.
@@ -73,5 +90,3 @@ export function getAuthCookieOptions() {
     maxAge: 60 * 60 * 24 * 30, // 30 days
   }
 }
-
-export { AUTH_COOKIE_NAME }

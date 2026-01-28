@@ -10,23 +10,8 @@
  */
 
 import { existsSync } from 'fs'
-import { join, resolve } from 'path'
 import { ObservationStore, resolveDbPath } from '@numinous-systems/sensor'
-
-/**
- * Finds the monorepo root by traversing up to find .git directory.
- * @returns Absolute path to workspace root
- */
-function findWorkspaceRoot(): string {
-  let current = process.cwd()
-  while (current !== '/') {
-    if (existsSync(join(current, '.git'))) {
-      return current
-    }
-    current = resolve(current, '..')
-  }
-  return process.cwd()
-}
+import { findWorkspaceRoot } from '@/lib/workspace'
 
 /**
  * Gets the absolute path to the private node's observation database.
