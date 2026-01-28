@@ -313,19 +313,26 @@ body {
   height: 100%;
 }
 
-/* Node context — shows which node you're currently viewing */
+/* Node context — shows which node you're currently viewing, toggles local/world view */
 .map-node-context {
   position: absolute;
   top: 1%;
   left: 1%;
   padding: 0.4rem 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
 }
 
 .map-node-context:hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .map-node-name {
@@ -334,6 +341,81 @@ body {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.map-view-toggle {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.map-node-context:hover .map-view-toggle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* World map node markers */
+.spatial-nav-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.spatial-nav-node-marker {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.spatial-nav-node:hover .spatial-nav-node-marker {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.spatial-nav-node.current .spatial-nav-node-marker {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.spatial-nav-node-label {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.spatial-nav-node:hover .spatial-nav-node-label {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.spatial-nav-node.current .spatial-nav-node-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.spatial-nav-node-you {
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.map-legend-dot.category-node {
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
 }
 
 .spatial-nav-surface {

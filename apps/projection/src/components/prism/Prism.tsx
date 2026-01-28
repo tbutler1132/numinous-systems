@@ -10,16 +10,23 @@ import { useCursor } from './useCursor'
 import { useCrosshair } from './Crosshair'
 import { Minimap } from './Minimap'
 import { Menu, buildMenuPages, type FacetId } from './Menu'
-import { Map } from './Map'
+import { Map, type MapView, type MapNode } from './Map'
 
 interface PrismProps {
   surfaces: Surface[]
   initialAuthenticated?: boolean
 }
 
+// Available nodes - for now just Org, but the pattern supports more
+const AVAILABLE_NODES: MapNode[] = [
+  { id: 'org', name: 'Org', description: 'The main organization node', isCurrentNode: true },
+  // Future: user nodes, other orgs, etc.
+]
+
 export default function Prism({ surfaces, initialAuthenticated = false }: PrismProps) {
   const [open, setOpen] = useState(false)
   const [activePage, setActivePage] = useState<FacetId>('map')
+  const [mapView, setMapView] = useState<MapView>('local')
   const [navigating, setNavigating] = useState<string | null>(null)
 
   const pathname = usePathname()
@@ -87,6 +94,8 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
 
               {activePage === 'map' && (
                 <Map
+                  view={mapView}
+                  nodes={AVAILABLE_NODES}
                   locations={locations}
                   externalSurfaces={externalSurfaces}
                   currentPath={currentLocation.path}
@@ -94,6 +103,14 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
                   currentNodeName="Org"
                   isAuthenticated={isAuthenticated}
                   onNavigate={setNavigating}
+                  onToggleView={() => setMapView(v => v === 'local' ? 'world' : 'local')}
+                  onSelectNode={(nodeId) => {
+                    // For now, just switch back to local view when selecting a node
+                    // In the future, this would navigate to that node
+                    if (nodeId === 'org') {
+                      setMapView('local')
+                    }
+                  }}
                 />
               )}
             </div>
