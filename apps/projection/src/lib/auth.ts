@@ -1,14 +1,20 @@
 import { cookies } from 'next/headers'
+import { timingSafeEqual } from 'crypto'
 
 const AUTH_COOKIE_NAME = 'auth_token'
 
 /**
  * Validate a token against the DASHBOARD_TOKEN env var
+ * Uses timing-safe comparison to prevent timing attacks
  */
 export function isValidToken(token: string): boolean {
   const expected = process.env.DASHBOARD_TOKEN
   if (!expected) return false
-  return token === expected
+
+  // Ensure both strings are the same length for timingSafeEqual
+  if (token.length !== expected.length) return false
+
+  return timingSafeEqual(Buffer.from(token), Buffer.from(expected))
 }
 
 /**

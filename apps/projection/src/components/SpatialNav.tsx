@@ -7,21 +7,34 @@ import type { Surface } from '@/lib/data'
 
 type MenuPage = 'map'
 
-export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
+interface SpatialNavProps {
+  surfaces: Surface[]
+  initialAuthenticated?: boolean
+}
+
+export default function SpatialNav({ surfaces, initialAuthenticated = false }: SpatialNavProps) {
   const [open, setOpen] = useState(false)
   const [activePage, setActivePage] = useState<MenuPage>('map')
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(initialAuthenticated)
+  const [navigating, setNavigating] = useState<string | null>(null)
   const pathname = usePathname()
   const crosshairH = useRef<HTMLDivElement>(null)
   const crosshairV = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
+    // Re-check auth on client to catch any changes (login/logout in other tabs)
     fetch('/api/auth/check/')
       .then((res) => res.json())
       .then((data) => setIsAuthenticated(data.authenticated))
       .catch(() => setIsAuthenticated(false))
   }, [])
+
+  // Close menu when navigation completes (pathname changes)
+  useEffect(() => {
+    setNavigating(null)
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const arrow = arrowRef.current
@@ -162,7 +175,7 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
                         href={surface.path}
                         className={`spatial-nav-surface${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`}
                         style={pos}
-                        onClick={() => setOpen(false)}
+                        onClick={() => setNavigating(surface.path)}
                       >
                         <span className={`spatial-nav-marker${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`} />
                         <span className="spatial-nav-label">{surface.name}</span>
@@ -181,7 +194,6 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
                           className="map-exit-link"
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={() => setOpen(false)}
                         >
                           {surface.name} <span className="spatial-nav-arrow">↗</span>
                         </a>
@@ -200,6 +212,12 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
           >
             &times;
           </button>
+
+          {navigating && (
+            <div className="spatial-nav-loading">
+              <span className="spatial-nav-loading-text">Navigating...</span>
+            </div>
+          )}
         </div>
       )}
     </>
