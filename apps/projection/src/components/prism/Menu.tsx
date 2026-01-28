@@ -50,6 +50,11 @@ export function Menu({
           </button>
         )
       })}
+
+      <div className="prism-status">
+        <span className="prism-status-dot" />
+        <span className="prism-status-text">Online</span>
+      </div>
     </nav>
   )
 }
