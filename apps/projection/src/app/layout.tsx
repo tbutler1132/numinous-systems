@@ -1,5 +1,5 @@
 import './globals.css'
-import SpatialNav from '@/components/SpatialNav'
+import Prism from '@/components/prism'
 import { getSurfaces } from '@/lib/data'
 import { isAuthenticated } from '@/lib/auth'
 
@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SpatialNav surfaces={surfaces} initialAuthenticated={authenticated} />
+        <Prism surfaces={surfaces} initialAuthenticated={authenticated} />
         <div className="page-content">{children}</div>
       </body>
     </html>
