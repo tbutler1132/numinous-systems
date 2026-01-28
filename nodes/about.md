@@ -1,5 +1,7 @@
 # About Nodes
 
+(A system of cells interlinked within cells interlinked within one stem. Dreadfully distinct.)
+
 Nodes emerge from necessity, not design.
 
 When feedback from one context begins to interfere with another, a boundary forms. That boundary is a Node.
@@ -9,6 +11,8 @@ When feedback from one context begins to interfere with another, a boundary form
 A single undifferentiated system cannot learn well. Signals get mixed. Feedback meant for one purpose distorts another. Memory becomes tangled.
 
 Nodes solve this by creating separation. Each Node learns within its own boundary, accumulating memory and updating models without contaminating others.
+
+Nodes are not users, roles, or containers. They do not imply ownership or hierarchy.
 
 ## When to Create a Node
 
