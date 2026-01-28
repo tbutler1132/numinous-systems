@@ -25,6 +25,8 @@ interface ChaseCSVRow {
  */
 export interface ParseOptions {
   accountLabel: string;
+  /** The node this observation belongs to (defaults to 'private') */
+  nodeId?: string;
 }
 
 /**
@@ -125,6 +127,7 @@ export function parseChaseCSVContent(
 
     observations.push({
       id,
+      node_id: options.nodeId || "private",
       observed_at: observedAt,
       domain: "finance",
       source: "chase_csv",

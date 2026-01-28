@@ -1,6 +1,7 @@
 [
   {
     "name": "Atrium",
+    "node": "org",
     "type": "internal",
     "kind": "location",
     "category": "—",
@@ -10,6 +11,7 @@
   },
   {
     "name": "Hero's Journey",
+    "node": "org",
     "type": "internal",
     "kind": "location",
     "category": "exhibit",
@@ -19,6 +21,7 @@
   },
   {
     "name": "Dashboard",
+    "node": "org",
     "type": "internal",
     "kind": "device",
     "category": "—",
@@ -28,6 +31,7 @@
   },
   {
     "name": "X",
+    "node": "org",
     "type": "external",
     "kind": "location",
     "category": "—",

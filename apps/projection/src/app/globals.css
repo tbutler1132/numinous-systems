@@ -313,6 +313,29 @@ body {
   height: 100%;
 }
 
+/* Node context — shows which node you're currently viewing */
+.map-node-context {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.map-node-context:hover {
+  opacity: 0.85;
+}
+
+.map-node-name {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .spatial-nav-surface {
   position: absolute;
   display: flex;

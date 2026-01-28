@@ -1,10 +1,15 @@
 /**
  * Core observation type - domain-agnostic record of something observed.
  * Finance, health, time, mood all use the same structure.
+ *
+ * Observations belong to a node's memory. The nodeId indicates whose
+ * memory this observation lives in.
  */
 export interface Observation {
   /** Deterministic fingerprint (SHA-256 of semantic fields) */
   id: string;
+  /** The node whose memory this observation belongs to */
+  node_id: string;
   /** When the observation occurred (ISO-8601 date or datetime) */
   observed_at: string;
   /** Domain namespace: 'finance', 'health', 'time', etc. */

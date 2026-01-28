@@ -11,6 +11,7 @@ const TEST_DB = `${TEST_DIR}/test.db`;
 function makeObservation(overrides: Partial<Observation> = {}): Observation {
   const base = {
     id: fingerprint(["test", Date.now().toString(), Math.random().toString()]),
+    node_id: "test-node",
     observed_at: "2026-01-15",
     domain: "test",
     source: "test_source",

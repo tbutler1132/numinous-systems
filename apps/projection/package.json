@@ -14,6 +14,8 @@
     "react": "^18",
     "react-dom": "^18",
     "gray-matter": "^4",
+    "@numinous-systems/node": "1.0.0",
+    "@numinous-systems/identity": "1.0.0",
     "@numinous-systems/sensor": "^1.0.0",
     "@numinous-systems/finance": "^1.0.0"
   },

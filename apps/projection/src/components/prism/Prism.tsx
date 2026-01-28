@@ -90,6 +90,8 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
                   locations={locations}
                   externalSurfaces={externalSurfaces}
                   currentPath={currentLocation.path}
+                  currentNodeId={currentLocation.nodeId}
+                  currentNodeName="Org"
                   isAuthenticated={isAuthenticated}
                   onNavigate={setNavigating}
                 />

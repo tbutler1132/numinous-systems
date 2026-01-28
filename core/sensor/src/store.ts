@@ -15,6 +15,7 @@ const SCHEMA = `
 -- Core observations table - append-only, generic
 CREATE TABLE IF NOT EXISTS observations (
   id              TEXT PRIMARY KEY,
+  node_id         TEXT NOT NULL,
   observed_at     TEXT NOT NULL,
   domain          TEXT NOT NULL,
   source          TEXT NOT NULL,
@@ -27,6 +28,7 @@ CREATE TABLE IF NOT EXISTS observations (
 CREATE INDEX IF NOT EXISTS idx_observed_at ON observations(observed_at);
 CREATE INDEX IF NOT EXISTS idx_domain ON observations(domain);
 CREATE INDEX IF NOT EXISTS idx_domain_type ON observations(domain, type);
+CREATE INDEX IF NOT EXISTS idx_node_id ON observations(node_id);
 
 -- Ingest audit log
 CREATE TABLE IF NOT EXISTS ingest_runs (
@@ -171,11 +173,12 @@ export class ObservationStore {
         skipped++;
       } else {
         this.db.run(
-          `INSERT OR IGNORE INTO observations 
-            (id, observed_at, domain, source, type, schema_version, payload, ingested_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+          `INSERT OR IGNORE INTO observations
+            (id, node_id, observed_at, domain, source, type, schema_version, payload, ingested_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           [
             o.id,
+            o.node_id,
             o.observed_at,
             o.domain,
             o.source,
@@ -343,6 +346,7 @@ export class ObservationStore {
       const row = this.rowToObject(columns, rowValues);
       return {
         id: row.id as string,
+        node_id: row.node_id as string,
         observed_at: row.observed_at as string,
         domain: row.domain as string,
         source: row.source as string,

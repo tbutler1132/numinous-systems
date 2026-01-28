@@ -3,7 +3,9 @@
   "type": "module",
   "private": true,
   "workspaces": [
+    "core/node",
     "core/sensor",
+    "core/identity",
     "sensors/finance",
     "sensors/thought",
     "apps/dashboard",

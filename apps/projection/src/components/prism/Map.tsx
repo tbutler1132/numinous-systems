@@ -7,6 +7,8 @@ interface MapProps {
   locations: Surface[]
   externalSurfaces: Surface[]
   currentPath: string
+  currentNodeId: string
+  currentNodeName: string
   isAuthenticated: boolean
   onNavigate: (path: string) => void
 }
@@ -22,14 +24,19 @@ export function Map({
   locations,
   externalSurfaces,
   currentPath,
+  currentNodeId,
+  currentNodeName,
   isAuthenticated,
   onNavigate,
 }: MapProps) {
   return (
     <div className="spatial-nav-map">
+      <div className="map-node-context">
+        <span className="map-node-name">{currentNodeName} map</span>
+      </div>
       {locations.map((surface, i) => {
         const isActive = surface.path === currentPath
-        const isLocked = surface.visibility === 'private' && !isAuthenticated
+        const isLocked = surface.requiredAccess !== 'anonymous' && !isAuthenticated
         const pos = POSITIONS[i] ?? { left: `${10 + i * 12}%`, top: `${14 + i * 18}%` }
 
         return (

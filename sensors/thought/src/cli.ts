@@ -324,6 +324,7 @@ async function runProcess(options: ProcessOptions): Promise<void> {
           [
             {
               id: thoughtFingerprint(item.content),
+              node_id: options.node,
               observed_at: now,
               domain: "thought",
               source: "inbox",

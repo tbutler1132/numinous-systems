@@ -1,5 +1,6 @@
 'use client'
 
+import type { AccessLevel } from '@numinous-systems/identity'
 import type { Surface } from '@/lib/data'
 
 export type FacetId = 'map' | string
@@ -8,7 +9,7 @@ export interface MenuPage {
   id: FacetId
   label: string
   path?: string
-  visibility?: 'public' | 'private'
+  requiredAccess?: AccessLevel
 }
 
 interface MenuProps {
@@ -35,7 +36,7 @@ export function Menu({
       onMouseLeave={onMouseLeave}
     >
       {pages.map((page) => {
-        const isLocked = page.visibility === 'private' && !isAuthenticated
+        const isLocked = page.requiredAccess !== undefined && page.requiredAccess !== 'anonymous' && !isAuthenticated
 
         return (
           <button
@@ -60,7 +61,7 @@ export function buildMenuPages(deviceFeatures: Surface[]): MenuPage[] {
       id: d.path,
       label: d.name,
       path: d.path,
-      visibility: d.visibility,
+      requiredAccess: d.requiredAccess,
     })),
   ]
 }
