@@ -1,3 +1,7 @@
+---
+id: ontology
+---
+
 # Ontology
 
 This file describes the fundamental concepts of the system.

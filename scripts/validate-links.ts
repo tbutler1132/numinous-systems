@@ -144,6 +144,23 @@ function buildRegistry(): LinkRegistry {
     }
   }
 
+  // Scan core/ for .md files (ontology, etc.)
+  const corePath = path.join(ROOT, 'core')
+  if (fs.existsSync(corePath)) {
+    const coreItems = fs.readdirSync(corePath, { withFileTypes: true })
+    for (const item of coreItems) {
+      if (item.isFile() && item.name.endsWith('.md')) {
+        const fullPath = path.join(corePath, item.name)
+        const content = fs.readFileSync(fullPath, 'utf-8')
+        const { data } = matter(content)
+
+        // Use frontmatter id or filename
+        const id = data.id || path.basename(fullPath, '.md')
+        entries.set(id, fullPath)
+      }
+    }
+  }
+
   return { entries }
 }
 
