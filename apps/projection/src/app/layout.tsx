@@ -3,6 +3,8 @@ import SpatialNav from '@/components/SpatialNav'
 import { getSurfaces } from '@/lib/data'
 import { isAuthenticated } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Timothy Butler',
   description: 'A multi-surface experience',

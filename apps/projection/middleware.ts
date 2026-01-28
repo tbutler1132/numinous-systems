@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server'
 import surfacesData from './public/data/surfaces.json'
 
 const AUTH_COOKIE_NAME = 'auth_token'
+const isDev = process.env.NODE_ENV === 'development'
 
 // Extract private surface paths from the generated surfaces data
 const privatePaths = surfacesData
@@ -25,6 +26,17 @@ function getLoginPath(pathname: string): string {
   return matchedPath ? `${matchedPath}/login/` : '/login/'
 }
 
+function isAuthenticated(request: NextRequest): boolean {
+  // In dev mode, bypass auth unless ?locked is in the URL
+  if (isDev && !request.nextUrl.searchParams.has('locked')) {
+    return true
+  }
+
+  const token = request.cookies.get(AUTH_COOKIE_NAME)?.value
+  const expectedToken = process.env.DASHBOARD_TOKEN
+  return !!(token && expectedToken && token === expectedToken)
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -38,11 +50,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Check auth token
-  const token = request.cookies.get(AUTH_COOKIE_NAME)?.value
-  const expectedToken = process.env.DASHBOARD_TOKEN
-
-  if (!token || !expectedToken || token !== expectedToken) {
+  if (!isAuthenticated(request)) {
     const loginUrl = new URL(getLoginPath(pathname), request.url)
     return NextResponse.redirect(loginUrl)
   }

@@ -4,11 +4,11 @@ Navigation surfaces available in the projection app.
 
 ---
 
-| Name | Type | Path | Status | Visibility |
-|------|------|------|--------|------------|
-| Atrium | internal | / | active | public |
-| Hero's Journey | internal | /heros-journey/ | active | public |
-| Dashboard | internal | /dashboard/ | active | private |
-| X | external | https://x.com/alltoosynthetic | active | public |
+| Name | Type | Kind | Path | Status | Visibility |
+|------|------|------|------|--------|------------|
+| Atrium | internal | location | / | active | public |
+| Hero's Journey | internal | location | /heros-journey/ | active | public |
+| Dashboard | internal | device | /dashboard/ | active | private |
+| X | external | location | https://x.com/alltoosynthetic | active | public |
 
 ---

@@ -4,8 +4,9 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import type { Surface } from '@/lib/data'
+import DashboardClient from '@/app/dashboard/DashboardClient'
 
-type MenuPage = 'map'
+type MenuPage = 'map' | string
 
 interface SpatialNavProps {
   surfaces: Surface[]
@@ -24,10 +25,22 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
 
   useEffect(() => {
     // Re-check auth on client to catch any changes (login/logout in other tabs)
-    fetch('/api/auth/check/')
-      .then((res) => res.json())
-      .then((data) => setIsAuthenticated(data.authenticated))
-      .catch(() => setIsAuthenticated(false))
+    // Pass through ?locked param to simulate unauthenticated state in dev
+    const params = new URLSearchParams(window.location.search)
+    const authUrl = params.has('locked') ? '/api/auth/check/?locked' : '/api/auth/check/'
+
+    fetch(authUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error('Auth check failed')
+        return res.json()
+      })
+      .then((data) => {
+        setIsAuthenticated(data.authenticated === true)
+      })
+      .catch((err) => {
+        console.error('Auth check error:', err)
+        setIsAuthenticated(false)
+      })
   }, [])
 
   // Close menu when navigation completes (pathname changes)
@@ -69,9 +82,11 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
     }
   }, [])
 
-  const current = surfaces.find(
-    (s) => !s.external && (s.path === pathname || (s.path !== '/' && pathname.startsWith(s.path)))
-  ) ?? surfaces[0]
+  // Only locations count as "current" for the minimap - device features are overlays, not places
+  const locationSurfaces = surfaces.filter(s => !s.external && s.kind === 'location')
+  const current = locationSurfaces.find(
+    (s) => s.path === pathname || (s.path !== '/' && pathname.startsWith(s.path))
+  ) ?? locationSurfaces[0]
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (crosshairH.current) {
@@ -88,11 +103,13 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
     if (crosshairV.current) crosshairV.current.style.opacity = opacity
   }, [])
 
-  const localSurfaces = surfaces.filter(s => !s.external)
+  const locations = surfaces.filter(s => !s.external && s.kind === 'location')
   const externalSurfaces = surfaces.filter(s => s.external)
+  const deviceFeatures = surfaces.filter(s => s.kind === 'device')
 
-  const menuPages: { id: MenuPage; label: string }[] = [
+  const menuPages: { id: MenuPage; label: string; path?: string; visibility?: 'public' | 'private' }[] = [
     { id: 'map', label: 'Map' },
+    ...deviceFeatures.map(d => ({ id: d.path, label: d.name, path: d.path, visibility: d.visibility })),
   ]
 
   return (
@@ -103,8 +120,8 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
         aria-label="Open navigation"
       >
         <span className="minimap">
-          {localSurfaces.map((surface, i) => {
-            const t = localSurfaces.length <= 1 ? 0.5 : i / (localSurfaces.length - 1)
+          {locations.map((surface, i) => {
+            const t = locations.length <= 1 ? 0.5 : i / (locations.length - 1)
             return (
               <span
                 key={surface.path}
@@ -131,34 +148,50 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
 
       {open && (
         <div
-          className="spatial-nav-overlay"
+          className={`spatial-nav-overlay${activePage === 'map' ? ' map-view' : ''}`}
           onClick={() => setOpen(false)}
-          onMouseMove={handleMouseMove}
+          onMouseMove={activePage === 'map' ? handleMouseMove : undefined}
         >
-          <div ref={crosshairH} className="spatial-nav-crosshair-h" />
-          <div ref={crosshairV} className="spatial-nav-crosshair-v" />
+          {activePage === 'map' && (
+            <>
+              <div ref={crosshairH} className="spatial-nav-crosshair-h" />
+              <div ref={crosshairV} className="spatial-nav-crosshair-v" />
+            </>
+          )}
 
           <div className="game-menu" onClick={(e) => e.stopPropagation()}>
             <nav
               className="game-menu-sidebar"
-              onMouseEnter={() => setCrosshairVisible(false)}
-              onMouseLeave={() => setCrosshairVisible(true)}
+              onMouseEnter={() => activePage === 'map' && setCrosshairVisible(false)}
+              onMouseLeave={() => activePage === 'map' && setCrosshairVisible(true)}
             >
-              {menuPages.map((page) => (
-                <button
-                  key={page.id}
-                  className={`game-menu-tab${activePage === page.id ? ' active' : ''}`}
-                  onClick={() => setActivePage(page.id)}
-                >
-                  {page.label}
-                </button>
-              ))}
+              {menuPages.map((page) => {
+                const isLocked = page.visibility === 'private' && !isAuthenticated
+
+                return (
+                  <button
+                    key={page.id}
+                    className={`game-menu-tab${activePage === page.id ? ' active' : ''}${isLocked ? ' locked' : ''}`}
+                    onClick={() => setActivePage(page.id)}
+                    disabled={isLocked}
+                  >
+                    {page.label}
+                    {isLocked && <span className="game-menu-lock">⟠</span>}
+                  </button>
+                )
+              })}
             </nav>
 
             <div className="game-menu-content">
+              {activePage === '/dashboard/' && (
+                <div className="device-panel">
+                  <DashboardClient node="private" />
+                </div>
+              )}
+
               {activePage === 'map' && (
                 <div className="spatial-nav-map">
-                  {localSurfaces.map((surface, i) => {
+                  {locations.map((surface, i) => {
                     const isActive = surface.path === current.path
                     const isLocked = surface.visibility === 'private' && !isAuthenticated
                     const positions = [

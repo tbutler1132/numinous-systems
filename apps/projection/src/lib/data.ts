@@ -30,6 +30,7 @@ export function getHerosJourney(): Artifact[] {
 export interface Surface {
   name: string
   path: string
+  kind: 'location' | 'device'
   external: boolean
   visibility: 'public' | 'private'
 }
@@ -42,6 +43,7 @@ export function getSurfaces(): Surface[] {
     .map((r) => ({
       name: r.name,
       path: r.path,
+      kind: (r.kind === 'device' ? 'device' : 'location') as 'location' | 'device',
       external: r.type === 'external',
       visibility: (r.visibility === 'private' ? 'private' : 'public') as 'public' | 'private',
     }))
