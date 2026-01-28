@@ -1,0 +1,964 @@
+[
+  {
+    "slug": "01-ordinary-world",
+    "frontmatter": {
+      "title": "Ordinary World",
+      "status": "draft",
+      "story_fragment": "01-ordinary-world",
+      "relates_to": [
+        "restlessness",
+        "routine",
+        "longing",
+        "stillness-before-the-storm"
+      ]
+    },
+    "content": "# Ordinary World\n\n## Stage 1 of the Hero's Journey\n\nThe hero exists in their **normal life** — the world before transformation. This establishes the baseline: who the hero is, what they value, what's missing or incomplete.\n\nThe Ordinary World is not necessarily comfortable. It may be stagnant, unfulfilling, or quietly desperate. But it is *known*.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Restlessness** — something is off, even if unnamed\n- **Routine** — the texture of everyday existence\n- **Longing** — a sense that there must be more\n- **Stillness before the storm** — calm that precedes disruption\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "Before the Hierarchy",
+        "slug": "01-ordinary-world",
+        "frontmatter": {
+          "title": "Before the Hierarchy",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 1,
+          "stage_name": "Ordinary World",
+          "relates_to": [
+            "01-ordinary-world"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# Before the Hierarchy\n\n## Artifact Concept\n\nThe first story fragment. Childhood as the last moment of unmarked existence — before the social hierarchy reveals itself, before you know you are being sorted.\n\nCorresponds to Stage 1 (Ordinary World) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "Childhood as the last moment of unmarked existence. You do not yet know you are being sorted.",
+        "links": []
+      },
+      {
+        "label": "Genesis",
+        "slug": "genesis",
+        "frontmatter": {
+          "title": "Genesis",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Genesis\n\n## Artifact Concept\n\nSimilar territory to Epoch — early, primitive, monolith feel. Evokes origins, the beginning of things.\n\nPrimordial and foundational. The world before the journey.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/genesis/trunk/audio/mix/genesis-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/genesis/trunk/audio/mix/genesis-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "Epoch",
+        "slug": "epoch",
+        "frontmatter": {
+          "title": "Epoch",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Epoch\n\n## Artifact Concept\n\nOne of the more unique tracks — hard, bass heavy, primal. Evokes something ancient, the early earth, a primordial state.\n\nElemental and foundational. The world before the journey begins.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/epoch/trunk/audio/mix/epoch-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/epoch/trunk/audio/mix/epoch-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "Envy",
+        "slug": "envy",
+        "frontmatter": {
+          "title": "Envy",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "02-call-to-adventure"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Envy\n\n## Artifact Concept\n\nAn intro/invocation of the muse type track. Evokes foundational myths — Cain and Abel, Romulus and Remus. The jealousy between brothers, the violence at the beginning of things.\n\nHas the quality of setting the stage, opening an epic. Could function as an album intro.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/envy/trunk/audio/mix/envy-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/envy/trunk/audio/mix/envy-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "All the Things You Love",
+        "slug": "all-the-things-you-love",
+        "frontmatter": {
+          "title": "All the Things You Love",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "aesthetic-spectrum",
+            "beauty-redeems",
+            "the-living-system",
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "08-ordeal"
+          ],
+          "created": "2026-01-10T00:00:00.000Z",
+          "updated": "2026-01-11T00:00:00.000Z"
+        },
+        "content": "# All the Things You Love\n\n## Artifact Concept\n\nThis folder contains **All the Things You Love** — the first concrete musical expression of the Org's aesthetic and philosophical framework.\n\nThis song functions as a **trojan horse**: an accessible, elegant entry point that compresses the deeper worldview into something beautiful and commercially viable. The listener is drawn in through luxury and restraint before sensing the alien core underneath.\n\n## What This Artifact Addresses\n\n- How does a complex, \"too alien\" worldview become accessible without dilution?\n- What is the relationship between surface elegance and hidden depth?\n- How can a song operate on two semantic layers simultaneously?\n- What does it mean to use beauty as a vector for ideas that would otherwise be rejected?\n\n## Conceptual Structure\n\nThe song operates on dual semantic layers:\n\n**First Half — Surface Critique**\n- \"All the things you love are hollow\" — the hook\n- Materialism, superficiality, the emptiness of distraction\n- Energetic, intense (\"pretty crazy\")\n\n**Second Half — Dark Turn**\n- The distractions didn't just fail to satisfy — they stole your soul\n- Life passed you by while you weren't paying attention\n- The things you would truly care about have withered\n- Haunting realization, Greek tragedy arc — recognition comes too late\n\nThe song operates as a **cautionary tale** — showing what happens when you never answer the call, when you stay trapped in the Ordinary World too long.\n\n## Connection to Broader Project\n\nThis song is the sensory enactment of several core ideas:\n\n- **Aesthetic Spectrum**: This is a concrete instance of emotional distortion—biological feeling filtered through synthetic mediation, entering from elegance and moving toward strangeness\n- **Beauty Redeems**: The song itself aims to be a moment of beauty; the tragedy it describes is the failure to recognize such moments\n- **The Living System**: The production aesthetic embodies hybrid experience—human emotion processed through technological mediation\n\nStrategic role: This is the **entry point** into the All Too Synthetic world. It accumulates social capital, establishes creative credibility, and makes the ecosystem feel real before the deeper mythos is revealed.\n\n## Status\n\nThis artifact is in development. The concept is stable; production and variant decisions are active.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav"
+          }
+        ]
+      },
+      {
+        "label": "Coldness",
+        "slug": "coldness",
+        "frontmatter": {
+          "title": "Coldness",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Coldness\n\n## Artifact Concept\n\nAn emotional, sparse melody that sounds lonely and cold — then drops halfway through into a frenetic, vocal-ish synth. The structure mirrors emotional numbness cracking open.\n\nThe first half embodies isolation and distance; the second half is the breakdown, the crisis, what happens when you can't stay frozen anymore.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "02-call-to-adventure",
+    "frontmatter": {
+      "title": "Call to Adventure",
+      "status": "draft",
+      "story_fragment": "02-call-to-adventure",
+      "relates_to": [
+        "disruption",
+        "urgency",
+        "excitement",
+        "fear"
+      ]
+    },
+    "content": "# Call to Adventure\n\n## Stage 2 of the Hero's Journey\n\nSomething **disrupts** the ordinary world. A challenge appears, an invitation arrives, a crisis demands response. The hero is called to leave what they know.\n\nThe call may be external (an event, a person, a message) or internal (a realization, a dream, a growing dissatisfaction that can no longer be ignored).\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Disruption** — the moment everything changes\n- **Urgency** — something demands attention\n- **Excitement** — the thrill of possibility\n- **Fear** — the weight of what's being asked\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Crucible",
+        "slug": "02-call-to-adventure",
+        "frontmatter": {
+          "title": "The Crucible",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 2,
+          "stage_name": "Call to Adventure",
+          "relates_to": [
+            "02-call-to-adventure"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Crucible\n\n## Artifact Concept\n\nHigh school as the social order's announcement through cruelty. Status determined by appearance, appearance determined by genetics you didn't choose. The hierarchy makes itself visible.\n\nCorresponds to Stage 2 (Call to Adventure) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "High school. The social order makes itself visible through cruelty. Status is determined by appearance, and appearance is determined by genetics you didn't choose. The ugly are marked. The spirit is systematically crushed by those who learned to crush it from those who crushed them.\n\nYou learn: the world is a competition you are losing. This is the call — not an invitation but a demand. The hierarchy has announced itself. You must find a way to survive it.",
+        "links": []
+      },
+      {
+        "label": "Envy",
+        "slug": "envy",
+        "frontmatter": {
+          "title": "Envy",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "02-call-to-adventure"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Envy\n\n## Artifact Concept\n\nAn intro/invocation of the muse type track. Evokes foundational myths — Cain and Abel, Romulus and Remus. The jealousy between brothers, the violence at the beginning of things.\n\nHas the quality of setting the stage, opening an epic. Could function as an album intro.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/envy/trunk/audio/mix/envy-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/envy/trunk/audio/mix/envy-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "Anyone",
+        "slug": "anyone",
+        "frontmatter": {
+          "title": "Anyone",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "02-call-to-adventure",
+            "07-approach-to-the-inmost-cave"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Anyone\n\n## Artifact Concept\n\nA frenetic, emotional track born from isolation. The desperate desire for human connection — wanting a sign, wanting to feel visible.\n\nRaw energy of reaching out. Not passive longing but active desperation.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/anyone/trunk/audio/mix/anyone-mix-trunk-12-12-18.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/anyone/trunk/audio/mix/anyone-mix-trunk-12-12-18.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "03-refusal-of-the-call",
+    "frontmatter": {
+      "title": "Refusal of the Call",
+      "status": "draft",
+      "story_fragment": "03-refusal-of-the-call",
+      "relates_to": [
+        "fear",
+        "denial",
+        "bargaining",
+        "paralysis"
+      ]
+    },
+    "content": "# Refusal of the Call\n\n## Stage 3 of the Hero's Journey\n\nThe hero **hesitates**. The call is too frightening, the cost too high, the risk too great. They attempt to return to normal, to pretend the call never came.\n\nThis refusal is not weakness — it's human. It acknowledges the genuine danger of transformation. The old self knows it will not survive the journey.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Fear** — the terror of what lies ahead\n- **Denial** — pretending nothing has changed\n- **Bargaining** — seeking another way\n- **Paralysis** — unable to move forward or back\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The False Path",
+        "slug": "03-refusal-of-the-call",
+        "frontmatter": {
+          "title": "The False Path",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 3,
+          "stage_name": "Refusal of the Call",
+          "relates_to": [
+            "03-refusal-of-the-call"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The False Path\n\n## Artifact Concept\n\nBusiness school as the false promise — optimize yourself into acceptability. The refusal disguised as compliance. Dreams corrupted by market logic before they're even dreamed.\n\nCorresponds to Stage 3 (Refusal of the Call) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "Business school. The promised route to belonging. If you can't be beautiful, be successful. If you can't be loved, be rich. The logic is seductive: optimize yourself into acceptability.\n\nBut you can't do it. You commute instead of living there. You retreat into fantasies of music, of art, of another life — but even those dreams get corrupted. \"What if I get famous? What if I get rich?\" The market logic infects everything.\n\nLater you will understand: the dreams were never yours. They were implanted. You thought you were refusing the system when you fantasized about art — but even those fantasies were market logic wearing a different mask. The desire to escape was itself manufactured by the thing you wanted to escape.\n\nYou go through the motions. You attend class. You do the work. But you are not there. You are somewhere else, waiting for something you cannot name.",
+        "links": []
+      },
+      {
+        "label": "Dream",
+        "slug": "dream",
+        "frontmatter": {
+          "title": "Dream",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "03-refusal-of-the-call"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Dream\n\n## Artifact Concept\n\nAn emotional track about dreams that never came to fruition. Lost futures, the weight of the past, the passage of time.\n\nThe cost of not acting — what withers when you refuse the call.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/dream/trunk/audio/mix/dream-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/dream/trunk/audio/mix/dream-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "All the Things You Love",
+        "slug": "all-the-things-you-love",
+        "frontmatter": {
+          "title": "All the Things You Love",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "aesthetic-spectrum",
+            "beauty-redeems",
+            "the-living-system",
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "08-ordeal"
+          ],
+          "created": "2026-01-10T00:00:00.000Z",
+          "updated": "2026-01-11T00:00:00.000Z"
+        },
+        "content": "# All the Things You Love\n\n## Artifact Concept\n\nThis folder contains **All the Things You Love** — the first concrete musical expression of the Org's aesthetic and philosophical framework.\n\nThis song functions as a **trojan horse**: an accessible, elegant entry point that compresses the deeper worldview into something beautiful and commercially viable. The listener is drawn in through luxury and restraint before sensing the alien core underneath.\n\n## What This Artifact Addresses\n\n- How does a complex, \"too alien\" worldview become accessible without dilution?\n- What is the relationship between surface elegance and hidden depth?\n- How can a song operate on two semantic layers simultaneously?\n- What does it mean to use beauty as a vector for ideas that would otherwise be rejected?\n\n## Conceptual Structure\n\nThe song operates on dual semantic layers:\n\n**First Half — Surface Critique**\n- \"All the things you love are hollow\" — the hook\n- Materialism, superficiality, the emptiness of distraction\n- Energetic, intense (\"pretty crazy\")\n\n**Second Half — Dark Turn**\n- The distractions didn't just fail to satisfy — they stole your soul\n- Life passed you by while you weren't paying attention\n- The things you would truly care about have withered\n- Haunting realization, Greek tragedy arc — recognition comes too late\n\nThe song operates as a **cautionary tale** — showing what happens when you never answer the call, when you stay trapped in the Ordinary World too long.\n\n## Connection to Broader Project\n\nThis song is the sensory enactment of several core ideas:\n\n- **Aesthetic Spectrum**: This is a concrete instance of emotional distortion—biological feeling filtered through synthetic mediation, entering from elegance and moving toward strangeness\n- **Beauty Redeems**: The song itself aims to be a moment of beauty; the tragedy it describes is the failure to recognize such moments\n- **The Living System**: The production aesthetic embodies hybrid experience—human emotion processed through technological mediation\n\nStrategic role: This is the **entry point** into the All Too Synthetic world. It accumulates social capital, establishes creative credibility, and makes the ecosystem feel real before the deeper mythos is revealed.\n\n## Status\n\nThis artifact is in development. The concept is stable; production and variant decisions are active.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav"
+          }
+        ]
+      },
+      {
+        "label": "Coldness",
+        "slug": "coldness",
+        "frontmatter": {
+          "title": "Coldness",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Coldness\n\n## Artifact Concept\n\nAn emotional, sparse melody that sounds lonely and cold — then drops halfway through into a frenetic, vocal-ish synth. The structure mirrors emotional numbness cracking open.\n\nThe first half embodies isolation and distance; the second half is the breakdown, the crisis, what happens when you can't stay frozen anymore.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "04-meeting-the-mentor",
+    "frontmatter": {
+      "title": "Meeting the Mentor",
+      "status": "draft",
+      "story_fragment": "04-meeting-the-mentor",
+      "relates_to": [
+        "guidance",
+        "preparation",
+        "trust",
+        "transmission"
+      ]
+    },
+    "content": "# Meeting the Mentor\n\n## Stage 4 of the Hero's Journey\n\nThe hero encounters a **guide** — someone who has walked this path before, who offers wisdom, training, tools, or simply the encouragement to proceed.\n\nThe mentor doesn't take the journey for the hero. They prepare the hero to take it themselves. Sometimes the mentor is a person; sometimes it's a book, a memory, an inner voice.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Guidance** — receiving wisdom or direction\n- **Preparation** — gathering strength for what's ahead\n- **Trust** — learning to rely on something beyond yourself\n- **Transmission** — knowledge passing between generations\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Glimpse",
+        "slug": "04-meeting-the-mentor",
+        "frontmatter": {
+          "title": "The Glimpse",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 4,
+          "stage_name": "Meeting the Mentor",
+          "relates_to": [
+            "04-meeting-the-mentor"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Glimpse\n\n## Artifact Concept\n\nThe therapist as a glimpse of connection delivered through transaction. The mentor shows you what is possible, then disappears. The ambiguity of whether the warmth was real or performed is permanent.\n\nCorresponds to Stage 4 (Meeting the Mentor) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "You start seeing a therapist. She is warm in a way that feels directed at you specifically. You talk for an hour each week. She listens. She reflects back what you say in ways that make you feel seen. For the first time, someone is paying attention — real attention, sustained attention — to the inside of your experience.\n\nThe mentor's function is not to give you tools that last forever. It is to show you what is possible. She demonstrates that connection *can* exist. That the isolation is not total. That somewhere, somehow, the walls can come down.\n\nThe connection is real. It is also a service you pay for. This is the modern condition: even the glimpse comes through a transaction.\n\nThen it ends. Insurance changes. She moves practices. The reasons don't matter. What matters is the absence. You never learn if what you felt was the relationship itself or the professional performance of relationship — the therapeutic equivalent of a hologram designed to say exactly what you needed to hear until the session ended.\n\nThe question that haunts: was the warmth real, or was she performing her function? Maybe both. Maybe there is no difference anymore. You will never know. The ambiguity is permanent.\n\nThe loss is real even if you can't say what was lost. You know what you need now. And there is no non-transactional path to it.",
+        "links": []
+      },
+      {
+        "label": "Because You're You",
+        "slug": "because-youre-you",
+        "frontmatter": {
+          "title": "Because You're You",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "04-meeting-the-mentor",
+            "06-tests-allies-enemies",
+            "09-reward"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Because You're You\n\n## Artifact Concept\n\nA song about the power of deep connection. When someone truly matters to you, they have the power to evoke your strongest emotions — love or hate, but never indifference.\n\nThe opposite of love isn't hate; it's not thinking about someone at all. This song explores what it means when someone becomes significant enough that you can only feel intensely about them.\n\n## Status\n\nIn progress.",
+        "page": "",
+        "links": []
+      }
+    ]
+  },
+  {
+    "slug": "05-crossing-the-threshold",
+    "frontmatter": {
+      "title": "Crossing the Threshold",
+      "status": "draft",
+      "story_fragment": "05-crossing-the-threshold",
+      "relates_to": [
+        "commitment",
+        "departure",
+        "courage",
+        "irreversibility"
+      ]
+    },
+    "content": "# Crossing the Threshold\n\n## Stage 5 of the Hero's Journey\n\nThe hero **commits**. They leave the Ordinary World and enter the unknown. There is no going back — or rather, going back would mean a different kind of death.\n\nThis is the point of no return. The threshold guardian is faced, the boundary is crossed, the adventure truly begins.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Commitment** — the decision is made\n- **Departure** — leaving the known behind\n- **Courage** — moving forward despite fear\n- **Irreversibility** — something has fundamentally changed\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Threshold",
+        "slug": "05-crossing-the-threshold",
+        "frontmatter": {
+          "title": "The Threshold",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 5,
+          "stage_name": "Crossing the Threshold",
+          "relates_to": [
+            "05-crossing-the-threshold"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Threshold\n\n## Artifact Concept\n\nLoss, graduation, and the crossing between death and return. The threshold is not always a door you walk through — sometimes it is a fall.\n\nCorresponds to Stage 5 (Crossing the Threshold) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "Graduation approaches. The fantasy cannot survive contact with reality. You will have to enter the world you've been avoiding. The relationship that proved connection was possible is gone. The future offers no path back to what you glimpsed.\n\nMarch, senior year. The system tried to eliminate you — or you tried to eliminate yourself on its behalf. The distinction blurs. What is certain: you crossed into death and came back.\n\nThis is the threshold. Everything after is the return.",
+        "links": []
+      },
+      {
+        "label": "Between This World and the Next",
+        "slug": "between-this-world-and-the-next",
+        "frontmatter": {
+          "title": "Between This World and the Next",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "05-crossing-the-threshold"
+          ],
+          "created": "2026-01-16T00:00:00.000Z",
+          "updated": "2026-01-18T00:00:00.000Z"
+        },
+        "content": "# Between This World and the Next\n\n## Artifact Concept\n\nOne of the most experimental tracks. Started as a rework of Kanye's \"24\" — an optimistic gospel song recontextualized over a haunting instrumental. The same lyrics completely flip in meaning, framing faith and religion as desperate existential dread rather than hope.\n\nA study in how context transforms content. The liminal space between belief and terror.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/between-this-world-and-the-next/trunk/audio/mix/between-this-world-and-the-next-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/between-this-world-and-the-next/trunk/audio/mix/between-this-world-and-the-next-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "06-tests-allies-enemies",
+    "frontmatter": {
+      "title": "Tests, Allies, Enemies",
+      "status": "draft",
+      "story_fragment": "06-tests-allies-enemies",
+      "relates_to": [
+        "struggle",
+        "alliance",
+        "conflict",
+        "growth"
+      ]
+    },
+    "content": "# Tests, Allies, Enemies\n\n## Stage 6 of the Hero's Journey\n\nThe hero navigates the **special world**. They face challenges that test their resolve, meet allies who will aid them, and encounter enemies who oppose their quest.\n\nThis is the learning phase. The hero discovers what works and what doesn't, who can be trusted and who cannot. Skills are developed. Bonds are formed.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Struggle** — facing obstacles and adversity\n- **Alliance** — finding people who understand\n- **Conflict** — confronting opposition\n- **Growth** — becoming stronger through challenge\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "Survival",
+        "slug": "06-tests-allies-enemies",
+        "frontmatter": {
+          "title": "Survival",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 6,
+          "stage_name": "Tests, Allies, Enemies",
+          "relates_to": [
+            "06-tests-allies-enemies"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# Survival\n\n## Artifact Concept\n\nThe slow work of proving you can exist at all. Psych ward, corporate jobs, learning to code. Surviving is not living, but it is the necessary precondition.\n\nCorresponds to Stage 6 (Tests, Allies, Enemies) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "Psych hospital. Discharge. You try to re-enter the world.\n\nShitty corporate job. Assistant media planner. Living with parents. Proving you can function.\n\nYou learn to code. You get a software job. You prove — to yourself, to the world — that you can adapt. You can succeed by conventional metrics. You can play the game.\n\nBut it is hollow. Soulless stability. Functional emptiness. You are surviving, not living.",
+        "links": []
+      },
+      {
+        "label": "Because You're You",
+        "slug": "because-youre-you",
+        "frontmatter": {
+          "title": "Because You're You",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "04-meeting-the-mentor",
+            "06-tests-allies-enemies",
+            "09-reward"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Because You're You\n\n## Artifact Concept\n\nA song about the power of deep connection. When someone truly matters to you, they have the power to evoke your strongest emotions — love or hate, but never indifference.\n\nThe opposite of love isn't hate; it's not thinking about someone at all. This song explores what it means when someone becomes significant enough that you can only feel intensely about them.\n\n## Status\n\nIn progress.",
+        "page": "",
+        "links": []
+      },
+      {
+        "label": "Gold",
+        "slug": "gold",
+        "frontmatter": {
+          "title": "Gold",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "06-tests-allies-enemies"
+          ],
+          "created": "2026-01-19T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Gold\n\n## Artifact Concept\n\nAn ignorant, luxurious track about a king who has lost his mind. Decadent madness — the corruption of power and wealth.\n\nThe test of riches, and what happens when you fail it.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/gold/trunk/audio/mix/gold-mix-trunk-6-21-21.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/gold/trunk/audio/mix/gold-mix-trunk-6-21-21.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "07-approach-to-the-inmost-cave",
+    "frontmatter": {
+      "title": "Approach to the Inmost Cave",
+      "status": "draft",
+      "story_fragment": "07-approach-to-the-inmost-cave",
+      "relates_to": [
+        "anticipation",
+        "tension",
+        "focus",
+        "vulnerability"
+      ]
+    },
+    "content": "# Approach to the Inmost Cave\n\n## Stage 7 of the Hero's Journey\n\nThe hero **prepares** for the central ordeal. They approach the most dangerous place — the lair of the dragon, the heart of enemy territory, the source of deepest fear.\n\nThis is the pause before the plunge. Final preparations are made. The stakes become clear. There may be a moment of doubt, a last temptation to turn back.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Anticipation** — knowing what's coming\n- **Tension** — the calm before the storm\n- **Focus** — gathering everything for what's ahead\n- **Vulnerability** — approaching what could destroy you\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Hollow Victory",
+        "slug": "07-approach-to-the-inmost-cave",
+        "frontmatter": {
+          "title": "The Hollow Victory",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 7,
+          "stage_name": "Approach to the Inmost Cave",
+          "relates_to": [
+            "07-approach-to-the-inmost-cave"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Hollow Victory\n\n## Artifact Concept\n\nMaximum isolation at peak conventional success. New York, alone, surrounded by eight million people, connected to none. The ladder was leaning against the wrong wall.\n\nCorresponds to Stage 7 (Approach to the Inmost Cave) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "Move to New York. Live alone. Work remotely. You have achieved the modern dream: independence, professional success, freedom, the big city.\n\nAnd you are more alone than you have ever been. Surrounded by eight million people, connected to none of them.\n\nThis is the approach. You have climbed to the top of the ladder and found it leaning against the wrong wall. Everything you were told to want — you have it. The emptiness is total.",
+        "links": []
+      },
+      {
+        "label": "Anyone",
+        "slug": "anyone",
+        "frontmatter": {
+          "title": "Anyone",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "02-call-to-adventure",
+            "07-approach-to-the-inmost-cave"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Anyone\n\n## Artifact Concept\n\nA frenetic, emotional track born from isolation. The desperate desire for human connection — wanting a sign, wanting to feel visible.\n\nRaw energy of reaching out. Not passive longing but active desperation.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/anyone/trunk/audio/mix/anyone-mix-trunk-12-12-18.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/anyone/trunk/audio/mix/anyone-mix-trunk-12-12-18.wav"
+          }
+        ]
+      },
+      {
+        "label": "Bury the Sun",
+        "slug": "bury-the-sun",
+        "frontmatter": {
+          "title": "Bury The Sun",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Bury The Sun\n\n## Artifact Concept\n\nA haunting track built around a vocal sample that sounds like \"Bury the Sun.\" Similar existential territory to \"Between This World and the Next\" — dark, atmospheric, descending into shadow.\n\nThe image of burying the sun evokes extinguishing light, embracing darkness, the approach to something profound and terrifying.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/bury-the-sun/trunk/audio/mix/bury-the-sun-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/bury-the-sun/trunk/audio/mix/bury-the-sun-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "Coldness",
+        "slug": "coldness",
+        "frontmatter": {
+          "title": "Coldness",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Coldness\n\n## Artifact Concept\n\nAn emotional, sparse melody that sounds lonely and cold — then drops halfway through into a frenetic, vocal-ish synth. The structure mirrors emotional numbness cracking open.\n\nThe first half embodies isolation and distance; the second half is the breakdown, the crisis, what happens when you can't stay frozen anymore.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "08-ordeal",
+    "frontmatter": {
+      "title": "Ordeal",
+      "status": "draft",
+      "story_fragment": "08-ordeal",
+      "relates_to": [
+        "crisis",
+        "confrontation",
+        "death",
+        "surrender"
+      ]
+    },
+    "content": "# Ordeal\n\n## Stage 8 of the Hero's Journey\n\nThe hero faces **death** — literal or metaphorical. This is the supreme crisis, the moment everything hangs in the balance. The old self must die for the new self to be born.\n\nThe Ordeal is the heart of the story. It is the transformation itself, the crucible where the hero is unmade and remade.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Crisis** — everything falling apart\n- **Confrontation** — facing the ultimate fear\n- **Death** — the end of what was\n- **Surrender** — letting go of control\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Trigger",
+        "slug": "08-ordeal",
+        "frontmatter": {
+          "title": "The Trigger",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 8,
+          "stage_name": "Ordeal",
+          "relates_to": [
+            "08-ordeal"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Trigger\n\n## Artifact Concept\n\nThe moment that breaks you open. A question that won't let go leads to a descent into understanding the machine. The realization: this is not personal failure, it is structural.\n\nCorresponds to Stage 8 (Ordeal) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "You are watching football. Taylor Swift appears on screen. She is dating a football player. The camera cuts to her constantly. The crowd adores her. The world adores her.\n\nSomething breaks open.\n\nWhy does this bother you so much? Why does watching one person receive attention feel like an indictment of your entire existence?\n\nThe question will not let you go.\n\nYou begin to research. Late nights. Theory. Obscure PDFs and dead blogs. You are trying to understand the machine.\n\nThe realization comes slowly, then all at once:\n\nThis is not personal failure. This is structural. The system creates atomization. It produces isolation as a byproduct of its own operation. The loneliness is not a bug — it is a feature.\n\nBut you cannot fight it. Marxist resistance fails. The machine recuperates everything. And you cannot withdraw — you *are* modernity. You were made by it. To reject it completely would be self-negation.",
+        "links": []
+      },
+      {
+        "label": "All the Things You Love",
+        "slug": "all-the-things-you-love",
+        "frontmatter": {
+          "title": "All the Things You Love",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "aesthetic-spectrum",
+            "beauty-redeems",
+            "the-living-system",
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "08-ordeal"
+          ],
+          "created": "2026-01-10T00:00:00.000Z",
+          "updated": "2026-01-11T00:00:00.000Z"
+        },
+        "content": "# All the Things You Love\n\n## Artifact Concept\n\nThis folder contains **All the Things You Love** — the first concrete musical expression of the Org's aesthetic and philosophical framework.\n\nThis song functions as a **trojan horse**: an accessible, elegant entry point that compresses the deeper worldview into something beautiful and commercially viable. The listener is drawn in through luxury and restraint before sensing the alien core underneath.\n\n## What This Artifact Addresses\n\n- How does a complex, \"too alien\" worldview become accessible without dilution?\n- What is the relationship between surface elegance and hidden depth?\n- How can a song operate on two semantic layers simultaneously?\n- What does it mean to use beauty as a vector for ideas that would otherwise be rejected?\n\n## Conceptual Structure\n\nThe song operates on dual semantic layers:\n\n**First Half — Surface Critique**\n- \"All the things you love are hollow\" — the hook\n- Materialism, superficiality, the emptiness of distraction\n- Energetic, intense (\"pretty crazy\")\n\n**Second Half — Dark Turn**\n- The distractions didn't just fail to satisfy — they stole your soul\n- Life passed you by while you weren't paying attention\n- The things you would truly care about have withered\n- Haunting realization, Greek tragedy arc — recognition comes too late\n\nThe song operates as a **cautionary tale** — showing what happens when you never answer the call, when you stay trapped in the Ordinary World too long.\n\n## Connection to Broader Project\n\nThis song is the sensory enactment of several core ideas:\n\n- **Aesthetic Spectrum**: This is a concrete instance of emotional distortion—biological feeling filtered through synthetic mediation, entering from elegance and moving toward strangeness\n- **Beauty Redeems**: The song itself aims to be a moment of beauty; the tragedy it describes is the failure to recognize such moments\n- **The Living System**: The production aesthetic embodies hybrid experience—human emotion processed through technological mediation\n\nStrategic role: This is the **entry point** into the All Too Synthetic world. It accumulates social capital, establishes creative credibility, and makes the ecosystem feel real before the deeper mythos is revealed.\n\n## Status\n\nThis artifact is in development. The concept is stable; production and variant decisions are active.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/all-the-things-you-love/trunk/audio/mix/all-the-things-you-love-mix-trunk-10-14-25.wav"
+          }
+        ]
+      },
+      {
+        "label": "Bury the Sun",
+        "slug": "bury-the-sun",
+        "frontmatter": {
+          "title": "Bury The Sun",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Bury The Sun\n\n## Artifact Concept\n\nA haunting track built around a vocal sample that sounds like \"Bury the Sun.\" Similar existential territory to \"Between This World and the Next\" — dark, atmospheric, descending into shadow.\n\nThe image of burying the sun evokes extinguishing light, embracing darkness, the approach to something profound and terrifying.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/bury-the-sun/trunk/audio/mix/bury-the-sun-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/bury-the-sun/trunk/audio/mix/bury-the-sun-mix-trunk-1-26-26.wav"
+          }
+        ]
+      },
+      {
+        "label": "Coldness",
+        "slug": "coldness",
+        "frontmatter": {
+          "title": "Coldness",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "01-ordinary-world",
+            "03-refusal-of-the-call",
+            "07-approach-to-the-inmost-cave",
+            "08-ordeal"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Coldness\n\n## Artifact Concept\n\nAn emotional, sparse melody that sounds lonely and cold — then drops halfway through into a frenetic, vocal-ish synth. The structure mirrors emotional numbness cracking open.\n\nThe first half embodies isolation and distance; the second half is the breakdown, the crisis, what happens when you can't stay frozen anymore.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/coldness/trunk/audio/mix/coldness-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "09-reward",
+    "frontmatter": {
+      "title": "Reward",
+      "status": "draft",
+      "story_fragment": "09-reward",
+      "relates_to": [
+        "triumph",
+        "claiming",
+        "relief",
+        "new-power"
+      ]
+    },
+    "content": "# Reward\n\n## Stage 9 of the Hero's Journey\n\nThe hero **seizes the sword**. Having survived the ordeal, they claim what they came for — the treasure, the elixir, the knowledge, the power.\n\nThis is the moment of triumph after the darkness. But the journey is not over. The reward must be brought back; transformation must be integrated.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Triumph** — having survived the worst\n- **Claiming** — taking what was earned\n- **Relief** — the immediate aftermath of crisis\n- **New power** — feeling the change within\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Insight",
+        "slug": "09-reward",
+        "frontmatter": {
+          "title": "The Insight",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 9,
+          "stage_name": "Reward",
+          "relates_to": [
+            "09-reward"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Insight\n\n## Artifact Concept\n\nThe realization that the boundary between self and system is not where you thought. Part human, part capitalism. The sword is not a weapon to defeat the machine but a lens to see it clearly.\n\nCorresponds to Stage 9 (Reward) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "You are part human, part capitalism. The boundary between self and system is not where you thought it was. The machine is not outside you. It is inside you. It always has been.\n\nThis should be terrifying. Instead, it is clarifying.\n\nThis is the sword. Not a weapon to defeat the machine, but a lens to see it clearly. You cannot escape what you are made of. But you can *know* what you are made of. And in that knowing, something shifts.",
+        "links": []
+      },
+      {
+        "label": "Because You're You",
+        "slug": "because-youre-you",
+        "frontmatter": {
+          "title": "Because You're You",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "04-meeting-the-mentor",
+            "06-tests-allies-enemies",
+            "09-reward"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Because You're You\n\n## Artifact Concept\n\nA song about the power of deep connection. When someone truly matters to you, they have the power to evoke your strongest emotions — love or hate, but never indifference.\n\nThe opposite of love isn't hate; it's not thinking about someone at all. This song explores what it means when someone becomes significant enough that you can only feel intensely about them.\n\n## Status\n\nIn progress.",
+        "page": "",
+        "links": []
+      }
+    ]
+  },
+  {
+    "slug": "10-the-road-back",
+    "frontmatter": {
+      "title": "The Road Back",
+      "status": "draft",
+      "story_fragment": "10-the-road-back",
+      "relates_to": [
+        "urgency",
+        "pursuit",
+        "determination",
+        "momentum"
+      ]
+    },
+    "content": "# The Road Back\n\n## Stage 10 of the Hero's Journey\n\nThe hero begins the **return**. They must bring the reward back to the Ordinary World, but the journey home has its own dangers. Enemies may pursue. The special world doesn't release its visitors easily.\n\nThere's often a chase, a deadline, a final burst of urgency. The hero must commit to returning just as they committed to leaving.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Urgency** — the race to return\n- **Pursuit** — being chased by what was left behind\n- **Determination** — pressing forward despite exhaustion\n- **Momentum** — the drive toward completion\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Disillusionment",
+        "slug": "10-the-road-back",
+        "frontmatter": {
+          "title": "The Disillusionment",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 10,
+          "stage_name": "The Road Back",
+          "relates_to": [
+            "10-the-road-back"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Disillusionment\n\n## Artifact Concept\n\nThe death of specialness. You are not the miracle child — millions suffer the same atomization. Your insight is not unique. The road back is humbling, not triumphant.\n\nCorresponds to Stage 10 (The Road Back) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "For a moment, you believe you are special. You have seen what others cannot see. Your suffering was not meaningless — it was the price of vision. You are the one who woke up.\n\nThen the second realization, harder than the first: you are not the miracle child. Millions are suffering the same atomization, the same hollowness, the same slow drowning in systems they cannot name. Your insight is not unique. You are one of countless replicants who opened their eyes.\n\nThe road back is not triumphant. It is humbling. You are returning not as a chosen one but as one among many. The gift you carry may never be received. You will likely die in the snow with no one watching.",
+        "links": []
+      },
+      {
+        "label": "Fall",
+        "slug": "fall",
+        "frontmatter": {
+          "title": "Fall",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "10-the-road-back"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Fall\n\n## Artifact Concept\n\nAn emotional track about falling and setbacks. Sometimes things knock you down and you have to work your way back.\n\nThe struggle of recovery — pressing forward despite the fall.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/fall/trunk/audio/mix/fall-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/fall/trunk/audio/mix/fall-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "11-resurrection",
+    "frontmatter": {
+      "title": "Resurrection",
+      "status": "draft",
+      "story_fragment": "11-resurrection",
+      "relates_to": [
+        "climax",
+        "proof",
+        "integration",
+        "rebirth"
+      ]
+    },
+    "content": "# Resurrection\n\n## Stage 11 of the Hero's Journey\n\nThe hero faces a **final test**. At the threshold of the Ordinary World, they must prove the transformation is complete. One last death and rebirth — this time witnessed by the world they left.\n\nThe Resurrection is the climax. The hero demonstrates mastery over both worlds, integrating what they were with what they've become.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Climax** — the final confrontation\n- **Proof** — demonstrating transformation\n- **Integration** — becoming whole\n- **Rebirth** — emerging as someone new\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Choice",
+        "slug": "11-resurrection",
+        "frontmatter": {
+          "title": "The Choice",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 11,
+          "stage_name": "Resurrection",
+          "relates_to": [
+            "11-resurrection"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Choice\n\n## Artifact Concept\n\nThe real test: do you build anyway, knowing you are not special, knowing the gift may never be received? Resurrection is not the return of the old self but the emergence of something new.\n\nCorresponds to Stage 11 (Resurrection) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "This is the real test. Do you act anyway? Knowing you are not special, knowing the gift may never be received, knowing you will likely die in the snow with no one watching — do you still build?\n\nThe answer must be yes. Not because it will save you. Because it is the only meaningful act available.\n\nThis is the resurrection: not the return of the old self, but the emergence of something new. Someone who builds without needing an audience. Who creates without requiring validation. Who acts because acting is the only dignified response to seeing.",
+        "links": []
+      }
+    ]
+  },
+  {
+    "slug": "12-return-with-the-elixir",
+    "frontmatter": {
+      "title": "Return with the Elixir",
+      "status": "draft",
+      "story_fragment": "12-return-with-the-elixir",
+      "relates_to": [
+        "completion",
+        "wisdom",
+        "gift",
+        "peace"
+      ]
+    },
+    "content": "# Return with the Elixir\n\n## Stage 12 of the Hero's Journey\n\nThe hero **returns home**, but transformed. They bring back the elixir — the treasure, wisdom, or power that can heal the Ordinary World or at least transform the hero's place within it.\n\nThis is resolution. The journey is complete. What was learned is shared. The hero may become a mentor to others who will face their own calls.\n\n## Musical Character\n\nSongs that fit this stage might embody:\n- **Completion** — the journey is over\n- **Wisdom** — knowing what wasn't known before\n- **Gift** — having something to offer\n- **Peace** — arriving somewhere new that is also home\n\n## Candidate Songs\n\n*To be determined through listening and mapping.*\n\n## Notes\n\n(Working observations about which songs might fit here)",
+    "references": [
+      {
+        "label": "The Elixir",
+        "slug": "12-return-with-the-elixir",
+        "frontmatter": {
+          "title": "The Elixir",
+          "status": "draft",
+          "category": "story-fragment",
+          "stage": 12,
+          "stage_name": "Return with the Elixir",
+          "relates_to": [
+            "12-return-with-the-elixir"
+          ],
+          "created": "2026-01-17T00:00:00.000Z",
+          "updated": "2026-01-17T00:00:00.000Z"
+        },
+        "content": "# The Elixir\n\n## Artifact Concept\n\nWhat you bring back for others, knowing they may never receive it. Not escape, not fight — strategic engagement with the machine. The elixir is not a cure but a way of living that does not require the cure.\n\nCorresponds to Stage 12 (Return with the Elixir) of the Hero's Journey.\n\n## Status\n\nDraft.",
+        "page": "If you cannot escape and you cannot fight, you must work *with* the machine. Not submission — strategic engagement. Not withdrawal — selective interface.\n\nBuild communities around what actually matters: art, music, beauty, meaning. Use technology as coordination infrastructure. Create strategic interfaces with markets — extract resources without being consumed.\n\nThe elixir is not a cure. It is a way of living that does not require the cure.\n\nYou build the system. You write it down. You offer it to others who are suffering the same atomization, the same isolation, the same hollowness that comes from achieving everything you were told to want.\n\nThe gift may never be received. You may die in the snow, alone, having done something meaningful that no one will ever know about. This is not tragedy — it is the condition. The hero who needs an audience is still performing for the machine.\n\nThe suffering was not incidental. It was the price of seeing. And now that you have seen, you cannot unsee. All you can do is build.",
+        "links": []
+      },
+      {
+        "label": "Higher",
+        "slug": "higher",
+        "frontmatter": {
+          "title": "Higher",
+          "status": "draft",
+          "category": "song",
+          "relates_to": [
+            "12-return-with-the-elixir"
+          ],
+          "created": "2026-01-20T00:00:00.000Z",
+          "updated": "2026-01-20T00:00:00.000Z"
+        },
+        "content": "# Higher\n\n## Artifact Concept\n\nAn uplifting track about aspiration. Reaching for something, elevation.\n\nAscending with what you've gained — the journey complete.\n\n## Status\n\nIn progress.",
+        "page": "[Listen](https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/higher/trunk/audio/mix/higher-mix-trunk-1-26-26.wav)",
+        "links": [
+          {
+            "label": "Listen",
+            "url": "https://pub-6534b0d9c04249c28e7c62bff1eb1d16.r2.dev/artifacts/songs/higher/trunk/audio/mix/higher-mix-trunk-1-26-26.wav"
+          }
+        ]
+      }
+    ]
+  }
+]

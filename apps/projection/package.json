@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "tsx scripts/generateIndex.ts && next build",
-    "start": "next start"
+    "dev": "tsx scripts/generateSurfaces.ts && next dev",
+    "build": "tsx scripts/generateSurfaces.ts && next build",
+    "generate": "tsx scripts/generateSurfaces.ts",
+    "start": "next start",
+    "test": "node --import tsx --test scripts/*.test.ts"
   },
   "dependencies": {
     "next": "^14",
@@ -20,7 +22,6 @@
     "@types/react-dom": "^18",
     "typescript": "^5",
     "tsx": "^4",
-    "glob": "^10",
-    "yaml": "^2"
+    "glob": "^10"
   }
 }

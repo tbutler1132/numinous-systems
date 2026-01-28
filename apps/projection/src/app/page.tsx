@@ -1,23 +1,11 @@
-import Link from 'next/link'
-import index from '../../public/index.json'
-
 export default function Home() {
   return (
-    <main>
-      <h1>Projection</h1>
-      <p>A navigable interface for exploring the system.</p>
-
-      <div style={{ marginTop: '2rem' }}>
-        {index.sections.map((section) => (
-          <Link
-            key={section.path}
-            href={`/s/${section.path}`}
-            className="section-card"
-          >
-            <h2>{section.name}</h2>
-          </Link>
-        ))}
+    <div className="landing">
+      <div className="landing-content">
+        <header className="landing-header">
+          <h1 className="landing-name">Timothy Butler</h1>
+        </header>
       </div>
-    </main>
+    </div>
   )
 }

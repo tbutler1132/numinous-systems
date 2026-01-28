@@ -1,8 +1,9 @@
 import './globals.css'
+import SpatialNav from '@/components/SpatialNav'
 
 export const metadata = {
-  title: 'Projection',
-  description: 'A navigable interface for exploring the system',
+  title: 'Timothy Butler',
+  description: 'A multi-surface experience',
 }
 
 export default function RootLayout({
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SpatialNav />
+        <div className="page-content">{children}</div>
+      </body>
     </html>
   )
 }
