@@ -27,12 +27,15 @@ export function getHerosJourney(): Artifact[] {
   return JSON.parse(raw)
 }
 
+export type SurfaceCategory = 'plaza' | 'exhibit' | null
+
 export interface Surface {
   name: string
   path: string
   kind: 'location' | 'device'
   external: boolean
   visibility: 'public' | 'private'
+  category: SurfaceCategory
 }
 
 export function getSurfaces(): Surface[] {
@@ -46,5 +49,6 @@ export function getSurfaces(): Surface[] {
       kind: (r.kind === 'device' ? 'device' : 'location') as 'location' | 'device',
       external: r.type === 'external',
       visibility: (r.visibility === 'private' ? 'private' : 'public') as 'public' | 'private',
+      category: (['plaza', 'exhibit'].includes(r.category) ? r.category : null) as SurfaceCategory,
     }))
 }

@@ -3,6 +3,7 @@
     "name": "Atrium",
     "type": "internal",
     "kind": "location",
+    "category": "—",
     "path": "/",
     "status": "active",
     "visibility": "public"
@@ -11,6 +12,7 @@
     "name": "Hero's Journey",
     "type": "internal",
     "kind": "location",
+    "category": "exhibit",
     "path": "/heros-journey/",
     "status": "active",
     "visibility": "public"
@@ -19,6 +21,7 @@
     "name": "Dashboard",
     "type": "internal",
     "kind": "device",
+    "category": "—",
     "path": "/dashboard/",
     "status": "active",
     "visibility": "private"
@@ -27,6 +30,7 @@
     "name": "X",
     "type": "external",
     "kind": "location",
+    "category": "—",
     "path": "https://x.com/alltoosynthetic",
     "status": "active",
     "visibility": "public"

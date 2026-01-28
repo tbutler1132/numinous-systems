@@ -210,7 +210,7 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
                         style={pos}
                         onClick={() => setNavigating(surface.path)}
                       >
-                        <span className={`spatial-nav-marker${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`} />
+                        <span className={`spatial-nav-marker${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}${surface.category ? ` category-${surface.category}` : ''}`} />
                         <span className="spatial-nav-label">{surface.name}</span>
                         {isLocked && <span className="spatial-nav-lock">⟠</span>}
                       </Link>
@@ -233,6 +233,17 @@ export default function SpatialNav({ surfaces, initialAuthenticated = false }: S
                       ))}
                     </div>
                   )}
+
+                  <div className="map-legend">
+                    <span className="map-legend-item">
+                      <span className="map-legend-dot category-exhibit" />
+                      <span className="map-legend-label">Exhibit</span>
+                    </span>
+                    <span className="map-legend-item">
+                      <span className="map-legend-dot category-external" />
+                      <span className="map-legend-label">External</span>
+                    </span>
+                  </div>
                 </div>
               )}
             </div>

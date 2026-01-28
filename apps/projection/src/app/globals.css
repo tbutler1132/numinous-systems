@@ -1030,3 +1030,91 @@ body {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
+
+/* Map Legend */
+.map-legend {
+  position: absolute;
+  bottom: 8%;
+  left: 10%;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.map-legend-label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Category glows */
+.spatial-nav-marker.category-plaza,
+.map-legend-dot.category-plaza {
+  background: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 8px 2px rgba(251, 191, 36, 0.4);
+}
+
+.spatial-nav-marker.category-exhibit,
+.map-legend-dot.category-exhibit {
+  background: rgba(45, 212, 191, 0.6);
+  box-shadow: 0 0 8px 2px rgba(45, 212, 191, 0.4);
+}
+
+.map-legend-dot.category-external {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Keep glow on hover for categorized markers */
+.spatial-nav-surface:hover .spatial-nav-marker.category-plaza {
+  background: rgba(251, 191, 36, 0.9);
+  box-shadow: 0 0 12px 3px rgba(251, 191, 36, 0.6);
+}
+
+.spatial-nav-surface:hover .spatial-nav-marker.category-exhibit {
+  background: rgba(45, 212, 191, 0.9);
+  box-shadow: 0 0 12px 3px rgba(45, 212, 191, 0.6);
+}
+
+/* Active state for categorized markers */
+.spatial-nav-marker.active.category-plaza {
+  background: rgba(251, 191, 36, 0.9);
+  animation: markerPulsePlaza 2s ease-in-out infinite;
+}
+
+.spatial-nav-marker.active.category-exhibit {
+  background: rgba(45, 212, 191, 0.9);
+  animation: markerPulseExhibit 2s ease-in-out infinite;
+}
+
+@keyframes markerPulsePlaza {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(251, 191, 36, 0.6);
+  }
+}
+
+@keyframes markerPulseExhibit {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px rgba(45, 212, 191, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(45, 212, 191, 0.6);
+  }
+}
