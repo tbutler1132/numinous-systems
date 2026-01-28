@@ -31,6 +31,7 @@ export interface Surface {
   name: string
   path: string
   external: boolean
+  visibility: 'public' | 'private'
 }
 
 export function getSurfaces(): Surface[] {
@@ -42,5 +43,6 @@ export function getSurfaces(): Surface[] {
       name: r.name,
       path: r.path,
       external: r.type === 'external',
+      visibility: (r.visibility === 'private' ? 'private' : 'public') as 'public' | 'private',
     }))
 }

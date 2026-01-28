@@ -10,10 +10,18 @@ type MenuPage = 'map'
 export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
   const [open, setOpen] = useState(false)
   const [activePage, setActivePage] = useState<MenuPage>('map')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const pathname = usePathname()
   const crosshairH = useRef<HTMLDivElement>(null)
   const crosshairV = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    fetch('/api/auth/check/')
+      .then((res) => res.json())
+      .then((data) => setIsAuthenticated(data.authenticated))
+      .catch(() => setIsAuthenticated(false))
+  }, [])
 
   useEffect(() => {
     const arrow = arrowRef.current
@@ -139,10 +147,12 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
                 <div className="spatial-nav-map">
                   {localSurfaces.map((surface, i) => {
                     const isActive = surface.path === current.path
+                    const isLocked = surface.visibility === 'private' && !isAuthenticated
                     const positions = [
                       { left: '10%', top: '14%' },
                       { left: '26%', top: '36%' },
                       { left: '14%', top: '55%' },
+                      { left: '38%', top: '68%' },
                     ]
                     const pos = positions[i] ?? { left: `${10 + i * 12}%`, top: `${14 + i * 18}%` }
 
@@ -150,12 +160,13 @@ export default function SpatialNav({ surfaces }: { surfaces: Surface[] }) {
                       <Link
                         key={surface.path}
                         href={surface.path}
-                        className={`spatial-nav-surface${isActive ? ' active' : ''}`}
+                        className={`spatial-nav-surface${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`}
                         style={pos}
                         onClick={() => setOpen(false)}
                       >
-                        <span className={`spatial-nav-marker${isActive ? ' active' : ''}`} />
+                        <span className={`spatial-nav-marker${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`} />
                         <span className="spatial-nav-label">{surface.name}</span>
+                        {isLocked && <span className="spatial-nav-lock">⟠</span>}
                       </Link>
                     )
                   })}

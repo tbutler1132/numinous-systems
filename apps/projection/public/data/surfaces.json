@@ -3,18 +3,28 @@
     "name": "Atrium",
     "type": "internal",
     "path": "/",
-    "status": "active"
+    "status": "active",
+    "visibility": "public"
   },
   {
     "name": "Hero's Journey",
     "type": "internal",
     "path": "/heros-journey/",
-    "status": "active"
+    "status": "active",
+    "visibility": "public"
+  },
+  {
+    "name": "Dashboard",
+    "type": "internal",
+    "path": "/dashboard/",
+    "status": "active",
+    "visibility": "private"
   },
   {
     "name": "X",
     "type": "external",
     "path": "https://x.com/alltoosynthetic",
-    "status": "active"
+    "status": "active",
+    "visibility": "public"
   }
 ]

@@ -8,6 +8,7 @@ nodes/inbox.md
 
 # Environment
 .env
+.env.local
 .vercel
 
 # Sensor data (raw CSVs and observation databases)
