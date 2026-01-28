@@ -1,15 +1,42 @@
+/**
+ * @file Next.js middleware for route protection.
+ *
+ * Intercepts requests to check authentication for private surfaces.
+ * Private surfaces are determined from the generated surfaces.json data.
+ *
+ * Behavior:
+ * - Public surfaces: Allow through
+ * - Private surfaces: Redirect to login if unauthenticated
+ * - Login pages: Always allow through
+ * - Dev mode: Bypasses auth unless ?locked param is present
+ *
+ * @see surfaces.json - Defines which paths are private
+ * @see lib/auth.ts - Token validation utilities
+ */
+
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import surfacesData from './public/data/surfaces.json'
 
+/** Cookie name for authentication token */
 const AUTH_COOKIE_NAME = 'auth_token'
+/** Whether we're in development mode */
 const isDev = process.env.NODE_ENV === 'development'
 
-// Extract private surface paths from the generated surfaces data
+/**
+ * Private surface paths extracted from surfaces.json.
+ * These paths require authentication to access.
+ */
 const privatePaths = surfacesData
   .filter((s) => s.visibility === 'private' && s.type === 'internal')
   .map((s) => s.path.replace(/\/$/, '')) // normalize trailing slashes
 
+/**
+ * Checks if a pathname requires authentication.
+ *
+ * @param pathname - URL pathname to check
+ * @returns True if the path is a private surface
+ */
 function isPrivatePath(pathname: string): boolean {
   const normalized = pathname.replace(/\/$/, '')
   return privatePaths.some(
@@ -17,6 +44,14 @@ function isPrivatePath(pathname: string): boolean {
   )
 }
 
+/**
+ * Gets the appropriate login page for a private path.
+ *
+ * Each private surface has its own login page (e.g., /dashboard/login).
+ *
+ * @param pathname - The protected path being accessed
+ * @returns Login page path for that surface
+ */
 function getLoginPath(pathname: string): string {
   const normalized = pathname.replace(/\/$/, '')
   // Find which private surface this path belongs to
@@ -26,6 +61,15 @@ function getLoginPath(pathname: string): string {
   return matchedPath ? `${matchedPath}/login/` : '/login/'
 }
 
+/**
+ * Checks if the request is authenticated.
+ *
+ * In dev mode, bypasses auth unless ?locked is in the URL.
+ * In production, validates the auth cookie against DASHBOARD_TOKEN.
+ *
+ * @param request - Incoming Next.js request
+ * @returns True if authenticated
+ */
 function isAuthenticated(request: NextRequest): boolean {
   // In dev mode, bypass auth unless ?locked is in the URL
   if (isDev && !request.nextUrl.searchParams.has('locked')) {
@@ -37,6 +81,13 @@ function isAuthenticated(request: NextRequest): boolean {
   return !!(token && expectedToken && token === expectedToken)
 }
 
+/**
+ * Next.js middleware handler.
+ *
+ * Checks authentication for private surfaces and redirects to login
+ * if unauthenticated. Login pages within private surfaces are always
+ * allowed through.
+ */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 

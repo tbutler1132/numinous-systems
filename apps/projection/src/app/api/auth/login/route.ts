@@ -1,7 +1,21 @@
+/**
+ * @file POST /api/auth/login - Token-based login endpoint.
+ *
+ * Accepts a token in the request body, validates it against DASHBOARD_TOKEN,
+ * and sets an httpOnly cookie on success. Used by the login page to
+ * authenticate users.
+ *
+ * Request body: { token: string }
+ * Response: { success: true } or { error: string }
+ */
+
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { isValidToken, getAuthCookieOptions, AUTH_COOKIE_NAME } from '@/lib/auth'
 
+/**
+ * Handles login requests by validating the token and setting auth cookie.
+ */
 export async function POST(request: Request) {
   try {
     const body = await request.json()

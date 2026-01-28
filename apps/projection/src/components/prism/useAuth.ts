@@ -1,7 +1,25 @@
+/**
+ * @file useAuth - Client-side authentication state hook.
+ *
+ * Provides real-time auth status that re-checks on mount to catch
+ * login/logout changes from other tabs or sessions.
+ */
 'use client'
 
 import { useState, useEffect } from 'react'
 
+/**
+ * Hook that tracks authentication state on the client.
+ *
+ * Starts with the server-provided initial state, then re-checks
+ * by calling /api/auth/check on mount. This ensures the UI reflects
+ * any auth changes that happened since the page was rendered.
+ *
+ * Supports a ?locked query param for testing unauthenticated UI in dev.
+ *
+ * @param initialAuthenticated - Server-side auth state (from isAuthenticated())
+ * @returns Current authentication status
+ */
 export function useAuth(initialAuthenticated: boolean = false) {
   const [isAuthenticated, setIsAuthenticated] = useState(initialAuthenticated)
 

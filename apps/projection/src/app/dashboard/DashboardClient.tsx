@@ -1,8 +1,19 @@
+/**
+ * @file DashboardClient - Interactive sensor status dashboard.
+ *
+ * A client-side component that displays:
+ * - Observation statistics per domain (count, date range, staleness)
+ * - Recent observations table
+ * - Drag-and-drop CSV file upload for ingestion
+ *
+ * This is a "device" surface - an operational tool rather than content.
+ */
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
+/** Statistics for a single observation domain */
 interface DomainStatus {
   domain: string
   count: number
@@ -15,6 +26,7 @@ interface DomainStatus {
   } | null
 }
 
+/** A recent observation formatted for display */
 interface RecentObservation {
   id: string
   observed_at: string
@@ -23,16 +35,22 @@ interface RecentObservation {
   summary: string
 }
 
+/** Complete dashboard data from the status API */
 interface DashboardData {
   exists: boolean
   domains: DomainStatus[]
   recent: RecentObservation[]
 }
 
+/** Props for DashboardClient */
 interface Props {
+  /** Node identifier to display in the header */
   node: string
 }
 
+/**
+ * Formats an ISO date string as relative time (e.g., "2d ago", "5h ago").
+ */
 function formatRelativeTime(isoString: string): string {
   const date = new Date(isoString)
   const now = new Date()
@@ -47,6 +65,9 @@ function formatRelativeTime(isoString: string): string {
   return 'just now'
 }
 
+/**
+ * Formats an ISO date string as month/year (e.g., "Jan 2024").
+ */
 function formatDate(isoString: string): string {
   return new Date(isoString).toLocaleDateString('en-US', {
     month: 'short',
@@ -54,6 +75,9 @@ function formatDate(isoString: string): string {
   })
 }
 
+/**
+ * Formats an ISO date string as short date (e.g., "Jan 15").
+ */
 function formatShortDate(isoString: string): string {
   return new Date(isoString).toLocaleDateString('en-US', {
     month: 'short',
@@ -61,6 +85,12 @@ function formatShortDate(isoString: string): string {
   })
 }
 
+/**
+ * Determines staleness level based on time since last ingest.
+ * - fresh: < 2 days (green indicator)
+ * - stale: 2-7 days (yellow indicator)
+ * - old: > 7 days (red indicator)
+ */
 function getStaleness(isoString: string): 'fresh' | 'stale' | 'old' {
   const diffMs = Date.now() - new Date(isoString).getTime()
   const diffDays = diffMs / (1000 * 60 * 60 * 24)
@@ -69,6 +99,16 @@ function getStaleness(isoString: string): 'fresh' | 'stale' | 'old' {
   return 'old'
 }
 
+/**
+ * DashboardClient - Main sensor status dashboard component.
+ *
+ * Features:
+ * - Auto-loads status on mount
+ * - Drag-and-drop CSV upload with toast notifications
+ * - Domain cards with staleness indicators
+ * - Recent observations table
+ * - Logout button
+ */
 export default function DashboardClient({ node }: Props) {
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)

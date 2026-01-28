@@ -1,11 +1,30 @@
+/**
+ * @file Authentication utilities for token-based access control.
+ *
+ * This module handles authentication for private surfaces (like /dashboard).
+ * It uses a simple token-based system where:
+ * - A shared secret (DASHBOARD_TOKEN env var) grants access
+ * - Tokens are stored in httpOnly cookies for security
+ * - Timing-safe comparison prevents timing attacks
+ *
+ * @see middleware.ts - Uses these utilities for route protection
+ * @see /api/auth/* - API routes that use these helpers
+ */
+
 import { cookies } from 'next/headers'
 import { timingSafeEqual } from 'crypto'
 
+/** Cookie name used to store the authentication token */
 const AUTH_COOKIE_NAME = 'auth_token'
 
 /**
- * Validate a token against the DASHBOARD_TOKEN env var
- * Uses timing-safe comparison to prevent timing attacks
+ * Validates a token against the DASHBOARD_TOKEN environment variable.
+ *
+ * Uses timing-safe comparison to prevent timing attacks where an attacker
+ * could infer the correct token by measuring response times.
+ *
+ * @param token - The token to validate
+ * @returns True if the token matches DASHBOARD_TOKEN, false otherwise
  */
 export function isValidToken(token: string): boolean {
   const expected = process.env.DASHBOARD_TOKEN
@@ -18,7 +37,13 @@ export function isValidToken(token: string): boolean {
 }
 
 /**
- * Check if the current request is authenticated (server-side)
+ * Checks if the current request is authenticated (server-side only).
+ *
+ * Reads the auth cookie from the request and validates it against
+ * the expected token. Must be called from a server component or
+ * API route handler.
+ *
+ * @returns Promise resolving to true if authenticated, false otherwise
  */
 export async function isAuthenticated(): Promise<boolean> {
   const cookieStore = await cookies()
@@ -28,7 +53,15 @@ export async function isAuthenticated(): Promise<boolean> {
 }
 
 /**
- * Get cookie options for auth token
+ * Returns the cookie options for setting the auth token.
+ *
+ * Cookie configuration:
+ * - httpOnly: Prevents JavaScript access (XSS protection)
+ * - secure: HTTPS only in production
+ * - sameSite: 'lax' for CSRF protection while allowing navigation
+ * - maxAge: 30 days before expiration
+ *
+ * @returns Cookie options object compatible with Next.js cookies API
  */
 export function getAuthCookieOptions() {
   return {

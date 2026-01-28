@@ -1,36 +1,72 @@
+/**
+ * @file Map - Interactive zoomable/pannable navigation map.
+ *
+ * Provides two views:
+ * - Local: Surfaces within the current node (locations you can navigate to)
+ * - World: All available nodes (for future multi-node support)
+ *
+ * Supports:
+ * - Pinch-to-zoom on touch devices
+ * - Ctrl/Cmd + scroll wheel zoom on desktop
+ * - Drag panning when zoomed in
+ * - Click-to-navigate on surfaces
+ */
 'use client'
 
 import { useRef, useState, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import type { Surface } from '@/lib/data'
 
+/** View mode: 'local' shows surfaces, 'world' shows nodes */
 export type MapView = 'local' | 'world'
 
+/** Minimum zoom level (0.5x = zoomed out) */
 const MIN_ZOOM = 0.5
+/** Maximum zoom level (3x = zoomed in) */
 const MAX_ZOOM = 3
+/** Zoom sensitivity for scroll wheel (lower = slower zoom) */
 const ZOOM_SENSITIVITY = 0.002
 
+/** A node in the world map view */
 export interface MapNode {
+  /** Unique node identifier */
   id: string
+  /** Display name */
   name: string
+  /** Optional description text */
   description?: string
+  /** Whether this is the user's current node */
   isCurrentNode: boolean
 }
 
+/** Props for the Map component */
+/** Props for the Map component */
 interface MapProps {
+  /** Current view mode */
   view: MapView
+  /** Available nodes for world view */
   nodes: MapNode[]
+  /** Internal location surfaces for local view */
   locations: Surface[]
+  /** External link surfaces */
   externalSurfaces: Surface[]
+  /** Current page path (for highlighting active surface) */
   currentPath: string
+  /** Current node ID */
   currentNodeId: string
+  /** Current node display name */
   currentNodeName: string
+  /** Whether user is authenticated (affects locked surfaces) */
   isAuthenticated: boolean
+  /** Called when user clicks a surface to navigate */
   onNavigate: (path: string) => void
+  /** Called to toggle between local and world view */
   onToggleView: () => void
+  /** Called when user selects a node in world view */
   onSelectNode: (nodeId: string) => void
 }
 
+/** Fixed positions for surface markers in local view (scattered layout) */
 const POSITIONS = [
   { left: '10%', top: '14%' },
   { left: '26%', top: '36%' },
@@ -38,12 +74,20 @@ const POSITIONS = [
   { left: '38%', top: '68%' },
 ]
 
+/** Fixed positions for node markers in world view */
 const NODE_POSITIONS = [
   { left: '35%', top: '40%' },
   { left: '55%', top: '25%' },
   { left: '20%', top: '60%' },
 ]
 
+/**
+ * Interactive map component with zoom, pan, and navigation.
+ *
+ * Renders either a local view (surfaces within current node) or
+ * world view (available nodes). Supports touch gestures for
+ * mobile zoom/pan.
+ */
 export function Map({
   view,
   nodes,

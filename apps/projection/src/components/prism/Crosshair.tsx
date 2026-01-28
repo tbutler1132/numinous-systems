@@ -1,11 +1,23 @@
+/**
+ * @file Crosshair - Mouse tracking visual overlay for map view.
+ *
+ * Provides a game-like targeting crosshair that follows the cursor
+ * in the map view. Adds to the spatial navigation aesthetic.
+ */
 'use client'
 
 import { useRef, useCallback } from 'react'
 
+/** Props for the Crosshair component */
 interface CrosshairProps {
+  /** Whether the crosshair is visible */
   visible: boolean
 }
 
+/**
+ * Static crosshair component (controlled visibility).
+ * Use useCrosshair hook for the dynamic version.
+ */
 export function Crosshair({ visible }: CrosshairProps) {
   const crosshairH = useRef<HTMLDivElement>(null)
   const crosshairV = useRef<HTMLDivElement>(null)
@@ -26,6 +38,16 @@ export function Crosshair({ visible }: CrosshairProps) {
   )
 }
 
+/**
+ * Hook for managing a dynamic crosshair that follows mouse movement.
+ *
+ * Returns:
+ * - CrosshairLines: React component rendering the crosshair elements
+ * - handleMouseMove: Handler to attach to container's onMouseMove
+ * - setCrosshairVisible: Function to show/hide the crosshair
+ *
+ * @returns Crosshair controls and component
+ */
 export function useCrosshair() {
   const crosshairH = useRef<HTMLDivElement>(null)
   const crosshairV = useRef<HTMLDivElement>(null)

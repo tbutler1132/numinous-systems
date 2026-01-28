@@ -1,3 +1,16 @@
+/**
+ * @file Prism - The main spatial navigation interface.
+ *
+ * Prism is the "game-like" overlay that provides navigation between surfaces.
+ * It consists of:
+ * - Minimap: Always-visible location indicator in the corner
+ * - Map: Full-screen zoomable navigation view
+ * - Menu: Sidebar with Map tab and device features (e.g., Dashboard)
+ * - Crosshairs: Visual cursor tracking in map view
+ *
+ * The prism metaphor: light enters and is split into different surfaces
+ * (locations, devices) that you can navigate between.
+ */
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -12,17 +25,35 @@ import { Minimap } from './Minimap'
 import { Menu, buildMenuPages, type FacetId } from './Menu'
 import { Map, type MapView, type MapNode } from './Map'
 
+/** Props for the Prism component */
 interface PrismProps {
+  /** All available surfaces for navigation */
   surfaces: Surface[]
+  /** Initial auth state from server (re-checked on client) */
   initialAuthenticated?: boolean
 }
 
-// Available nodes - for now just Org, but the pattern supports more
+/**
+ * Available nodes for the world map view.
+ * Currently only shows 'org' node, but the pattern supports multiple nodes
+ * for future multi-node navigation.
+ */
 const AVAILABLE_NODES: MapNode[] = [
   { id: 'org', name: 'Org', description: 'The main organization node', isCurrentNode: true },
-  // Future: user nodes, other orgs, etc.
 ]
 
+/**
+ * Prism component - the spatial navigation overlay.
+ *
+ * Renders a minimap trigger in the corner that opens a full-screen
+ * navigation interface with map view and device panels.
+ *
+ * State management:
+ * - open: Whether the overlay is visible
+ * - activePage: Current menu tab ('map' or a device path)
+ * - mapView: 'local' (current node) or 'world' (all nodes)
+ * - navigating: Path being navigated to (shows loading state)
+ */
 export default function Prism({ surfaces, initialAuthenticated = false }: PrismProps) {
   const [open, setOpen] = useState(false)
   const [activePage, setActivePage] = useState<FacetId>('map')

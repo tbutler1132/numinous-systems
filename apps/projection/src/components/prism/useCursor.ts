@@ -1,10 +1,23 @@
+/**
+ * @file useCursor - Adaptive cursor/scroll position tracking.
+ *
+ * Provides position tracking that adapts to device capabilities:
+ * - Desktop (pointer: fine): Tracks mouse cursor position
+ * - Mobile (no pointer): Tracks scroll progress down the page
+ *
+ * Used by the minimap to show an arrow indicating "where you are".
+ */
 'use client'
 
 import { useEffect, useRef } from 'react'
 
 /**
- * Tracks cursor position (desktop) or scroll progress (mobile) and updates
- * the provided element's position accordingly.
+ * Hook that tracks cursor or scroll position and updates an element.
+ *
+ * On desktop, updates the element's position to follow the mouse.
+ * On mobile, updates based on scroll progress through the page.
+ *
+ * @returns Ref to attach to the element that should track position
  */
 export function useCursor() {
   const arrowRef = useRef<HTMLSpanElement>(null)
