@@ -1,16 +1,15 @@
 {
   "frontmatter": {
-    "title": "Landing",
+    "title": "Atrium",
     "status": "active",
-    "category": "app",
+    "category": "home",
     "relates_to": [
-      "expressions",
       "projection"
     ],
     "created": "2026-01-18T00:00:00.000Z",
     "updated": "2026-01-29T00:00:00.000Z",
     "implementation": "/apps/projection/src/app/page.tsx"
   },
-  "content": "# Landing\n\n## Artifact Concept\n\nThis folder contains **Landing** — the personal brand hub and entry point.\n\nThe landing page serves as the central navigation point for all public-facing work. It presents the identity (currently Timothy Butler as stand-in for org brand) and provides pathways to other artifacts.\n\n## What This Artifact IS\n\n- The front door to the public presence\n- A minimal, elegant hub linking to projects\n- The canonical location for personal/org brand identity\n\n## What This Artifact Is NOT\n\n- A portfolio with extensive content\n- A blog or content platform\n- An app with complex functionality\n\n## Design Principles\n\n- **Restraint** — show only what matters\n- **Beauty** — the first impression should resonate\n- **Navigation** — clear pathways to actual work\n\n## Implementation\n\nLanding is now a route within the Projection app. The implementation lives at `apps/projection/src/app/page.tsx` and reads content from `page.md` in this folder.\n\n## Status\n\nThis artifact is active. The landing page is the root of the projection app.",
+  "content": "# Home (Atrium)\n\n## Artifact Concept\n\nThis is the **home artifact** for the org node — the default entry point when visiting this node.\n\nEvery node has a `home` artifact. It serves as the front door, the first thing encountered when someone visits. For the org node, this home is called the \"Atrium.\"\n\n## What This Artifact IS\n\n- The default entry point for the node\n- A minimal surface presenting identity and navigation\n- The canonical place to encounter the node's presence\n\n## What This Artifact Is NOT\n\n- A portfolio or content dump\n- A blog or feed\n- An app with complex functionality\n\n## Design Principles\n\n- **Restraint** — show only what matters\n- **Beauty** — the first impression should resonate\n- **Navigation** — clear pathways to actual work\n\n## Implementation\n\nThe home artifact renders at the root path (`/`) within the Projection app. Implementation lives at `apps/projection/src/app/page.tsx` and reads from `page.md` in this folder.\n\n## Node Pattern\n\nThis artifact follows the node home convention:\n- Every node MUST have an `artifacts/home/` folder\n- The home artifact MUST have `about.md` and `page.md`\n- A corresponding surface entry MUST exist in `entities/surfaces.md`\n\nSee `nodes/about.md` for the full specification.",
   "page": "Timothy Butler"
 }

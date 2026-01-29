@@ -4,15 +4,15 @@ Deployable applications live here. Each subdirectory is a standalone Vite/Vercel
 
 ## Current Apps
 
-- **landing/** — Personal brand hub and entry point ([artifact docs](../nodes/org/artifacts/apps/landing/about.md))
+- **projection/** — The primary surface app, renders artifacts and navigation ([artifact docs](../nodes/org/artifacts/apps/projection/about.md))
 - **expressions/** — Personalized philosophical artifacts powered by Claude ([artifact docs](../nodes/org/artifacts/apps/expressions/about.md))
 
 ## Structure
 
 ```
 apps/
-  landing/        # Vercel project root
-  expressions/    # Vercel project root
+  projection/     # Primary surface app (Next.js/Vercel)
+  expressions/    # Expressions app (Vercel)
 ```
 
 Each app is a node-specific artifact. The narrative documentation lives at `nodes/org/artifacts/apps/{name}/about.md`, while the deployable code lives here.

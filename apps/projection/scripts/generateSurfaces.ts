@@ -72,8 +72,8 @@ mkdirSync(dirname(surfacesOutputPath), { recursive: true })
 writeFileSync(surfacesOutputPath, JSON.stringify(allSurfaceRows, null, 2))
 console.log(`surfaces: ${allSurfaceRows.length} total entries → public/data/surfaces.json`)
 
-// Generate landing.json from the landing artifact
-const landingDir = join(ROOT, 'nodes/org/artifacts/apps/landing')
+// Generate landing.json from the home artifact
+const landingDir = join(ROOT, 'nodes/org/artifacts/home')
 const landingArtifact = readArtifact(landingDir)
 const landingPage = readPage(landingDir)
 const landingData = {

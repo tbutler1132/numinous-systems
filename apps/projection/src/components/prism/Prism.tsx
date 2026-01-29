@@ -38,15 +38,20 @@ interface PrismProps {
 }
 
 /**
- * Available nodes for the world map view.
- * Currently only shows 'org' node, but the pattern supports multiple nodes
- * for future multi-node navigation.
+ * Capitalizes a node ID for display (e.g., 'org' -> 'Org').
  */
-/** Static node definitions - isCurrentNode is computed dynamically */
-const NODE_DEFINITIONS = [
-  { id: 'org', name: 'Org', description: 'The main organization node' },
-  { id: 'personal', name: 'Personal', description: 'Your personal space' },
-]
+function capitalizeNodeId(nodeId: string): string {
+  return nodeId.charAt(0).toUpperCase() + nodeId.slice(1)
+}
+
+/**
+ * Extracts unique nodes from surfaces data.
+ * Nodes are derived from the nodeId field on each surface.
+ */
+function getNodesFromSurfaces(surfaces: Surface[]): { id: string; name: string }[] {
+  const nodeIds = [...new Set(surfaces.map(s => s.nodeId))]
+  return nodeIds.map(id => ({ id, name: capitalizeNodeId(id) }))
+}
 
 /**
  * Prism component - the spatial navigation overlay.
@@ -112,9 +117,10 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
 
   const menuPages = buildMenuPages(deviceFeatures)
 
-  // Compute available nodes with dynamic isCurrentNode based on current location
-  // Only show personal node when authenticated
-  const availableNodes: MapNode[] = NODE_DEFINITIONS
+  // Derive available nodes from surfaces data
+  // Only show non-org nodes when authenticated
+  const allNodes = getNodesFromSurfaces(surfaces)
+  const availableNodes: MapNode[] = allNodes
     .filter(node => node.id === 'org' || isAuthenticated)
     .map(node => ({
       ...node,
@@ -122,7 +128,7 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
     }))
 
   // Get the current node's display name
-  const currentNodeName = NODE_DEFINITIONS.find(n => n.id === currentLocation.nodeId)?.name ?? 'Unknown'
+  const currentNodeName = allNodes.find(n => n.id === currentLocation.nodeId)?.name ?? 'Unknown'
 
   // Filter locations to only show surfaces from the current node
   const currentNodeLocations = locations.filter(s => s.nodeId === currentLocation.nodeId)

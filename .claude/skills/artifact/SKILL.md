@@ -37,7 +37,7 @@ Help the user navigate between these layers.
 | `xenoscript/` | `nodes/org/artifacts/xenoscript/` |
 | `apps/expressions/` | `nodes/org/artifacts/apps/expressions/` |
 | `apps/projection/` | `nodes/org/artifacts/apps/projection/` |
-| `apps/projection/src/app/page.tsx` | `nodes/org/artifacts/apps/landing/` |
+| `apps/projection/src/app/page.tsx` | `nodes/org/artifacts/home/` |
 | `apps/projection/src/app/sensors/` | `nodes/org/artifacts/apps/sensors-ui/` |
 
 ## Artifact folder structure
