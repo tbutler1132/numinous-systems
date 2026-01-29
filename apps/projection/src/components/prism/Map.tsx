@@ -60,6 +60,8 @@ interface MapProps {
   isAuthenticated: boolean
   /** Called when user clicks a surface to navigate */
   onNavigate: (path: string) => void
+  /** Called when user clicks the current location (to close overlay) */
+  onClose: () => void
   /** Called to toggle between local and world view */
   onToggleView: () => void
   /** Called when user selects a node in world view */
@@ -98,6 +100,7 @@ export function Map({
   currentNodeName,
   isAuthenticated,
   onNavigate,
+  onClose,
   onToggleView,
   onSelectNode,
 }: MapProps) {
@@ -287,7 +290,7 @@ export function Map({
                 href={surface.path}
                 className={`spatial-nav-surface${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}`}
                 style={pos}
-                onClick={() => onNavigate(surface.path)}
+                onClick={() => isActive ? onClose() : onNavigate(surface.path)}
               >
                 <span
                   className={`spatial-nav-marker${isActive ? ' active' : ''}${isLocked ? ' locked' : ''}${surface.category ? ` category-${surface.category}` : ''}`}

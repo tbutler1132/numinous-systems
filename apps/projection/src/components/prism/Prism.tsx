@@ -141,6 +141,7 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
                   currentNodeName="Org"
                   isAuthenticated={isAuthenticated}
                   onNavigate={setNavigating}
+                  onClose={() => setOpen(false)}
                   onToggleView={() => setMapView(v => v === 'local' ? 'world' : 'local')}
                   onSelectNode={(nodeId) => {
                     // For now, just switch back to local view when selecting a node
