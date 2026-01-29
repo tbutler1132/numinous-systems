@@ -17,8 +17,6 @@ Unlike node-scoped entities (which belong to a specific node), global entities a
 
 ## Current Global Entity Types
 
-- **sensors** — perception capabilities that convert external data into observations
+_None yet. Add global entity types here as they emerge._
 
----
-
-_Add new global entity types here as they emerge._
+Note: Sensors are a separate [primitive](../ontology.md#sensor), not entities. See [sensors.md](../sensors.md) for the sensor registry.

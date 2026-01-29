@@ -13,6 +13,9 @@ Core provides the primitives that other parts depend on but should not have to t
 Core contains domain-agnostic infrastructure:
 
 - **sensor/** — The observation memory layer. Types, fingerprinting, storage. Every sensor depends on this; none implement it themselves.
+- **sensors.md** — Registry of available sensors. Sensors are a primitive; this tracks which ones exist.
+- **entities/** — Global entities shared across all nodes.
+- **ontology.md** — Definitions of the system's fundamental concepts.
 
 ## The Principle
 

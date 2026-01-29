@@ -1,8 +1,8 @@
 # Sensors
 
-Global [entities](../ontology.md#entity) representing the system's perception capabilities.
+The system's perception capabilities. A registry of [sensors](ontology.md#sensor) available to all nodes.
 
-Sensors are shared infrastructure — any node can use any sensor. Unlike node-scoped entities, sensors belong to the network, not to a particular node.
+Sensors are shared infrastructure — any node can use any sensor. The sensor defines *how* to perceive; the node defines *where* observations land.
 
 ---
 
@@ -38,8 +38,6 @@ sensors:
   - finance
 ```
 
-The sensor defines *how* to perceive. The node defines *where* observations land.
-
 ---
 
 ## Adding a Sensor
@@ -48,3 +46,9 @@ The sensor defines *how* to perceive. The node defines *where* observations land
 2. Export a `SensorDescriptor` from `src/index.ts`
 3. Add a row to the registry table above
 4. Nodes can then enable it in their `sensors.yaml`
+
+---
+
+## Implementation
+
+The shared infrastructure that makes sensing possible lives in [core/sensor/](sensor/about.md) — types, fingerprinting, and storage.
