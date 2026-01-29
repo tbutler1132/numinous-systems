@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getHerosJourney } from '@/lib/data'
+import AudioButtons from '@/components/AudioButtons'
 
 export function generateStaticParams() {
   return getHerosJourney().map((stage) => ({ stage: stage.slug }))
@@ -53,11 +54,17 @@ export default function StagePage({ params }: { params: { stage: string } }) {
                 <div key={song.slug} className="stage-song-card">
                   <span className="stage-song-name">{song.label}</span>
                   {audioLink && (
-                    <audio
-                      className="stage-audio"
-                      controls
-                      preload="none"
-                      src={audioLink.url}
+                    <AudioButtons
+                      track={{
+                        id: `${stage.slug}-${song.slug}`,
+                        title: song.label,
+                        url: audioLink.url,
+                        context: {
+                          type: 'heros-journey',
+                          label: `Stage ${stageIndex + 1}: ${stage.frontmatter.title}`,
+                          path: `/heros-journey/${stage.slug}/`,
+                        },
+                      }}
                     />
                   )}
                 </div>

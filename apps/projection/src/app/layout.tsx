@@ -1,5 +1,7 @@
 import './globals.css'
 import Prism from '@/components/prism'
+import AudioWidget from '@/components/AudioWidget'
+import { AudioProvider } from '@/contexts/AudioContext'
 import { getSurfaces } from '@/lib/data'
 import { isAuthenticated } from '@/lib/auth'
 
@@ -21,8 +23,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Prism surfaces={surfaces} initialAuthenticated={authenticated} />
-        <div className="page-content">{children}</div>
+        <AudioProvider>
+          <Prism surfaces={surfaces} initialAuthenticated={authenticated} />
+          <AudioWidget />
+          <div className="page-content">{children}</div>
+        </AudioProvider>
       </body>
     </html>
   )

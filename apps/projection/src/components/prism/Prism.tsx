@@ -16,8 +16,10 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import type { Surface } from '@/lib/data'
+import { useAudio } from '@/contexts/AudioContext'
 import SensorsClient from '@/app/sensors/SensorsClient'
 import ProcessClient from '@/app/process/ProcessClient'
+import AudioPlayerClient from '@/app/audio/AudioPlayerClient'
 
 import { useAuth } from './useAuth'
 import { useCursor } from './useCursor'
@@ -67,6 +69,21 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
   const isAuthenticated = useAuth(initialAuthenticated)
   const arrowRef = useCursor()
   const { CrosshairLines, handleMouseMove, setCrosshairVisible } = useCrosshair()
+  const { registerPrismControls, setPrismOpen } = useAudio()
+
+  // Register Prism controls for audio integration
+  useEffect(() => {
+    registerPrismControls({
+      open: () => setOpen(true),
+      setActivePage: (page: string) => setActivePage(page as FacetId),
+      setIsOpen: setPrismOpen,
+    })
+  }, [registerPrismControls, setPrismOpen])
+
+  // Sync Prism open state with AudioContext
+  useEffect(() => {
+    setPrismOpen(open)
+  }, [open, setPrismOpen])
 
   // Close menu when navigation completes (pathname changes)
   useEffect(() => {
@@ -151,6 +168,12 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
               {activePage === '/process/' && (
                 <div className="device-panel">
                   <ProcessClient />
+                </div>
+              )}
+
+              {activePage === '/audio/' && (
+                <div className="device-panel">
+                  <AudioPlayerClient />
                 </div>
               )}
 

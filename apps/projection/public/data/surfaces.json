@@ -48,6 +48,18 @@
     "if locked": "hide"
   },
   {
+    "name": "Audio",
+    "node": "org",
+    "type": "internal",
+    "kind": "device",
+    "category": "—",
+    "path": "/audio/",
+    "status": "active",
+    "visibility": "public",
+    "access": "anonymous",
+    "if locked": "—"
+  },
+  {
     "name": "X",
     "node": "org",
     "type": "external",
