@@ -6,8 +6,8 @@ relates_to:
   - expressions
   - projection
 created: 2026-01-18
-updated: 2026-01-18
-implementation: /apps/landing
+updated: 2026-01-29
+implementation: /apps/projection/src/app/page.tsx
 ---
 
 # Landing
@@ -36,6 +36,10 @@ The landing page serves as the central navigation point for all public-facing wo
 - **Beauty** — the first impression should resonate
 - **Navigation** — clear pathways to actual work
 
+## Implementation
+
+Landing is now a route within the Projection app. The implementation lives at `apps/projection/src/app/page.tsx` and reads content from `page.md` in this folder.
+
 ## Status
 
-This artifact is active. The landing page is live and will evolve as new projects are added.
+This artifact is active. The landing page is the root of the projection app.

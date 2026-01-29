@@ -1,21 +1,23 @@
 ---
-title: Dashboard
+title: Sensors UI
 status: working
 category: app
 relates_to:
   - sensors
   - the-living-system
+  - projection
 created: 2026-01-25
-updated: 2026-01-25
+updated: 2026-01-29
+implementation: /apps/projection/src/app/sensors/
 ---
 
-# Dashboard
+# Sensors UI
 
 ## Artifact Concept
 
-This folder contains **Dashboard** — the operational surface for the sensor system.
+This folder contains **Sensors UI** (formerly Dashboard) — the operational surface for the sensor system.
 
-Dashboard makes the observation layer legible. It answers: what data exists, when was it last updated, and is anything stale?
+The sensors interface makes the observation layer legible. It answers: what data exists, when was it last updated, and is anything stale?
 
 ## What This Artifact IS
 
@@ -34,7 +36,7 @@ Dashboard makes the observation layer legible. It answers: what data exists, whe
 
 The sensor infrastructure stores observations reliably, but without a surface to view them, the system feels abstract. "Did it work?" requires querying SQLite. "Am I up to date?" has no answer.
 
-Dashboard closes this gap. It makes the ritual of data collection tangible — you can see when you last ingested, whether domains are fresh or stale, and what's actually in the memory layer.
+This interface closes the gap. It makes the ritual of data collection tangible — you can see when you last ingested, whether domains are fresh or stale, and what's actually in the memory layer.
 
 ## Design Principles
 
@@ -45,9 +47,13 @@ Dashboard closes this gap. It makes the ritual of data collection tangible — y
 
 ## Connection to Broader Project
 
-This app serves **The Living System** by making the sensing layer operational. A system that observes but cannot report its own state is incomplete.
+This serves **The Living System** by making the sensing layer operational. A system that observes but cannot report its own state is incomplete.
 
 It also reduces friction in the "Download. Drop. Ingest." ritual — combining drop and ingest into a single gesture.
+
+## Implementation
+
+Sensors UI is now a route within the Projection app at `apps/projection/src/app/sensors/`.
 
 ## Status
 

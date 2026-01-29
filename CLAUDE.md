@@ -14,9 +14,32 @@ This is a philosophical-technical system exploring what it means to organize lif
 xenoscript/      # Semantic language (Deno) - meaning as primitive
 core/sensor/     # Shared observation infrastructure (npm workspace)
 sensors/         # Domain sensors: finance/, thought/ (npm workspaces)
-apps/            # Operational projections: landing/, expressions/, projection/
+apps/            # Operational projections: expressions/, projection/
 nodes/org/       # Knowledge base and artifacts
 ```
+
+## Two Documentation Layers
+
+This repo has two parallel documentation systems:
+
+1. **Technical docs** — `about.md` files in code folders (`xenoscript/`, `core/sensor/`, `sensors/`, `apps/`) explain implementation: what the code does, how to use it, technical details.
+
+2. **Concept docs** — `nodes/org/artifacts/` contains the philosophy, essays, aesthetic, and meaning behind the work. These describe *what* and *why*; the code describes *how*.
+
+**The split is intentional.** Concepts are stable; implementations change. The artifact for "Finance Sensor" in `nodes/org/artifacts/sensors/finance/` describes its purpose and design principles. The implementation in `sensors/finance/` is the working code. Both have their own `about.md`.
+
+When working on code, check if there's a corresponding artifact in `nodes/org/artifacts/` for context on intent.
+
+## Artifact Folder Structure
+
+Every artifact in `nodes/org/artifacts/` follows a consistent pattern:
+
+- **about.md** — The concept. What this artifact IS, its purpose, how it connects to the project. Stable and abstract.
+- **notes.md** — Working material. Drafts, arguments, examples, open questions. Changes freely.
+- **page.md** — The encounter. A composed surface for someone engaging the work (not all artifacts have this yet).
+- **manifest.md** — Structure tracking. For artifacts with source material, records what exists in trunk/branches.
+
+This separates concept (about.md) from content (notes.md) from encounter (page.md) from structure (manifest.md).
 
 ## Commands
 
@@ -66,12 +89,27 @@ After any non-trivial change, run `npm run check` from the repo root. This lints
 - Apps are minimal - "a single gesture, made well"
 - Structure is added only when needed; changes reflect use, not planning
 
-## Philosophy (abbreviated)
+## Core Philosophy
 
-Four commitments drive the work:
-1. **Beauty redeems** - the orienting purpose
-2. **Living systems** - respect human organism, not optimization engine
-3. **Love of fate** - presence requires closing the question of regret
-4. **Capital as medium** - resources are materials to shape, not corruptions
+Five foundational essays in `nodes/org/artifacts/core/`. Reading order matters:
+
+| # | Essay | Role |
+|---|-------|------|
+| 1 | **Beauty Redeems** | The telos — moments of beauty redeem existence |
+| 2 | **The Living System** | The subject — hybrid beings, viable range, biology over optimization |
+| 3 | **Love of Fate** | The posture — clearing regret to enable presence |
+| 4 | **Capital as Medium** | The practice — orchestrating resources toward beauty at scale |
+| 5 | **Axioms** | The distillation — what is affirmed without argument |
+
+**Reading order: Purpose → Subject → Posture → Practice → Distillation**
+
+How they connect:
+- Everything serves **Beauty Redeems** (the telos)
+- **The Living System** defines what must be preserved for someone to experience beauty
+- **Love of Fate** clears regret so presence is possible
+- **Capital as Medium** enables creation at scale
+- **Axioms** distills it all into ground-level affirmations
+
+Supporting artifacts branch from these: essays develop themes, practice provides operational frameworks, aesthetic defines the sensory vocabulary, songs are musical expressions, sensors observe and remember.
 
 This is not productivity culture or optimization. It's notes from someone figuring out how to live.

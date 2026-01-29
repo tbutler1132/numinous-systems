@@ -120,6 +120,7 @@ User-facing applications that enable engagement with the philosophy.
 | Artifact        | Purpose                                                               |
 | --------------- | --------------------------------------------------------------------- |
 | **Expressions** | Personalized engagement with artifacts without dilution |
+| **Projection**  | Unified interface—landing, sensors UI, and canon navigation |
 
 ### Sensors
 

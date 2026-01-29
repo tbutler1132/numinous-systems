@@ -10,7 +10,7 @@ relates_to:
   - landing
   - expressions
   - projection
-  - dashboard
+  - sensors-ui
   - core
   - aesthetic
   - sensors
@@ -46,10 +46,12 @@ Apps here share certain commitments:
 
 | App             | Function                                                   |
 | --------------- | ---------------------------------------------------------- |
-| **Landing**     | Personal brand hub and entry point                         |
 | **Expressions** | Personalized engagement with artifacts via organic prompts |
-| **Projection**  | Navigable interface for exploring the system's canon       |
-| **Dashboard**   | Operational status and ingest interface for sensors        |
+| **Projection**  | Unified interface containing landing, sensors UI, and canon navigation |
+
+Projection consolidates what were previously separate apps:
+- **Landing** → root route (`/`) — personal brand hub and entry point
+- **Sensors UI** → `/sensors` — operational status and ingest interface
 
 ## Connection to Other Categories
 
@@ -63,4 +65,4 @@ Org-specific apps live entirely within their artifact folders — concept (`abou
 
 ## Status
 
-Landing and Expressions are live. Projection is in concept phase.
+Expressions and Projection are the two active apps. Projection contains what were previously separate landing and dashboard apps.
