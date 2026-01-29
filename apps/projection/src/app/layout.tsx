@@ -2,6 +2,8 @@ import './globals.css'
 import Prism from '@/components/prism'
 import AudioWidget from '@/components/AudioWidget'
 import { AudioProvider } from '@/contexts/AudioContext'
+import { WorldProvider } from '@/contexts/WorldContext'
+import { WorldLoader } from '@/components/road/WorldLoader'
 import { getSurfaces } from '@/lib/data'
 import { isAuthenticated } from '@/lib/auth'
 
@@ -24,9 +26,12 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <AudioProvider>
-          <Prism surfaces={surfaces} initialAuthenticated={authenticated} />
-          <AudioWidget />
-          <div className="page-content">{children}</div>
+          <WorldProvider>
+            <Prism surfaces={surfaces} initialAuthenticated={authenticated} />
+            <AudioWidget />
+            <WorldLoader />
+            <div className="page-content">{children}</div>
+          </WorldProvider>
         </AudioProvider>
       </body>
     </html>

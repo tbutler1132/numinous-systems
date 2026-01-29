@@ -13,10 +13,11 @@
  */
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import type { Surface } from '@/lib/data'
 import { useAudio } from '@/contexts/AudioContext'
+import { useWorld } from '@/contexts/WorldContext'
 import SensorsClient from '@/app/sensors/SensorsClient'
 import ProcessClient from '@/app/process/ProcessClient'
 import AudioPlayerClient from '@/app/audio/AudioPlayerClient'
@@ -70,6 +71,7 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
   const arrowRef = useCursor()
   const { CrosshairLines, handleMouseMove, setCrosshairVisible } = useCrosshair()
   const { registerPrismControls, setPrismOpen } = useAudio()
+  const { startExploring } = useWorld()
 
   // Register Prism controls for audio integration
   useEffect(() => {
@@ -129,6 +131,17 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
     setActivePage('map')
     setOpen(true)
   }
+
+  // Handle entering exploration mode
+  const handleExplore = useCallback(() => {
+    const worldLocations = currentNodeLocations.map((s) => ({
+      path: s.path,
+      name: s.name,
+      category: s.category as 'exhibit' | 'plaza' | undefined,
+    }))
+    setOpen(false) // Close the map overlay
+    startExploring(worldLocations)
+  }, [currentNodeLocations, startExploring])
 
   return (
     <>
@@ -200,6 +213,7 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
                       window.location.href = nodeHome.path
                     }
                   }}
+                  onExplore={handleExplore}
                 />
               )}
             </div>

@@ -66,6 +66,8 @@ interface MapProps {
   onToggleView: () => void
   /** Called when user selects a node in world view */
   onSelectNode: (nodeId: string) => void
+  /** Called when user wants to explore the node in 3D */
+  onExplore?: () => void
 }
 
 /** Fixed positions for surface markers in local view (scattered layout) */
@@ -103,6 +105,7 @@ export function Map({
   onClose,
   onToggleView,
   onSelectNode,
+  onExplore,
 }: MapProps) {
   const [zoom, setZoom] = useState(1)
   const [pan, setPan] = useState({ x: 0, y: 0 })
@@ -337,6 +340,14 @@ export function Map({
           </span>
         </div>
       )}
+
+      {/* TODO: Enable when 3D world is ready
+      {view === 'local' && onExplore && (
+        <button className="map-explore-btn" onClick={onExplore}>
+          Enter World
+        </button>
+      )}
+      */}
 
       {view === 'world' && (
         <div className="map-legend">
