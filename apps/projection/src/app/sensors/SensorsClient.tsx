@@ -1,5 +1,5 @@
 /**
- * @file DashboardClient - Interactive sensor status dashboard.
+ * @file SensorsClient - Interactive sensor status view.
  *
  * A client-side component that displays:
  * - Observation statistics per domain (count, date range, staleness)
@@ -12,12 +12,44 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import type { DomainStatus, RecentObservation, DashboardStatus } from '@/services/dashboard'
+import type { DomainStatus, RecentObservation, SensorsStatus } from '@/services/sensors'
 
-/** Dashboard data structure matching DashboardStatus from the API */
-type DashboardData = Pick<DashboardStatus, 'exists' | 'domains' | 'recent'>
+/** Sensors data structure matching SensorsStatus from the API */
+type SensorsData = Pick<SensorsStatus, 'exists' | 'domains' | 'recent'>
 
-/** Props for DashboardClient */
+/** Staleness level for a sensor */
+type Staleness = 'fresh' | 'stale' | 'old'
+
+/**
+ * Cadence configuration for staleness thresholds.
+ * Values are in days. A sensor is:
+ * - fresh: last ingest < freshDays ago
+ * - stale: last ingest between freshDays and staleDays ago
+ * - old: last ingest > staleDays ago
+ *
+ * To add per-domain cadence later, change this to:
+ * const CADENCE: Record<string, CadenceConfig> = { finance: {...}, default: {...} }
+ */
+interface CadenceConfig {
+  freshDays: number
+  staleDays: number
+}
+
+const DEFAULT_CADENCE: CadenceConfig = {
+  freshDays: 7,   // fresh if updated within a week
+  staleDays: 14,  // stale after a week, old after two weeks
+}
+
+/**
+ * Get cadence config for a domain.
+ * Currently returns default for all domains - extend this to support per-domain config.
+ */
+function getCadence(_domain: string): CadenceConfig {
+  // Future: return DOMAIN_CADENCE[domain] ?? DEFAULT_CADENCE
+  return DEFAULT_CADENCE
+}
+
+/** Props for SensorsClient */
 interface Props {
   /** Node identifier to display in the header */
   node: string
@@ -61,21 +93,42 @@ function formatShortDate(isoString: string): string {
 }
 
 /**
- * Determines staleness level based on time since last ingest.
- * - fresh: < 2 days (green indicator)
- * - stale: 2-7 days (yellow indicator)
- * - old: > 7 days (red indicator)
+ * Determines staleness level based on time since last ingest and domain cadence.
+ * Uses getCadence() to get thresholds - currently same for all domains.
  */
-function getStaleness(isoString: string): 'fresh' | 'stale' | 'old' {
+function getStaleness(isoString: string, domain: string): Staleness {
+  const cadence = getCadence(domain)
   const diffMs = Date.now() - new Date(isoString).getTime()
   const diffDays = diffMs / (1000 * 60 * 60 * 24)
-  if (diffDays < 2) return 'fresh'
-  if (diffDays < 7) return 'stale'
+  if (diffDays < cadence.freshDays) return 'fresh'
+  if (diffDays < cadence.staleDays) return 'stale'
   return 'old'
 }
 
 /**
- * DashboardClient - Main sensor status dashboard component.
+ * Computes a summary of sensors needing attention.
+ */
+function computeAttentionSummary(domains: DomainStatus[]): { count: number; items: string[] } {
+  const items: string[] = []
+  for (const d of domains) {
+    if (!d.lastIngest) {
+      items.push(`${d.domain} (never ingested)`)
+      continue
+    }
+    const staleness = getStaleness(d.lastIngest.finishedAt, d.domain)
+    if (staleness === 'stale') {
+      const daysAgo = Math.floor((Date.now() - new Date(d.lastIngest.finishedAt).getTime()) / (1000 * 60 * 60 * 24))
+      items.push(`${d.domain} (${daysAgo}d stale)`)
+    } else if (staleness === 'old') {
+      const daysAgo = Math.floor((Date.now() - new Date(d.lastIngest.finishedAt).getTime()) / (1000 * 60 * 60 * 24))
+      items.push(`${d.domain} (${daysAgo}d old)`)
+    }
+  }
+  return { count: items.length, items }
+}
+
+/**
+ * SensorsClient - Main sensor status component.
  *
  * Features:
  * - Auto-loads status on mount
@@ -84,8 +137,8 @@ function getStaleness(isoString: string): 'fresh' | 'stale' | 'old' {
  * - Recent observations table
  * - Logout button
  */
-export default function DashboardClient({ node }: Props) {
-  const [data, setData] = useState<DashboardData | null>(null)
+export default function SensorsClient({ node }: Props) {
+  const [data, setData] = useState<SensorsData | null>(null)
   const [loading, setLoading] = useState(true)
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const [dragOver, setDragOver] = useState(false)
@@ -100,7 +153,7 @@ export default function DashboardClient({ node }: Props) {
 
   const refreshData = useCallback(async () => {
     try {
-      const res = await fetch('/api/dashboard/status/')
+      const res = await fetch('/api/sensors/status/')
       if (res.ok) {
         const newData = await res.json()
         setData(newData)
@@ -120,7 +173,7 @@ export default function DashboardClient({ node }: Props) {
     formData.append('file', file)
 
     try {
-      const res = await fetch('/api/dashboard/ingest/', {
+      const res = await fetch('/api/sensors/ingest/', {
         method: 'POST',
         body: formData,
       })
@@ -151,38 +204,49 @@ export default function DashboardClient({ node }: Props) {
 
   const handleLogout = useCallback(async () => {
     await fetch('/api/auth/logout/', { method: 'POST' })
-    router.push('/dashboard/login/')
+    router.push('/sensors/login/')
   }, [router])
 
   if (loading) {
     return (
-      <div className="dashboard">
-        <div className="dashboard-container">
-          <div className="dashboard-empty">Loading...</div>
+      <div className="sensors">
+        <div className="sensors-container">
+          <div className="sensors-empty">Loading...</div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-container">
-        <header className="dashboard-header">
-          <h1 className="dashboard-title">Sensor Status</h1>
-          <div className="dashboard-header-actions">
-            <span className="dashboard-node-label">{node}</span>
-            <button className="dashboard-logout" onClick={handleLogout}>Logout</button>
+    <div className="sensors">
+      <div className="sensors-container">
+        <header className="sensors-header">
+          <h1 className="sensors-title">Sensors</h1>
+          <div className="sensors-header-actions">
+            <span className="sensors-node-label">{node}</span>
+            <button className="sensors-logout" onClick={handleLogout}>Logout</button>
           </div>
         </header>
 
         {toast && (
-          <div className={`dashboard-toast ${toast.type}`}>
+          <div className={`sensors-toast ${toast.type}`}>
             {toast.message}
           </div>
         )}
 
+        {data && data.domains.length > 0 && (() => {
+          const attention = computeAttentionSummary(data.domains)
+          if (attention.count === 0) return null
+          return (
+            <div className="sensors-attention">
+              <span className="sensors-attention-count">{attention.count} sensor{attention.count > 1 ? 's' : ''} need{attention.count === 1 ? 's' : ''} attention</span>
+              <span className="sensors-attention-list">{attention.items.join(' · ')}</span>
+            </div>
+          )
+        })()}
+
         <div
-          className={`dashboard-dropzone${dragOver ? ' dragover' : ''}${uploading ? ' uploading' : ''}`}
+          className={`sensors-dropzone${dragOver ? ' dragover' : ''}${uploading ? ' uploading' : ''}`}
           onClick={() => fileInputRef.current?.click()}
           onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
           onDragLeave={() => setDragOver(false)}
@@ -194,15 +258,15 @@ export default function DashboardClient({ node }: Props) {
             accept=".csv"
             onChange={(e) => e.target.files?.[0] && uploadFile(e.target.files[0])}
           />
-          <p className="dashboard-dropzone-text">
+          <p className="sensors-dropzone-text">
             {uploading ? <strong>Uploading...</strong> : <><strong>Drop CSV here</strong> or click to select</>}
           </p>
         </div>
 
-        <div className="dashboard-cards">
+        <div className="sensors-cards">
           {data && data.domains.length > 0 ? (
             data.domains.map((d) => {
-              const staleness = d.lastIngest ? getStaleness(d.lastIngest.finishedAt) : 'old'
+              const staleness = d.lastIngest ? getStaleness(d.lastIngest.finishedAt, d.domain) : 'old'
               const coverage = d.minObserved && d.maxObserved
                 ? formatDate(d.minObserved) === formatDate(d.maxObserved)
                   ? formatDate(d.minObserved)
@@ -213,37 +277,37 @@ export default function DashboardClient({ node }: Props) {
                 : 'unknown'
 
               return (
-                <div key={d.domain} className="dashboard-card">
-                  <div className="dashboard-card-header">
-                    <span className="dashboard-domain-name">{d.domain}</span>
-                    <span className={`dashboard-status-dot ${staleness}`} />
+                <div key={d.domain} className="sensors-card">
+                  <div className="sensors-card-header">
+                    <span className="sensors-domain-name">{d.domain}</span>
+                    <span className={`sensors-status-dot ${staleness}`} />
                   </div>
-                  <div className="dashboard-stats">
-                    <div className="dashboard-stat">
-                      <span className="dashboard-stat-value">{d.count.toLocaleString()}</span>
-                      <span className="dashboard-stat-label">observations</span>
+                  <div className="sensors-stats">
+                    <div className="sensors-stat">
+                      <span className="sensors-stat-value">{d.count.toLocaleString()}</span>
+                      <span className="sensors-stat-label">observations</span>
                     </div>
-                    <div className="dashboard-stat">
-                      <span className="dashboard-stat-value">{coverage}</span>
-                      <span className="dashboard-stat-label">coverage</span>
+                    <div className="sensors-stat">
+                      <span className="sensors-stat-value">{coverage}</span>
+                      <span className="sensors-stat-label">coverage</span>
                     </div>
-                    <div className="dashboard-stat">
-                      <span className="dashboard-stat-value">{lastIngest}</span>
-                      <span className="dashboard-stat-label">last ingest</span>
+                    <div className="sensors-stat">
+                      <span className="sensors-stat-value">{lastIngest}</span>
+                      <span className="sensors-stat-label">last ingest</span>
                     </div>
                   </div>
                 </div>
               )
             })
           ) : (
-            <div className="dashboard-empty">No observations yet</div>
+            <div className="sensors-empty">No observations yet</div>
           )}
         </div>
 
         {data?.recent && data.recent.length > 0 && (
           <>
-            <h2 className="dashboard-section-header">Recent Observations</h2>
-            <table className="dashboard-recent-table">
+            <h2 className="sensors-section-header">Recent Observations</h2>
+            <table className="sensors-recent-table">
               <thead>
                 <tr>
                   <th>Date</th>
@@ -255,8 +319,8 @@ export default function DashboardClient({ node }: Props) {
                 {data.recent.map((o) => (
                   <tr key={o.id}>
                     <td>{formatShortDate(o.observed_at)}</td>
-                    <td className="dashboard-domain-cell">{o.domain}</td>
-                    <td className="dashboard-summary-cell">{o.summary}</td>
+                    <td className="sensors-domain-cell">{o.domain}</td>
+                    <td className="sensors-summary-cell">{o.summary}</td>
                   </tr>
                 ))}
               </tbody>
@@ -264,7 +328,7 @@ export default function DashboardClient({ node }: Props) {
           </>
         )}
 
-        <p className="dashboard-refresh">Click dropzone to upload, or drag and drop</p>
+        <p className="sensors-refresh">Click dropzone to upload, or drag and drop</p>
       </div>
     </div>
   )

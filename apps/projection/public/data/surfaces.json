@@ -20,12 +20,12 @@
     "visibility": "public"
   },
   {
-    "name": "Dashboard",
+    "name": "Sensors",
     "node": "org",
     "type": "internal",
     "kind": "device",
     "category": "—",
-    "path": "/dashboard/",
+    "path": "/sensors/",
     "status": "active",
     "visibility": "private"
   },

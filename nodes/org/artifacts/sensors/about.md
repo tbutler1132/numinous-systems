@@ -8,7 +8,6 @@ relates_to:
   - deduplication
   - fingerprinting
   - finance
-  - thought
   - calendar
   - core
   - apps
@@ -47,8 +46,7 @@ Sensors here share certain commitments:
 | Sensor       | Domain                                              |
 | ------------ | --------------------------------------------------- |
 | **Finance**  | Bank transactions — ingest CSVs, normalize, dedupe  |
-| **Thought**  | Inbox capture — bridge fuzzy notes to observations  |
-| **Calendar** | Time allocation — sync events into memory           |
+| **Calendar** | Time allocation — sync events into memory (planned) |
 
 ## Connection to Other Categories
 
@@ -62,4 +60,4 @@ Sensors have concept folders here but implementations in `sensors/` at the proje
 
 ## Status
 
-Finance and Thought are implemented. Calendar is specified. The sensor architecture continues to evolve.
+Finance is implemented. Calendar is planned. The sensor architecture continues to evolve.

@@ -1,13 +1,13 @@
 #!/usr/bin/env npx tsx
 /**
- * CLI wrapper for dashboard status.
+ * CLI wrapper for sensors status.
  * Outputs JSON to stdout for scripting/debugging.
  */
 
-import { getDashboardStatus } from '../src/services/dashboard'
+import { getSensorsStatus } from '../src/services/sensors'
 
 async function main() {
-  const status = await getDashboardStatus()
+  const status = await getSensorsStatus()
   console.log(JSON.stringify(status, null, 2))
 }
 

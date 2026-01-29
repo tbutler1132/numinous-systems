@@ -100,7 +100,29 @@ export class ObservationStore {
     // Initialize schema
     db.run(SCHEMA);
 
+    // Run migrations for existing databases
+    ObservationStore.migrate(db);
+
     return new ObservationStore(db, dbPath);
+  }
+
+  /**
+   * Run schema migrations for existing databases.
+   * Adds any missing columns that were added after initial schema.
+   */
+  private static migrate(db: Database): void {
+    // Check if node_id column exists
+    const columns = db.exec(
+      "SELECT name FROM pragma_table_info('observations')"
+    );
+    const columnNames = columns[0]?.values.map((row) => row[0]) ?? [];
+
+    if (!columnNames.includes("node_id")) {
+      // Add node_id column with default value for existing rows
+      db.run(
+        "ALTER TABLE observations ADD COLUMN node_id TEXT NOT NULL DEFAULT 'personal'"
+      );
+    }
   }
 
   /**
@@ -466,12 +488,9 @@ export class ObservationStore {
 }
 
 /**
- * Resolve the database path for a given node
- * "private" maps to nodes/org/private/ (personal content within org)
+ * Resolve the database path for a given node.
+ * Each node stores observations in nodes/{nodeName}/data/observations.db
  */
 export function resolveDbPath(workspaceRoot: string, nodeName: string): string {
-  if (nodeName === "private") {
-    return `${workspaceRoot}/nodes/org/private/data/observations.db`;
-  }
   return `${workspaceRoot}/nodes/${nodeName}/data/observations.db`;
 }

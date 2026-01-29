@@ -18,14 +18,12 @@ Sensors don't analyze, score, or recommend. They observe.
 | Sensor | Domain | Input | Description |
 |--------|--------|-------|-------------|
 | `finance` | `finance` | Chase CSV | Bank transactions → observations |
-| `thought` | `thought` | inbox.md | Interactive inbox processing → observations |
 
 ## Architecture
 
 ```
 sensors/                    # Domain-specific implementations
   finance/                  # Chase CSV → finance observations
-  thought/                  # inbox.md → thought observations
 
 core/sensor/                # Shared infrastructure
   - ObservationStore        # SQLite persistence
@@ -115,10 +113,7 @@ import { ObservationStore, resolveDbPath } from "@numinous-systems/sensor";
 
 ```bash
 # Finance: ingest Chase CSV
-npx finance ingest nodes/org/private/raw/finance/chase-credit/
-
-# Thought: process inbox interactively
-npx thought process
+npx finance ingest nodes/personal/raw/finance/chase-credit/
 ```
 
 ## Data Flow
@@ -127,13 +122,9 @@ npx thought process
 Raw Data              Sensor                    Observation Store
 ─────────────────────────────────────────────────────────────────
 
-Chase CSV    →   sensors/finance   →   nodes/org/private/data/observations.db
+Chase CSV    →   sensors/finance   →   nodes/personal/data/observations.db
                        │
                        └─ Parses, normalizes, fingerprints
-
-inbox.md     →   sensors/thought   →   nodes/org/private/data/observations.db
-                       │
-                       └─ Interactive tagging, fingerprints
 
 (future)
 Oura API     →   sensors/health    →   ...
@@ -146,11 +137,9 @@ Each sensor has its own tests:
 
 ```bash
 cd sensors/finance && npm test
-cd sensors/thought && npm test
 ```
 
 ## Related
 
 - `core/sensor/` — shared observation infrastructure
-- `nodes/org/private/data/observations.db` — where observations are stored
-- `nodes/inbox.md` — input for thought sensor
+- `nodes/personal/data/observations.db` — where observations are stored

@@ -1,16 +1,16 @@
 /**
- * @file Dashboard service for observation management.
+ * @file Sensors service for observation management.
  *
- * This module provides the business logic for the sensor dashboard:
+ * This module provides the business logic for the sensors view:
  * - Querying observation status and statistics per domain
  * - Ingesting CSV files (currently Chase bank statements)
  * - Formatting observations for display
  *
- * The dashboard is a "device" surface that provides visibility into
- * the private node's observation store.
+ * The sensors view is a "device" surface that provides visibility into
+ * the personal node's observation store.
  *
- * @see DashboardClient.tsx - UI that consumes this service
- * @see /api/dashboard/* - API routes that call these functions
+ * @see SensorsClient.tsx - UI that consumes this service
+ * @see /api/sensors/* - API routes that call these functions
  */
 
 import type { Observation } from '@numinous-systems/sensor'
@@ -21,7 +21,7 @@ import { createStore, dbExists } from './store'
 // Types
 // ============================================================================
 
-/** A recent observation formatted for display in the dashboard */
+/** A recent observation formatted for display */
 export interface RecentObservation {
   id: string
   observed_at: string
@@ -48,8 +48,8 @@ export interface DomainStatus {
   } | null
 }
 
-/** Complete dashboard status returned by getDashboardStatus() */
-export interface DashboardStatus {
+/** Complete sensors status returned by getSensorsStatus() */
+export interface SensorsStatus {
   /** Whether the observation database exists */
   exists: boolean
   /** Status for each observation domain */
@@ -159,14 +159,14 @@ function formatObservation(o: Observation): RecentObservation {
 // ============================================================================
 
 /**
- * Gets the complete dashboard status including domain stats and recent observations.
+ * Gets the complete sensors status including domain stats and recent observations.
  *
  * Returns domain-level statistics (counts, date ranges, last ingest) plus
  * the 10 most recent observations across all domains.
  *
- * @returns Dashboard status, or { exists: false, ... } if database doesn't exist
+ * @returns Sensors status, or { exists: false, ... } if database doesn't exist
  */
-export async function getDashboardStatus(): Promise<DashboardStatus> {
+export async function getSensorsStatus(): Promise<SensorsStatus> {
   if (!dbExists()) {
     return { exists: false, domains: [], recent: [] }
   }

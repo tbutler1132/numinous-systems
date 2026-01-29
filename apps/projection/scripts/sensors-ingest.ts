@@ -5,7 +5,7 @@
  */
 
 import { existsSync, readFileSync } from 'fs'
-import { ingestChaseCSV } from '../src/services/dashboard'
+import { ingestChaseCSV } from '../src/services/sensors'
 
 async function main() {
   const args = process.argv.slice(2)

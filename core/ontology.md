@@ -30,6 +30,27 @@ Observations answer: *what happened?*
 
 ---
 
+## Sensor
+
+A perception organ that converts external data into observations.
+
+Sensors implement the first stage of the cybernetic loop: sensing. They take raw input (CSV files, API responses, manual entries) and transform it into domain-agnostic observations that can be stored, queried, and learned from.
+
+Sensors are shared infrastructure — any node can use any sensor. The node determines where observations land; the sensor determines how they're produced.
+
+| Relationship | Description |
+|--------------|-------------|
+| Sensor → Observation | Sensors produce observations |
+| Node → Observation | Nodes store observations |
+| Sensor ← Node | Nodes choose which sensors to use |
+
+Current sensors:
+- **finance** — parses bank statements (Chase CSV) into transaction observations
+
+Sensors answer: *how does the system perceive?*
+
+---
+
 ## Entity
 
 A thing with persistent identity that is owned or managed.

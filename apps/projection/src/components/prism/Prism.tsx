@@ -5,7 +5,7 @@
  * It consists of:
  * - Minimap: Always-visible location indicator in the corner
  * - Map: Full-screen zoomable navigation view
- * - Menu: Sidebar with Map tab and device features (e.g., Dashboard)
+ * - Menu: Sidebar with Map tab and device features (e.g., Sensors)
  * - Crosshairs: Visual cursor tracking in map view
  *
  * The prism metaphor: light enters and is split into different surfaces
@@ -16,7 +16,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import type { Surface } from '@/lib/data'
-import DashboardClient from '@/app/dashboard/DashboardClient'
+import SensorsClient from '@/app/sensors/SensorsClient'
 
 import { useAuth } from './useAuth'
 import { useCursor } from './useCursor'
@@ -117,9 +117,9 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
             />
 
             <div className="game-menu-content">
-              {activePage === '/dashboard/' && (
+              {activePage === '/sensors/' && (
                 <div className="device-panel">
-                  <DashboardClient node="private" />
+                  <SensorsClient node="personal" />
                 </div>
               )}
 

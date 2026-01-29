@@ -1,9 +1,9 @@
 /**
  * @file Observation store factory and database path resolution.
  *
- * This module provides access to the private node's observation database.
+ * This module provides access to the personal node's observation database.
  * The database stores sensor observations (financial transactions, thoughts, etc.)
- * and is located in nodes/personal/observations.db.
+ * and is located in nodes/personal/data/observations.db.
  *
  * @see @numinous-systems/sensor - Core observation infrastructure
  * @see services/dashboard.ts - Uses the store for dashboard queries
@@ -14,16 +14,16 @@ import { ObservationStore, resolveDbPath } from '@numinous-systems/sensor'
 import { findWorkspaceRoot } from '@/lib/workspace'
 
 /**
- * Gets the absolute path to the private node's observation database.
+ * Gets the absolute path to the personal node's observation database.
  *
  * Uses resolveDbPath from @numinous-systems/sensor which follows the
- * convention: {workspaceRoot}/nodes/{nodeId}/observations.db
+ * convention: {workspaceRoot}/nodes/{nodeId}/data/observations.db
  *
  * @returns Absolute path to the SQLite database file
  */
 export function getDbPath(): string {
   const workspaceRoot = findWorkspaceRoot()
-  return resolveDbPath(workspaceRoot, 'private')
+  return resolveDbPath(workspaceRoot, 'personal')
 }
 
 /**
@@ -36,7 +36,7 @@ export function dbExists(): boolean {
 }
 
 /**
- * Creates an ObservationStore instance for the private node.
+ * Creates an ObservationStore instance for the personal node.
  *
  * Opens a connection to the SQLite database. The caller MUST call
  * store.close() when done to release the database connection.

@@ -1,5 +1,5 @@
-# Personal/private content
-nodes/org/private/
+# Personal node (private observations, models, episodes)
+nodes/personal/
 nodes/inbox.md
 
 # Editor/IDE

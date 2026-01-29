@@ -3,7 +3,7 @@
  *
  * Displays tabs for:
  * - Map: The main navigation view
- * - Device features: Dashboard, etc. (from surfaces with kind='device')
+ * - Device features: Sensors, etc. (from surfaces with kind='device')
  *
  * Shows lock icons for features requiring authentication.
  */

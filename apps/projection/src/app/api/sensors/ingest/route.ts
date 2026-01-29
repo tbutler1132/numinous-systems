@@ -1,5 +1,5 @@
 /**
- * @file POST /api/dashboard/ingest - CSV file upload endpoint.
+ * @file POST /api/sensors/ingest - CSV file upload endpoint.
  *
  * Accepts a CSV file upload (Chase bank statement format) and ingests
  * the transactions into the observation store. Returns ingest statistics.
@@ -9,7 +9,7 @@
  */
 
 import { NextResponse } from 'next/server'
-import { ingestChaseCSV } from '@/services/dashboard'
+import { ingestChaseCSV } from '@/services/sensors'
 
 /** Disable Next.js caching for this route */
 export const dynamic = 'force-dynamic'

@@ -28,7 +28,6 @@ The infrastructure lives in `core/sensor/`. The domain-specific implementations 
 ## Current Sensors
 
 - **finance/** — Bank transactions become financial observations
-- **thought/** — Inbox items become thought observations
 
 ## When to Build a Sensor
 

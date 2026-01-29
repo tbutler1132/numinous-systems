@@ -7,7 +7,6 @@
     "core/sensor",
     "core/identity",
     "sensors/finance",
-    "sensors/thought",
     "apps/dashboard",
     "apps/projection"
   ],

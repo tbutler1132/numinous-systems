@@ -22,7 +22,7 @@ export default function LoginPage() {
       })
 
       if (res.ok) {
-        router.push('/dashboard/')
+        router.push('/sensors/')
       } else {
         const data = await res.json()
         setError(data.error || 'Invalid token')
@@ -37,7 +37,7 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1 className="login-title">Dashboard</h1>
+        <h1 className="login-title">Sensors</h1>
         <input
           type="password"
           className="login-input"
