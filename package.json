@@ -9,6 +9,7 @@
     "core/identity",
     "sensors/finance",
     "sensors/thought",
+    "sensors/entity",
     "apps/dashboard",
     "apps/projection"
   ],
