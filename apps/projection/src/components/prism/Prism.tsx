@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import type { Surface } from '@/lib/data'
 import SensorsClient from '@/app/sensors/SensorsClient'
+import ProcessClient from '@/app/process/ProcessClient'
 
 import { useAuth } from './useAuth'
 import { useCursor } from './useCursor'
@@ -120,6 +121,12 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
               {activePage === '/sensors/' && (
                 <div className="device-panel">
                   <SensorsClient node="personal" />
+                </div>
+              )}
+
+              {activePage === '/process/' && (
+                <div className="device-panel">
+                  <ProcessClient />
                 </div>
               )}
 

@@ -7,7 +7,8 @@
     "category": "—",
     "path": "/",
     "status": "active",
-    "visibility": "public"
+    "visibility": "public",
+    "access": "anonymous"
   },
   {
     "name": "Hero's Journey",
@@ -17,7 +18,8 @@
     "category": "exhibit",
     "path": "/heros-journey/",
     "status": "active",
-    "visibility": "public"
+    "visibility": "public",
+    "access": "anonymous"
   },
   {
     "name": "Sensors",
@@ -27,7 +29,19 @@
     "category": "—",
     "path": "/sensors/",
     "status": "active",
-    "visibility": "private"
+    "visibility": "private",
+    "access": "collaborator"
+  },
+  {
+    "name": "Process",
+    "node": "org",
+    "type": "internal",
+    "kind": "device",
+    "category": "—",
+    "path": "/process/",
+    "status": "active",
+    "visibility": "private",
+    "access": "collaborator"
   },
   {
     "name": "X",
@@ -37,6 +51,7 @@
     "category": "—",
     "path": "https://x.com/alltoosynthetic",
     "status": "active",
-    "visibility": "public"
+    "visibility": "public",
+    "access": "anonymous"
   }
 ]

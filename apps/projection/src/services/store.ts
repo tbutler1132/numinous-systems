@@ -2,11 +2,17 @@
  * @file Observation store factory and database path resolution.
  *
  * This module provides access to the personal node's observation database.
- * The database stores sensor observations (financial transactions, thoughts, etc.)
+ * The database stores sensor observations (financial transactions, etc.)
  * and is located in nodes/personal/data/observations.db.
  *
+ * NOTE: Currently hardcoded to the "personal" node.
+ * For multi-node support, this would:
+ * 1. Accept nodeId as a parameter (or get from session/auth)
+ * 2. Use resolveDbPath(workspaceRoot, nodeId) with the dynamic nodeId
+ * 3. Each user's identity (core/identity) determines which node they operate from
+ *
  * @see @numinous-systems/sensor - Core observation infrastructure
- * @see services/dashboard.ts - Uses the store for dashboard queries
+ * @see services/sensors.ts - Uses the store for sensor status queries
  */
 
 import { existsSync } from 'fs'

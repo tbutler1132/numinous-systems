@@ -90,12 +90,18 @@ export interface Surface {
 }
 
 /**
- * Maps visibility string from surface data to AccessLevel type.
+ * Parses access level from surface data.
+ * Uses explicit 'access' column if present, falls back to visibility-based inference.
  *
- * @param visibility - Raw visibility string from surfaces.json ('public' or 'private')
- * @returns AccessLevel: 'anonymous' for public, 'viewer' for private
+ * @param access - Explicit access level from surfaces.json (if present)
+ * @param visibility - Visibility string ('public' or 'private')
+ * @returns AccessLevel for the surface
  */
-function parseAccessLevel(visibility: string): AccessLevel {
+function parseAccessLevel(access: string | undefined, visibility: string): AccessLevel {
+  if (access && ['anonymous', 'viewer', 'supporter', 'contributor', 'collaborator'].includes(access)) {
+    return access as AccessLevel
+  }
+  // Fallback: private surfaces require viewer, public are anonymous
   return visibility === 'private' ? 'viewer' : 'anonymous'
 }
 
@@ -119,7 +125,7 @@ export function getSurfaces(): Surface[] {
       nodeId: r.node || 'org',
       kind: (r.kind === 'device' ? 'device' : 'location') as 'location' | 'device',
       external: r.type === 'external',
-      requiredAccess: parseAccessLevel(r.visibility),
+      requiredAccess: parseAccessLevel(r.access, r.visibility),
       category: (['plaza', 'exhibit'].includes(r.category) ? r.category : null) as SurfaceCategory,
     }))
 }

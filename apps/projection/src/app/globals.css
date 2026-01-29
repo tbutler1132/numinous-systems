@@ -1306,6 +1306,238 @@ body {
   text-align: center;
 }
 
+/* Process Page */
+.process {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fafafa;
+  padding: 2rem;
+}
+
+.process-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.process-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.process-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+
+.process-logout {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.process-logout:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.process-loading {
+  color: #71717a;
+  text-align: center;
+  padding: 2rem;
+}
+
+.process-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #27272a;
+  padding-bottom: 0.5rem;
+}
+
+.process-tab {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.process-tab:hover {
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.process-tab.active {
+  color: #fafafa;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.process-content {
+  line-height: 1.7;
+}
+
+/* Markdown content styling */
+.process-markdown {
+  color: #a1a1aa;
+}
+
+.process-markdown h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fafafa;
+  margin: 2rem 0 1rem 0;
+}
+
+.process-markdown h1:first-child {
+  margin-top: 0;
+}
+
+.process-markdown h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fafafa;
+  margin: 2rem 0 1rem 0;
+}
+
+.process-markdown h2:first-child {
+  margin-top: 0;
+}
+
+.process-markdown h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #d4d4d8;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.process-markdown h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.process-markdown p {
+  margin: 0.75rem 0;
+}
+
+.process-markdown ul,
+.process-markdown ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.process-markdown li {
+  margin: 0.5rem 0;
+}
+
+.process-markdown strong {
+  color: #d4d4d8;
+  font-weight: 600;
+}
+
+.process-markdown em {
+  font-style: italic;
+}
+
+.process-markdown a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.process-markdown a:hover {
+  text-decoration: underline;
+}
+
+.process-markdown code {
+  background: #18181b;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+  color: #d4d4d8;
+}
+
+.process-markdown pre {
+  background: #18181b;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.process-markdown pre code {
+  background: none;
+  padding: 0;
+}
+
+.process-markdown blockquote {
+  border-left: 3px solid #3f3f46;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #71717a;
+  font-style: italic;
+}
+
+.process-markdown hr {
+  border: none;
+  border-top: 1px solid #27272a;
+  margin: 2rem 0;
+}
+
+.process-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.process-markdown th,
+.process-markdown td {
+  border: 1px solid #27272a;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.process-markdown th {
+  background: #18181b;
+  color: #d4d4d8;
+  font-weight: 500;
+}
+
+.process-markdown td {
+  color: #a1a1aa;
+}
+
+.process-markdown tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Process in device panel */
+.device-panel .process {
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.device-panel .process-container {
+  max-width: 100%;
+}
+
 /* Locked surfaces in spatial nav */
 .spatial-nav-surface.locked {
   opacity: 0.5;
