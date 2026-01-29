@@ -17,7 +17,7 @@
 
 import { writeFileSync, mkdirSync, readFileSync } from 'fs'
 import { join, resolve, dirname } from 'path'
-import { collectArtifacts, parseMarkdownTable } from './lib'
+import { collectArtifacts, parseMarkdownTable, readArtifact, readPage } from './lib'
 
 /** Monorepo root directory */
 const ROOT = resolve(__dirname, '..', '..', '..')
@@ -56,3 +56,16 @@ const surfacesOutputPath = join(__dirname, '..', 'public/data/surfaces.json')
 mkdirSync(dirname(surfacesOutputPath), { recursive: true })
 writeFileSync(surfacesOutputPath, JSON.stringify(surfaceRows, null, 2))
 console.log(`surfaces: ${surfaceRows.length} entries → public/data/surfaces.json`)
+
+// Generate landing.json from the landing artifact
+const landingDir = join(ROOT, 'nodes/org/artifacts/apps/landing')
+const landingArtifact = readArtifact(landingDir)
+const landingPage = readPage(landingDir)
+const landingData = {
+  frontmatter: landingArtifact?.frontmatter ?? {},
+  content: landingArtifact?.content ?? '',
+  page: landingPage ?? '',
+}
+const landingOutputPath = join(__dirname, '..', 'public/data/landing.json')
+writeFileSync(landingOutputPath, JSON.stringify(landingData, null, 2))
+console.log(`landing: 1 artifact → public/data/landing.json`)

@@ -66,6 +66,25 @@ export function getHerosJourney(): Artifact[] {
   return JSON.parse(raw)
 }
 
+/** Landing page data from the landing artifact */
+export interface LandingData {
+  frontmatter: Record<string, unknown>
+  content: string
+  page: string
+}
+
+/**
+ * Loads the landing page data from pre-generated JSON.
+ *
+ * Returns the landing artifact content including page.md for rendering.
+ *
+ * @returns Landing artifact data
+ */
+export function getLanding(): LandingData {
+  const raw = readFileSync(join(process.cwd(), 'public/data/landing.json'), 'utf-8')
+  return JSON.parse(raw)
+}
+
 /** Surface category for visual grouping (plaza = public spaces, exhibit = curated work) */
 export type SurfaceCategory = 'plaza' | 'exhibit' | null
 
