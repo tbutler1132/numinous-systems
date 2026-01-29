@@ -1,26 +1,21 @@
 {
-  "name": "@numinous-systems/finance",
+  "name": "@numinous-systems/memory",
   "version": "1.0.0",
-  "description": "Finance sensor - Chase CSV to observation memory",
+  "description": "Observation memory layer - stores, queries, and deduplicates observations",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": {
-    "finance": "dist/cli.js"
-  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
-    "start": "node dist/cli.js",
     "test": "node --import tsx --test src/*.test.ts"
   },
   "dependencies": {
-    "@numinous-systems/memory": "^1.0.0",
-    "@numinous-systems/sensor": "^1.0.0",
-    "csv-parse": "^5.6.0"
+    "sql.js": "^1.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "@types/sql.js": "^1.4.9",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   },

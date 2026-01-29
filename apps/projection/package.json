@@ -12,6 +12,7 @@
   "dependencies": {
     "@numinous-systems/finance": "^1.0.0",
     "@numinous-systems/identity": "1.0.0",
+    "@numinous-systems/memory": "^1.0.0",
     "@numinous-systems/node": "1.0.0",
     "@numinous-systems/sensor": "^1.0.0",
     "@react-three/drei": "^9.122.0",

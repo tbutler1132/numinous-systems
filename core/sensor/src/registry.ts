@@ -1,4 +1,4 @@
-import { SensorDescriptor } from "./types.js";
+import { Sensor, SensorDescriptor } from "./types.js";
 
 /**
  * In-memory registry for sensor plugins.
@@ -16,6 +16,15 @@ class SensorRegistry {
 
   get(id: string): SensorDescriptor | undefined {
     return this.sensors.get(id);
+  }
+
+  /**
+   * Get a full Sensor with ingest/formatSummary methods.
+   * Returns undefined if the sensor doesn't implement the full interface.
+   */
+  getSensor(id: string): Sensor | undefined {
+    const s = this.sensors.get(id);
+    return s && "ingest" in s && "formatSummary" in s ? (s as Sensor) : undefined;
   }
 
   list(): SensorDescriptor[] {

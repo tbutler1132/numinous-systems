@@ -3,24 +3,24 @@ import { ingest } from "./ingest.js";
 import { formatSummary } from "./format.js";
 
 /**
- * Finance sensor - full Sensor implementation.
+ * Thought sensor - full Sensor implementation.
  * Provides ingest and formatSummary methods.
  */
 export const sensor: Sensor = {
-  id: "finance",
-  name: "Finance Sensor",
+  id: "thought",
+  name: "Thought Sensor",
   version: "1.0.0",
-  domain: "finance",
-  sources: ["chase_csv"],
-  observationType: "transaction",
-  description: "Parses bank statements into financial observations",
+  domain: "thought",
+  sources: ["inbox_md"],
+  observationType: "entry",
+  description: "Parses inbox markdown into thought observations",
   ingest,
   formatSummary,
 };
 
-// Keep existing exports for backwards compatibility
+// Export all types and functions
 export * from "./types.js";
 export * from "./fingerprint.js";
-export * from "./chase-csv.js";
+export * from "./inbox-parser.js";
 export { ingest } from "./ingest.js";
 export { formatSummary } from "./format.js";

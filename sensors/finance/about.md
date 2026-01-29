@@ -22,4 +22,6 @@ The regularity matters more than the analysis. Memory accumulates. Understanding
 
 ## Technical Details
 
+Built on [Sensor Core](../../core/sensor/about.md), the shared observation infrastructure.
+
 See [README.md](README.md) for installation, CLI usage, and payload schema.

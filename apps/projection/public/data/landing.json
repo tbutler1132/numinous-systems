@@ -8,9 +8,9 @@
       "projection"
     ],
     "created": "2026-01-18T00:00:00.000Z",
-    "updated": "2026-01-18T00:00:00.000Z",
-    "implementation": "/apps/landing"
+    "updated": "2026-01-29T00:00:00.000Z",
+    "implementation": "/apps/projection/src/app/page.tsx"
   },
-  "content": "# Landing\n\n## Artifact Concept\n\nThis folder contains **Landing** — the personal brand hub and entry point.\n\nThe landing page serves as the central navigation point for all public-facing work. It presents the identity (currently Timothy Butler as stand-in for org brand) and provides pathways to other artifacts.\n\n## What This Artifact IS\n\n- The front door to the public presence\n- A minimal, elegant hub linking to projects\n- The canonical location for personal/org brand identity\n\n## What This Artifact Is NOT\n\n- A portfolio with extensive content\n- A blog or content platform\n- An app with complex functionality\n\n## Design Principles\n\n- **Restraint** — show only what matters\n- **Beauty** — the first impression should resonate\n- **Navigation** — clear pathways to actual work\n\n## Status\n\nThis artifact is active. The landing page is live and will evolve as new projects are added.",
+  "content": "# Landing\n\n## Artifact Concept\n\nThis folder contains **Landing** — the personal brand hub and entry point.\n\nThe landing page serves as the central navigation point for all public-facing work. It presents the identity (currently Timothy Butler as stand-in for org brand) and provides pathways to other artifacts.\n\n## What This Artifact IS\n\n- The front door to the public presence\n- A minimal, elegant hub linking to projects\n- The canonical location for personal/org brand identity\n\n## What This Artifact Is NOT\n\n- A portfolio with extensive content\n- A blog or content platform\n- An app with complex functionality\n\n## Design Principles\n\n- **Restraint** — show only what matters\n- **Beauty** — the first impression should resonate\n- **Navigation** — clear pathways to actual work\n\n## Implementation\n\nLanding is now a route within the Projection app. The implementation lives at `apps/projection/src/app/page.tsx` and reads content from `page.md` in this folder.\n\n## Status\n\nThis artifact is active. The landing page is the root of the projection app.",
   "page": "Timothy Butler"
 }

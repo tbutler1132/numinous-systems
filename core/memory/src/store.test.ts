@@ -5,7 +5,7 @@ import { ObservationStore, resolveDbPath } from "./store.js";
 import { fingerprint } from "./fingerprint.js";
 import type { Observation } from "./types.js";
 
-const TEST_DIR = "/tmp/sensor-test";
+const TEST_DIR = "/tmp/memory-test";
 const TEST_DB = `${TEST_DIR}/test.db`;
 
 function makeObservation(overrides: Partial<Observation> = {}): Observation {

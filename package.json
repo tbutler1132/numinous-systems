@@ -4,9 +4,11 @@
   "private": true,
   "workspaces": [
     "core/node",
+    "core/memory",
     "core/sensor",
     "core/identity",
     "sensors/finance",
+    "sensors/thought",
     "apps/dashboard",
     "apps/projection"
   ],
