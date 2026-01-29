@@ -1,7 +1,6 @@
 import type { Observation } from "@numinous-systems/memory";
 import type { IngestContext, IngestResult } from "@numinous-systems/sensor";
 import { parseInboxContent } from "./inbox-parser.js";
-import { thoughtEntryFingerprint } from "./fingerprint.js";
 import type { ThoughtEntryPayload } from "./types.js";
 
 /**
@@ -27,7 +26,8 @@ export async function ingest(
 
   const ingestedAt = new Date().toISOString();
 
-  // Convert parsed entries to observations
+  // Convert parsed entries to observations with identity declaration
+  // Memory computes fingerprint from: domain|source|type|identity.values
   const observations: Observation[] = parseResult.entries.map((entry) => {
     const payload: ThoughtEntryPayload = {
       text: entry.text,
@@ -37,7 +37,9 @@ export async function ingest(
     };
 
     return {
-      id: thoughtEntryFingerprint(entry.text_normalized),
+      identity: {
+        values: [entry.text_normalized],
+      },
       node_id: nodeId,
       domain: "thought",
       source: "inbox_md",

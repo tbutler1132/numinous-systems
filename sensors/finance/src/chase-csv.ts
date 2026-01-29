@@ -1,7 +1,6 @@
 import { parse } from "csv-parse/sync";
 import { readFileSync } from "node:fs";
 import { sourceRowHash, type Observation } from "@numinous-systems/sensor";
-import { financeTransactionFingerprint } from "./fingerprint.js";
 import type { FinanceTransactionPayload } from "./types.js";
 
 /**
@@ -34,6 +33,10 @@ export interface ParseOptions {
  */
 export interface ParseResult {
   observations: Observation[];
+  /**
+   * @deprecated Source row hashes are now included in observation payloads.
+   * The store extracts them automatically for collision detection.
+   */
   sourceRowHashes: Map<string, string>;
   minObserved: string | null;
   maxObserved: string | null;
@@ -65,7 +68,6 @@ export function parseChaseCSVContent(
   }) as ChaseCSVRow[];
 
   const observations: Observation[] = [];
-  const sourceHashes = new Map<string, string>();
   let minObserved: string | null = null;
   let maxObserved: string | null = null;
   const ingestedAt = new Date().toISOString();
@@ -96,14 +98,6 @@ export function parseChaseCSVContent(
     const descriptionRaw = row.Description;
     const descriptionNorm = normalizeDescription(descriptionRaw);
 
-    // Compute fingerprint
-    const id = financeTransactionFingerprint({
-      observed_at: observedAt,
-      amount_cents: amountCents,
-      description_norm: descriptionNorm,
-      account_label: options.accountLabel,
-    });
-
     // Compute source row hash for collision detection
     const rawHash = sourceRowHash([
       row["Transaction Date"] || "",
@@ -112,7 +106,6 @@ export function parseChaseCSVContent(
       descriptionRaw,
       row["Check or Slip #"] || "",
     ]);
-    sourceHashes.set(id, rawHash);
 
     // Build payload
     const payload: FinanceTransactionPayload = {
@@ -125,8 +118,12 @@ export function parseChaseCSVContent(
       source_row_hash: rawHash,
     };
 
-    observations.push({
-      id,
+    // Create observation with identity declaration
+    // Memory computes fingerprint from: domain|source|type|identity.values
+    const observation: Observation = {
+      identity: {
+        values: [observedAt, amountCents, descriptionNorm, options.accountLabel],
+      },
       node_id: options.nodeId || "private",
       observed_at: observedAt,
       domain: "finance",
@@ -135,12 +132,14 @@ export function parseChaseCSVContent(
       schema_version: 1,
       payload,
       ingested_at: ingestedAt,
-    });
+    };
+
+    observations.push(observation);
   }
 
   return {
     observations,
-    sourceRowHashes: sourceHashes,
+    sourceRowHashes: new Map(), // Deprecated: source_row_hash is in payload
     minObserved,
     maxObserved,
     rowCount: rows.length,

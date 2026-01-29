@@ -22,6 +22,8 @@ export {
 } from "@numinous-systems/memory";
 export type {
   Observation,
+  StoredObservation,
+  ObservationIdentity,
   IngestRun,
   AppendResult,
   CollisionWarning,

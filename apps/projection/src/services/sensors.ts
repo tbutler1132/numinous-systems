@@ -13,7 +13,7 @@
  * @see /api/sensors/* - API routes that call these functions
  */
 
-import type { Observation } from '@numinous-systems/memory'
+import type { StoredObservation } from '@numinous-systems/memory'
 import type { IngestResult } from '@numinous-systems/sensor'
 import { registry } from '@numinous-systems/sensor'
 import { sensor as financeSensor } from '@numinous-systems/finance'
@@ -85,7 +85,7 @@ function truncate(str: string, maxLen: number): string {
  * Formats an observation for display using the registered sensor.
  * Falls back to generic formatting if sensor not found.
  */
-function formatObservationSummary(observation: Observation): string {
+function formatObservationSummary(observation: StoredObservation): string {
   const sensor = registry.getSensor(observation.domain)
   if (sensor) {
     return sensor.formatSummary(observation)
@@ -112,9 +112,9 @@ function formatObservationSummary(observation: Observation): string {
 }
 
 /**
- * Transforms a raw Observation into a RecentObservation for display.
+ * Transforms a stored observation into a RecentObservation for display.
  */
-function formatObservation(o: Observation): RecentObservation {
+function formatObservation(o: StoredObservation): RecentObservation {
   return {
     id: o.id.substring(0, 8),
     observed_at: o.observed_at,

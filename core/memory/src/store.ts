@@ -4,11 +4,13 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import type {
   Observation,
+  StoredObservation,
   IngestRun,
   IngestStatus,
   AppendResult,
   CollisionWarning,
 } from "./types.js";
+import { fingerprint } from "./fingerprint.js";
 
 // Schema SQL
 const SCHEMA = `
@@ -143,8 +145,24 @@ export class ObservationStore {
   }
 
   /**
+   * Compute the fingerprint for an observation from its identity declaration.
+   * Format: SHA-256(domain|source|type|value1|value2|...)
+   */
+  private computeFingerprint(o: Observation): string {
+    if (!o.identity) {
+      throw new Error(
+        "Cannot compute fingerprint: observation has no identity declaration"
+      );
+    }
+    return fingerprint([o.domain, o.source, o.type, ...o.identity.values]);
+  }
+
+  /**
    * Insert observations with idempotent conflict handling.
    * Returns count of inserted vs skipped, plus any collision warnings.
+   *
+   * If an observation has an id, it's used directly.
+   * If an observation has identity but no id, the id is computed from identity.
    *
    * @param options.saveOnInsert - Whether to save to disk after insert (default: true).
    *                                Set to false for real-time ingestion to batch saves.
@@ -166,15 +184,22 @@ export class ObservationStore {
       const o = observations[i];
       const payloadJson = JSON.stringify(o.payload);
 
+      // Compute id from identity if not provided
+      const id = o.id ?? this.computeFingerprint(o);
+
       // Check if already exists
       const existing = this.db.exec(
         "SELECT payload FROM observations WHERE id = ?",
-        [o.id]
+        [id]
       );
 
       if (existing.length > 0 && existing[0].values.length > 0) {
         // Check for collision (same fingerprint, different source data)
-        const newSourceHash = sourceRowHashes.get(o.id);
+        // First check the map (legacy), then fall back to payload
+        const newSourceHash =
+          sourceRowHashes.get(id) ??
+          (o.payload.source_row_hash as string | undefined);
+
         if (newSourceHash) {
           const existingPayload = JSON.parse(
             existing[0].values[0][0] as string
@@ -186,7 +211,7 @@ export class ObservationStore {
           if (existingSourceHash && existingSourceHash !== newSourceHash) {
             warnings.push({
               row: i + 1,
-              id: o.id,
+              id,
               message:
                 "possible duplicate suppressed (same fingerprint, different raw data)",
             });
@@ -199,7 +224,7 @@ export class ObservationStore {
             (id, node_id, observed_at, domain, source, type, schema_version, payload, ingested_at)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           [
-            o.id,
+            id,
             o.node_id,
             o.observed_at,
             o.domain,
@@ -321,6 +346,18 @@ export class ObservationStore {
   }
 
   /**
+   * Check if an observation with the given identity exists.
+   * Computes the fingerprint from identity and checks the store.
+   */
+  hasObservationByIdentity(observation: Observation): boolean {
+    if (!observation.identity) {
+      throw new Error("Observation must have identity to check existence");
+    }
+    const id = this.computeFingerprint(observation);
+    return this.hasObservation(id);
+  }
+
+  /**
    * Query observations with optional filters
    */
   queryObservations(filter?: {
@@ -329,7 +366,7 @@ export class ObservationStore {
     since?: string;
     until?: string;
     limit?: number;
-  }): Observation[] {
+  }): StoredObservation[] {
     let sql = "SELECT * FROM observations WHERE 1=1";
     const params: unknown[] = [];
 

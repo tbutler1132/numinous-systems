@@ -27,9 +27,8 @@ export async function ingest(
 
   const runId = store.startIngestRun(filename, "finance");
 
-  const result = store.insertObservations(parseResult.observations, {
-    sourceRowHashes: parseResult.sourceRowHashes,
-  });
+  // Source row hashes are in observation payloads; store extracts them automatically
+  const result = store.insertObservations(parseResult.observations);
 
   store.finishIngestRun(runId, {
     rowsRead: parseResult.rowCount,

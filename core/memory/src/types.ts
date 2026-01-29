@@ -1,4 +1,20 @@
 /**
+ * Identity declaration - what makes an observation unique.
+ * Sensors declare identity; Memory computes the fingerprint.
+ *
+ * The fingerprint is computed as: SHA-256(domain|source|type|value1|value2|...)
+ * Domain, source, and type are taken from the observation itself.
+ * Values are the additional fields that define uniqueness within that context.
+ */
+export interface ObservationIdentity {
+  /**
+   * Values that define uniqueness within this domain/source/type.
+   * Order matters - must be consistent for the same observation type.
+   */
+  values: (string | number | null | undefined)[];
+}
+
+/**
  * Core observation type - domain-agnostic record of something observed.
  * Finance, health, time, mood all use the same structure.
  *
@@ -6,8 +22,17 @@
  * memory this observation lives in.
  */
 export interface Observation {
-  /** Deterministic fingerprint (SHA-256 of semantic fields) */
-  id: string;
+  /**
+   * Deterministic fingerprint (SHA-256 of semantic fields).
+   * Can be omitted if identity is provided - Memory will compute it.
+   */
+  id?: string;
+  /**
+   * Identity declaration - what makes this observation unique.
+   * Used to compute id if not provided directly.
+   * New sensors should use this instead of computing id themselves.
+   */
+  identity?: ObservationIdentity;
   /** The node whose memory this observation belongs to */
   node_id: string;
   /** When the observation occurred (ISO-8601 date or datetime) */
@@ -24,6 +49,15 @@ export interface Observation {
   payload: Record<string, unknown>;
   /** When this observation was ingested (ISO-8601 datetime) */
   ingested_at: string;
+}
+
+/**
+ * An observation as stored in the database - id is always present.
+ * Query methods return this type since stored observations always have computed ids.
+ */
+export interface StoredObservation extends Omit<Observation, "id" | "identity"> {
+  /** Deterministic fingerprint - always present for stored observations */
+  id: string;
 }
 
 /**

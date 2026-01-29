@@ -62,7 +62,7 @@ describe("parseChaseCSVContent", () => {
     assert.strictEqual(result.maxObserved, "2026-01-11");
   });
 
-  it("should generate unique fingerprints for different transactions", () => {
+  it("should generate unique identity for different transactions", () => {
     const csv = `Transaction Date,Post Date,Description,Category,Type,Amount,Memo
 01/10/2026,01/11/2026,STARBUCKS,Food,Sale,-12.50,
 01/10/2026,01/11/2026,STARBUCKS,Food,Sale,-8.00,`;
@@ -70,10 +70,16 @@ describe("parseChaseCSVContent", () => {
     const result = parseChaseCSVContent(csv, { accountLabel: "checking" });
 
     assert.strictEqual(result.observations.length, 2);
-    assert.notStrictEqual(result.observations[0].id, result.observations[1].id);
+
+    // Different amounts should produce different identity values
+    const identity1 = result.observations[0].identity;
+    const identity2 = result.observations[1].identity;
+    assert.ok(identity1);
+    assert.ok(identity2);
+    assert.notDeepStrictEqual(identity1.values, identity2.values);
   });
 
-  it("should generate same fingerprint for duplicate transactions", () => {
+  it("should generate same identity for duplicate transactions", () => {
     const csv1 = `Transaction Date,Post Date,Description,Category,Type,Amount,Memo
 01/10/2026,01/11/2026,STARBUCKS,Food,Sale,-12.50,`;
 
@@ -83,7 +89,11 @@ describe("parseChaseCSVContent", () => {
     const result1 = parseChaseCSVContent(csv1, { accountLabel: "checking" });
     const result2 = parseChaseCSVContent(csv2, { accountLabel: "checking" });
 
-    assert.strictEqual(result1.observations[0].id, result2.observations[0].id);
+    // Same data should produce same identity
+    assert.deepStrictEqual(
+      result1.observations[0].identity,
+      result2.observations[0].identity
+    );
   });
 
   it("should handle alternative date formats (Posting Date)", () => {
@@ -105,15 +115,14 @@ describe("parseChaseCSVContent", () => {
     assert.strictEqual(payload.description_norm, "GROCERY STORE");
   });
 
-  it("should generate source row hashes for collision detection", () => {
+  it("should include source row hash in payload for collision detection", () => {
     const csv = `Transaction Date,Post Date,Description,Category,Type,Amount,Memo
 01/10/2026,01/11/2026,STARBUCKS,Food,Sale,-12.50,`;
 
     const result = parseChaseCSVContent(csv, { accountLabel: "checking" });
 
-    assert.strictEqual(result.sourceRowHashes.size, 1);
-    const hash = result.sourceRowHashes.get(result.observations[0].id);
-    assert.ok(hash);
-    assert.strictEqual(hash.length, 64);
+    const payload = result.observations[0].payload as { source_row_hash: string };
+    assert.ok(payload.source_row_hash);
+    assert.strictEqual(payload.source_row_hash.length, 64); // SHA-256 hex
   });
 });

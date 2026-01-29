@@ -4,7 +4,6 @@ import { existsSync, readFileSync, mkdirSync } from "node:fs";
 import { resolve, join, basename } from "node:path";
 import { ObservationStore, resolveDbPath } from "@numinous-systems/memory";
 import { parseInboxContent } from "./inbox-parser.js";
-import { thoughtEntryFingerprint } from "./fingerprint.js";
 import type { ThoughtEntryPayload } from "./types.js";
 import type { Observation } from "@numinous-systems/memory";
 
@@ -167,7 +166,8 @@ async function runIngest(
   try {
     const ingestedAt = new Date().toISOString();
 
-    // Convert entries to observations
+    // Convert entries to observations with identity declaration
+    // Memory computes fingerprint from: domain|source|type|identity.values
     const observations: Observation[] = parseResult.entries.map((entry) => {
       const payload: ThoughtEntryPayload = {
         text: entry.text,
@@ -177,7 +177,9 @@ async function runIngest(
       };
 
       return {
-        id: thoughtEntryFingerprint(entry.text_normalized),
+        identity: {
+          values: [entry.text_normalized],
+        },
         node_id: options.node,
         domain: "thought",
         source: "inbox_md",

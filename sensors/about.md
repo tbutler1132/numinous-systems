@@ -12,7 +12,7 @@ Sensors listen. They convert the chaos of external formats into observations the
 
 A sensor has one job: *observe*.
 
-It reads a specific external format—CSV, API, markdown. It normalizes what it finds into observations. It fingerprints each observation for identity. It stores them in memory.
+It reads a specific external format—CSV, API, markdown. It normalizes what it finds into observations. It declares what makes each observation unique. Memory handles the rest.
 
 A sensor does not analyze. It does not judge. It does not recommend. Those are later stages. The sensor's discipline is faithful perception.
 
@@ -20,14 +20,34 @@ A sensor does not analyze. It does not judge. It does not recommend. Those are l
 
 All sensors follow the same shape:
 1. Parse raw input into domain-specific structures
-2. Compute deterministic fingerprints (so re-ingestion is safe)
-3. Store observations in the shared memory layer
+2. Declare identity fields (what makes an observation unique)
+3. Pass observations to Memory, which computes fingerprints and stores them
 
-The infrastructure lives in `core/sensor/`. The domain-specific implementations live here.
+```typescript
+// Sensor declares what matters for identity
+const observation = {
+  identity: {
+    values: [observed_at, amount_cents, description_norm, account_label]
+  },
+  domain: "finance",
+  source: "chase_csv",
+  type: "transaction",
+  payload: { ... },
+  // ...
+};
+
+// Memory computes fingerprint and stores
+store.insertObservations([observation]);
+```
+
+The sensor knows *what* defines uniqueness (domain knowledge). Memory knows *how* to compute identity (mechanical hashing). This separation keeps concerns clean.
+
+The infrastructure lives in `core/sensor/` and `core/memory/`. The domain-specific implementations live here.
 
 ## Current Sensors
 
 - **finance/** — Bank transactions become financial observations
+- **thought/** — Inbox markdown entries become thought observations
 
 ## When to Build a Sensor
 

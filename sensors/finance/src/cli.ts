@@ -197,9 +197,8 @@ async function runIngest(
   try {
     // Insert observations from all files
     for (const { file, result } of parseResults) {
-      const appendResult = store.insertObservations(result.observations, {
-        sourceRowHashes: result.sourceRowHashes,
-      });
+      // Source row hashes are in observation payloads; store extracts them automatically
+      const appendResult = store.insertObservations(result.observations);
 
       totalInserted += appendResult.inserted;
       totalSkipped += appendResult.skipped;

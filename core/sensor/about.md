@@ -1,26 +1,37 @@
 # Sensor Core
 
-The observation memory layer. The substrate that makes sensing possible.
+The shared infrastructure for sensing. The contract that makes perception uniform.
 
 ## What It Is
 
-This is the shared infrastructure all sensors depend on: types, fingerprinting, and storage. Sensors convert external data into observations. This package defines what an observation is and how to remember it.
+This package provides the registration and discovery system for sensors. It defines what a sensor is, how sensors are registered, and how nodes declare which sensors they use.
 
-A memory organ, not an analytics platform. It implements the first two stages: sensing (converting raw data into observations) and memory (storing them durably). Pattern recognition and regulation come later.
+Sensors perceive. Memory stores. This package bridges them.
 
 ## Why It Exists
 
-Without shared infrastructure, each sensor would reinvent the wheel. The wheels would not fit together. Data would be inconsistent. Memory would be fragmented.
+Without shared infrastructure, each sensor would be an island. Discovery would be ad-hoc. Node configuration would be inconsistent.
 
-This package provides the contract. Every sensor follows it. The rest of the system trusts it.
+This package provides the contract. Every sensor registers itself. Every node declares its sensors. The system knows what perception is available.
 
 ## What Lives Here
 
-- **Observation type** — the universal structure for all sensed data
-- **Fingerprinting** — deterministic identity for deduplication
-- **ObservationStore** — SQLite-backed memory with idempotent writes
-- **Ingest runs** — audit trail for every data import
+- **Sensor type** — the interface all sensors implement
+- **SensorDescriptor** — metadata for sensor discovery
+- **Registry** — sensor registration and lookup
+- **IngestContext/IngestResult** — standard interface for ingestion
+- **Node sensor config** — how nodes declare which sensors they use
+
+## Relationship to Memory
+
+Memory (the separate `@numinous-systems/memory` package) handles:
+- Observation types and identity
+- Fingerprint computation
+- Storage and deduplication
+- Query interface
+
+This package re-exports Memory types for convenience, but new code should import directly from `@numinous-systems/memory`.
 
 ## Technical Details
 
-See [README.md](README.md) for installation, API reference, database schema, and how to build new sensors.
+See [README.md](README.md) for installation, API reference, and how to build new sensors.
