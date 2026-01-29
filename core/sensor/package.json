@@ -14,7 +14,8 @@
     "test": "node --import tsx --test src/*.test.ts"
   },
   "dependencies": {
-    "sql.js": "^1.11.0"
+    "sql.js": "^1.11.0",
+    "yaml": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

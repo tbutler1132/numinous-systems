@@ -37,3 +37,43 @@ Build a sensor when:
 - The memory should persist and be queryable
 
 Do not build a sensor for one-time imports or data you will not revisit.
+
+## Plugin Architecture
+
+Sensors and nodes are orthogonal. Sensors define perception capabilities. Nodes define storage contexts. Any node can use any sensor. The connection is declared, not hardcoded.
+
+### Sensor Manifests
+
+Each sensor exports a `SensorDescriptor`:
+
+```typescript
+import { sensor } from '@numinous-systems/finance';
+
+// sensor.id = 'finance'
+// sensor.domain = 'finance'
+// sensor.sources = ['chase_csv']
+```
+
+### Registry
+
+Sensors register with a shared registry:
+
+```typescript
+import { registerSensor, registry } from '@numinous-systems/sensor';
+import { sensor } from '@numinous-systems/finance';
+
+registerSensor(sensor);
+registry.list();  // all registered sensors
+```
+
+### Node Configuration
+
+Nodes declare which sensors they use in `sensors.yaml`:
+
+```yaml
+# nodes/personal/sensors.yaml
+sensors:
+  - finance
+```
+
+This makes the relationship explicit and inspectable.

@@ -82,3 +82,24 @@ export interface CollisionWarning {
  * Ingest run status
  */
 export type IngestStatus = "success" | "failed" | "partial" | "running";
+
+/**
+ * Sensor plugin descriptor - declares what a sensor is and what it does.
+ * Each sensor exports one of these to identify itself to the registry.
+ */
+export interface SensorDescriptor {
+  /** Unique identifier, e.g., 'finance' */
+  id: string;
+  /** Human-readable name */
+  name: string;
+  /** Semantic version */
+  version: string;
+  /** Observation domain, e.g., 'finance' */
+  domain: string;
+  /** Data sources handled, e.g., ['chase_csv'] */
+  sources: string[];
+  /** Type of observations produced */
+  observationType: string;
+  /** What this sensor does */
+  description?: string;
+}
