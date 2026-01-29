@@ -1294,6 +1294,69 @@ body {
   text-align: center;
 }
 
+.sensors-registry {
+  margin-bottom: 1.5rem;
+}
+
+.sensors-registry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sensors-registry-item {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.sensors-registry-item.enabled {
+  border-color: #166534;
+  background: linear-gradient(to right, rgba(22, 101, 52, 0.1), transparent);
+}
+
+.sensors-registry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.sensors-registry-name {
+  font-weight: 500;
+  color: #fafafa;
+}
+
+.sensors-registry-status {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #52525b;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  background: #27272a;
+}
+
+.sensors-registry-status.enabled {
+  color: #22c55e;
+  background: rgba(22, 101, 52, 0.3);
+}
+
+.sensors-registry-desc {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  margin: 0.25rem 0;
+}
+
+.sensors-registry-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.7rem;
+  color: #52525b;
+  margin-top: 0.5rem;
+}
+
 /* Process Page */
 .process {
   min-height: 100vh;

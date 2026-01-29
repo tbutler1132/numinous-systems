@@ -17,6 +17,23 @@ import type { DomainStatus, RecentObservation, SensorsStatus } from '@/services/
 /** Sensors data structure matching SensorsStatus from the API */
 type SensorsData = Pick<SensorsStatus, 'exists' | 'domains' | 'recent'>
 
+/** Sensor descriptor from registry */
+interface SensorInfo {
+  id: string
+  name: string
+  version: string
+  domain: string
+  sources: string[]
+  observationType: string
+  description?: string
+}
+
+/** Registry response */
+interface RegistryData {
+  sensors: SensorInfo[]
+  enabled: string[]
+}
+
 /** Staleness level for a sensor */
 type Staleness = 'fresh' | 'stale' | 'old'
 
@@ -139,6 +156,7 @@ function computeAttentionSummary(domains: DomainStatus[]): { count: number; item
  */
 export default function SensorsClient({ node }: Props) {
   const [data, setData] = useState<SensorsData | null>(null)
+  const [registryData, setRegistryData] = useState<RegistryData | null>(null)
   const [loading, setLoading] = useState(true)
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const [dragOver, setDragOver] = useState(false)
@@ -163,9 +181,21 @@ export default function SensorsClient({ node }: Props) {
     }
   }, [])
 
+  const fetchRegistry = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/sensors/registry/?node=${encodeURIComponent(node)}`)
+      if (res.ok) {
+        const regData = await res.json()
+        setRegistryData(regData)
+      }
+    } catch {
+      // Silently fail
+    }
+  }, [node])
+
   useEffect(() => {
-    refreshData().finally(() => setLoading(false))
-  }, [refreshData])
+    Promise.all([refreshData(), fetchRegistry()]).finally(() => setLoading(false))
+  }, [refreshData, fetchRegistry])
 
   const uploadFile = useCallback(async (file: File) => {
     setUploading(true)
@@ -231,6 +261,34 @@ export default function SensorsClient({ node }: Props) {
         {toast && (
           <div className={`sensors-toast ${toast.type}`}>
             {toast.message}
+          </div>
+        )}
+
+        {registryData && registryData.sensors.length > 0 && (
+          <div className="sensors-registry">
+            <h2 className="sensors-section-header">Available Sensors</h2>
+            <div className="sensors-registry-list">
+              {registryData.sensors.map((s) => {
+                const isEnabled = registryData.enabled.includes(s.id)
+                return (
+                  <div key={s.id} className={`sensors-registry-item${isEnabled ? ' enabled' : ''}`}>
+                    <div className="sensors-registry-header">
+                      <span className="sensors-registry-name">{s.name}</span>
+                      <span className={`sensors-registry-status${isEnabled ? ' enabled' : ''}`}>
+                        {isEnabled ? 'enabled' : 'available'}
+                      </span>
+                    </div>
+                    {s.description && (
+                      <p className="sensors-registry-desc">{s.description}</p>
+                    )}
+                    <div className="sensors-registry-meta">
+                      <span>v{s.version}</span>
+                      <span>sources: {s.sources.join(', ')}</span>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )}
 
