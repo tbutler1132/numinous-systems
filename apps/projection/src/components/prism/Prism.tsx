@@ -39,8 +39,10 @@ interface PrismProps {
  * Currently only shows 'org' node, but the pattern supports multiple nodes
  * for future multi-node navigation.
  */
-const AVAILABLE_NODES: MapNode[] = [
-  { id: 'org', name: 'Org', description: 'The main organization node', isCurrentNode: true },
+/** Static node definitions - isCurrentNode is computed dynamically */
+const NODE_DEFINITIONS = [
+  { id: 'org', name: 'Org', description: 'The main organization node' },
+  { id: 'personal', name: 'Personal', description: 'Your personal space' },
 ]
 
 /**
@@ -75,7 +77,14 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
   // Filter surfaces by kind
   const locations = surfaces.filter(s => !s.external && s.kind === 'location')
   const externalSurfaces = surfaces.filter(s => s.external)
-  const deviceFeatures = surfaces.filter(s => s.kind === 'device')
+  const allDeviceFeatures = surfaces.filter(s => s.kind === 'device')
+
+  // Filter device features based on access and ifLocked behavior
+  const deviceFeatures = allDeviceFeatures.filter(s => {
+    const hasAccess = s.requiredAccess === 'anonymous' || isAuthenticated
+    if (hasAccess) return true
+    return s.ifLocked === 'show'
+  })
 
   // Only locations count as "current" for the minimap - device features are overlays, not places
   const currentLocation = locations.find(
@@ -83,6 +92,21 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
   ) ?? locations[0]
 
   const menuPages = buildMenuPages(deviceFeatures)
+
+  // Compute available nodes with dynamic isCurrentNode based on current location
+  // Only show personal node when authenticated
+  const availableNodes: MapNode[] = NODE_DEFINITIONS
+    .filter(node => node.id === 'org' || isAuthenticated)
+    .map(node => ({
+      ...node,
+      isCurrentNode: node.id === currentLocation.nodeId,
+    }))
+
+  // Get the current node's display name
+  const currentNodeName = NODE_DEFINITIONS.find(n => n.id === currentLocation.nodeId)?.name ?? 'Unknown'
+
+  // Filter locations to only show surfaces from the current node
+  const currentNodeLocations = locations.filter(s => s.nodeId === currentLocation.nodeId)
 
   const handleOpen = () => {
     setActivePage('map')
@@ -133,21 +157,24 @@ export default function Prism({ surfaces, initialAuthenticated = false }: PrismP
               {activePage === 'map' && (
                 <Map
                   view={mapView}
-                  nodes={AVAILABLE_NODES}
-                  locations={locations}
+                  nodes={availableNodes}
+                  locations={currentNodeLocations}
                   externalSurfaces={externalSurfaces}
                   currentPath={currentLocation.path}
                   currentNodeId={currentLocation.nodeId}
-                  currentNodeName="Org"
+                  currentNodeName={currentNodeName}
                   isAuthenticated={isAuthenticated}
                   onNavigate={setNavigating}
                   onClose={() => setOpen(false)}
                   onToggleView={() => setMapView(v => v === 'local' ? 'world' : 'local')}
                   onSelectNode={(nodeId) => {
-                    // For now, just switch back to local view when selecting a node
-                    // In the future, this would navigate to that node
-                    if (nodeId === 'org') {
-                      setMapView('local')
+                    // Find the first location surface in the selected node
+                    const nodeHome = surfaces.find(
+                      s => s.nodeId === nodeId && s.kind === 'location' && !s.external
+                    )
+                    if (nodeHome) {
+                      setNavigating(nodeHome.path)
+                      window.location.href = nodeHome.path
                     }
                   }}
                 />

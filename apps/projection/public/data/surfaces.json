@@ -8,7 +8,8 @@
     "path": "/",
     "status": "active",
     "visibility": "public",
-    "access": "anonymous"
+    "access": "anonymous",
+    "if locked": "—"
   },
   {
     "name": "Hero's Journey",
@@ -19,7 +20,8 @@
     "path": "/heros-journey/",
     "status": "active",
     "visibility": "public",
-    "access": "anonymous"
+    "access": "anonymous",
+    "if locked": "—"
   },
   {
     "name": "Sensors",
@@ -30,7 +32,8 @@
     "path": "/sensors/",
     "status": "active",
     "visibility": "private",
-    "access": "collaborator"
+    "access": "collaborator",
+    "if locked": "hide"
   },
   {
     "name": "Process",
@@ -41,7 +44,8 @@
     "path": "/process/",
     "status": "active",
     "visibility": "private",
-    "access": "collaborator"
+    "access": "collaborator",
+    "if locked": "hide"
   },
   {
     "name": "X",
@@ -52,6 +56,19 @@
     "path": "https://x.com/alltoosynthetic",
     "status": "active",
     "visibility": "public",
-    "access": "anonymous"
+    "access": "anonymous",
+    "if locked": "—"
+  },
+  {
+    "name": "Home",
+    "node": "personal",
+    "type": "internal",
+    "kind": "location",
+    "category": "—",
+    "path": "/personal/",
+    "status": "active",
+    "visibility": "private",
+    "access": "viewer",
+    "if locked": "hide"
   }
 ]

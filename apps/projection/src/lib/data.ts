@@ -97,6 +97,9 @@ export type SurfaceCategory = 'plaza' | 'exhibit' | null
  *
  * Extraction trigger: another app imports this type.
  */
+/** Behavior when surface is inaccessible: hide entirely or show as locked */
+export type LockedBehavior = 'hide' | 'show'
+
 export interface Surface {
   name: string
   path: string
@@ -106,6 +109,8 @@ export interface Surface {
   /** Minimum access level required to view this surface */
   requiredAccess: AccessLevel
   category: SurfaceCategory
+  /** What to do when user lacks access: 'hide' or 'show' (locked). Defaults to 'show'. */
+  ifLocked: LockedBehavior
 }
 
 /**
@@ -146,5 +151,6 @@ export function getSurfaces(): Surface[] {
       external: r.type === 'external',
       requiredAccess: parseAccessLevel(r.access, r.visibility),
       category: (['plaza', 'exhibit'].includes(r.category) ? r.category : null) as SurfaceCategory,
+      ifLocked: (r['if locked'] === 'hide' ? 'hide' : 'show') as LockedBehavior,
     }))
 }

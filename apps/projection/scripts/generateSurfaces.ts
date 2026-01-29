@@ -49,13 +49,28 @@ for (const surface of surfaces) {
   console.log(`${surface.name}: ${artifacts.length} artifacts → ${surface.output}`)
 }
 
-// Generate surfaces.json from the canonical entity file
-const surfacesMd = readFileSync(join(ROOT, 'nodes/org/entities/surfaces.md'), 'utf-8')
-const surfaceRows = parseMarkdownTable(surfacesMd)
+// Generate surfaces.json from canonical entity files across nodes
+const surfaceFiles = [
+  'nodes/org/entities/surfaces.md',
+  'nodes/personal/entities/surfaces.md',
+]
+
+const allSurfaceRows: Record<string, string>[] = []
+for (const file of surfaceFiles) {
+  try {
+    const surfacesMd = readFileSync(join(ROOT, file), 'utf-8')
+    const rows = parseMarkdownTable(surfacesMd)
+    allSurfaceRows.push(...rows)
+    console.log(`  ${file}: ${rows.length} entries`)
+  } catch {
+    // Node surfaces file doesn't exist (e.g., personal node not present)
+  }
+}
+
 const surfacesOutputPath = join(__dirname, '..', 'public/data/surfaces.json')
 mkdirSync(dirname(surfacesOutputPath), { recursive: true })
-writeFileSync(surfacesOutputPath, JSON.stringify(surfaceRows, null, 2))
-console.log(`surfaces: ${surfaceRows.length} entries → public/data/surfaces.json`)
+writeFileSync(surfacesOutputPath, JSON.stringify(allSurfaceRows, null, 2))
+console.log(`surfaces: ${allSurfaceRows.length} total entries → public/data/surfaces.json`)
 
 // Generate landing.json from the landing artifact
 const landingDir = join(ROOT, 'nodes/org/artifacts/apps/landing')
