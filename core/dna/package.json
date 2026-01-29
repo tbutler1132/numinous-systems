@@ -1,0 +1,26 @@
+{
+  "name": "@numinous-systems/dna",
+  "version": "1.0.0",
+  "description": "The genetic code — invariants that do not change",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@numinous-systems/node": "^1.0.0",
+    "@numinous-systems/identity": "^1.0.0",
+    "@numinous-systems/memory": "^1.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
